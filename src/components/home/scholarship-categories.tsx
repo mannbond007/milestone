@@ -326,22 +326,56 @@ export function ScholarshipCategories() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:text-[#6EE7B7]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
-            Academic Disciplines
+        <div className="flex flex-col gap-6 border-b border-[#E3ECE8] pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2.5">
+              <span className="h-[2px] w-6 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+                Academic Disciplines
+              </span>
+              <span className="text-[#C4D6CE] dark:text-[#2A4B40]">/</span>
+              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#687A73] dark:text-[#8DA39B]">
+                10 Scholarship Tracks
+              </span>
+            </div>
+
+            <h2 className="mt-3.5 font-heading text-3xl font-bold tracking-[-0.025em] text-[#142C25] sm:text-4xl lg:text-[42px] lg:leading-[1.14] dark:text-white">
+              Find the Right Path for{" "}
+              <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                Your Future
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 180 12"
+                  fill="none"
+                  className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 9.5C46 3.5 134 2.5 178 8.5"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h2>
+
+            <p className="mt-3.5 max-w-xl text-[15.5px] leading-relaxed text-[#687A73] sm:text-base dark:text-[#A0B3AC]">
+              Explore scholarship opportunities across diverse academic disciplines.
+            </p>
           </div>
 
-          <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-[#142C25] sm:text-4xl lg:text-[42px] lg:leading-[1.15] dark:text-white">
-            Find the Right Path for{" "}
-            <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
-              Your Future
-            </span>
-          </h2>
-
-          <p className="mt-3 text-[15.5px] leading-relaxed text-[#687A73] sm:text-base dark:text-[#A0B3AC]">
-            Explore scholarship opportunities across diverse academic disciplines.
-          </p>
+          <div className="shrink-0">
+            <Link
+              href="/scholarships"
+              className="group/all inline-flex items-center gap-3 rounded-full border border-[#D4E3DC] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#142C25] shadow-[0_2px_10px_rgba(7,61,50,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:text-[#15966F] hover:shadow-[0_8px_20px_-6px_rgba(7,61,50,0.14)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399]/50 dark:hover:text-[#34D399]"
+            >
+              <span>View All Scholarships</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F] transition-transform duration-300 group-hover/all:translate-x-0.5 dark:bg-[#143329] dark:text-[#34D399]">
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
+            </Link>
+          </div>
         </div>
 
         {/* Row 1: Featured Medical (6 cols) + Engineering (3 cols) + Law (3 cols) */}
