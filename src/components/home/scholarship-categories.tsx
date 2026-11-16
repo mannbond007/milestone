@@ -1,24 +1,19 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Stethoscope,
-  Cpu,
-  Briefcase,
-  Scale,
-  HeartPulse,
-  FlaskConical,
-  Calculator,
   BookOpen,
-  Monitor,
+  Briefcase,
+  Calculator,
+  Cpu,
+  Crown,
+  FlaskConical,
   GraduationCap,
-  Sparkles,
+  HeartPulse,
+  Monitor,
+  Scale,
+  Stethoscope,
   type LucideIcon,
 } from "lucide-react";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { useLocale } from "@/components/providers/locale-provider";
 
 interface DisciplineCategory {
   id: string;
@@ -26,24 +21,21 @@ interface DisciplineCategory {
   courses: string;
   amount: string;
   href: string;
+  image: string;
   icon: LucideIcon;
-  colSpan: string;
-  variant: "featured" | "mint" | "light";
-  badge?: string;
+  featured?: boolean;
 }
 
 const scholarshipDisciplines: DisciplineCategory[] = [
-  // Row 1 (5 + 4 + 3 = 12 cols)
   {
     id: "medical",
     title: "Medical",
     courses: "MBBS (India & Abroad), BDS, BAMS, BHMS & BUMS",
     amount: "Up to ₹5,00,000",
     href: "/scholarships#mbbs",
+    image: "/images/categories/medical.jpg",
     icon: Stethoscope,
-    colSpan: "lg:col-span-5",
-    variant: "featured",
-    badge: "Highest Grant",
+    featured: true,
   },
   {
     id: "engineering",
@@ -51,9 +43,8 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "B.Tech, B.E. & Emerging Technical Disciplines",
     amount: "Up to ₹4,00,000",
     href: "/scholarships#btech",
+    image: "/images/categories/engineering.jpg",
     icon: Cpu,
-    colSpan: "lg:col-span-4",
-    variant: "light",
   },
   {
     id: "law",
@@ -61,21 +52,17 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "BA LLB, BBA LLB & 3-Year LLB",
     amount: "Up to ₹3,00,000",
     href: "/scholarships#law",
+    image: "/images/categories/law.jpg",
     icon: Scale,
-    colSpan: "lg:col-span-3",
-    variant: "mint",
   },
-
-  // Row 2 (3 + 3 + 3 + 3 = 12 cols)
   {
     id: "management",
     title: "Management",
     courses: "BBA, MBA & Post-Graduate PGDM",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bba",
+    image: "/images/categories/management.jpg",
     icon: Briefcase,
-    colSpan: "lg:col-span-3",
-    variant: "light",
   },
   {
     id: "nursing",
@@ -83,9 +70,8 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "B.Sc Nursing & Patient Care",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#nursing",
+    image: "/images/categories/nursing.jpg",
     icon: HeartPulse,
-    colSpan: "lg:col-span-3",
-    variant: "light",
   },
   {
     id: "technology",
@@ -93,9 +79,8 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "BCA, Computer Science & AI",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bca",
+    image: "/images/categories/technology.jpg",
     icon: Monitor,
-    colSpan: "lg:col-span-3",
-    variant: "light",
   },
   {
     id: "professional",
@@ -103,21 +88,17 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "Pharmacy, Agriculture, Design & NEET/JEE",
     amount: "Up to ₹3,00,000",
     href: "/scholarships#pharmacy",
+    image: "/images/categories/professional.jpg",
     icon: GraduationCap,
-    colSpan: "lg:col-span-3",
-    variant: "mint",
   },
-
-  // Row 3 (4 + 4 + 4 = 12 cols)
   {
     id: "science",
     title: "Science",
     courses: "B.Sc Pure Sciences, Biotech & Research",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bsc",
+    image: "/images/categories/science.jpg",
     icon: FlaskConical,
-    colSpan: "lg:col-span-4",
-    variant: "light",
   },
   {
     id: "commerce",
@@ -125,9 +106,8 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "B.Com, Finance, Accounting & CA",
     amount: "Up to ₹1,50,000",
     href: "/scholarships#bcom",
+    image: "/images/categories/commerce.jpg",
     icon: Calculator,
-    colSpan: "lg:col-span-4",
-    variant: "light",
   },
   {
     id: "arts",
@@ -135,207 +115,199 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     courses: "B.A. Humanities, Journalism & Media",
     amount: "Up to ₹1,50,000",
     href: "/scholarships#ba",
+    image: "/images/categories/arts.jpg",
     icon: BookOpen,
-    colSpan: "lg:col-span-4",
-    variant: "light",
   },
 ];
 
-function DisciplineCard({ item }: { item: DisciplineCategory }) {
-  const Icon = item.icon;
-  const isFeatured = item.variant === "featured";
-  const isMint = item.variant === "mint";
+function GrantPill({ amount }: { amount: string }) {
+  const [prefix, value] = amount.startsWith("Up to ")
+    ? ["Up to", amount.replace("Up to ", "")]
+    : ["Grant", amount];
 
   return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.22, ease: "easeOut" }}
-      className="h-full"
+    <div className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white/95 px-3 py-1.5 shadow-[0_6px_18px_rgba(7,61,50,0.14)] backdrop-blur-md">
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F]">
+        <GraduationCap className="h-3.5 w-3.5" />
+      </span>
+      <div className="leading-tight">
+        <span className="block text-[10px] font-semibold uppercase tracking-wider text-[#687A73]">
+          {prefix}
+        </span>
+        <span className="block font-heading text-[13px] font-bold tracking-tight text-[#073D32]">
+          {value}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function DisciplineCard({ category }: { category: DisciplineCategory }) {
+  const Icon = category.icon;
+
+  return (
+    <Link
+      href={category.href}
+      className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-[#DCE8E3] bg-white shadow-[0_8px_24px_-12px_rgba(7,61,50,0.1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_20px_40px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
     >
-      <Link
-        href={item.href}
-        className={`group relative overflow-hidden h-full min-h-[248px] flex flex-col justify-between p-6 sm:p-7 rounded-[24px] transition-all duration-300 ${
-          isFeatured
-            ? "bg-gradient-to-br from-[#073D32] via-[#06332A] to-[#031F19] text-white border border-[#15966F]/35 shadow-[0_18px_40px_-12px_rgba(7,61,50,0.38)] hover:shadow-[0_24px_56px_-10px_rgba(21,150,111,0.38)] hover:border-[#15966F]/70"
-            : isMint
-            ? "bg-gradient-to-br from-[#E8F5EF] via-[#F2FAF6] to-[#FAFCFB] dark:from-[#132922] dark:via-[#10221C] dark:to-[#0C1A15] text-[#142C25] dark:text-[#F2F7F5] border border-[#C3E3D5] dark:border-[#15966F]/30 shadow-[0_8px_24px_-8px_rgba(7,61,50,0.06)] hover:shadow-[0_18px_36px_-10px_rgba(7,61,50,0.12)] hover:border-[#15966F]/60"
-            : "bg-gradient-to-br from-[#FAFCFB] via-white to-[#F2F8F5] dark:from-[#15241F] dark:via-[#111E1A] dark:to-[#0D1814] text-[#142C25] dark:text-[#F2F7F5] border border-[#DCE8E2] dark:border-[#21362E] shadow-[0_8px_24px_-8px_rgba(7,61,50,0.05)] hover:shadow-[0_18px_36px_-10px_rgba(7,61,50,0.11)] hover:border-[#15966F]/55"
-        }`}
-      >
-        {/* Subtle Decorative Background Circles */}
-        <div
-          className={`absolute -right-12 -top-12 w-44 h-44 rounded-full border pointer-events-none transition-transform duration-500 ease-out group-hover:scale-110 group-hover:translate-x-1 ${
-            isFeatured
-              ? "border-[#15966F]/25 bg-[#15966F]/10"
-              : isMint
-              ? "border-[#15966F]/15 bg-white/45 dark:bg-[#15966F]/5"
-              : "border-[#15966F]/12 bg-[#E8F5EF]/50 dark:bg-[#15966F]/5"
-          }`}
-          aria-hidden="true"
+      {/* Top discipline photo */}
+      <div className="relative h-[156px] w-full overflow-hidden bg-[#E8F5EF] dark:bg-[#132E26]">
+        <img
+          src={category.image}
+          alt={`${category.title} scholarship students`}
+          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          loading="lazy"
         />
-        <div
-          className={`absolute -right-4 -top-4 w-24 h-24 rounded-full border pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-0.5 ${
-            isFeatured
-              ? "border-white/10"
-              : "border-[#15966F]/10"
-          }`}
-          aria-hidden="true"
-        />
-        {isFeatured && (
-          <div
-            className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#15966F]/15 blur-2xl opacity-60 group-hover:opacity-95 transition-opacity duration-500 pointer-events-none"
-            aria-hidden="true"
-          />
-        )}
-
-        {/* ZONE 1: Top Bar — Category Icon & Prominent Scholarship Amount Badge */}
-        <div className="relative z-10 flex items-start justify-between gap-3">
-          <div
-            className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3 ${
-              isFeatured
-                ? "bg-white/10 border border-white/15 text-[#34D399] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
-                : isMint
-                ? "bg-white dark:bg-[#111E1A] border border-[#15966F]/20 text-[#073D32] dark:text-[#34A880] shadow-xs"
-                : "bg-[#E8F5EF] dark:bg-[#172923] border border-[#15966F]/15 text-[#073D32] dark:text-[#34A880] group-hover:bg-[#073D32] group-hover:text-white dark:group-hover:bg-[#15966F] dark:group-hover:text-[#0B1411] transition-colors"
-            }`}
-          >
-            <Icon className="w-5 h-5 stroke-[1.9]" />
-          </div>
-
-          <div className="flex flex-col items-end gap-1.5">
-            {isFeatured && item.badge && (
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#A7F3D0]">
-                <Sparkles className="w-3 h-3 text-[#34D399]" />
-                {item.badge}
-              </span>
-            )}
-            <span
-              className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap ${
-                isFeatured
-                  ? "bg-[#15966F] text-white shadow-[0_4px_12px_-2px_rgba(21,150,111,0.5)]"
-                  : isMint
-                  ? "bg-white dark:bg-[#111E1A] text-[#073D32] dark:text-[#34A880] border border-[#15966F]/20 shadow-2xs"
-                  : "bg-[#E8F5EF] dark:bg-[#172923] text-[#073D32] dark:text-[#34A880] border border-[#15966F]/15"
-              }`}
-            >
-              <span
-                className={`w-1.5 h-1.5 rounded-full ${
-                  isFeatured ? "bg-white" : "bg-[#15966F]"
-                }`}
-              />
-              {item.amount}
-            </span>
-          </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        <div className="absolute right-3 top-3 z-10">
+          <GrantPill amount={category.amount} />
         </div>
+      </div>
 
-        {/* ZONE 2: Discipline Name & Course Information */}
-        <div className="relative z-10 my-6">
-          <h3
-            className={`font-heading font-bold tracking-tight leading-snug transition-colors ${
-              isFeatured
-                ? "text-2xl sm:text-[26px] text-white"
-                : "text-xl text-[#142C25] dark:text-[#F2F7F5] group-hover:text-[#15966F] dark:group-hover:text-[#34A880]"
-            }`}
-          >
-            {item.title}
+      {/* Card content */}
+      <div className="flex flex-1 flex-col justify-between px-5 pb-5 pt-4">
+        <div>
+          <div className="relative z-10 -mt-9 mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl border-2 border-white bg-[#E8F5EF] text-[#15966F] shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:bg-[#132E26] dark:text-[#34D399]">
+            <Icon className="h-5 w-5" />
+          </div>
+
+          <h3 className="font-heading text-[18px] font-bold leading-snug tracking-tight text-[#142C25] dark:text-white">
+            {category.title}
           </h3>
-          <p
-            className={`mt-2 text-[13px] sm:text-sm leading-relaxed ${
-              isFeatured
-                ? "text-[#D1EAE0] max-w-md"
-                : "text-[#687A73] dark:text-[#9BB0A8]"
-            }`}
-          >
-            {item.courses}
+
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
+            {category.courses}
           </p>
         </div>
 
-        {/* ZONE 3: Clean Footer Action Bar */}
-        <div
-          className={`relative z-10 pt-4 border-t flex items-center justify-between gap-3 ${
-            isFeatured
-              ? "border-white/15"
-              : "border-[#DCE8E2]/80 dark:border-[#21362E]"
-          }`}
-        >
-          <span
-            className={`text-xs font-semibold tracking-wide ${
-              isFeatured
-                ? "text-[#A7F3D0]"
-                : "text-[#073D32] dark:text-[#34A880]"
-            }`}
-          >
-            {isFeatured ? "Explore Medical Pathway" : "Explore Scholarships"}
+        <div className="mt-5 flex items-center justify-between border-t border-[#EFF5F2] pt-3.5 dark:border-[#18332B]">
+          <span className="text-[13px] font-semibold text-[#15966F] transition-colors group-hover:text-[#073D32] dark:text-[#34D399] dark:group-hover:text-white">
+            Explore Scholarships
           </span>
-
-          <span
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-              isFeatured
-                ? "bg-white/12 text-white group-hover:bg-[#15966F]"
-                : "bg-[#E8F5EF] dark:bg-[#172923] text-[#073D32] dark:text-[#34A880] group-hover:bg-[#073D32] group-hover:text-white dark:group-hover:bg-[#15966F] dark:group-hover:text-[#0B1411]"
-            }`}
-          >
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F8F5] text-[#15966F] transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#15966F] group-hover:text-white dark:bg-[#143329] dark:text-[#34D399] dark:group-hover:bg-[#34D399] dark:group-hover:text-[#073D32]">
+            <ArrowRight className="h-4 w-4" />
           </span>
         </div>
-      </Link>
-    </motion.div>
+      </div>
+    </Link>
+  );
+}
+
+function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
+  const Icon = category.icon;
+
+  return (
+    <Link
+      href={category.href}
+      className="group relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-[24px] border border-[#15966F]/35 bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#116E59] text-white shadow-[0_18px_40px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1 hover:border-[#34D399]/60 hover:shadow-[0_26px_52px_-16px_rgba(21,150,111,0.45)] sm:flex-row"
+    >
+      {/* Subtle decorative glow */}
+      <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#15966F]/25 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
+
+      {/* Left column: icon, featured badge, title, courses, pill CTA */}
+      <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:max-w-[56%] sm:p-7">
+        <div>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7] backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+              <Icon className="h-5 w-5" />
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FBBF24]/35 bg-[#FBBF24]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FDE68A]">
+              <Crown className="h-3 w-3" />
+              Featured
+            </span>
+          </div>
+
+          <h3 className="mt-5 font-heading text-[26px] font-bold leading-tight tracking-tight text-white sm:text-[28px]">
+            {category.title}
+          </h3>
+
+          <p className="mt-2 max-w-xs text-[14px] leading-relaxed text-[#D1FAE5]/90">
+            {category.courses}
+          </p>
+        </div>
+
+        <div className="mt-6">
+          <span className="inline-flex items-center gap-3 rounded-full bg-white py-2 pl-4 pr-2 text-[13.5px] font-semibold text-[#073D32] shadow-md transition-all duration-300 group-hover:bg-[#E8F5EF]">
+            <span>Explore Scholarships</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-300 group-hover:translate-x-0.5">
+              <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </span>
+        </div>
+      </div>
+
+      {/* Right column: portrait photo blended into deep forest green */}
+      <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[46%]">
+        <img
+          src={category.image}
+          alt="Medical scholarship student"
+          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+        />
+        {/* Smooth gradient fade into left green background */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09463A] via-transparent to-transparent sm:bg-gradient-to-r sm:from-[#0C5747] sm:via-[#0C5747]/35 sm:to-transparent" />
+      </div>
+
+      {/* Floating top-right grant pill */}
+      <div className="absolute right-4 top-4 z-20">
+        <GrantPill amount={category.amount} />
+      </div>
+    </Link>
   );
 }
 
 export function ScholarshipCategories() {
-  const { t } = useLocale();
+  const [medical, engineering, law, management, nursing, technology, professional, ...more] =
+    scholarshipDisciplines;
 
   return (
     <section
-      id="scholarship-categories"
-      className="py-20 md:py-28 bg-[#FAFCFB] dark:bg-[#0B1411] border-t border-[#DCE8E2] dark:border-[#21362E]"
+      id="disciplines"
+      className="relative overflow-hidden bg-[#FAFCFB] py-16 sm:py-20 dark:bg-[#07120F]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <ScrollReveal className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8F5EF] dark:bg-[#172923] border border-[#15966F]/20 text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#34A880] mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#15966F]" />
-              <span>{t("homeCategories.badge", "ACADEMIC DISCIPLINES")}</span>
-            </div>
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:text-[#6EE7B7]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+            Academic Disciplines
+          </div>
 
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#142C25] dark:text-[#F2F7F5] leading-[1.12]">
-              Find the Right Path for{" "}
-              <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34A880]">
-                Your Future
-              </span>
-            </h2>
+          <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-[#142C25] sm:text-4xl lg:text-[42px] lg:leading-[1.15] dark:text-white">
+            Find the Right Path for{" "}
+            <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+              Your Future
+            </span>
+          </h2>
 
-            <p className="mt-3.5 text-base sm:text-lg text-[#687A73] dark:text-[#9BB0A8] leading-relaxed">
-              {t(
-                "homeCategories.subheading",
-                "Explore scholarship opportunities across diverse academic disciplines."
-              )}
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.08}>
-            <Link
-              href="/scholarships"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white dark:bg-[#111E1A] text-[#073D32] dark:text-[#34A880] border border-[#DCE8E2] dark:border-[#21362E] hover:border-[#15966F] transition-colors group shrink-0"
-            >
-              <span>{t("homeCategories.viewAll", "View All Scholarships")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </ScrollReveal>
+          <p className="mt-3 text-[15.5px] leading-relaxed text-[#687A73] sm:text-base dark:text-[#A0B3AC]">
+            Explore scholarship opportunities across diverse academic disciplines.
+          </p>
         </div>
 
-        {/* 12-Column Responsive Scholarship Disciplines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
-          {scholarshipDisciplines.map((item, idx) => (
-            <ScrollReveal
-              key={item.id}
-              delay={idx * 0.03}
-              className={item.colSpan}
-            >
-              <DisciplineCard item={item} />
-            </ScrollReveal>
+        {/* Row 1: Featured Medical (6 cols) + Engineering (3 cols) + Law (3 cols) */}
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-12">
+          <div className="md:col-span-2 lg:col-span-6">
+            <FeaturedMedicalCard category={medical} />
+          </div>
+          <div className="lg:col-span-3">
+            <DisciplineCard category={engineering} />
+          </div>
+          <div className="lg:col-span-3">
+            <DisciplineCard category={law} />
+          </div>
+        </div>
+
+        {/* Row 2: Management, Nursing, Technology, Professional Courses */}
+        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[management, nursing, technology, professional].map((category) => (
+            <DisciplineCard key={category.id} category={category} />
+          ))}
+        </div>
+
+        {/* Row 3: Science, Commerce, Arts */}
+        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {more.map((category) => (
+            <DisciplineCard key={category.id} category={category} />
           ))}
         </div>
       </div>
