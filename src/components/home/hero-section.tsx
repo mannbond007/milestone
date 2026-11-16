@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, Award, ShieldCheck } from "lucide-react";
 import { useLocale } from "@/components/providers/locale-provider";
 
 export function HeroSection() {
@@ -141,17 +141,64 @@ export function HeroSection() {
                   className="object-cover object-center"
                 />
 
-                {/* Subtle, Compact Scholarship Achievement Card */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 bg-white/95 dark:bg-[#111E1A]/95 rounded-[16px] px-4 py-3 border border-[#D5E2DC] dark:border-[#21362E] shadow-[0_8px_20px_-6px_rgba(16,61,50,0.14)] flex items-center justify-between gap-2">
-                  <div>
-                    <p className="font-heading text-sm font-bold text-[#103D32] dark:text-[#F2F7F5] leading-tight">
-                      15,000+ Scholars
-                    </p>
-                    <p className="text-[11px] text-[#68756F] dark:text-[#9BB0A8] mt-0.5">
-                      Verified Milestone Fellows
-                    </p>
+                {/* Sculpted 3D Floating Scholarship Achievement Badge */}
+                <div
+                  className="
+                    absolute bottom-3.5 left-3.5 right-3.5
+                    rounded-[20px] px-4 py-3.5
+                    bg-gradient-to-b from-white via-[#FAFDFB] to-[#EDF5F0]
+                    dark:from-[#182B25] dark:via-[#12211C] dark:to-[#0C1713]
+                    border border-white/90 dark:border-[#2A453B]
+                    shadow-[0_20px_38px_-10px_rgba(10,38,31,0.38),0_6px_14px_-4px_rgba(16,61,50,0.22),inset_0_1.5px_0_rgba(255,255,255,0.95),inset_0_-2px_0_rgba(16,61,50,0.08)]
+                    dark:shadow-[0_20px_38px_-10px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-2px_0_rgba(0,0,0,0.35)]
+                    backdrop-blur-md
+                    flex items-center justify-between gap-3
+                    transition-transform duration-300 hover:-translate-y-0.5
+                  "
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    {/* 3D Embossed Emerald Crest Icon */}
+                    <div
+                      className="
+                        w-10 h-10 rounded-[14px] shrink-0
+                        bg-gradient-to-b from-[#2E9E77] via-[#258B68] to-[#103D32]
+                        flex items-center justify-center text-white
+                        border border-[#47BA92]/40
+                        shadow-[0_8px_16px_-4px_rgba(16,61,50,0.45),inset_0_1.5px_1px_rgba(255,255,255,0.45),inset_0_-2px_2px_rgba(7,30,24,0.45)]
+                      "
+                    >
+                      <Award className="w-5 h-5 drop-shadow-[0_1px_1px_rgba(0,0,0,0.25)]" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="font-heading text-[15px] font-extrabold tracking-tight text-[#103D32] dark:text-[#F2F7F5] leading-tight truncate">
+                        15,000+ Scholars
+                      </p>
+                      <p className="text-[11px] font-medium text-[#5C6B64] dark:text-[#9BB0A8] mt-0.5 truncate">
+                        Verified Milestone Fellows
+                      </p>
+                    </div>
                   </div>
-                  <span className="h-2 w-2 rounded-full bg-[#258B68] shrink-0" />
+
+                  {/* Tactile 3D Verified Pill */}
+                  <div
+                    className="
+                      inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full shrink-0
+                      bg-gradient-to-b from-[#E8F3EE] to-[#D5EAE0]
+                      dark:from-[#1D352D] dark:to-[#13251F]
+                      border border-[#258B68]/25
+                      shadow-[0_2px_6px_-1px_rgba(16,61,50,0.12),inset_0_1px_0_rgba(255,255,255,0.85)]
+                      dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]
+                    "
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#258B68] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-gradient-to-b from-[#34A880] to-[#103D32] shadow-[0_1px_2px_rgba(16,61,50,0.4)]" />
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#103D32] dark:text-[#34A880]">
+                      Verified
+                    </span>
+                  </div>
                 </div>
               </div>
 
