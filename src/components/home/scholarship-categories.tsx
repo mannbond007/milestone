@@ -204,9 +204,50 @@ function Card3DWrapper({
   );
 }
 
-function DisciplineCard({ category }: { category: DisciplineCategory }) {
-  const Icon = category.icon;
+function HdrIconBadge({
+  icon: Icon,
+  featured = false,
+}: {
+  icon: LucideIcon;
+  featured?: boolean;
+}) {
+  if (featured) {
+    return (
+      <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-white/25 bg-gradient-to-b from-[#1A886D] via-[#126B55] to-[#083F33] text-[#A7F3D0] shadow-[0_10px_22px_-6px_rgba(4,39,32,0.6),0_3px_8px_-2px_rgba(110,231,183,0.25),inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-2.5px_4px_rgba(4,39,32,0.5)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
+        {/* Top HDR glass sheen */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"
+        />
+        <Icon className="relative z-10 h-5 w-5 drop-shadow-[0_2px_4px_rgba(4,39,32,0.65)]" strokeWidth={2.2} />
+      </span>
+    );
+  }
 
+  return (
+    <div
+      style={{ transform: "translateZ(26px)" }}
+      className="relative z-10 -mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[15px] border-[2.5px] border-white bg-gradient-to-b from-[#FFFFFF] via-[#E6F6EE] to-[#C6EBD9] text-[#0D7A58] shadow-[0_12px_24px_-6px_rgba(7,61,50,0.32),0_4px_10px_-2px_rgba(21,150,111,0.22),inset_0_1.5px_0_rgba(255,255,255,0.95),inset_0_-2.5px_4px_rgba(7,61,50,0.14)] transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 dark:border-[#0D1E19] dark:from-[#1D4B3D] dark:via-[#14372D] dark:to-[#0B221B] dark:text-[#6EE7B7] dark:shadow-[0_12px_24px_-6px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.18)]"
+    >
+      {/* Top HDR glass sheen */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/75 to-transparent dark:from-white/15"
+      />
+      {/* Subtle emerald ambient core */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute h-6 w-6 rounded-full bg-[#15966F]/15 blur-[5px]"
+      />
+      <Icon
+        className="relative z-10 h-[22px] w-[22px] drop-shadow-[0_2px_3px_rgba(7,61,50,0.28)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+        strokeWidth={2.2}
+      />
+    </div>
+  );
+}
+
+function DisciplineCard({ category }: { category: DisciplineCategory }) {
   return (
     <Link href={category.href} className="group block h-full">
       <Card3DWrapper className="flex flex-col overflow-hidden rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white shadow-[0_14px_28px_-12px_rgba(7,61,50,0.14),0_4px_10px_-4px_rgba(7,61,50,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-shadow duration-300 group-hover:border-[#15966F]/45 group-hover:border-b-[#15966F]/60 group-hover:shadow-[0_24px_46px_-14px_rgba(7,61,50,0.22),0_8px_18px_-6px_rgba(21,150,111,0.12)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19] dark:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.05)] dark:group-hover:border-[#34D399]/40">
@@ -228,9 +269,7 @@ function DisciplineCard({ category }: { category: DisciplineCategory }) {
         >
           <div>
             <div className="flex items-start justify-between gap-2">
-              <div className="relative z-10 -mt-9 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-white bg-[#E8F5EF] text-[#15966F] shadow-[0_6px_14px_rgba(7,61,50,0.12)] transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:bg-[#132E26] dark:text-[#34D399]">
-                <Icon className="h-5 w-5" />
-              </div>
+              <HdrIconBadge icon={category.icon} />
               <GrantBadge amount={category.amount} />
             </div>
 
@@ -258,8 +297,6 @@ function DisciplineCard({ category }: { category: DisciplineCategory }) {
 }
 
 function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
-  const Icon = category.icon;
-
   return (
     <Link href={category.href} className="group block h-full">
       <Card3DWrapper
@@ -276,9 +313,7 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
         >
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7] shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
-                <Icon className="h-5 w-5" />
-              </span>
+              <HdrIconBadge icon={category.icon} featured />
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FBBF24]/35 bg-[#FBBF24]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FDE68A]">
                 <Crown className="h-3 w-3" />
                 Featured
