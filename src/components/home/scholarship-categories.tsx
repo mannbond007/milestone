@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  ArrowUpRight,
+  ArrowRight,
   Stethoscope,
   Cpu,
   Briefcase,
@@ -13,48 +14,51 @@ import {
   BookOpen,
   Monitor,
   GraduationCap,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useLocale } from "@/components/providers/locale-provider";
 
-interface BentoCategory {
+interface DisciplineCategory {
   id: string;
   title: string;
-  subtitle: string;
+  courses: string;
   amount: string;
   href: string;
   icon: LucideIcon;
   colSpan: string;
-  variant: "dark" | "mint" | "white";
+  variant: "featured" | "mint" | "light";
+  badge?: string;
 }
 
-const bentoCategories: BentoCategory[] = [
-  // Row 1: Flagship Pathways (5 + 4 + 3 = 12 cols)
+const scholarshipDisciplines: DisciplineCategory[] = [
+  // Row 1 (5 + 4 + 3 = 12 cols)
   {
     id: "medical",
     title: "Medical",
-    subtitle: "MBBS (India & Abroad), BDS, BAMS, BHMS & BUMS",
+    courses: "MBBS (India & Abroad), BDS, BAMS, BHMS & BUMS",
     amount: "Up to ₹5,00,000",
     href: "/scholarships#mbbs",
     icon: Stethoscope,
     colSpan: "lg:col-span-5",
-    variant: "dark",
+    variant: "featured",
+    badge: "Highest Grant",
   },
   {
     id: "engineering",
     title: "Engineering",
-    subtitle: "B.Tech, B.E. & Emerging Technical Disciplines",
+    courses: "B.Tech, B.E. & Emerging Technical Disciplines",
     amount: "Up to ₹4,00,000",
     href: "/scholarships#btech",
     icon: Cpu,
     colSpan: "lg:col-span-4",
-    variant: "white",
+    variant: "light",
   },
   {
     id: "law",
     title: "Law",
-    subtitle: "BA LLB, BBA LLB & 3-Year LLB",
+    courses: "BA LLB, BBA LLB & 3-Year LLB",
     amount: "Up to ₹3,00,000",
     href: "/scholarships#law",
     icon: Scale,
@@ -62,41 +66,41 @@ const bentoCategories: BentoCategory[] = [
     variant: "mint",
   },
 
-  // Row 2: Professional & Applied Streams (3 + 3 + 3 + 3 = 12 cols)
+  // Row 2 (3 + 3 + 3 + 3 = 12 cols)
   {
     id: "management",
     title: "Management",
-    subtitle: "BBA, MBA & Post-Graduate PGDM",
+    courses: "BBA, MBA & Post-Graduate PGDM",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bba",
     icon: Briefcase,
     colSpan: "lg:col-span-3",
-    variant: "white",
+    variant: "light",
   },
   {
     id: "nursing",
     title: "Nursing",
-    subtitle: "B.Sc Nursing & Patient Care",
+    courses: "B.Sc Nursing & Patient Care",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#nursing",
     icon: HeartPulse,
     colSpan: "lg:col-span-3",
-    variant: "white",
+    variant: "light",
   },
   {
     id: "technology",
     title: "Technology",
-    subtitle: "BCA, Computer Science & AI",
+    courses: "BCA, Computer Science & AI",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bca",
     icon: Monitor,
     colSpan: "lg:col-span-3",
-    variant: "white",
+    variant: "light",
   },
   {
     id: "professional",
     title: "Professional Courses",
-    subtitle: "Pharmacy, Agriculture, Design & NEET/JEE",
+    courses: "Pharmacy, Agriculture, Design & NEET/JEE",
     amount: "Up to ₹3,00,000",
     href: "/scholarships#pharmacy",
     icon: GraduationCap,
@@ -104,38 +108,180 @@ const bentoCategories: BentoCategory[] = [
     variant: "mint",
   },
 
-  // Row 3: Degree Foundations (4 + 4 + 4 = 12 cols)
+  // Row 3 (4 + 4 + 4 = 12 cols)
   {
     id: "science",
     title: "Science",
-    subtitle: "B.Sc Pure Sciences, Biotech & Research",
+    courses: "B.Sc Pure Sciences, Biotech & Research",
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bsc",
     icon: FlaskConical,
     colSpan: "lg:col-span-4",
-    variant: "white",
+    variant: "light",
   },
   {
     id: "commerce",
     title: "Commerce",
-    subtitle: "B.Com, Finance, Accounting & CA",
+    courses: "B.Com, Finance, Accounting & CA",
     amount: "Up to ₹1,50,000",
     href: "/scholarships#bcom",
     icon: Calculator,
     colSpan: "lg:col-span-4",
-    variant: "white",
+    variant: "light",
   },
   {
     id: "arts",
     title: "Arts",
-    subtitle: "B.A. Humanities, Journalism & Media",
+    courses: "B.A. Humanities, Journalism & Media",
     amount: "Up to ₹1,50,000",
     href: "/scholarships#ba",
     icon: BookOpen,
     colSpan: "lg:col-span-4",
-    variant: "white",
+    variant: "light",
   },
 ];
+
+function DisciplineCard({ item }: { item: DisciplineCategory }) {
+  const Icon = item.icon;
+  const isFeatured = item.variant === "featured";
+  const isMint = item.variant === "mint";
+
+  return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      className="h-full"
+    >
+      <Link
+        href={item.href}
+        className={`group relative overflow-hidden h-full min-h-[248px] flex flex-col justify-between p-6 sm:p-7 rounded-[24px] transition-all duration-300 ${
+          isFeatured
+            ? "bg-gradient-to-br from-[#073D32] via-[#06332A] to-[#031F19] text-white border border-[#15966F]/35 shadow-[0_18px_40px_-12px_rgba(7,61,50,0.38)] hover:shadow-[0_24px_56px_-10px_rgba(21,150,111,0.38)] hover:border-[#15966F]/70"
+            : isMint
+            ? "bg-gradient-to-br from-[#E8F5EF] via-[#F2FAF6] to-[#FAFCFB] dark:from-[#132922] dark:via-[#10221C] dark:to-[#0C1A15] text-[#142C25] dark:text-[#F2F7F5] border border-[#C3E3D5] dark:border-[#15966F]/30 shadow-[0_8px_24px_-8px_rgba(7,61,50,0.06)] hover:shadow-[0_18px_36px_-10px_rgba(7,61,50,0.12)] hover:border-[#15966F]/60"
+            : "bg-gradient-to-br from-[#FAFCFB] via-white to-[#F2F8F5] dark:from-[#15241F] dark:via-[#111E1A] dark:to-[#0D1814] text-[#142C25] dark:text-[#F2F7F5] border border-[#DCE8E2] dark:border-[#21362E] shadow-[0_8px_24px_-8px_rgba(7,61,50,0.05)] hover:shadow-[0_18px_36px_-10px_rgba(7,61,50,0.11)] hover:border-[#15966F]/55"
+        }`}
+      >
+        {/* Subtle Decorative Background Circles */}
+        <div
+          className={`absolute -right-12 -top-12 w-44 h-44 rounded-full border pointer-events-none transition-transform duration-500 ease-out group-hover:scale-110 group-hover:translate-x-1 ${
+            isFeatured
+              ? "border-[#15966F]/25 bg-[#15966F]/10"
+              : isMint
+              ? "border-[#15966F]/15 bg-white/45 dark:bg-[#15966F]/5"
+              : "border-[#15966F]/12 bg-[#E8F5EF]/50 dark:bg-[#15966F]/5"
+          }`}
+          aria-hidden="true"
+        />
+        <div
+          className={`absolute -right-4 -top-4 w-24 h-24 rounded-full border pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-0.5 ${
+            isFeatured
+              ? "border-white/10"
+              : "border-[#15966F]/10"
+          }`}
+          aria-hidden="true"
+        />
+        {isFeatured && (
+          <div
+            className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-[#15966F]/15 blur-2xl opacity-60 group-hover:opacity-95 transition-opacity duration-500 pointer-events-none"
+            aria-hidden="true"
+          />
+        )}
+
+        {/* ZONE 1: Top Bar — Category Icon & Prominent Scholarship Amount Badge */}
+        <div className="relative z-10 flex items-start justify-between gap-3">
+          <div
+            className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3 ${
+              isFeatured
+                ? "bg-white/10 border border-white/15 text-[#34D399] shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
+                : isMint
+                ? "bg-white dark:bg-[#111E1A] border border-[#15966F]/20 text-[#073D32] dark:text-[#34A880] shadow-xs"
+                : "bg-[#E8F5EF] dark:bg-[#172923] border border-[#15966F]/15 text-[#073D32] dark:text-[#34A880] group-hover:bg-[#073D32] group-hover:text-white dark:group-hover:bg-[#15966F] dark:group-hover:text-[#0B1411] transition-colors"
+            }`}
+          >
+            <Icon className="w-5 h-5 stroke-[1.9]" />
+          </div>
+
+          <div className="flex flex-col items-end gap-1.5">
+            {isFeatured && item.badge && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#A7F3D0]">
+                <Sparkles className="w-3 h-3 text-[#34D399]" />
+                {item.badge}
+              </span>
+            )}
+            <span
+              className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap ${
+                isFeatured
+                  ? "bg-[#15966F] text-white shadow-[0_4px_12px_-2px_rgba(21,150,111,0.5)]"
+                  : isMint
+                  ? "bg-white dark:bg-[#111E1A] text-[#073D32] dark:text-[#34A880] border border-[#15966F]/20 shadow-2xs"
+                  : "bg-[#E8F5EF] dark:bg-[#172923] text-[#073D32] dark:text-[#34A880] border border-[#15966F]/15"
+              }`}
+            >
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  isFeatured ? "bg-white" : "bg-[#15966F]"
+                }`}
+              />
+              {item.amount}
+            </span>
+          </div>
+        </div>
+
+        {/* ZONE 2: Discipline Name & Course Information */}
+        <div className="relative z-10 my-6">
+          <h3
+            className={`font-heading font-bold tracking-tight leading-snug transition-colors ${
+              isFeatured
+                ? "text-2xl sm:text-[26px] text-white"
+                : "text-xl text-[#142C25] dark:text-[#F2F7F5] group-hover:text-[#15966F] dark:group-hover:text-[#34A880]"
+            }`}
+          >
+            {item.title}
+          </h3>
+          <p
+            className={`mt-2 text-[13px] sm:text-sm leading-relaxed ${
+              isFeatured
+                ? "text-[#D1EAE0] max-w-md"
+                : "text-[#687A73] dark:text-[#9BB0A8]"
+            }`}
+          >
+            {item.courses}
+          </p>
+        </div>
+
+        {/* ZONE 3: Clean Footer Action Bar */}
+        <div
+          className={`relative z-10 pt-4 border-t flex items-center justify-between gap-3 ${
+            isFeatured
+              ? "border-white/15"
+              : "border-[#DCE8E2]/80 dark:border-[#21362E]"
+          }`}
+        >
+          <span
+            className={`text-xs font-semibold tracking-wide ${
+              isFeatured
+                ? "text-[#A7F3D0]"
+                : "text-[#073D32] dark:text-[#34A880]"
+            }`}
+          >
+            {isFeatured ? "Explore Medical Pathway" : "Explore Scholarships"}
+          </span>
+
+          <span
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+              isFeatured
+                ? "bg-white/12 text-white group-hover:bg-[#15966F]"
+                : "bg-[#E8F5EF] dark:bg-[#172923] text-[#073D32] dark:text-[#34A880] group-hover:bg-[#073D32] group-hover:text-white dark:group-hover:bg-[#15966F] dark:group-hover:text-[#0B1411]"
+            }`}
+          >
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
 
 export function ScholarshipCategories() {
   const { t } = useLocale();
@@ -143,135 +289,54 @@ export function ScholarshipCategories() {
   return (
     <section
       id="scholarship-categories"
-      className="py-20 md:py-28 bg-white dark:bg-[#111E1A] border-t border-[#D5E2DC] dark:border-[#21362E]"
+      className="py-20 md:py-28 bg-[#FAFCFB] dark:bg-[#0B1411] border-t border-[#DCE8E2] dark:border-[#21362E]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Clean Editorial Header */}
-        <ScrollReveal className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F3EE] dark:bg-[#172923] text-[11px] font-bold uppercase tracking-[0.14em] text-[#103D32] dark:text-[#34A880] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#258B68]" />
-            <span>{t("homeCategories.badge", "SCHOLARSHIP CATEGORIES")}</span>
-          </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#172923] dark:text-[#F2F7F5] leading-[1.12]">
-            Find the Right Path for{" "}
-            <span className="font-editorial italic font-normal text-[#258B68] dark:text-[#34A880]">
-              Your Future
-            </span>
-          </h2>
-          <p className="mt-3.5 text-base sm:text-lg text-[#68756F] dark:text-[#9BB0A8] leading-relaxed">
-            {t(
-              "homeCategories.subheading",
-              "Explore scholarship opportunities across diverse academic disciplines."
-            )}
-          </p>
-        </ScrollReveal>
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <ScrollReveal className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8F5EF] dark:bg-[#172923] border border-[#15966F]/20 text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#34A880] mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#15966F]" />
+              <span>{t("homeCategories.badge", "ACADEMIC DISCIPLINES")}</span>
+            </div>
 
-        {/* 12-COLUMN ASYMMETRICAL BENTO GRID WITH CONCENTRIC CURVE MOTIF */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5">
-          {bentoCategories.map((item, idx) => {
-            const Icon = item.icon;
-            const isDark = item.variant === "dark";
-            const isMint = item.variant === "mint";
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#142C25] dark:text-[#F2F7F5] leading-[1.12]">
+              Find the Right Path for{" "}
+              <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34A880]">
+                Your Future
+              </span>
+            </h2>
 
-            return (
-              <ScrollReveal
-                key={item.id}
-                delay={idx * 0.03}
-                className={item.colSpan}
-              >
-                <Link
-                  href={item.href}
-                  className={`group relative overflow-hidden h-full min-h-[220px] flex flex-col justify-between p-7 sm:p-8 rounded-[26px] transition-all duration-300 hover:-translate-y-0.5 ${
-                    isDark
-                      ? "bg-gradient-to-br from-[#103D32] via-[#0D3329] to-[#071E18] text-white border border-[#103D32] shadow-[0_14px_34px_-10px_rgba(16,61,50,0.28)]"
-                      : isMint
-                      ? "bg-gradient-to-br from-[#E8F3EE] via-[#E1EFE8] to-[#D6E9E0] dark:from-[#172923] dark:to-[#0F1C18] text-[#172923] dark:text-[#F2F7F5] border border-[#BFDCD0] dark:border-[#258B68]/30 shadow-premium"
-                      : "bg-gradient-to-br from-white via-[#F9FBFA] to-[#F1F7F4] dark:from-[#15241F] dark:via-[#111E1A] dark:to-[#0D1814] text-[#172923] dark:text-[#F2F7F5] border border-[#D5E2DC] dark:border-[#21362E] hover:border-[#258B68]/60 dark:hover:border-[#34A880] shadow-premium"
-                  }`}
-                >
-                  {/* Signature Concentric Curve Motif */}
-                  <div
-                    className={`absolute -right-12 -top-12 w-44 h-44 rounded-full border pointer-events-none transition-transform duration-500 group-hover:scale-110 ${
-                      isDark
-                        ? "border-white/[0.11] bg-white/[0.02]"
-                        : isMint
-                        ? "border-[#103D32]/[0.11] dark:border-white/[0.09] bg-white/30 dark:bg-white/[0.02]"
-                        : "border-[#258B68]/[0.13] bg-[#E8F3EE]/40 dark:bg-[#258B68]/[0.05]"
-                    }`}
-                    aria-hidden="true"
-                  />
-                  <div
-                    className={`absolute -right-4 -top-4 w-26 h-26 rounded-full border pointer-events-none transition-transform duration-500 group-hover:scale-105 ${
-                      isDark
-                        ? "border-white/[0.08]"
-                        : isMint
-                        ? "border-[#103D32]/[0.08] dark:border-white/[0.06]"
-                        : "border-[#258B68]/[0.09]"
-                    }`}
-                    aria-hidden="true"
-                  />
+            <p className="mt-3.5 text-base sm:text-lg text-[#687A73] dark:text-[#9BB0A8] leading-relaxed">
+              {t(
+                "homeCategories.subheading",
+                "Explore scholarship opportunities across diverse academic disciplines."
+              )}
+            </p>
+          </ScrollReveal>
 
-                  {/* Top Row: Icon + Grant Pill */}
-                  <div className="relative z-10 flex items-center justify-between gap-3">
-                    <div
-                      className={`w-11 h-11 rounded-2xl flex items-center justify-center transition-colors shadow-2xs ${
-                        isDark
-                          ? "bg-white/10 border border-white/15 text-[#34A880]"
-                          : isMint
-                          ? "bg-white dark:bg-[#111E1A] border border-[#103D32]/10 text-[#103D32] dark:text-[#34A880]"
-                          : "bg-white dark:bg-[#111E1A] border border-[#D5E2DC] dark:border-[#21362E] text-[#103D32] dark:text-[#34A880] group-hover:bg-[#103D32] group-hover:text-white dark:group-hover:bg-[#34A880] dark:group-hover:text-[#0B1411]"
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </div>
+          <ScrollReveal delay={0.08}>
+            <Link
+              href="/scholarships"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white dark:bg-[#111E1A] text-[#073D32] dark:text-[#34A880] border border-[#DCE8E2] dark:border-[#21362E] hover:border-[#15966F] transition-colors group shrink-0"
+            >
+              <span>{t("homeCategories.viewAll", "View All Scholarships")}</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </ScrollReveal>
+        </div>
 
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`text-xs font-bold px-3 py-1 rounded-full ${
-                          isDark
-                            ? "bg-white/12 text-white border border-white/15"
-                            : isMint
-                            ? "bg-white/90 dark:bg-[#111E1A] text-[#103D32] dark:text-[#34A880] border border-[#103D32]/10"
-                            : "bg-[#E8F3EE] dark:bg-[#172923] text-[#103D32] dark:text-[#34A880] border border-[#258B68]/15"
-                        }`}
-                      >
-                        {item.amount}
-                      </span>
-                      <ArrowUpRight
-                        className={`w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                          isDark
-                            ? "text-[#CBE6DA]"
-                            : "text-[#68756F] group-hover:text-[#258B68] dark:group-hover:text-[#34A880]"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Bottom Content: Title + 1-Line Subtitle */}
-                  <div className="relative z-10 mt-8">
-                    <h3
-                      className={`font-heading text-xl sm:text-2xl font-bold tracking-tight ${
-                        isDark
-                          ? "text-white"
-                          : "text-[#172923] dark:text-[#F2F7F5] group-hover:text-[#258B68] dark:group-hover:text-[#34A880]"
-                      } transition-colors`}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className={`mt-1.5 text-xs sm:text-sm leading-relaxed ${
-                        isDark
-                          ? "text-[#CBE6DA]"
-                          : "text-[#68756F] dark:text-[#9BB0A8]"
-                      }`}
-                    >
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </Link>
-              </ScrollReveal>
-            );
-          })}
+        {/* 12-Column Responsive Scholarship Disciplines Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
+          {scholarshipDisciplines.map((item, idx) => (
+            <ScrollReveal
+              key={item.id}
+              delay={idx * 0.03}
+              className={item.colSpan}
+            >
+              <DisciplineCard item={item} />
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
