@@ -120,25 +120,24 @@ const scholarshipDisciplines: DisciplineCategory[] = [
   },
 ];
 
-function GrantPill({ amount }: { amount: string }) {
-  const [prefix, value] = amount.startsWith("Up to ")
-    ? ["Up to", amount.replace("Up to ", "")]
-    : ["Grant", amount];
-
+function GrantBadge({ amount, featured = false }: { amount: string; featured?: boolean }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white/95 px-3 py-1.5 shadow-[0_6px_18px_rgba(7,61,50,0.14)] backdrop-blur-md">
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F]">
-        <GraduationCap className="h-3.5 w-3.5" />
-      </span>
-      <div className="leading-tight">
-        <span className="block text-[10px] font-semibold uppercase tracking-wider text-[#687A73]">
-          {prefix}
-        </span>
-        <span className="block font-heading text-[13px] font-bold tracking-tight text-[#073D32]">
-          {value}
-        </span>
-      </div>
-    </div>
+    <span
+      className={
+        featured
+          ? "inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/12 px-3 py-1 text-[12px] font-semibold text-white backdrop-blur-sm"
+          : "inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/15 bg-[#E8F5EF] px-2.5 py-1 text-[12px] font-semibold text-[#073D32] dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#6EE7B7]"
+      }
+    >
+      <GraduationCap
+        className={
+          featured
+            ? "h-3.5 w-3.5 text-[#6EE7B7]"
+            : "h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]"
+        }
+      />
+      <span>{amount}</span>
+    </span>
   );
 }
 
@@ -150,28 +149,27 @@ function DisciplineCard({ category }: { category: DisciplineCategory }) {
       href={category.href}
       className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-[#DCE8E3] bg-white shadow-[0_8px_24px_-12px_rgba(7,61,50,0.1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_20px_40px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
     >
-      {/* Top discipline photo */}
-      <div className="relative h-[156px] w-full overflow-hidden bg-[#E8F5EF] dark:bg-[#132E26]">
+      {/* Top discipline photo (unobstructed, 4:3 friendly aspect ratio) */}
+      <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#E8F5EF] dark:bg-[#132E26]">
         <img
           src={category.image}
           alt={`${category.title} scholarship students`}
-          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           loading="lazy"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-        <div className="absolute right-3 top-3 z-10">
-          <GrantPill amount={category.amount} />
-        </div>
       </div>
 
       {/* Card content */}
-      <div className="flex flex-1 flex-col justify-between px-5 pb-5 pt-4">
+      <div className="flex flex-1 flex-col justify-between px-5 pb-5 pt-3.5">
         <div>
-          <div className="relative z-10 -mt-9 mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl border-2 border-white bg-[#E8F5EF] text-[#15966F] shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:bg-[#132E26] dark:text-[#34D399]">
-            <Icon className="h-5 w-5" />
+          <div className="flex items-start justify-between gap-2">
+            <div className="relative z-10 -mt-9 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-white bg-[#E8F5EF] text-[#15966F] shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:bg-[#132E26] dark:text-[#34D399]">
+              <Icon className="h-5 w-5" />
+            </div>
+            <GrantBadge amount={category.amount} />
           </div>
 
-          <h3 className="font-heading text-[18px] font-bold leading-snug tracking-tight text-[#142C25] dark:text-white">
+          <h3 className="mt-3 font-heading text-[18px] font-bold leading-snug tracking-tight text-[#142C25] dark:text-white">
             {category.title}
           </h3>
 
@@ -199,16 +197,16 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
   return (
     <Link
       href={category.href}
-      className="group relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-[24px] border border-[#15966F]/35 bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#116E59] text-white shadow-[0_18px_40px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1 hover:border-[#34D399]/60 hover:shadow-[0_26px_52px_-16px_rgba(21,150,111,0.45)] sm:flex-row"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[#15966F]/35 bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#116E59] text-white shadow-[0_18px_40px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1 hover:border-[#34D399]/60 hover:shadow-[0_26px_52px_-16px_rgba(21,150,111,0.45)] sm:flex-row"
     >
       {/* Subtle decorative glow */}
       <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#15966F]/25 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
-      {/* Left column: icon, featured badge, title, courses, pill CTA */}
-      <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:max-w-[56%] sm:p-7">
+      {/* Left column: icon, featured badge, grant badge, title, courses, pill CTA */}
+      <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7">
         <div>
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7] backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7] backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
               <Icon className="h-5 w-5" />
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FBBF24]/35 bg-[#FBBF24]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FDE68A]">
@@ -217,7 +215,11 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
             </span>
           </div>
 
-          <h3 className="mt-5 font-heading text-[26px] font-bold leading-tight tracking-tight text-white sm:text-[28px]">
+          <div className="mt-4">
+            <GrantBadge amount={category.amount} featured />
+          </div>
+
+          <h3 className="mt-3.5 font-heading text-[26px] font-bold leading-tight tracking-tight text-white sm:text-[28px]">
             {category.title}
           </h3>
 
@@ -236,20 +238,15 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
         </div>
       </div>
 
-      {/* Right column: portrait photo blended into deep forest green */}
-      <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[46%]">
+      {/* Right column: unobstructed portrait photo matching 4:3 framing */}
+      <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden sm:aspect-auto sm:w-[48%]">
         <img
           src={category.image}
           alt="Medical scholarship student"
-          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
         {/* Smooth gradient fade into left green background */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09463A] via-transparent to-transparent sm:bg-gradient-to-r sm:from-[#0C5747] sm:via-[#0C5747]/35 sm:to-transparent" />
-      </div>
-
-      {/* Floating top-right grant pill */}
-      <div className="absolute right-4 top-4 z-20">
-        <GrantPill amount={category.amount} />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09463A] via-transparent to-transparent sm:bg-gradient-to-r sm:from-[#0C5747] sm:via-[#0C5747]/30 sm:to-transparent" />
       </div>
     </Link>
   );
