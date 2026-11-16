@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, type MouseEvent, type ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -141,52 +144,115 @@ function GrantBadge({ amount, featured = false }: { amount: string; featured?: b
   );
 }
 
+function Card3DWrapper({
+  children,
+  className,
+  glowColor = "rgba(21, 150, 111, 0.09)",
+}: {
+  children: ReactNode;
+  className?: string;
+  glowColor?: string;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const rotateY = (x - 0.5) * 8; // subtle +/- 4 deg
+    const rotateX = (0.5 - y) * 8;
+    el.style.setProperty("--rx", `${rotateX.toFixed(2)}deg`);
+    el.style.setProperty("--ry", `${rotateY.toFixed(2)}deg`);
+    el.style.setProperty("--gx", `${(x * 100).toFixed(1)}%`);
+    el.style.setProperty("--gy", `${(y * 100).toFixed(1)}%`);
+  };
+
+  const handleMouseLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.setProperty("--rx", "0deg");
+    el.style.setProperty("--ry", "0deg");
+    el.style.setProperty("--gx", "50%");
+    el.style.setProperty("--gy", "0%");
+  };
+
+  return (
+    <div className="h-full [perspective:1100px]">
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: "rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))",
+          transformStyle: "preserve-3d",
+        }}
+        className={`relative h-full transition-transform duration-300 ease-out will-change-transform group-hover:-translate-y-1.5 ${className ?? ""}`}
+      >
+        {/* Subtle specular sheen tracking cursor */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-20 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: `radial-gradient(420px circle at var(--gx, 50%) var(--gy, 0%), ${glowColor}, transparent 65%)`,
+          }}
+        />
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function DisciplineCard({ category }: { category: DisciplineCategory }) {
   const Icon = category.icon;
 
   return (
-    <Link
-      href={category.href}
-      className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-[#DCE8E3] bg-white shadow-[0_8px_24px_-12px_rgba(7,61,50,0.1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_20px_40px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
-    >
-      {/* Top discipline photo (unobstructed, 4:3 friendly aspect ratio) */}
-      <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#E8F5EF] dark:bg-[#132E26]">
-        <img
-          src={category.image}
-          alt={`${category.title} scholarship students`}
-          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          loading="lazy"
-        />
-      </div>
+    <Link href={category.href} className="group block h-full">
+      <Card3DWrapper className="flex flex-col overflow-hidden rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white shadow-[0_14px_28px_-12px_rgba(7,61,50,0.14),0_4px_10px_-4px_rgba(7,61,50,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-shadow duration-300 group-hover:border-[#15966F]/45 group-hover:border-b-[#15966F]/60 group-hover:shadow-[0_24px_46px_-14px_rgba(7,61,50,0.22),0_8px_18px_-6px_rgba(21,150,111,0.12)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19] dark:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.05)] dark:group-hover:border-[#34D399]/40">
+        {/* Top discipline photo (unobstructed, 4:3 friendly aspect ratio) */}
+        <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#E8F5EF] dark:bg-[#132E26]">
+          <img
+            src={category.image}
+            alt={`${category.title} scholarship students`}
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/10 to-transparent" />
+        </div>
 
-      {/* Card content */}
-      <div className="flex flex-1 flex-col justify-between px-5 pb-5 pt-3.5">
-        <div>
-          <div className="flex items-start justify-between gap-2">
-            <div className="relative z-10 -mt-9 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-white bg-[#E8F5EF] text-[#15966F] shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:bg-[#132E26] dark:text-[#34D399]">
-              <Icon className="h-5 w-5" />
+        {/* Card content */}
+        <div
+          className="flex flex-1 flex-col justify-between px-5 pb-5 pt-3.5"
+          style={{ transform: "translateZ(14px)" }}
+        >
+          <div>
+            <div className="flex items-start justify-between gap-2">
+              <div className="relative z-10 -mt-9 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-white bg-[#E8F5EF] text-[#15966F] shadow-[0_6px_14px_rgba(7,61,50,0.12)] transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:bg-[#132E26] dark:text-[#34D399]">
+                <Icon className="h-5 w-5" />
+              </div>
+              <GrantBadge amount={category.amount} />
             </div>
-            <GrantBadge amount={category.amount} />
+
+            <h3 className="mt-3 font-heading text-[18px] font-bold leading-snug tracking-tight text-[#142C25] dark:text-white">
+              {category.title}
+            </h3>
+
+            <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
+              {category.courses}
+            </p>
           </div>
 
-          <h3 className="mt-3 font-heading text-[18px] font-bold leading-snug tracking-tight text-[#142C25] dark:text-white">
-            {category.title}
-          </h3>
-
-          <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
-            {category.courses}
-          </p>
+          <div className="mt-5 flex items-center justify-between border-t border-[#EFF5F2] pt-3.5 dark:border-[#18332B]">
+            <span className="text-[13px] font-semibold text-[#15966F] transition-colors group-hover:text-[#073D32] dark:text-[#34D399] dark:group-hover:text-white">
+              Explore Scholarships
+            </span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F8F5] text-[#15966F] shadow-xs transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#15966F] group-hover:text-white dark:bg-[#143329] dark:text-[#34D399] dark:group-hover:bg-[#34D399] dark:group-hover:text-[#073D32]">
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </div>
         </div>
-
-        <div className="mt-5 flex items-center justify-between border-t border-[#EFF5F2] pt-3.5 dark:border-[#18332B]">
-          <span className="text-[13px] font-semibold text-[#15966F] transition-colors group-hover:text-[#073D32] dark:text-[#34D399] dark:group-hover:text-white">
-            Explore Scholarships
-          </span>
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F8F5] text-[#15966F] transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#15966F] group-hover:text-white dark:bg-[#143329] dark:text-[#34D399] dark:group-hover:bg-[#34D399] dark:group-hover:text-[#073D32]">
-            <ArrowRight className="h-4 w-4" />
-          </span>
-        </div>
-      </div>
+      </Card3DWrapper>
     </Link>
   );
 }
@@ -195,59 +261,64 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
   const Icon = category.icon;
 
   return (
-    <Link
-      href={category.href}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-[#15966F]/35 bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#116E59] text-white shadow-[0_18px_40px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1 hover:border-[#34D399]/60 hover:shadow-[0_26px_52px_-16px_rgba(21,150,111,0.45)] sm:flex-row"
-    >
-      {/* Subtle decorative glow */}
-      <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#15966F]/25 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
+    <Link href={category.href} className="group block h-full">
+      <Card3DWrapper
+        glowColor="rgba(110, 231, 183, 0.14)"
+        className="flex flex-col overflow-hidden rounded-[24px] border border-[#15966F]/40 border-b-[3px] border-b-[#042720] bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#116E59] text-white shadow-[0_20px_42px_-12px_rgba(7,61,50,0.42),0_6px_14px_-4px_rgba(7,61,50,0.22),inset_0_1px_0_rgba(255,255,255,0.14)] transition-shadow duration-300 group-hover:border-[#34D399]/60 group-hover:shadow-[0_30px_58px_-14px_rgba(21,150,111,0.48),0_10px_22px_-6px_rgba(7,61,50,0.3)] sm:flex-row"
+      >
+        {/* Subtle decorative glow */}
+        <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#15966F]/25 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
-      {/* Left column: icon, featured badge, grant badge, title, courses, pill CTA */}
-      <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7">
-        <div>
-          <div className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7] backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
-              <Icon className="h-5 w-5" />
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FBBF24]/35 bg-[#FBBF24]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FDE68A]">
-              <Crown className="h-3 w-3" />
-              Featured
-            </span>
+        {/* Left column: icon, featured badge, grant badge, title, courses, pill CTA */}
+        <div
+          className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7"
+          style={{ transform: "translateZ(18px)" }}
+        >
+          <div>
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7] shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-105">
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FBBF24]/35 bg-[#FBBF24]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FDE68A]">
+                <Crown className="h-3 w-3" />
+                Featured
+              </span>
+            </div>
+
+            <div className="mt-4">
+              <GrantBadge amount={category.amount} featured />
+            </div>
+
+            <h3 className="mt-3.5 font-heading text-[26px] font-bold leading-tight tracking-tight text-white sm:text-[28px]">
+              {category.title}
+            </h3>
+
+            <p className="mt-2 max-w-xs text-[14px] leading-relaxed text-[#D1FAE5]/90">
+              {category.courses}
+            </p>
           </div>
 
-          <div className="mt-4">
-            <GrantBadge amount={category.amount} featured />
-          </div>
-
-          <h3 className="mt-3.5 font-heading text-[26px] font-bold leading-tight tracking-tight text-white sm:text-[28px]">
-            {category.title}
-          </h3>
-
-          <p className="mt-2 max-w-xs text-[14px] leading-relaxed text-[#D1FAE5]/90">
-            {category.courses}
-          </p>
-        </div>
-
-        <div className="mt-6">
-          <span className="inline-flex items-center gap-3 rounded-full bg-white py-2 pl-4 pr-2 text-[13.5px] font-semibold text-[#073D32] shadow-md transition-all duration-300 group-hover:bg-[#E8F5EF]">
-            <span>Explore Scholarships</span>
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-300 group-hover:translate-x-0.5">
-              <ArrowRight className="h-3.5 w-3.5" />
+          <div className="mt-6">
+            <span className="inline-flex items-center gap-3 rounded-full bg-white py-2 pl-4 pr-2 text-[13.5px] font-semibold text-[#073D32] shadow-[0_8px_20px_rgba(4,39,32,0.28)] transition-all duration-300 group-hover:bg-[#E8F5EF]">
+              <span>Explore Scholarships</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-300 group-hover:translate-x-0.5">
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
             </span>
-          </span>
+          </div>
         </div>
-      </div>
 
-      {/* Right column: unobstructed portrait photo matching 4:3 framing */}
-      <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden sm:aspect-auto sm:w-[48%]">
-        <img
-          src={category.image}
-          alt="Medical scholarship student"
-          className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        />
-        {/* Smooth gradient fade into left green background */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09463A] via-transparent to-transparent sm:bg-gradient-to-r sm:from-[#0C5747] sm:via-[#0C5747]/30 sm:to-transparent" />
-      </div>
+        {/* Right column: unobstructed portrait photo matching 4:3 framing */}
+        <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden sm:aspect-auto sm:w-[48%]">
+          <img
+            src={category.image}
+            alt="Medical scholarship student"
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+          {/* Smooth gradient fade into left green background */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09463A] via-transparent to-transparent sm:bg-gradient-to-r sm:from-[#0C5747] sm:via-[#0C5747]/30 sm:to-transparent" />
+        </div>
+      </Card3DWrapper>
     </Link>
   );
 }
