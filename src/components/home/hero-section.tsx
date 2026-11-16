@@ -31,11 +31,11 @@ export function HeroSection() {
 
             <div className="relative z-10">
               {/* Dual-Segment Luxury Eyebrow Pill */}
-              <div className="inline-flex items-center gap-2.5 p-1 pr-4 rounded-full bg-[#F2F7F4] dark:bg-[#172923] border border-[#D5E2DC] dark:border-[#258B68]/30 mb-8">
-                <span className="px-2.5 py-1 rounded-full bg-[#103D32] text-white dark:bg-[#34A880] dark:text-[#0B1411] text-[10px] font-bold uppercase tracking-wider">
+              <div className="inline-flex max-w-full items-center gap-2 sm:gap-2.5 p-1 pr-3 sm:pr-4 rounded-full bg-[#F2F7F4] dark:bg-[#172923] border border-[#D5E2DC] dark:border-[#258B68]/30 mb-6 sm:mb-8">
+                <span className="shrink-0 whitespace-nowrap px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-[#103D32] text-white dark:bg-[#34A880] dark:text-[#0B1411] text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider">
                   2025–26
                 </span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#103D32] dark:text-[#CBE6DA]">
+                <span className="min-w-0 truncate text-[9px] min-[375px]:text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.04em] min-[375px]:tracking-[0.06em] sm:tracking-[0.14em] text-[#103D32] dark:text-[#CBE6DA]">
                   {t("hero.badge", "INDIA'S PREMIER SCHOLARSHIP PLATFORM")}
                 </span>
               </div>
