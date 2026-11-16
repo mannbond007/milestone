@@ -150,7 +150,7 @@ export function StatisticsSection() {
                           {stat.label}
                         </h3>
 
-                        <div className="w-8 h-[1.5px] bg-[#DCE6E1] dark:bg-[#263F36] mx-auto my-2.5 rounded-full" />
+                        <div className="w-12 h-[2px] bg-gradient-to-r from-[#103D32]/75 via-[#258B68] to-[#103D32]/75 dark:from-[#34A880]/50 dark:via-[#34A880] dark:to-[#34A880]/50 mx-auto my-3 rounded-full" />
 
                         <p className="text-xs text-[#68756F] dark:text-[#9BB0A8] leading-relaxed max-w-[205px] min-h-[38px] flex items-start justify-center">
                           {stat.subtext}
