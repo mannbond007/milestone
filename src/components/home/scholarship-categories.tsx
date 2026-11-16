@@ -2,30 +2,16 @@
 
 import { useRef, type MouseEvent, type ReactNode } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpen,
-  Briefcase,
-  Calculator,
-  Cpu,
-  Crown,
-  FlaskConical,
-  GraduationCap,
-  HeartPulse,
-  Monitor,
-  Scale,
-  Stethoscope,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight, Crown, GraduationCap } from "lucide-react";
+import { DisciplineIcon, type DisciplineIconId } from "./discipline-icons";
 
 interface DisciplineCategory {
-  id: string;
+  id: DisciplineIconId;
   title: string;
   courses: string;
   amount: string;
   href: string;
   image: string;
-  icon: LucideIcon;
   featured?: boolean;
 }
 
@@ -37,7 +23,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹5,00,000",
     href: "/scholarships#mbbs",
     image: "/images/categories/medical.jpg",
-    icon: Stethoscope,
     featured: true,
   },
   {
@@ -47,7 +32,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹4,00,000",
     href: "/scholarships#btech",
     image: "/images/categories/engineering.jpg",
-    icon: Cpu,
   },
   {
     id: "law",
@@ -56,7 +40,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹3,00,000",
     href: "/scholarships#law",
     image: "/images/categories/law.jpg",
-    icon: Scale,
   },
   {
     id: "management",
@@ -65,7 +48,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bba",
     image: "/images/categories/management.jpg",
-    icon: Briefcase,
   },
   {
     id: "nursing",
@@ -74,7 +56,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹2,00,000",
     href: "/scholarships#nursing",
     image: "/images/categories/nursing.jpg",
-    icon: HeartPulse,
   },
   {
     id: "technology",
@@ -83,7 +64,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bca",
     image: "/images/categories/technology.jpg",
-    icon: Monitor,
   },
   {
     id: "professional",
@@ -92,7 +72,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹3,00,000",
     href: "/scholarships#pharmacy",
     image: "/images/categories/professional.jpg",
-    icon: GraduationCap,
   },
   {
     id: "science",
@@ -101,7 +80,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹2,00,000",
     href: "/scholarships#bsc",
     image: "/images/categories/science.jpg",
-    icon: FlaskConical,
   },
   {
     id: "commerce",
@@ -110,7 +88,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹1,50,000",
     href: "/scholarships#bcom",
     image: "/images/categories/commerce.jpg",
-    icon: Calculator,
   },
   {
     id: "arts",
@@ -119,7 +96,6 @@ const scholarshipDisciplines: DisciplineCategory[] = [
     amount: "Up to ₹1,50,000",
     href: "/scholarships#ba",
     image: "/images/categories/arts.jpg",
-    icon: BookOpen,
   },
 ];
 
@@ -204,32 +180,32 @@ function Card3DWrapper({
 }
 
 function HdrIconBadge({
-  icon: Icon,
+  id,
   featured = false,
 }: {
-  icon: LucideIcon;
+  id: DisciplineIconId;
   featured?: boolean;
 }) {
   if (featured) {
     return (
-      <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-white/25 bg-gradient-to-b from-[#1A886D] via-[#126B55] to-[#083F33] text-[#A7F3D0] shadow-[0_8px_18px_-4px_rgba(4,39,32,0.55),inset_0_1px_0_rgba(255,255,255,0.38),inset_0_-2px_0_rgba(4,39,32,0.45)] transition-transform duration-300 group-hover:-translate-y-0.5">
+      <span className="relative inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[15px] border border-white/25 bg-gradient-to-b from-[#1A886D] via-[#126B55] to-[#083F33] shadow-[0_8px_18px_-4px_rgba(4,39,32,0.55),inset_0_1px_0_rgba(255,255,255,0.38),inset_0_-2px_0_rgba(4,39,32,0.45)] transition-transform duration-300 group-hover:-translate-y-0.5">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent"
         />
-        <Icon className="relative z-10 h-5 w-5" strokeWidth={2} />
+        <DisciplineIcon id={id} featured className="relative z-10 h-7 w-7" />
       </span>
     );
   }
 
   return (
-    <div className="relative z-10 -mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[15px] border-2 border-white bg-gradient-to-b from-[#FFFFFF] via-[#F2FBF7] to-[#D6F0E3] text-[#0B7453] ring-1 ring-[#073D32]/8 shadow-[0_10px_20px_-6px_rgba(7,61,50,0.25),0_3px_8px_-2px_rgba(7,61,50,0.1),inset_0_1px_0_rgba(255,255,255,1),inset_0_-2px_0_rgba(11,116,83,0.14)] transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:from-[#1D4B3D] dark:via-[#14372D] dark:to-[#0B221B] dark:text-[#6EE7B7] dark:ring-white/10 dark:shadow-[0_10px_20px_-6px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.16)]">
+    <div className="relative z-10 -mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[15px] border-2 border-white bg-gradient-to-b from-[#FFFFFF] via-[#F2FBF7] to-[#D6F0E3] ring-1 ring-[#073D32]/8 shadow-[0_10px_20px_-6px_rgba(7,61,50,0.25),0_3px_8px_-2px_rgba(7,61,50,0.1),inset_0_1px_0_rgba(255,255,255,1),inset_0_-2px_0_rgba(11,116,83,0.14)] transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:from-[#1D4B3D] dark:via-[#14372D] dark:to-[#0B221B] dark:ring-white/10 dark:shadow-[0_10px_20px_-6px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.16)]">
       {/* Crisp top specular highlight */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-white/70 to-transparent dark:from-white/12"
       />
-      <Icon className="relative z-10 h-[21px] w-[21px]" strokeWidth={2} />
+      <DisciplineIcon id={id} className="relative z-10 h-7 w-7" />
     </div>
   );
 }
@@ -253,7 +229,7 @@ function DisciplineCard({ category }: { category: DisciplineCategory }) {
         <div className="flex flex-1 flex-col justify-between px-5 pb-5 pt-3.5">
           <div>
             <div className="flex items-start justify-between gap-2">
-              <HdrIconBadge icon={category.icon} />
+              <HdrIconBadge id={category.id} />
               <GrantBadge amount={category.amount} />
             </div>
 
@@ -294,7 +270,7 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
         <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7">
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
-              <HdrIconBadge icon={category.icon} featured />
+              <HdrIconBadge id={category.id} featured />
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FBBF24]/35 bg-[#FBBF24]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#FDE68A]">
                 <Crown className="h-3 w-3" />
                 Featured
