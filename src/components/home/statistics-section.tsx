@@ -65,16 +65,24 @@ export function StatisticsSection() {
         <ScrollReveal>
           {/* Outer Architectural Container */}
           <div className="rounded-[32px] bg-white/80 dark:bg-[#111E1A]/85 border border-[#D5E2DC] dark:border-[#21362E] px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 shadow-[0_24px_60px_-15px_rgba(16,61,50,0.08)]">
-            {/* Clean Top Header Bar */}
-            <div className="mb-11 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#DCE6E1] dark:border-[#21362E]">
-              <div className="flex items-center gap-2.5">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#258B68] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#258B68]" />
-                </span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#103D32] dark:text-[#34A880]">
-                  {t("homeStats.badge", "OUR IMPACT")} • VERIFIED METRICS (2018–2026)
-                </span>
+            {/* Editorial Impact Header Bar */}
+            <div className="mb-11 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#DCE6E1] dark:border-[#21362E]">
+              <div className="flex items-center gap-3.5">
+                <span
+                  className="w-1 h-8 rounded-full bg-gradient-to-b from-[#103D32] to-[#258B68] dark:from-[#34A880] dark:to-[#1B5E4B] shrink-0"
+                  aria-hidden="true"
+                />
+                <div>
+                  <span className="block text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#68756F] dark:text-[#9BB0A8]">
+                    EST. 2018 — 2026 • NATIONAL REPORT
+                  </span>
+                  <h2 className="font-heading text-lg sm:text-xl font-bold tracking-tight text-[#172923] dark:text-[#F2F7F5] leading-tight mt-0.5">
+                    Verified Scholar{" "}
+                    <span className="font-editorial italic font-normal text-[#258B68] dark:text-[#34A880]">
+                      Outcomes
+                    </span>
+                  </h2>
+                </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
