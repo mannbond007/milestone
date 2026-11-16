@@ -186,9 +186,8 @@ function Card3DWrapper({
         onMouseLeave={handleMouseLeave}
         style={{
           transform: "rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))",
-          transformStyle: "preserve-3d",
         }}
-        className={`relative h-full transition-transform duration-300 ease-out will-change-transform group-hover:-translate-y-1.5 ${className ?? ""}`}
+        className={`relative h-full transition-transform duration-300 ease-out group-hover:-translate-y-1.5 ${className ?? ""}`}
       >
         {/* Subtle specular sheen tracking cursor */}
         <div
@@ -213,36 +212,24 @@ function HdrIconBadge({
 }) {
   if (featured) {
     return (
-      <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-white/25 bg-gradient-to-b from-[#1A886D] via-[#126B55] to-[#083F33] text-[#A7F3D0] shadow-[0_10px_22px_-6px_rgba(4,39,32,0.6),0_3px_8px_-2px_rgba(110,231,183,0.25),inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-2.5px_4px_rgba(4,39,32,0.5)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
-        {/* Top HDR glass sheen */}
+      <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-white/25 bg-gradient-to-b from-[#1A886D] via-[#126B55] to-[#083F33] text-[#A7F3D0] shadow-[0_8px_18px_-4px_rgba(4,39,32,0.55),inset_0_1px_0_rgba(255,255,255,0.38),inset_0_-2px_0_rgba(4,39,32,0.45)] transition-transform duration-300 group-hover:-translate-y-0.5">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent"
         />
-        <Icon className="relative z-10 h-5 w-5 drop-shadow-[0_2px_4px_rgba(4,39,32,0.65)]" strokeWidth={2.2} />
+        <Icon className="relative z-10 h-5 w-5" strokeWidth={2} />
       </span>
     );
   }
 
   return (
-    <div
-      style={{ transform: "translateZ(26px)" }}
-      className="relative z-10 -mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[15px] border-[2.5px] border-white bg-gradient-to-b from-[#FFFFFF] via-[#E6F6EE] to-[#C6EBD9] text-[#0D7A58] shadow-[0_12px_24px_-6px_rgba(7,61,50,0.32),0_4px_10px_-2px_rgba(21,150,111,0.22),inset_0_1.5px_0_rgba(255,255,255,0.95),inset_0_-2.5px_4px_rgba(7,61,50,0.14)] transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 dark:border-[#0D1E19] dark:from-[#1D4B3D] dark:via-[#14372D] dark:to-[#0B221B] dark:text-[#6EE7B7] dark:shadow-[0_12px_24px_-6px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.18)]"
-    >
-      {/* Top HDR glass sheen */}
+    <div className="relative z-10 -mt-10 inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[15px] border-2 border-white bg-gradient-to-b from-[#FFFFFF] via-[#F2FBF7] to-[#D6F0E3] text-[#0B7453] ring-1 ring-[#073D32]/8 shadow-[0_10px_20px_-6px_rgba(7,61,50,0.25),0_3px_8px_-2px_rgba(7,61,50,0.1),inset_0_1px_0_rgba(255,255,255,1),inset_0_-2px_0_rgba(11,116,83,0.14)] transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#0D1E19] dark:from-[#1D4B3D] dark:via-[#14372D] dark:to-[#0B221B] dark:text-[#6EE7B7] dark:ring-white/10 dark:shadow-[0_10px_20px_-6px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.16)]">
+      {/* Crisp top specular highlight */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/75 to-transparent dark:from-white/15"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[46%] bg-gradient-to-b from-white/70 to-transparent dark:from-white/12"
       />
-      {/* Subtle emerald ambient core */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute h-6 w-6 rounded-full bg-[#15966F]/15 blur-[5px]"
-      />
-      <Icon
-        className="relative z-10 h-[22px] w-[22px] drop-shadow-[0_2px_3px_rgba(7,61,50,0.28)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
-        strokeWidth={2.2}
-      />
+      <Icon className="relative z-10 h-[21px] w-[21px]" strokeWidth={2} />
     </div>
   );
 }
@@ -263,10 +250,7 @@ function DisciplineCard({ category }: { category: DisciplineCategory }) {
         </div>
 
         {/* Card content */}
-        <div
-          className="flex flex-1 flex-col justify-between px-5 pb-5 pt-3.5"
-          style={{ transform: "translateZ(14px)" }}
-        >
+        <div className="flex flex-1 flex-col justify-between px-5 pb-5 pt-3.5">
           <div>
             <div className="flex items-start justify-between gap-2">
               <HdrIconBadge icon={category.icon} />
@@ -307,10 +291,7 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
         <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#15966F]/25 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
         {/* Left column: icon, featured badge, grant badge, title, courses, pill CTA */}
-        <div
-          className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7"
-          style={{ transform: "translateZ(18px)" }}
-        >
+        <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7">
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
               <HdrIconBadge icon={category.icon} featured />
