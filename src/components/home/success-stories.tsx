@@ -47,11 +47,11 @@ export function SuccessStories() {
   return (
     <section
       id="success-stories-preview"
-      className="relative overflow-hidden border-t border-[#DCE8E3] bg-[#FAFCFB] py-20 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]"
+      className="relative overflow-hidden border-t border-[#DCE8E3] bg-[#FAFCFB] py-12 sm:py-16 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Clean Editorial Header */}
-        <div className="mb-10 flex flex-col gap-6 border-b border-[#E3ECE8] pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
+        <div className="mb-6 flex flex-col gap-4 border-b border-[#E3ECE8] pb-6 sm:mb-10 sm:gap-6 sm:pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
           <ScrollReveal className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-lg border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
               <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
@@ -111,7 +111,7 @@ export function SuccessStories() {
             tabIndex={0}
             aria-roledescription="carousel"
             aria-label="Scholar Testimonials"
-            className="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-[#06362C] via-[#0B5343] to-[#127D60] p-6 sm:p-10 lg:p-12 shadow-[0_24px_54px_-16px_rgba(7,61,50,0.42)] outline-none focus-visible:ring-2 focus-visible:ring-[#6EE7B7]"
+            className="relative overflow-hidden rounded-[22px] bg-gradient-to-br from-[#06362C] via-[#0B5343] to-[#127D60] p-4 shadow-[0_24px_54px_-16px_rgba(7,61,50,0.42)] outline-none focus-visible:ring-2 focus-visible:ring-[#6EE7B7] sm:rounded-[30px] sm:p-10 lg:p-12"
           >
             {/* Subtle geometric backdrop facet */}
             <div
@@ -126,23 +126,23 @@ export function SuccessStories() {
             {/* Top-left large white opening quote mark */}
             <div
               aria-hidden="true"
-              className="relative z-10 mb-3 select-none font-serif text-6xl leading-none text-white/95 sm:mb-4 sm:text-7xl"
+              className="relative z-10 mb-1.5 select-none font-serif text-4xl leading-none text-white/95 sm:mb-4 sm:text-7xl"
             >
               &ldquo;
             </div>
 
             {/* White Speech-Bubble Card — Grid-stacked slides guarantee zero height jump/jerk */}
-            <div className="relative z-10 flex flex-col justify-between rounded-[24px] bg-white p-6 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
+            <div className="relative z-10 flex flex-col justify-between rounded-[18px] bg-white p-4 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:rounded-[24px] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
               {/* Speech-bubble pointer tail at bottom-right */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-3.5 right-14 h-7 w-7 rotate-45 rounded-br-md bg-white dark:bg-[#0D1E19] dark:border-r dark:border-b dark:border-[#1E3B32]"
+                className="absolute -bottom-3 right-10 h-6 w-6 rotate-45 rounded-br-md bg-white sm:-bottom-3.5 sm:right-14 sm:h-7 sm:w-7 dark:bg-[#0D1E19] dark:border-r dark:border-b dark:border-[#1E3B32]"
               />
 
-              <div className="grid flex-1 grid-cols-1 items-start gap-8 md:grid-cols-12 lg:gap-10">
-                {/* Left Overlapping Rounded Portrait Frame — All 6 images pre-mounted for zero flicker */}
+              <div className="grid flex-1 grid-cols-1 items-start gap-4 md:grid-cols-12 md:gap-8 lg:gap-10">
+                {/* Left Overlapping Rounded Portrait Frame — Compact on mobile, tall overlapping on md+ */}
                 <div className="md:col-span-4 lg:col-span-4">
-                  <div className="relative mx-auto h-[290px] w-[220px] overflow-hidden rounded-[22px] border-[4px] border-white bg-[#E8F5EF] shadow-[0_18px_36px_-10px_rgba(7,61,50,0.3)] md:-mt-16 sm:h-[310px] sm:w-[235px] dark:border-[#132E26] dark:bg-[#132E26]">
+                  <div className="relative mx-auto h-[136px] w-[112px] overflow-hidden rounded-[16px] border-[3px] border-white bg-[#E8F5EF] shadow-[0_12px_26px_-8px_rgba(7,61,50,0.28)] sm:h-[180px] sm:w-[148px] md:-mt-16 md:h-[310px] md:w-[235px] md:rounded-[22px] md:border-[4px] md:shadow-[0_18px_36px_-10px_rgba(7,61,50,0.3)] dark:border-[#132E26] dark:bg-[#132E26]">
                     {stories.map((story, idx) => {
                       const isCurrent = idx === activeIndex;
                       return (
@@ -188,32 +188,32 @@ export function SuccessStories() {
                             : "opacity-0 translate-y-1.5 z-0 pointer-events-none select-none"
                         }`}
                       >
-                        <blockquote className="text-[15.5px] leading-[1.75] text-[#1C332B] sm:text-[17px] dark:text-[#E2EFEA]">
+                        <blockquote className="text-[14px] leading-[1.65] text-[#1C332B] sm:text-[17px] sm:leading-[1.75] dark:text-[#E2EFEA]">
                           {story.fullStory || story.quote.replace(/\.\.\.\s*Read More$/, "")}
                         </blockquote>
 
                         {/* Bottom Attribution Row */}
-                        <div className="mt-7 flex flex-col gap-4 border-t border-[#E6F0EC] pt-5 sm:flex-row sm:items-end sm:justify-between dark:border-[#18332B]">
-                          <div className="flex flex-wrap items-center gap-2 self-start">
-                            <span className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[12px] font-bold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                        <div className="mt-4 flex flex-col gap-3 border-t border-[#E6F0EC] pt-3.5 sm:mt-7 sm:flex-row sm:items-end sm:justify-between sm:gap-4 sm:pt-5 dark:border-[#18332B]">
+                          <div className="flex flex-wrap items-center gap-1.5 self-start sm:gap-2">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3 py-1 text-[11.5px] font-bold text-[#073D32] sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-[12px] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
                               <Award className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
                               <span>Scholarship: {formatAmount(story.scholarship)}</span>
                             </span>
-                            <span className="inline-flex items-center gap-1 rounded-full border border-[#DCE8E3] bg-[#F7FBF9] px-2.5 py-1.5 text-[11px] font-semibold text-[#687A73] dark:border-[#1E3B32] dark:bg-[#11261F] dark:text-[#A0B3AC]">
+                            <span className="inline-flex items-center gap-1 rounded-full border border-[#DCE8E3] bg-[#F7FBF9] px-2.5 py-1 text-[10.5px] font-semibold text-[#687A73] sm:py-1.5 sm:text-[11px] dark:border-[#1E3B32] dark:bg-[#11261F] dark:text-[#A0B3AC]">
                               <BadgeCheck className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
                               <span>Verified {story.year || "2024"}</span>
                             </span>
                           </div>
 
                           <div className="sm:text-right">
-                            <div className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                            <div className="inline-flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#15966F] sm:gap-2.5 sm:text-[11px] dark:text-[#34D399]">
                               <span className="hidden h-[1.5px] w-8 bg-[#15966F]/45 sm:inline-block dark:bg-[#34D399]/45" />
                               <span>{story.currentEducation || story.course}</span>
                             </div>
-                            <div className="mt-0.5 font-heading text-[18px] font-bold uppercase tracking-tight text-[#073D32] dark:text-white">
+                            <div className="mt-0.5 font-heading text-[16px] font-bold uppercase tracking-tight text-[#073D32] sm:text-[18px] dark:text-white">
                               {story.name}
                             </div>
-                            <div className="text-[12.5px] font-medium text-[#687A73] dark:text-[#A0B3AC]">
+                            <div className="text-[12px] font-medium text-[#687A73] sm:text-[12.5px] dark:text-[#A0B3AC]">
                               {story.college}
                             </div>
                           </div>
@@ -227,14 +227,14 @@ export function SuccessStories() {
               {/* Bottom-center closing emerald quote mark */}
               <div
                 aria-hidden="true"
-                className="mt-3 text-center font-serif text-4xl leading-none text-[#15966F] dark:text-[#34D399]"
+                className="mt-1.5 text-center font-serif text-2xl leading-none text-[#15966F] sm:mt-3 sm:text-4xl dark:text-[#34D399]"
               >
                 &rdquo;
               </div>
             </div>
 
             {/* Highlighted Testimonial Scroll Controls inside bottom of showcase */}
-            <div className="relative z-10 mt-7 flex items-center justify-between gap-4">
+            <div className="relative z-10 mt-4 flex items-center justify-between gap-3 sm:mt-7 sm:gap-4">
               <div className="flex items-center gap-2">
                 <span className="mr-2 rounded-full bg-white/15 px-3 py-1 text-[11.5px] font-bold tracking-wider text-white backdrop-blur-sm">
                   0{activeIndex + 1} / 0{stories.length}
@@ -278,11 +278,11 @@ export function SuccessStories() {
           </div>
         </ScrollReveal>
 
-        {/* 6-SCHOLAR SELECTOR STRIP */}
+        {/* 6-SCHOLAR SELECTOR STRIP — Horizontal snap strip on mobile, 6-col grid on desktop */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
+          className="mt-4 flex gap-2.5 overflow-x-auto pb-1 snap-x snap-mandatory sm:mt-6 lg:grid lg:grid-cols-6 lg:gap-3 lg:overflow-visible lg:pb-0"
         >
           {stories.map((story, idx) => {
             const isActive = idx === activeIndex;
@@ -291,7 +291,7 @@ export function SuccessStories() {
                 key={story.id}
                 type="button"
                 onClick={() => setActiveIndex(idx)}
-                className={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 text-left transition-all duration-300 ${
+                className={`group relative flex min-w-[172px] shrink-0 snap-start items-center gap-2.5 overflow-hidden rounded-2xl border p-2.5 text-left transition-all duration-300 lg:min-w-0 lg:gap-3 lg:p-3 ${
                   isActive
                     ? "-translate-y-0.5 border-[#15966F] bg-[#E8F5EF] shadow-[0_10px_24px_-8px_rgba(21,150,111,0.3)] dark:border-[#34D399] dark:bg-[#132E26]"
                     : "border-[#DCE8E3] bg-white hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:bg-[#F4FAF7] hover:shadow-sm dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
