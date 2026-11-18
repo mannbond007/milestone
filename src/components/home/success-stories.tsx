@@ -77,26 +77,7 @@ export function SuccessStories() {
             </h2>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.08} className="flex items-center gap-3 shrink-0">
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={handlePrev}
-                aria-label="Previous testimonial"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D4E3DC] bg-white text-[#142C25] shadow-xs transition-all hover:border-[#15966F] hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399] dark:hover:text-[#34D399]"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                aria-label="Next testimonial"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D4E3DC] bg-white text-[#142C25] shadow-xs transition-all hover:border-[#15966F] hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399] dark:hover:text-[#34D399]"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-
+          <ScrollReveal delay={0.08} className="shrink-0">
             <Link
               href="/achievers"
               className="group/all inline-flex items-center gap-3 rounded-full border border-[#D4E3DC] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#142C25] shadow-[0_2px_10px_rgba(7,61,50,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399]/50 dark:hover:text-[#34D399]"
@@ -109,7 +90,7 @@ export function SuccessStories() {
           </ScrollReveal>
         </div>
 
-        {/* FEATURED SPEECH-BUBBLE TESTIMONIAL SHOWCASE (Matches reference design) */}
+        {/* FEATURED SPEECH-BUBBLE TESTIMONIAL SHOWCASE (Consistent fixed layout across all 6 stories) */}
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-[#06362C] via-[#0B5343] to-[#127D60] p-6 sm:p-10 lg:p-12 shadow-[0_24px_54px_-16px_rgba(7,61,50,0.42)]">
             {/* Subtle geometric backdrop facet */}
@@ -130,24 +111,24 @@ export function SuccessStories() {
               &ldquo;
             </div>
 
-            {/* White Speech-Bubble Card */}
-            <div className="relative z-10 rounded-[24px] bg-white p-6 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
+            {/* White Speech-Bubble Card — Fixed min-height so all 6 testimonials align identically */}
+            <div className="relative z-10 flex min-h-[340px] flex-col justify-between rounded-[24px] bg-white p-6 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
               {/* Speech-bubble pointer tail at bottom-right */}
               <div
                 aria-hidden="true"
                 className="absolute -bottom-3.5 right-14 h-7 w-7 rotate-45 rounded-br-md bg-white dark:bg-[#0D1E19] dark:border-r dark:border-b dark:border-[#1E3B32]"
               />
 
-              <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 lg:gap-10">
-                {/* Left Overlapping Rounded Portrait Frame */}
+              <div className="grid flex-1 grid-cols-1 items-start gap-8 md:grid-cols-12 lg:gap-10">
+                {/* Left Overlapping Rounded Portrait Frame (Fixed position & dimensions) */}
                 <div className="md:col-span-4 lg:col-span-4">
-                  <div className="relative mx-auto aspect-[3/4] w-full max-w-[240px] overflow-hidden rounded-[22px] border-[4px] border-white bg-[#E8F5EF] shadow-[0_18px_36px_-10px_rgba(7,61,50,0.3)] md:-mt-16 dark:border-[#132E26] dark:bg-[#132E26]">
+                  <div className="relative mx-auto h-[290px] w-[220px] overflow-hidden rounded-[22px] border-[4px] border-white bg-[#E8F5EF] shadow-[0_18px_36px_-10px_rgba(7,61,50,0.3)] md:-mt-16 sm:h-[310px] sm:w-[235px] dark:border-[#132E26] dark:bg-[#132E26]">
                     {activeStory.image ? (
                       <Image
                         src={activeStory.image}
                         alt={activeStory.name}
                         fill
-                        sizes="(max-width: 768px) 240px, 280px"
+                        sizes="240px"
                         className="object-cover object-top"
                       />
                     ) : (
@@ -158,8 +139,8 @@ export function SuccessStories() {
                   </div>
                 </div>
 
-                {/* Right Quote + Scholar Attribution */}
-                <div className="flex flex-col justify-between md:col-span-8 lg:col-span-8">
+                {/* Right Quote + Scholar Attribution (Consistent top-to-bottom alignment) */}
+                <div className="flex h-full min-h-[245px] flex-col justify-between md:col-span-8 lg:col-span-8">
                   <blockquote className="text-[15.5px] leading-[1.75] text-[#1C332B] sm:text-[17px] dark:text-[#E2EFEA]">
                     {activeStory.fullStory || activeStory.quote.replace(/\.\.\.\s*Read More$/, "")}
                   </blockquote>
@@ -193,6 +174,49 @@ export function SuccessStories() {
                 className="mt-3 text-center font-serif text-4xl leading-none text-[#15966F] dark:text-[#34D399]"
               >
                 &rdquo;
+              </div>
+            </div>
+
+            {/* Highlighted Testimonial Scroll Controls inside bottom of showcase */}
+            <div className="relative z-10 mt-7 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <span className="mr-2 rounded-full bg-white/15 px-3 py-1 text-[11.5px] font-bold tracking-wider text-white backdrop-blur-sm">
+                  0{activeIndex + 1} / 0{stories.length}
+                </span>
+                {stories.map((s, idx) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setActiveIndex(idx)}
+                    aria-label={`View testimonial from ${s.name}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === activeIndex
+                        ? "w-7 bg-[#6EE7B7]"
+                        : "w-2 bg-white/30 hover:bg-white/60"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  aria-label="Previous testimonial"
+                  className="inline-flex h-10 items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-4 text-[12.5px] font-semibold text-white shadow-[0_6px_16px_rgba(4,35,28,0.28)] backdrop-blur-md transition-all duration-200 hover:-translate-x-0.5 hover:bg-white hover:text-[#073D32]"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  <span className="hidden sm:inline">Prev</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  aria-label="Next testimonial"
+                  className="inline-flex h-10 items-center gap-1.5 rounded-full bg-white px-4 text-[12.5px] font-bold text-[#073D32] shadow-[0_8px_22px_rgba(4,35,28,0.38)] transition-all duration-200 hover:translate-x-0.5 hover:bg-[#A7F3D0]"
+                >
+                  <span className="hidden sm:inline">Next</span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
               </div>
             </div>
           </div>
