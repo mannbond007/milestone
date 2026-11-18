@@ -1,194 +1,248 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, Award, User } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { successStories } from "@/constants/home-data";
 import { useLocale } from "@/components/providers/locale-provider";
 
+const FEATURED_STORY_IDS = ["3", "2", "4", "1", "7", "8"];
+
 export function SuccessStories() {
   const { t } = useLocale();
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const leadStory = successStories.find((s) => s.id === "3") || successStories[0];
-  const secondaryStories = successStories.filter((s) =>
-    ["2", "4"].includes(s.id)
-  );
+  const stories = FEATURED_STORY_IDS.map((id) =>
+    successStories.find((s) => s.id === id)
+  ).filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+  const activeStory = stories[activeIndex] ?? stories[0];
 
   const formatAmount = (val: string) => {
     if (val.startsWith("₹")) return val;
     return `₹${val.replace("/-", "")}`;
   };
 
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + stories.length) % stories.length);
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % stories.length);
+  };
+
+  if (!activeStory) return null;
+
   return (
     <section
       id="success-stories-preview"
-      className="py-20 md:py-28 bg-[#F4F7F5] dark:bg-[#0B1411] border-t border-[#D5E2DC] dark:border-[#21362E]"
+      className="relative overflow-hidden border-t border-[#DCE8E3] bg-[#FAFCFB] py-20 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Clean Editorial Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="mb-10 flex flex-col gap-6 border-b border-[#E3ECE8] pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
           <ScrollReveal className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#172923] border border-[#D5E2DC] dark:border-[#258B68]/25 text-[11px] font-bold uppercase tracking-[0.14em] text-[#103D32] dark:text-[#34A880] mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#258B68]" />
-              <span>STUDENT SUCCESS STORIES</span>
+            <div className="inline-flex items-center gap-2 rounded-lg border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                STUDENT SUCCESS STORIES
+              </span>
+              <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
+              <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                {stories.length} Verified Scholars
+              </span>
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#172923] dark:text-[#F2F7F5] leading-[1.12]">
+
+            <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#142C25] sm:text-4xl lg:text-[42px] dark:text-white">
               Real Students. Real Opportunities.{" "}
-              <span className="font-editorial italic font-normal text-[#258B68] dark:text-[#34A880]">
+              <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
                 Real Success.
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 210 12"
+                  fill="none"
+                  className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 9.5C54 3.5 156 2.5 208 8.5"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </span>
             </h2>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.08}>
+          <ScrollReveal delay={0.08} className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous testimonial"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D4E3DC] bg-white text-[#142C25] shadow-xs transition-all hover:border-[#15966F] hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399] dark:hover:text-[#34D399]"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next testimonial"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D4E3DC] bg-white text-[#142C25] shadow-xs transition-all hover:border-[#15966F] hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399] dark:hover:text-[#34D399]"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+
             <Link
               href="/achievers"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#103D32] dark:text-[#34A880] hover:text-[#258B68] transition-colors group"
+              className="group/all inline-flex items-center gap-3 rounded-full border border-[#D4E3DC] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#142C25] shadow-[0_2px_10px_rgba(7,61,50,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399]/50 dark:hover:text-[#34D399]"
             >
               <span>{t("homeScholars.moreStories", "View All Scholar Stories")}</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F] transition-transform duration-300 group-hover/all:translate-x-0.5 dark:bg-[#143329] dark:text-[#34D399]">
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
             </Link>
           </ScrollReveal>
         </div>
 
-        {/* 12-COLUMN EDITORIAL BENTO GRID WITH CONCENTRIC CURVES */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
-          {/* LEFT BENTO TILE: Lead Scholar Story (7 Cols) */}
-          {leadStory && (
-            <ScrollReveal className="lg:col-span-7">
-              <article className="group relative overflow-hidden h-full rounded-[28px] bg-gradient-to-br from-[#103D32] via-[#0D3329] to-[#071E18] text-white p-8 sm:p-10 lg:p-12 flex flex-col justify-between shadow-[0_14px_34px_-10px_rgba(16,61,50,0.28)]">
-                {/* Signature Double Concentric Curve Motif */}
-                <div
-                  className="absolute -right-14 -top-14 w-56 h-56 rounded-full border border-white/[0.11] bg-white/[0.02] pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                  aria-hidden="true"
-                />
-                <div
-                  className="absolute -right-4 -top-4 w-32 h-32 rounded-full border border-white/[0.08] pointer-events-none"
-                  aria-hidden="true"
-                />
+        {/* FEATURED SPEECH-BUBBLE TESTIMONIAL SHOWCASE (Matches reference design) */}
+        <ScrollReveal>
+          <div className="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-[#06362C] via-[#0B5343] to-[#127D60] p-6 sm:p-10 lg:p-12 shadow-[0_24px_54px_-16px_rgba(7,61,50,0.42)]">
+            {/* Subtle geometric backdrop facet */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#15966F]/25 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 left-0 h-44 w-full bg-gradient-to-t from-[#04231C]/35 to-transparent"
+            />
 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between gap-3 mb-8">
-                    <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-white/12 border border-white/15 text-white">
-                      Scholarship: {formatAmount(leadStory.scholarship)}
-                    </span>
-                    <span className="text-xs text-[#CBE6DA]">
-                      {leadStory.currentEducation || leadStory.course}
-                    </span>
+            {/* Top-left large white opening quote mark */}
+            <div
+              aria-hidden="true"
+              className="relative z-10 mb-3 select-none font-serif text-6xl leading-none text-white/95 sm:mb-4 sm:text-7xl"
+            >
+              &ldquo;
+            </div>
+
+            {/* White Speech-Bubble Card */}
+            <div className="relative z-10 rounded-[24px] bg-white p-6 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
+              {/* Speech-bubble pointer tail at bottom-right */}
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-3.5 right-14 h-7 w-7 rotate-45 rounded-br-md bg-white dark:bg-[#0D1E19] dark:border-r dark:border-b dark:border-[#1E3B32]"
+              />
+
+              <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 lg:gap-10">
+                {/* Left Overlapping Rounded Portrait Frame */}
+                <div className="md:col-span-4 lg:col-span-4">
+                  <div className="relative mx-auto aspect-[3/4] w-full max-w-[240px] overflow-hidden rounded-[22px] border-[4px] border-white bg-[#E8F5EF] shadow-[0_18px_36px_-10px_rgba(7,61,50,0.3)] md:-mt-16 dark:border-[#132E26] dark:bg-[#132E26]">
+                    {activeStory.image ? (
+                      <Image
+                        src={activeStory.image}
+                        alt={activeStory.name}
+                        fill
+                        sizes="(max-width: 768px) 240px, 280px"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <User className="h-12 w-12 text-[#15966F]" />
+                      </div>
+                    )}
                   </div>
+                </div>
 
-                  <blockquote className="text-base sm:text-lg lg:text-xl text-white/95 leading-[1.7] font-normal">
-                    &ldquo;{leadStory.fullStory || leadStory.quote.replace(/\.\.\.\s*Read More$/, "")}&rdquo;
+                {/* Right Quote + Scholar Attribution */}
+                <div className="flex flex-col justify-between md:col-span-8 lg:col-span-8">
+                  <blockquote className="text-[15.5px] leading-[1.75] text-[#1C332B] sm:text-[17px] dark:text-[#E2EFEA]">
+                    {activeStory.fullStory || activeStory.quote.replace(/\.\.\.\s*Read More$/, "")}
                   </blockquote>
-                </div>
 
-                <div className="relative z-10 mt-10 pt-6 border-t border-white/15 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-13 h-13 rounded-2xl overflow-hidden bg-white/10 relative shrink-0 border border-white/20">
-                      {leadStory.image ? (
-                        <Image
-                          src={leadStory.image}
-                          alt={leadStory.name}
-                          fill
-                          sizes="52px"
-                          className="object-cover"
-                        />
-                      ) : (
-                        <User className="w-6 h-6 text-white m-auto" />
-                      )}
+                  {/* Bottom Attribution Row */}
+                  <div className="mt-7 flex flex-col gap-4 border-t border-[#E6F0EC] pt-5 sm:flex-row sm:items-end sm:justify-between dark:border-[#18332B]">
+                    <div className="inline-flex items-center gap-2 self-start rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[12px] font-bold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                      <Award className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                      <span>Scholarship: {formatAmount(activeStory.scholarship)}</span>
                     </div>
-                    <div>
-                      <div className="font-heading text-lg font-bold text-white">
-                        {leadStory.name}
+
+                    <div className="sm:text-right">
+                      <div className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                        <span className="hidden h-[1.5px] w-8 bg-[#15966F]/45 sm:inline-block dark:bg-[#34D399]/45" />
+                        <span>{activeStory.currentEducation || activeStory.course}</span>
                       </div>
-                      <div className="text-xs text-[#CBE6DA] mt-0.5">
-                        {leadStory.college}
+                      <div className="mt-0.5 font-heading text-[18px] font-bold uppercase tracking-tight text-[#073D32] dark:text-white">
+                        {activeStory.name}
+                      </div>
+                      <div className="text-[12.5px] font-medium text-[#687A73] dark:text-[#A0B3AC]">
+                        {activeStory.college}
                       </div>
                     </div>
                   </div>
                 </div>
-              </article>
-            </ScrollReveal>
-          )}
+              </div>
 
-          {/* RIGHT STACKED BENTO COLUMN: 2 Supporting Scholar Tiles (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-5">
-            {secondaryStories.map((story, idx) => {
-              const isMint = idx === 1;
-              return (
-                <ScrollReveal key={story.id} delay={(idx + 1) * 0.06} className="flex-1">
-                  <article
-                    className={`group relative overflow-hidden h-full rounded-[28px] p-7 sm:p-8 flex flex-col justify-between border shadow-premium ${
-                      isMint
-                        ? "bg-gradient-to-br from-[#E8F3EE] via-[#E1EFE8] to-[#D6E9E0] dark:from-[#172923] dark:to-[#0F1C18] border-[#BFDCD0] dark:border-[#258B68]/30"
-                        : "bg-gradient-to-br from-white via-[#F9FBFA] to-[#F1F7F4] dark:from-[#15241F] dark:via-[#111E1A] dark:to-[#0D1814] border-[#D5E2DC] dark:border-[#21362E]"
+              {/* Bottom-center closing emerald quote mark */}
+              <div
+                aria-hidden="true"
+                className="mt-3 text-center font-serif text-4xl leading-none text-[#15966F] dark:text-[#34D399]"
+              >
+                &rdquo;
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 6-SCHOLAR SELECTOR STRIP */}
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          {stories.map((story, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <button
+                key={story.id}
+                type="button"
+                onClick={() => setActiveIndex(idx)}
+                className={`group flex items-center gap-3 rounded-2xl border p-3 text-left transition-all duration-200 ${
+                  isActive
+                    ? "border-[#15966F] bg-[#E8F5EF] shadow-[0_8px_20px_-8px_rgba(21,150,111,0.28)] dark:border-[#34D399] dark:bg-[#132E26]"
+                    : "border-[#DCE8E3] bg-white hover:border-[#15966F]/45 hover:bg-[#F4FAF7] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
+                }`}
+              >
+                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl border border-white bg-[#E8F5EF] shadow-xs dark:border-[#1E3B32]">
+                  {story.image ? (
+                    <Image
+                      src={story.image}
+                      alt={story.name}
+                      fill
+                      sizes="40px"
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <User className="m-auto h-5 w-5 text-[#15966F]" />
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <div
+                    className={`truncate font-heading text-[13px] font-bold ${
+                      isActive
+                        ? "text-[#073D32] dark:text-white"
+                        : "text-[#142C25] dark:text-[#E2EFEA]"
                     }`}
                   >
-                    {/* Signature Double Concentric Curve Motif */}
-                    <div
-                      className={`absolute -right-12 -top-12 w-44 h-44 rounded-full border pointer-events-none transition-transform duration-500 group-hover:scale-110 ${
-                        isMint
-                          ? "border-[#103D32]/[0.11] dark:border-white/[0.09] bg-white/30 dark:bg-white/[0.02]"
-                          : "border-[#258B68]/[0.13] bg-[#E8F3EE]/40 dark:bg-[#258B68]/[0.05]"
-                      }`}
-                      aria-hidden="true"
-                    />
-                    <div
-                      className={`absolute -right-4 -top-4 w-26 h-26 rounded-full border pointer-events-none ${
-                        isMint
-                          ? "border-[#103D32]/[0.08] dark:border-white/[0.06]"
-                          : "border-[#258B68]/[0.09]"
-                      }`}
-                      aria-hidden="true"
-                    />
-
-                    <div className="relative z-10">
-                      <div className="flex items-center justify-between gap-2 mb-5">
-                        <span
-                          className={`text-xs font-bold px-3 py-1 rounded-full ${
-                            isMint
-                              ? "bg-white/90 dark:bg-[#111E1A] text-[#103D32] dark:text-[#34A880] border border-[#103D32]/10"
-                              : "bg-[#E8F3EE] dark:bg-[#172923] text-[#103D32] dark:text-[#34A880] border border-[#258B68]/15"
-                          }`}
-                        >
-                          Scholarship: {formatAmount(story.scholarship)}
-                        </span>
-                      </div>
-
-                      <blockquote className="text-sm text-[#172923] dark:text-[#F2F7F5] leading-[1.7] line-clamp-4">
-                        &ldquo;{story.fullStory || story.quote.replace(/\.\.\.\s*Read More$/, "")}&rdquo;
-                      </blockquote>
-                    </div>
-
-                    <div className="relative z-10 mt-6 pt-5 border-t border-[#DCE6E1] dark:border-[#21362E] flex items-center gap-3.5">
-                      <div className="w-11 h-11 rounded-xl overflow-hidden bg-white relative shrink-0 border border-[#DCE6E1] dark:border-[#21362E]">
-                        {story.image ? (
-                          <Image
-                            src={story.image}
-                            alt={story.name}
-                            fill
-                            sizes="44px"
-                            className="object-cover"
-                          />
-                        ) : (
-                          <User className="w-5 h-5 text-[#68756F] m-auto" />
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <div className="font-heading text-base font-bold text-[#172923] dark:text-[#F2F7F5] truncate">
-                          {story.name}
-                        </div>
-                        <div className="text-xs text-[#68756F] dark:text-[#9BB0A8] truncate">
-                          {story.currentEducation || story.course} • {story.college}
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+                    {story.name}
+                  </div>
+                  <div className="truncate text-[11px] font-medium text-[#687A73] dark:text-[#8DA39B]">
+                    {story.course} • {formatAmount(story.scholarship)}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
