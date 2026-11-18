@@ -1,17 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import {
-  Banknote,
-  Building2,
-  FileCheck2,
-  UserCheck,
-  Compass,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles, Users } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useLocale } from "@/components/providers/locale-provider";
+import { EcosystemIcon } from "./ecosystem-icons";
 
 export function BenefitsSection() {
   const { t } = useLocale();
@@ -19,192 +12,246 @@ export function BenefitsSection() {
   return (
     <section
       id="benefits"
-      className="py-20 md:py-28 bg-[#F4F7F5] dark:bg-[#0B1411] border-t border-[#D5E2DC] dark:border-[#21362E]"
+      className="relative overflow-hidden border-t border-[#DCE8E3] bg-[#FAFCFB] py-20 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Clean Editorial Header */}
-        <ScrollReveal className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#172923] border border-[#D5E2DC] dark:border-[#258B68]/25 text-[11px] font-bold uppercase tracking-[0.14em] text-[#103D32] dark:text-[#34A880] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#258B68]" />
-            <span>{t("homeBenefits.badge", "WHY CHOOSE MILESTONE")}</span>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Clean Editorial Section Header */}
+        <ScrollReveal className="mb-12 max-w-2xl">
+          <div className="inline-flex items-center gap-2.5">
+            <span className="h-[2px] w-6 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+              {t("homeBenefits.badge", "WHY CHOOSE MILESTONE")}
+            </span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#172923] dark:text-[#F2F7F5] leading-[1.12]">
+
+          <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#142C25] sm:text-4xl lg:text-[42px] dark:text-white">
             A Complete Academic &amp;{" "}
-            <span className="font-editorial italic font-normal text-[#258B68] dark:text-[#34A880]">
+            <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
               Scholarship Ecosystem
             </span>
           </h2>
-          <p className="mt-3.5 text-base sm:text-lg text-[#68756F] dark:text-[#9BB0A8] leading-relaxed">
+
+          <p className="mt-3.5 text-base leading-relaxed text-[#687A73] sm:text-[17px] dark:text-[#A0B3AC]">
             {t(
               "homeBenefits.subtitle",
-              "Structured financial grants paired with dedicated academic mentorship and admission guidance."
+              "Since 2018, MileStone has combined financial scholarship grants with structured academic counselling—ensuring capable students never lose out due to lack of funds or guidance."
             )}
           </p>
         </ScrollReveal>
 
-        {/* 12-COLUMN BENTO GRID FOR THE 5 CORE SERVICES — WITH CONCENTRIC CURVES */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
-          {/* BENTO TILE 1: Scholarship Guidance (7 cols) */}
+        {/* 12-COLUMN MODERN ECOSYSTEM BENTO GRID */}
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
+          {/* TILE 1: Scholarship Guidance (7 cols) */}
           <ScrollReveal className="lg:col-span-7">
-            <div className="group relative overflow-hidden h-full min-h-[290px] rounded-[28px] bg-gradient-to-br from-white via-[#F9FBFA] to-[#F1F7F4] dark:from-[#15241F] dark:via-[#111E1A] dark:to-[#0D1814] border border-[#D5E2DC] dark:border-[#21362E] p-8 sm:p-10 flex flex-col justify-between shadow-premium">
-              {/* Signature Double Concentric Curve Motif */}
-              <div
-                className="absolute -right-14 -top-14 w-56 h-56 rounded-full border border-[#258B68]/[0.14] bg-[#E8F3EE]/40 dark:bg-[#258B68]/[0.05] pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute -right-4 -top-4 w-32 h-32 rounded-full border border-[#258B68]/[0.10] pointer-events-none transition-transform duration-500 group-hover:scale-105"
-                aria-hidden="true"
-              />
+            <Link
+              href="/scholarships"
+              className="group relative flex h-full min-h-[296px] flex-col justify-between overflow-hidden rounded-[26px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-gradient-to-br from-white via-[#F7FBF9] to-[#E6F5EE] p-7 shadow-[0_14px_30px_-14px_rgba(7,61,50,0.14),inset_0_1px_0_rgba(255,255,255,0.95)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_24px_48px_-16px_rgba(7,61,50,0.2)] sm:p-9 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0E211B] dark:via-[#0D1E19] dark:to-[#112A22]"
+            >
+              {/* Right-side 3D illustration */}
+              <div className="pointer-events-none relative mt-6 h-48 w-full overflow-hidden rounded-2xl sm:mt-0 sm:absolute sm:inset-y-0 sm:right-0 sm:h-full sm:w-[48%] sm:rounded-none">
+                <img
+                  src="/images/ecosystem/scholarship.jpg"
+                  alt="Graduation cap, books and scholarship diploma"
+                  className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  loading="lazy"
+                />
+                <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#F6FBF8] via-[#F6FBF8]/35 to-transparent dark:from-[#0E211B] dark:via-[#0E211B]/50" />
+              </div>
 
-              <div className="relative z-10 flex items-center justify-between gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#E8F3EE] dark:bg-[#172923] border border-[#258B68]/15 flex items-center justify-center text-[#103D32] dark:text-[#34A880]">
-                  <Banknote className="w-5 h-5" />
+              <div className="relative z-10 flex max-w-[340px] flex-col justify-between sm:h-full">
+                <div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/15 bg-[#E6F5EE] px-3.5 py-1.5 text-[12px] font-semibold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#143329] dark:text-[#6EE7B7]">
+                    <Sparkles className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                    Up to ₹5,00,000 Grant Aid
+                  </span>
+
+                  <h3 className="mt-5 font-heading text-[28px] font-bold leading-[1.08] tracking-tight text-[#073D32] sm:text-[32px] dark:text-white">
+                    Scholarship
+                    <span className="block text-[#15966F] dark:text-[#34D399]">
+                      Guidance
+                    </span>
+                  </h3>
+
+                  <p className="mt-3 text-[13.5px] leading-relaxed text-[#5C6B64] sm:text-[14px] dark:text-[#A0B3AC]">
+                    Merit and need-based financial support, tuition fee concessions, hostel fee waivers, and educational reward programs tailored for post-Class 12 and post-graduation scholars.
+                  </p>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-[#E8F3EE] dark:bg-[#172923] text-[#103D32] dark:text-[#34A880] border border-[#258B68]/15">
-                  Up to ₹5,00,000 Grant Aid
-                </span>
-              </div>
 
-              <div className="relative z-10 mt-10">
-                <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#172923] dark:text-[#F2F7F5] tracking-tight">
-                  Scholarship Guidance
-                </h3>
-                <p className="mt-3 text-sm sm:text-base text-[#68756F] dark:text-[#9BB0A8] leading-relaxed max-w-xl">
-                  Merit and need-based financial support, tuition fee concessions, hostel fee waivers, and educational reward programs tailored for post-Class 12 and post-graduation scholars.
-                </p>
+                <div className="mt-6">
+                  <span className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#15966F] py-2 pl-4 pr-2 text-[13px] font-semibold text-white shadow-[0_8px_18px_-4px_rgba(7,61,50,0.35)] transition-all duration-300 group-hover:shadow-[0_12px_24px_-4px_rgba(21,150,111,0.45)]">
+                    <span>Explore Opportunities</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-300 group-hover:translate-x-0.5">
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </span>
+                </div>
               </div>
-            </div>
+            </Link>
           </ScrollReveal>
 
-          {/* BENTO TILE 2: University Assistance with Campus Photography (5 cols) */}
+          {/* TILE 2: University Assistance (5 cols) */}
           <ScrollReveal delay={0.05} className="lg:col-span-5">
-            <div className="group relative h-full min-h-[290px] rounded-[28px] overflow-hidden bg-[#103D32] border border-[#D5E2DC] dark:border-[#21362E] p-8 sm:p-10 flex flex-col justify-between text-white shadow-premium">
-              <Image
-                src="/scholars/sushma_v.png"
-                alt="University lecture room"
-                fill
-                sizes="(max-width: 1024px) 100vw, 480px"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            <Link
+              href="/scholarships"
+              className="group relative flex h-full min-h-[296px] flex-col justify-between overflow-hidden rounded-[26px] border border-[#15966F]/30 border-b-[3px] border-b-[#04241D] bg-[#073D32] p-7 text-white shadow-[0_18px_38px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1 hover:border-[#34D399]/50 hover:shadow-[0_26px_50px_-14px_rgba(7,61,50,0.48)] sm:p-8"
+            >
+              <img
+                src="/images/ecosystem/university.jpg"
+                alt="University campus student"
+                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071E18]/95 via-[#0D3329]/60 to-[#103D32]/25" />
+              {/* Directional dark emerald scrim for crisp text legibility */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#052921]/95 via-[#073D32]/78 to-[#073D32]/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#04211B]/85 via-transparent to-transparent" />
 
-              {/* Signature Concentric Curve Overlay */}
-              <div
-                className="absolute -right-12 -top-12 w-48 h-48 rounded-full border border-white/[0.15] pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute -right-4 -top-4 w-28 h-28 rounded-full border border-white/[0.10] pointer-events-none"
-                aria-hidden="true"
-              />
-
-              <div className="relative z-10 flex items-center justify-between">
-                <div className="w-11 h-11 rounded-2xl bg-white/15 backdrop-blur-md border border-white/15 flex items-center justify-center text-white">
-                  <Building2 className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-bold px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/15 text-white">
+              <div className="relative z-10 flex items-center justify-between gap-3">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-white/25 bg-white/15 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]">
+                  <EcosystemIcon id="university" darkSurface className="h-6 w-6" />
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/30 px-3.5 py-1.5 text-[12px] font-semibold text-white backdrop-blur-md">
+                  <Users className="h-3.5 w-3.5 text-[#6EE7B7]" />
                   1,750+ Partner Institutions
                 </span>
               </div>
 
-              <div className="relative z-10 mt-10">
-                <h3 className="font-heading text-2xl font-bold tracking-tight text-white">
-                  University Assistance
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#CBE6DA] leading-relaxed">
-                  Objective institution selection across Government Medical Colleges, NMC-compliant abroad universities, NITs, and AICTE institutions.
-                </p>
+              <div className="relative z-10 mt-10 flex items-end justify-between gap-4">
+                <div className="max-w-[290px]">
+                  <h3 className="font-heading text-[24px] font-bold leading-[1.12] tracking-tight text-white sm:text-[26px]">
+                    University
+                    <span className="block text-[#6EE7B7]">Assistance</span>
+                  </h3>
+                  <p className="mt-2.5 text-[13px] leading-relaxed text-[#D8EDE4]">
+                    Objective institution selection across Government Medical Colleges, NMC-compliant abroad universities, NITs, and AICTE institutions.
+                  </p>
+                </div>
+
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:bg-white group-hover:text-[#073D32]">
+                  <ArrowUpRight className="h-5 w-5" />
+                </span>
               </div>
-            </div>
+            </Link>
           </ScrollReveal>
 
-          {/* BENTO TILE 3: Application Support (4 cols) */}
+          {/* TILE 3: Application Support (4 cols) */}
           <ScrollReveal delay={0.08} className="lg:col-span-4">
-            <div className="group relative overflow-hidden h-full min-h-[250px] rounded-[28px] bg-gradient-to-br from-[#E8F3EE] via-[#E1EFE8] to-[#D6E9E0] dark:from-[#172923] dark:to-[#0F1C18] border border-[#BFDCD0] dark:border-[#258B68]/30 p-8 flex flex-col justify-between shadow-premium">
-              {/* Signature Double Concentric Curve Motif */}
-              <div
-                className="absolute -right-12 -top-12 w-44 h-44 rounded-full border border-[#103D32]/[0.12] dark:border-white/[0.10] bg-white/35 dark:bg-white/[0.02] pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute -right-4 -top-4 w-26 h-26 rounded-full border border-[#103D32]/[0.08] dark:border-white/[0.06] pointer-events-none"
-                aria-hidden="true"
-              />
-
-              <div className="relative z-10 w-11 h-11 rounded-2xl bg-white dark:bg-[#111E1A] border border-[#103D32]/10 flex items-center justify-center text-[#103D32] dark:text-[#34A880]">
-                <FileCheck2 className="w-5 h-5" />
+            <Link
+              href="/how-to-apply"
+              className="group relative flex h-full min-h-[252px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-gradient-to-br from-white via-[#F9FCFA] to-[#EBF7F1] p-6 shadow-[0_12px_26px_-12px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,0.95)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_22px_40px_-14px_rgba(7,61,50,0.18)] sm:p-7 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0E211B] dark:via-[#0D1E19] dark:to-[#112A22]"
+            >
+              {/* Right-side 3D illustration */}
+              <div className="pointer-events-none absolute bottom-0 right-0 h-[62%] w-[44%] overflow-hidden">
+                <img
+                  src="/images/ecosystem/application.jpg"
+                  alt="Online scholarship application checklist"
+                  className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#F7FBF9] via-[#F7FBF9]/40 to-transparent dark:from-[#0D1E19] dark:via-[#0D1E19]/50" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#F7FBF9] via-transparent to-transparent dark:from-[#0D1E19]" />
               </div>
 
-              <div className="relative z-10 mt-8">
-                <h3 className="font-heading text-xl font-bold text-[#103D32] dark:text-[#F2F7F5]">
+              <div className="relative z-10">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-[#15966F]/15 bg-[#E8F5EF] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-[#34D399]/20 dark:bg-[#132E26]">
+                  <EcosystemIcon id="support" className="h-6 w-6" />
+                </span>
+
+                <h3 className="mt-5 font-heading text-[20px] font-bold tracking-tight text-[#142C25] dark:text-white">
                   Application Support
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#172923]/80 dark:text-[#9BB0A8] leading-relaxed">
+
+                <p className="mt-2 max-w-[66%] text-[13px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
                   End-to-end assistance with online registration, document verification checklists, and scholarship assessment test preparation.
                 </p>
               </div>
-            </div>
+
+              <div className="relative z-10 mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-[#15966F] transition-colors group-hover:text-[#073D32] dark:text-[#34D399] dark:group-hover:text-white">
+                <span>Get Support</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F] transition-transform duration-300 group-hover:translate-x-0.5 dark:bg-[#143329] dark:text-[#34D399]">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </div>
+            </Link>
           </ScrollReveal>
 
-          {/* BENTO TILE 4: Personalized Counselling (4 cols) */}
+          {/* TILE 4: Personalized Counselling (4 cols) */}
           <ScrollReveal delay={0.12} className="lg:col-span-4">
-            <div className="group relative overflow-hidden h-full min-h-[250px] rounded-[28px] bg-gradient-to-br from-white via-[#F9FBFA] to-[#F1F7F4] dark:from-[#15241F] dark:via-[#111E1A] dark:to-[#0D1814] border border-[#D5E2DC] dark:border-[#21362E] p-8 flex flex-col justify-between shadow-premium">
-              {/* Signature Double Concentric Curve Motif */}
-              <div
-                className="absolute -right-12 -top-12 w-44 h-44 rounded-full border border-[#258B68]/[0.14] bg-[#E8F3EE]/40 dark:bg-[#258B68]/[0.05] pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute -right-4 -top-4 w-26 h-26 rounded-full border border-[#258B68]/[0.10] pointer-events-none"
-                aria-hidden="true"
-              />
-
-              <div className="relative z-10 w-11 h-11 rounded-2xl bg-[#E8F3EE] dark:bg-[#172923] border border-[#258B68]/15 flex items-center justify-center text-[#103D32] dark:text-[#34A880]">
-                <UserCheck className="w-5 h-5" />
+            <Link
+              href="/contact"
+              className="group relative flex h-full min-h-[252px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-gradient-to-br from-white via-[#F9FCFA] to-[#E6F4ED] p-6 shadow-[0_12px_26px_-12px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,0.95)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_22px_40px_-14px_rgba(7,61,50,0.18)] sm:p-7 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0E211B] dark:via-[#0D1E19] dark:to-[#112A22]"
+            >
+              {/* Right-side 3D illustration */}
+              <div className="pointer-events-none absolute bottom-0 right-0 h-[62%] w-[44%] overflow-hidden">
+                <img
+                  src="/images/ecosystem/counselling.jpg"
+                  alt="1-on-1 academic mentorship headset"
+                  className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#F7FBF9] via-[#F7FBF9]/40 to-transparent dark:from-[#0D1E19] dark:via-[#0D1E19]/50" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#F7FBF9] via-transparent to-transparent dark:from-[#0D1E19]" />
               </div>
 
-              <div className="relative z-10 mt-8">
-                <h3 className="font-heading text-xl font-bold text-[#172923] dark:text-[#F2F7F5]">
+              <div className="relative z-10">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-[#15966F]/15 bg-[#E8F5EF] shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-[#34D399]/20 dark:bg-[#132E26]">
+                  <EcosystemIcon id="counselling" className="h-6 w-6" />
+                </span>
+
+                <h3 className="mt-5 font-heading text-[20px] font-bold tracking-tight text-[#142C25] dark:text-white">
                   Personalized Counselling
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#68756F] dark:text-[#9BB0A8] leading-relaxed">
+
+                <p className="mt-2 max-w-[66%] text-[13px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
                   1-on-1 academic mentorship and career roadmap sessions with senior educators from AIIMS, IITs, IIMs, and the legal profession.
                 </p>
               </div>
-            </div>
+
+              <div className="relative z-10 mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-[#15966F] transition-colors group-hover:text-[#073D32] dark:text-[#34D399] dark:group-hover:text-white">
+                <span>Book a Session</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F] transition-transform duration-300 group-hover:translate-x-0.5 dark:bg-[#143329] dark:text-[#34D399]">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </div>
+            </Link>
           </ScrollReveal>
 
-          {/* BENTO TILE 5: Admission Guidance (4 cols) */}
+          {/* TILE 5: Admission Guidance (4 cols) */}
           <ScrollReveal delay={0.16} className="lg:col-span-4">
             <Link
               href="/how-to-apply"
-              className="group relative overflow-hidden h-full min-h-[250px] rounded-[28px] bg-gradient-to-br from-[#103D32] via-[#0D3329] to-[#071E18] text-white p-8 flex flex-col justify-between shadow-[0_14px_34px_-10px_rgba(16,61,50,0.28)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="group relative flex h-full min-h-[252px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#15966F]/40 border-b-[3px] border-b-[#04241D] bg-gradient-to-br from-[#063228] via-[#0A4D3E] to-[#127A5C] p-6 text-white shadow-[0_18px_38px_-14px_rgba(7,61,50,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-[#34D399]/55 hover:shadow-[0_26px_50px_-14px_rgba(21,150,111,0.45)] sm:p-7"
             >
-              {/* Signature Double Concentric Curve Motif */}
-              <div
-                className="absolute -right-12 -top-12 w-44 h-44 rounded-full border border-white/[0.11] bg-white/[0.02] pointer-events-none transition-transform duration-500 group-hover:scale-110"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute -right-4 -top-4 w-26 h-26 rounded-full border border-white/[0.08] pointer-events-none"
-                aria-hidden="true"
-              />
-
-              <div className="relative z-10 flex items-center justify-between">
-                <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#34A880]">
-                  <Compass className="w-5 h-5" />
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-[#CBE6DA] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              {/* Right-side 3D illustration */}
+              <div className="pointer-events-none absolute bottom-0 right-0 h-[66%] w-[44%] overflow-hidden">
+                <img
+                  src="/images/ecosystem/admission.jpg"
+                  alt="Admission guidance checklist"
+                  className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#094739] via-[#094739]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#094739] via-transparent to-transparent" />
               </div>
 
-              <div className="relative z-10 mt-8">
-                <h3 className="font-heading text-xl font-bold text-white">
-                  Admission Guidance
+              <div className="relative z-10">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[14px] border border-white/25 bg-white/12 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.28)]">
+                  <EcosystemIcon id="admission" darkSurface className="h-6 w-6" />
+                </span>
+
+                <h3 className="mt-5 font-heading text-[20px] font-bold tracking-tight text-white">
+                  Admission <span className="text-[#6EE7B7]">Guidance</span>
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#CBE6DA] leading-relaxed">
+
+                <p className="mt-2 max-w-[66%] text-[13px] leading-relaxed text-[#D1FAE5]/90">
                   Structured support through centralized entrance counselling for NEET-UG, AYUSH, JEE/JoSAA, CLAT, and MBA/PGDM admissions.
                 </p>
+              </div>
+
+              <div className="relative z-10 mt-6">
+                <span className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/12 px-4 py-1.5 text-[12.5px] font-semibold text-white backdrop-blur-md transition-all duration-300 group-hover:bg-white group-hover:text-[#073D32]">
+                  <span>Know More</span>
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </span>
               </div>
             </Link>
           </ScrollReveal>
