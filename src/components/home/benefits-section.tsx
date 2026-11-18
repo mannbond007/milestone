@@ -18,18 +18,18 @@ export function BenefitsSection() {
         {/* Clean Editorial Section Header */}
         <ScrollReveal className="mb-10 flex flex-col gap-6 border-b border-[#E3ECE8] pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2.5">
-              <span className="h-[2px] w-6 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+            <div className="inline-flex items-center gap-2 rounded-lg border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
                 {t("homeBenefits.badge", "WHY CHOOSE MILESTONE")}
               </span>
-              <span className="text-[#C4D6CE] dark:text-[#2A4B40]">/</span>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#687A73] dark:text-[#8DA39B]">
-                Since 2018
+              <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
+              <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                Est. 2018
               </span>
             </div>
 
-            <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#142C25] sm:text-4xl lg:text-[42px] dark:text-white">
+            <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#142C25] sm:text-4xl lg:text-[42px] dark:text-white">
               A Complete Academic &amp;{" "}
               <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
                 Scholarship Ecosystem
@@ -53,7 +53,7 @@ export function BenefitsSection() {
             <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-[#687A73] sm:text-base dark:text-[#A0B3AC]">
               {t(
                 "homeBenefits.subtitle",
-                "Since 2018, MileStone has combined financial scholarship grants with structured academic counselling—ensuring capable students never lose out due to lack of funds or guidance."
+                "Since 2018, MileStone has combined financial scholarship grants with structured academic counselling, ensuring capable students never lose out due to lack of funds or guidance."
               )}
             </p>
           </div>
