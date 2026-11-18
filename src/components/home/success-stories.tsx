@@ -111,8 +111,8 @@ export function SuccessStories() {
               &ldquo;
             </div>
 
-            {/* White Speech-Bubble Card — Fixed min-height so all 6 testimonials align identically */}
-            <div className="relative z-10 flex min-h-[340px] flex-col justify-between rounded-[24px] bg-white p-6 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
+            {/* White Speech-Bubble Card — Grid-stacked slides guarantee zero height jump/jerk */}
+            <div className="relative z-10 flex flex-col justify-between rounded-[24px] bg-white p-6 shadow-[0_20px_48px_-12px_rgba(4,35,28,0.35)] sm:p-9 lg:p-10 dark:bg-[#0D1E19] dark:border dark:border-[#1E3B32]">
               {/* Speech-bubble pointer tail at bottom-right */}
               <div
                 aria-hidden="true"
@@ -120,51 +120,79 @@ export function SuccessStories() {
               />
 
               <div className="grid flex-1 grid-cols-1 items-start gap-8 md:grid-cols-12 lg:gap-10">
-                {/* Left Overlapping Rounded Portrait Frame (Fixed position & dimensions) */}
+                {/* Left Overlapping Rounded Portrait Frame — All 6 images pre-mounted for zero flicker */}
                 <div className="md:col-span-4 lg:col-span-4">
                   <div className="relative mx-auto h-[290px] w-[220px] overflow-hidden rounded-[22px] border-[4px] border-white bg-[#E8F5EF] shadow-[0_18px_36px_-10px_rgba(7,61,50,0.3)] md:-mt-16 sm:h-[310px] sm:w-[235px] dark:border-[#132E26] dark:bg-[#132E26]">
-                    {activeStory.image ? (
-                      <Image
-                        src={activeStory.image}
-                        alt={activeStory.name}
-                        fill
-                        sizes="240px"
-                        className="object-cover object-top"
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center">
-                        <User className="h-12 w-12 text-[#15966F]" />
-                      </div>
-                    )}
+                    {stories.map((story, idx) => {
+                      const isCurrent = idx === activeIndex;
+                      return (
+                        <div
+                          key={story.id}
+                          aria-hidden={!isCurrent}
+                          className={`absolute inset-0 transition-opacity duration-300 ease-out ${
+                            isCurrent ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                          }`}
+                        >
+                          {story.image ? (
+                            <Image
+                              src={story.image}
+                              alt={story.name}
+                              fill
+                              sizes="240px"
+                              className="object-cover object-top"
+                            />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center">
+                              <User className="h-12 w-12 text-[#15966F]" />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
-                {/* Right Quote + Scholar Attribution (Consistent top-to-bottom alignment) */}
-                <div className="flex h-full min-h-[245px] flex-col justify-between md:col-span-8 lg:col-span-8">
-                  <blockquote className="text-[15.5px] leading-[1.75] text-[#1C332B] sm:text-[17px] dark:text-[#E2EFEA]">
-                    {activeStory.fullStory || activeStory.quote.replace(/\.\.\.\s*Read More$/, "")}
-                  </blockquote>
+                {/* Right Quote + Scholar Attribution — All 6 stacked in same grid cell (0px height jump) */}
+                <div className="grid md:col-span-8 lg:col-span-8">
+                  {stories.map((story, idx) => {
+                    const isCurrent = idx === activeIndex;
+                    return (
+                      <div
+                        key={story.id}
+                        aria-hidden={!isCurrent}
+                        className={`col-start-1 row-start-1 flex h-full flex-col justify-between transition-opacity duration-300 ease-out ${
+                          isCurrent
+                            ? "opacity-100 z-10"
+                            : "opacity-0 z-0 pointer-events-none select-none"
+                        }`}
+                      >
+                        <blockquote className="text-[15.5px] leading-[1.75] text-[#1C332B] sm:text-[17px] dark:text-[#E2EFEA]">
+                          {story.fullStory || story.quote.replace(/\.\.\.\s*Read More$/, "")}
+                        </blockquote>
 
-                  {/* Bottom Attribution Row */}
-                  <div className="mt-7 flex flex-col gap-4 border-t border-[#E6F0EC] pt-5 sm:flex-row sm:items-end sm:justify-between dark:border-[#18332B]">
-                    <div className="inline-flex items-center gap-2 self-start rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[12px] font-bold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                      <Award className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
-                      <span>Scholarship: {formatAmount(activeStory.scholarship)}</span>
-                    </div>
+                        {/* Bottom Attribution Row */}
+                        <div className="mt-7 flex flex-col gap-4 border-t border-[#E6F0EC] pt-5 sm:flex-row sm:items-end sm:justify-between dark:border-[#18332B]">
+                          <div className="inline-flex items-center gap-2 self-start rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[12px] font-bold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                            <Award className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                            <span>Scholarship: {formatAmount(story.scholarship)}</span>
+                          </div>
 
-                    <div className="sm:text-right">
-                      <div className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
-                        <span className="hidden h-[1.5px] w-8 bg-[#15966F]/45 sm:inline-block dark:bg-[#34D399]/45" />
-                        <span>{activeStory.currentEducation || activeStory.course}</span>
+                          <div className="sm:text-right">
+                            <div className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                              <span className="hidden h-[1.5px] w-8 bg-[#15966F]/45 sm:inline-block dark:bg-[#34D399]/45" />
+                              <span>{story.currentEducation || story.course}</span>
+                            </div>
+                            <div className="mt-0.5 font-heading text-[18px] font-bold uppercase tracking-tight text-[#073D32] dark:text-white">
+                              {story.name}
+                            </div>
+                            <div className="text-[12.5px] font-medium text-[#687A73] dark:text-[#A0B3AC]">
+                              {story.college}
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-0.5 font-heading text-[18px] font-bold uppercase tracking-tight text-[#073D32] dark:text-white">
-                        {activeStory.name}
-                      </div>
-                      <div className="text-[12.5px] font-medium text-[#687A73] dark:text-[#A0B3AC]">
-                        {activeStory.college}
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
 
