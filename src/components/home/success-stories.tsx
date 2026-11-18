@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Award, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, Award, BadgeCheck, User } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { successStories } from "@/constants/home-data";
 import { useLocale } from "@/components/providers/locale-provider";
@@ -13,12 +13,21 @@ const FEATURED_STORY_IDS = ["3", "2", "4", "1", "7", "8"];
 export function SuccessStories() {
   const { t } = useLocale();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const stories = FEATURED_STORY_IDS.map((id) =>
     successStories.find((s) => s.id === id)
   ).filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   const activeStory = stories[activeIndex] ?? stories[0];
+
+  useEffect(() => {
+    if (isPaused || stories.length <= 1) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % stories.length);
+    }, 6500);
+    return () => clearInterval(timer);
+  }, [isPaused, stories.length]);
 
   const formatAmount = (val: string) => {
     if (val.startsWith("₹")) return val;
@@ -90,9 +99,20 @@ export function SuccessStories() {
           </ScrollReveal>
         </div>
 
-        {/* FEATURED SPEECH-BUBBLE TESTIMONIAL SHOWCASE (Consistent fixed layout across all 6 stories) */}
+        {/* FEATURED SPEECH-BUBBLE TESTIMONIAL SHOWCASE (Zero-jerk, smooth crossfade + auto-advance) */}
         <ScrollReveal>
-          <div className="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-[#06362C] via-[#0B5343] to-[#127D60] p-6 sm:p-10 lg:p-12 shadow-[0_24px_54px_-16px_rgba(7,61,50,0.42)]">
+          <div
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowLeft") handlePrev();
+              if (e.key === "ArrowRight") handleNext();
+            }}
+            tabIndex={0}
+            aria-roledescription="carousel"
+            aria-label="Scholar Testimonials"
+            className="relative overflow-hidden rounded-[30px] bg-gradient-to-br from-[#06362C] via-[#0B5343] to-[#127D60] p-6 sm:p-10 lg:p-12 shadow-[0_24px_54px_-16px_rgba(7,61,50,0.42)] outline-none focus-visible:ring-2 focus-visible:ring-[#6EE7B7]"
+          >
             {/* Subtle geometric backdrop facet */}
             <div
               aria-hidden="true"
@@ -129,8 +149,10 @@ export function SuccessStories() {
                         <div
                           key={story.id}
                           aria-hidden={!isCurrent}
-                          className={`absolute inset-0 transition-opacity duration-300 ease-out ${
-                            isCurrent ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                          className={`absolute inset-0 transition-all duration-500 ease-out ${
+                            isCurrent
+                              ? "opacity-100 scale-100 z-10"
+                              : "opacity-0 scale-[0.97] z-0 pointer-events-none"
                           }`}
                         >
                           {story.image ? (
@@ -160,10 +182,10 @@ export function SuccessStories() {
                       <div
                         key={story.id}
                         aria-hidden={!isCurrent}
-                        className={`col-start-1 row-start-1 flex h-full flex-col justify-between transition-opacity duration-300 ease-out ${
+                        className={`col-start-1 row-start-1 flex h-full flex-col justify-between transition-all duration-500 ease-out ${
                           isCurrent
-                            ? "opacity-100 z-10"
-                            : "opacity-0 z-0 pointer-events-none select-none"
+                            ? "opacity-100 translate-y-0 z-10"
+                            : "opacity-0 translate-y-1.5 z-0 pointer-events-none select-none"
                         }`}
                       >
                         <blockquote className="text-[15.5px] leading-[1.75] text-[#1C332B] sm:text-[17px] dark:text-[#E2EFEA]">
@@ -172,9 +194,15 @@ export function SuccessStories() {
 
                         {/* Bottom Attribution Row */}
                         <div className="mt-7 flex flex-col gap-4 border-t border-[#E6F0EC] pt-5 sm:flex-row sm:items-end sm:justify-between dark:border-[#18332B]">
-                          <div className="inline-flex items-center gap-2 self-start rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[12px] font-bold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                            <Award className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
-                            <span>Scholarship: {formatAmount(story.scholarship)}</span>
+                          <div className="flex flex-wrap items-center gap-2 self-start">
+                            <span className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 text-[12px] font-bold text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                              <Award className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                              <span>Scholarship: {formatAmount(story.scholarship)}</span>
+                            </span>
+                            <span className="inline-flex items-center gap-1 rounded-full border border-[#DCE8E3] bg-[#F7FBF9] px-2.5 py-1.5 text-[11px] font-semibold text-[#687A73] dark:border-[#1E3B32] dark:bg-[#11261F] dark:text-[#A0B3AC]">
+                              <BadgeCheck className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                              <span>Verified {story.year || "2024"}</span>
+                            </span>
                           </div>
 
                           <div className="sm:text-right">
@@ -251,7 +279,11 @@ export function SuccessStories() {
         </ScrollReveal>
 
         {/* 6-SCHOLAR SELECTOR STRIP */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
+        >
           {stories.map((story, idx) => {
             const isActive = idx === activeIndex;
             return (
@@ -259,12 +291,18 @@ export function SuccessStories() {
                 key={story.id}
                 type="button"
                 onClick={() => setActiveIndex(idx)}
-                className={`group flex items-center gap-3 rounded-2xl border p-3 text-left transition-all duration-200 ${
+                className={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 text-left transition-all duration-300 ${
                   isActive
-                    ? "border-[#15966F] bg-[#E8F5EF] shadow-[0_8px_20px_-8px_rgba(21,150,111,0.28)] dark:border-[#34D399] dark:bg-[#132E26]"
-                    : "border-[#DCE8E3] bg-white hover:border-[#15966F]/45 hover:bg-[#F4FAF7] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
+                    ? "-translate-y-0.5 border-[#15966F] bg-[#E8F5EF] shadow-[0_10px_24px_-8px_rgba(21,150,111,0.3)] dark:border-[#34D399] dark:bg-[#132E26]"
+                    : "border-[#DCE8E3] bg-white hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:bg-[#F4FAF7] hover:shadow-sm dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
                 }`}
               >
+                {isActive && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-[#073D32] via-[#15966F] to-[#34D399]"
+                  />
+                )}
                 <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl border border-white bg-[#E8F5EF] shadow-xs dark:border-[#1E3B32]">
                   {story.image ? (
                     <Image
