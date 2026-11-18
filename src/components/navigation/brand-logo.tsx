@@ -13,34 +13,26 @@ export function BrandLogo({
   className,
   linkToHome = true,
 }: BrandLogoProps) {
-  const isFooter = variant === "footer";
   const isMobile = variant === "mobile";
 
   const imageElement = (
     <div className={cn("group relative inline-flex items-center", className)}>
-      {/* Subtle warm-gold & emerald ambient glow behind the plaque */}
+      {/* Subtle greenish emerald ambient glow behind the plaque */}
       <span
         aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#C89B3C]/22 via-[#15966F]/18 to-[#C89B3C]/22 blur-md transition-opacity duration-300",
-          isFooter
-            ? "opacity-75 group-hover:opacity-100"
-            : "opacity-45 group-hover:opacity-85"
-        )}
+        className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#15966F]/25 via-[#34D399]/22 to-[#073D32]/25 opacity-60 blur-md transition-opacity duration-300 group-hover:opacity-95"
       />
 
-      {/* Crisp elevated 3D logo plaque */}
+      {/* Crisp elevated 3D logo plaque — identical dimensions for navbar & footer */}
       <div
         className={cn(
           "relative inline-flex items-center overflow-hidden bg-white transition-all duration-300 ease-out",
-          "border border-[#E5DCC8]/80 ring-1 ring-[#15966F]/10",
-          "shadow-[0_8px_20px_-6px_rgba(7,61,50,0.16),0_3px_10px_-3px_rgba(184,137,56,0.18),inset_0_1px_0_rgba(255,255,255,1)]",
-          "group-hover:-translate-y-0.5 group-hover:border-[#C89B3C]/55 group-hover:shadow-[0_14px_28px_-6px_rgba(7,61,50,0.22),0_5px_14px_-3px_rgba(184,137,56,0.26)]",
-          isFooter
-            ? "rounded-2xl px-3.5 py-2.5"
-            : isMobile
+          "border border-[#DCE8E3] ring-1 ring-[#15966F]/12",
+          "shadow-[0_8px_20px_-6px_rgba(7,61,50,0.18),0_3px_10px_-3px_rgba(21,150,111,0.2)]",
+          "group-hover:-translate-y-0.5 group-hover:border-[#15966F]/45 group-hover:shadow-[0_14px_28px_-6px_rgba(7,61,50,0.24),0_6px_16px_-3px_rgba(21,150,111,0.3)]",
+          isMobile
             ? "rounded-xl px-2 py-1"
-            : "rounded-xl px-2.5 py-1.5"
+            : "rounded-xl px-2.5 py-1.5 sm:rounded-2xl sm:px-3 sm:py-2"
         )}
       >
         {/* Subtle top glass sheen */}
@@ -57,10 +49,9 @@ export function BrandLogo({
           priority={variant !== "footer"}
           className={cn(
             "relative z-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.015]",
-            isFooter && "h-11 max-w-[230px] sm:h-12",
-            variant === "navbar" &&
-              "h-8 max-w-[185px] sm:h-9 md:h-10 md:max-w-[220px]",
-            isMobile && "h-7 max-w-[160px] sm:h-8"
+            isMobile
+              ? "h-7 max-w-[155px] sm:h-8"
+              : "h-8 max-w-[165px] sm:h-9 sm:max-w-[195px] md:h-10 md:max-w-[215px]"
           )}
         />
       </div>
