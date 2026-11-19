@@ -267,7 +267,7 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
         <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#15966F]/25 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
         {/* Left column: icon, featured badge, grant badge, title, courses, pill CTA */}
-        <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:w-[52%] sm:p-7">
+        <div className="relative z-10 flex flex-1 flex-col justify-between p-6 sm:max-w-[56%] sm:p-7">
           <div>
             <div className="flex flex-wrap items-center gap-2.5">
               <HdrIconBadge id={category.id} featured />
@@ -300,15 +300,13 @@ function FeaturedMedicalCard({ category }: { category: DisciplineCategory }) {
           </div>
         </div>
 
-        {/* Right column: unobstructed portrait photo matching 4:3 framing */}
-        <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden sm:aspect-auto sm:w-[48%]">
+        {/* Right column: seamless alpha-masked portrait (eliminates 1px seam line) */}
+        <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_22%,black_100%)] sm:absolute sm:inset-y-0 sm:right-0 sm:aspect-auto sm:w-[54%] sm:[mask-image:linear-gradient(to_right,transparent_0%,black_34%,black_100%)]">
           <img
             src={category.image}
             alt="Medical scholarship student"
             className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
-          {/* Smooth gradient fade into left green background */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#09463A] via-transparent to-transparent sm:bg-gradient-to-r sm:from-[#0C5747] sm:via-[#0C5747]/30 sm:to-transparent" />
         </div>
       </Card3DWrapper>
     </Link>
