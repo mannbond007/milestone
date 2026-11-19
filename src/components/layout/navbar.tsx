@@ -107,7 +107,7 @@ export function Navbar() {
 
             {/* Center: Desktop Navigation Links & Dropdowns */}
             <nav
-              className="hidden lg:flex items-center gap-1 xl:gap-1.5"
+              className="hidden lg:flex items-center gap-0.5 xl:gap-1"
               aria-label="Main Navigation"
             >
               {navigationItems.map((item) => {
@@ -124,7 +124,7 @@ export function Navbar() {
                       href={item.href}
                       id={`nav-link-${item.key}`}
                       className={cn(
-                        "relative px-3.5 py-2 text-[13.5px] font-medium rounded-lg transition-colors select-none",
+                        "relative whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13px] xl:text-[13.5px] font-medium rounded-lg transition-colors select-none",
                         isActive
                           ? "text-[#103D32] dark:text-[#34A880] font-semibold bg-[#E8F3EE]/60 dark:bg-[#172923]"
                           : "text-[#172923]/85 dark:text-[#F2F7F5]/85 hover:text-[#103D32] dark:hover:text-[#34A880] hover:bg-[#F8FAF8] dark:hover:bg-[#172923]/60"
@@ -151,7 +151,7 @@ export function Navbar() {
                       aria-expanded={isDropdownOpen}
                       aria-haspopup="true"
                       className={cn(
-                        "relative flex items-center gap-1 px-3.5 py-2 text-[13.5px] font-medium rounded-lg transition-colors select-none cursor-pointer",
+                        "relative flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3.5 py-2 text-[13px] xl:text-[13.5px] font-medium rounded-lg transition-colors select-none cursor-pointer",
                         isActive || isDropdownOpen
                           ? "text-[#103D32] dark:text-[#34A880] font-semibold bg-[#E8F3EE]/60 dark:bg-[#172923]"
                           : "text-[#172923]/85 dark:text-[#F2F7F5]/85 hover:text-[#103D32] dark:hover:text-[#34A880] hover:bg-[#F8FAF8] dark:hover:bg-[#172923]/60"
