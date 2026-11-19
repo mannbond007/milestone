@@ -223,7 +223,7 @@ export function Navbar() {
             </nav>
 
             {/* Right: Controls (Language, Theme, Auth, Prominent Apply Now CTA) */}
-            <div className="hidden lg:flex items-center gap-2.5">
+            <div className="hidden lg:flex shrink-0 items-center gap-2.5">
               <LanguageSelector />
               <ThemeToggle />
 
@@ -234,9 +234,9 @@ export function Navbar() {
                       href="/sign-in"
                       id="nav-login-btn"
                       className={cn(
-                        "h-9 px-3.5 inline-flex items-center text-[13px] font-medium rounded-lg transition-colors",
-                        "text-[#172923] dark:text-[#F2F7F5] hover:text-[#103D32] dark:hover:text-[#34A880]",
-                        "hover:bg-[#E8F3EE]/60 dark:hover:bg-[#172923]"
+                        "h-9 px-4 shrink-0 whitespace-nowrap inline-flex items-center justify-center text-[13px] font-semibold rounded-full border transition-all duration-200",
+                        "border-[#D4E3DC] bg-white/90 text-[#142C25] hover:border-[#15966F]/45 hover:bg-[#F2F9F5] hover:text-[#073D32]",
+                        "dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-[#F2F7F5] dark:hover:border-[#34D399]/45 dark:hover:text-[#34D399]"
                       )}
                     >
                       {t("nav.login", "Login")}
@@ -248,12 +248,12 @@ export function Navbar() {
                       href="/dashboard"
                       id="nav-dashboard-link"
                       className={cn(
-                        "h-9 px-3.5 inline-flex items-center gap-1.5 text-xs font-semibold rounded-lg transition-colors",
-                        "text-[#172923] dark:text-[#F2F7F5] hover:text-[#258B68] dark:hover:text-[#34A880]",
+                        "h-9 px-3.5 shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 text-xs font-semibold rounded-full transition-colors",
+                        "text-[#172923] dark:text-[#F2F7F5] hover:text-[#15966F] dark:hover:text-[#34D399]",
                         "border border-[#DCE6E1] dark:border-[#21362E] bg-card hover:bg-muted/50"
                       )}
                     >
-                      <LayoutDashboard className="w-3.5 h-3.5 text-[#258B68] dark:text-[#34A880]" />
+                      <LayoutDashboard className="w-3.5 h-3.5 text-[#15966F] dark:text-[#34D399]" />
                       <span>{t("nav.dashboard", "Dashboard")}</span>
                     </Link>
                     <div className="flex items-center pl-1">
@@ -266,9 +266,9 @@ export function Navbar() {
                   href="/sign-in"
                   id="nav-login-btn"
                   className={cn(
-                    "h-9 px-3.5 inline-flex items-center text-[13px] font-medium rounded-lg transition-colors",
-                    "text-[#172923] dark:text-[#F2F7F5] hover:text-[#103D32] dark:hover:text-[#34A880]",
-                    "hover:bg-[#E8F3EE]/60 dark:hover:bg-[#172923]"
+                    "h-9 px-4 shrink-0 whitespace-nowrap inline-flex items-center justify-center text-[13px] font-semibold rounded-full border transition-all duration-200",
+                    "border-[#D4E3DC] bg-white/90 text-[#142C25] hover:border-[#15966F]/45 hover:bg-[#F2F9F5] hover:text-[#073D32]",
+                    "dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-[#F2F7F5] dark:hover:border-[#34D399]/45 dark:hover:text-[#34D399]"
                   )}
                 >
                   {t("nav.login", "Login")}
@@ -280,14 +280,17 @@ export function Navbar() {
                 href="/sign-up"
                 id="nav-apply-btn"
                 className={cn(
-                  "h-10 px-4.5 inline-flex items-center justify-center gap-1.5 text-[13px] font-semibold rounded-lg transition-all duration-150 select-none",
-                  "bg-[#103D32] hover:bg-[#258B68] text-white",
-                  "dark:bg-[#34A880] dark:hover:bg-[#258B68] dark:text-[#0B1411] dark:hover:text-white",
-                  "focus:outline-none focus:ring-2 focus:ring-[#258B68]/40 shadow-xs"
+                  "group h-10 pl-4 pr-1.5 shrink-0 whitespace-nowrap inline-flex items-center justify-center gap-2.5 text-[13px] font-semibold rounded-full transition-all duration-200 select-none",
+                  "bg-gradient-to-r from-[#073D32] to-[#11644E] hover:from-[#0A4E3F] hover:to-[#158062] text-white",
+                  "shadow-[0_8px_20px_-6px_rgba(7,61,50,0.45),inset_0_1px_0_rgba(255,255,255,0.18)] hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-6px_rgba(21,150,111,0.45)]",
+                  "dark:from-[#15966F] dark:to-[#1EA87E] dark:text-white",
+                  "focus:outline-none focus:ring-2 focus:ring-[#15966F]/40"
                 )}
               >
                 <span>{t("common.applyNow", "Apply Now")}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </Link>
             </div>
 
