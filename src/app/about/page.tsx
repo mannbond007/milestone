@@ -457,72 +457,81 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values — Sticky Editorial Manifesto + 2-Column Tactile Matrix */}
-      <section className="relative border-b border-[#E3ECE8] bg-[#FAFCFB] py-20 md:py-28 dark:border-[#162E26] dark:bg-[#07120F]">
+      {/* Values — Unified Obsidian-Forest Architectural Monolith */}
+      <section className="relative bg-white py-20 md:py-28 dark:bg-[#07120F]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-14">
-            {/* Left Sticky Manifesto Column */}
-            <ScrollReveal className="lg:sticky lg:top-28 lg:col-span-4">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#15966F] dark:text-[#34D399]">
-                Our Values
-              </p>
+          <ScrollReveal>
+            <div className="relative overflow-hidden rounded-[32px] border border-[#143D32] bg-gradient-to-br from-[#051B15] via-[#07261E] to-[#0A3429] text-white shadow-[0_30px_70px_-20px_rgba(4,24,18,0.45)]">
+              {/* Subtle ambient top-right emerald light */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#15966F]/20 blur-3xl"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#04140F]/80 blur-3xl"
+              />
 
-              <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
-                What We{" "}
-                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
-                  Stand For
-                </span>
-              </h2>
-
-              <p className="mt-4 text-[15.5px] leading-[1.7] text-[#5C6B64] dark:text-[#A0B3AC]">
-                Every scholarship grant, mentorship session, and university recommendation we offer is anchored in six clear principles.
-              </p>
-
-              <div className="mt-7 border-l-2 border-[#15966F] pl-4 dark:border-[#34D399]">
-                <div className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#073D32] dark:text-white">
-                  Scholar Charter
+              {/* Top Editorial Header Strip inside Monolith */}
+              <div className="relative z-10 flex flex-col gap-5 border-b border-white/[0.08] px-7 py-9 sm:px-10 sm:py-11 lg:flex-row lg:items-end lg:justify-between lg:px-12">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#6EE7B7]">
+                    Our Values
+                  </p>
+                  <h2 className="mt-3 font-heading text-3xl font-bold leading-[1.1] tracking-[-0.025em] text-white sm:text-4xl lg:text-[42px]">
+                    What We{" "}
+                    <span className="font-editorial italic font-normal text-[#86DFB8]">
+                      Stand For
+                    </span>
+                  </h2>
                 </div>
-                <p className="mt-1 text-[13px] leading-relaxed text-[#687A73] dark:text-[#8DA39B]">
-                  Fair evaluation, verified partners, and zero compromise on student integrity since 2018.
+
+                <p className="max-w-md text-[14.5px] leading-relaxed text-[#B7CDC4] sm:text-[15px]">
+                  Every scholarship grant, mentorship session, and university recommendation is anchored in six clear principles since 2018.
                 </p>
               </div>
-            </ScrollReveal>
 
-            {/* Right 2-Column Tactile Values Matrix */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:col-span-8">
-              {values.map((val, i) => {
-                const Icon = val.icon;
-                const indexLabel = String(i + 1).padStart(2, "0");
-                return (
-                  <ScrollReveal key={val.title} delay={i * 0.05} className="h-full">
-                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-6 shadow-[0_10px_26px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] sm:p-7 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40">
+              {/* Seamless 3x2 Hairline-Divided Architectural Matrix */}
+              <div className="relative z-10 grid grid-cols-1 divide-y divide-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+                {values.map((val, i) => {
+                  const Icon = val.icon;
+                  const indexLabel = String(i + 1).padStart(2, "0");
+                  return (
+                    <div
+                      key={val.title}
+                      className="group relative flex flex-col justify-between p-7 transition-colors duration-300 hover:bg-white/[0.04] sm:p-9 lg:p-10 sm:odd:border-r sm:odd:border-white/[0.08] lg:border-r lg:border-white/[0.08] lg:[&:nth-child(3n)]:border-r-0"
+                    >
+                      {/* Subtle top emerald hover highlight line */}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#34D399]/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      />
+
                       <div>
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#15966F]/20 bg-gradient-to-b from-[#FFFFFF] via-[#ECF8F2] to-[#D2EFE1] text-[#0B7453] shadow-[0_8px_16px_-6px_rgba(7,61,50,0.2),inset_0_1.5px_0_rgba(255,255,255,1),inset_0_-2px_0_rgba(11,116,83,0.15)] transition-transform duration-300 group-hover:scale-105 dark:border-[#34D399]/25 dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]">
-                            <Icon className="h-5 w-5" strokeWidth={2} />
-                          </div>
+                        <div className="flex items-center justify-between">
+                          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/[0.06] text-[#6EE7B7] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] transition-all duration-300 group-hover:border-[#34D399]/40 group-hover:bg-[#15966F]/25 group-hover:text-white">
+                            <Icon className="h-5 w-5" strokeWidth={1.9} />
+                          </span>
 
-                          <span className="font-editorial italic text-2xl font-semibold text-[#15966F]/45 transition-colors duration-300 group-hover:text-[#15966F] dark:text-[#34D399]/40 dark:group-hover:text-[#34D399]">
+                          <span className="font-editorial italic text-xl font-medium text-white/25 transition-colors duration-300 group-hover:text-[#6EE7B7]">
                             {indexLabel}
                           </span>
                         </div>
 
-                        <h3 className="mt-5 font-heading text-[18.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                        <h3 className="mt-6 font-heading text-[19px] font-bold tracking-tight text-white">
                           {val.title}
                         </h3>
 
-                        <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        <p className="mt-2.5 text-[14px] leading-[1.7] text-[#B7CDC4]">
                           {val.description}
                         </p>
                       </div>
-
-                      <div className="mt-6 h-[3px] w-8 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-16 group-hover:bg-gradient-to-r group-hover:from-[#073D32] group-hover:to-[#15966F] dark:bg-[#1E3B32] dark:group-hover:from-[#15966F] dark:group-hover:to-[#6EE7B7]" />
                     </div>
-                  </ScrollReveal>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
