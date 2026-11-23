@@ -7,7 +7,7 @@ import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, BookOpen,
 
 export const metadata: Metadata = {
   title: "About Program",
-  description: "Learn about the Milestone Scholarship Program — our mission, vision, and commitment to empowering students across India.",
+  description: "Learn about the Milestone Scholarship Program, our mission, vision, and commitment to empowering students across India.",
 };
 
 const values = [
@@ -244,7 +244,7 @@ export default function AboutPage() {
                   
                   <div className="text-slate-600 dark:text-slate-300 leading-relaxed space-y-6 text-base">
                     <p className="font-medium text-slate-800 dark:text-slate-200 border-l-3 border-accent pl-4 py-1 bg-accent/[0.02] dark:bg-accent/[0.01]">
-                      Our mission is to identify, support, and empower deserving and talented students from every background — whether they belong to rural areas, towns, or cities, and whether they are financially weak or financially stable but in need of proper guidance, mentorship, and opportunities.
+                      Our mission is to identify, support, and empower deserving and talented students from every background, whether they belong to rural areas, towns, or cities, and whether they need financial assistance or structured guidance, mentorship, and opportunities.
                     </p>
                     <p className="relative pl-6 before:absolute before:left-0 before:top-3 before:h-2 before:w-2 before:rounded-full before:bg-accent before:shadow-sm">
                       Through the Milestone Scholarship Program, we aim to provide scholarships, rewards, mentorship, career counseling, academic support, skill development, and opportunity-driven initiatives that help students move confidently toward their goals.
@@ -282,7 +282,7 @@ export default function AboutPage() {
                   
                   <div className="text-slate-600 dark:text-slate-300 leading-relaxed space-y-6 text-base">
                     <p className="font-medium text-slate-800 dark:text-slate-200 border-l-3 border-accent pl-4 py-1 bg-accent/[0.02] dark:bg-accent/[0.01]">
-                      Our vision is to build a future where every student — whether from a village, town, or city — gets equal access to quality education, guidance, mentorship, and opportunities needed to achieve their dreams.
+                      Our vision is to build a future where every student, whether from a village, town, or city, gets equal access to quality education, guidance, mentorship, and opportunities needed to achieve their dreams.
                     </p>
                     <p className="relative pl-6 before:absolute before:left-0 before:top-3 before:h-2 before:w-2 before:rounded-full before:bg-accent before:shadow-sm">
                       Milestone Scholarship Program is not limited only to financially weak students. While we strongly support students from rural, underserved, and economically challenged backgrounds, we also believe that many talented students, regardless of their financial condition, need the right mentorship, direction, motivation, and opportunities to unlock their true potential.
@@ -291,7 +291,7 @@ export default function AboutPage() {
                       Through scholarships, rewards, educational support, mentorship, career guidance, and opportunity-based initiatives, we aim to empower all deserving and talented students without discrimination. Our goal is to ensure that no student is held back due to lack of financial support, proper guidance, awareness, or opportunity.
                     </p>
                     <p className="relative pl-6 before:absolute before:left-0 before:top-3 before:h-2 before:w-2 before:rounded-full before:bg-accent before:shadow-sm">
-                      We envision creating future doctors, professionals, innovators, leaders, and responsible citizens whose success is defined by talent, hard work, determination, and the opportunities they receive — not by their background, location, or financial status.
+                      We envision creating future doctors, professionals, innovators, leaders, and responsible citizens whose success is defined by talent, hard work, determination, and the opportunities they receive, not by their background, location, or financial status.
                     </p>
                   </div>
                 </div>
@@ -309,14 +309,14 @@ export default function AboutPage() {
             <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#15966F] dark:text-[#34D399]">
               Program Architecture
             </p>
-            <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.028em] text-[#0E241E] sm:text-4xl lg:text-[46px] dark:text-white">
+            <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.14] tracking-[-0.028em] text-[#0E241E] sm:text-4xl lg:text-[46px] dark:text-white">
               Built Around the Scholar,{" "}
-              <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+              <span className="inline-block whitespace-nowrap font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
                 Not Paperwork.
               </span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[#5C6B64] sm:text-[17px] dark:text-[#A0B3AC]">
-              A complete ecosystem of support — each component crafted with intention, structured mentorship, and transparent guidance.
+              A complete ecosystem of support with every stage built around clear mentorship, practical resources, and transparent guidance.
             </p>
           </ScrollReveal>
 
