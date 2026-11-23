@@ -73,89 +73,183 @@ const journeySteps = [
 export function VisionMissionContent() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white dark:bg-[#07120F]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-b from-[#F1F9F5] via-[#FAFCFB] to-white pb-16 pt-28 md:pb-24 md:pt-36 dark:border-[#162E26] dark:from-[#081713] dark:via-[#07120F] dark:to-[#07120F]">
+      {/* Hero Section: Clean Split + Floating Tilted Scholar Cards */}
+      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-br from-[#F2FAF6] via-[#FAFCFB] to-[#EBF7F1] pb-16 pt-28 md:pb-24 md:pt-36 dark:border-[#162E26] dark:from-[#071511] dark:via-[#07120F] dark:to-[#0A1F19]">
+        {/* Soft ambient emerald glow behind right card cluster */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#15966F]/[0.08] blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-[#073D32]/[0.05] blur-3xl"
+          className="pointer-events-none absolute right-[8%] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-[#15966F]/16 blur-[100px] dark:bg-[#15966F]/22"
         />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/90 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
-              Our North Star
-            </span>
-            <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
-            <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
-              Est. 2018
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-5 font-heading text-4xl font-bold leading-[1.1] tracking-[-0.03em] text-[#0E241E] sm:text-5xl md:text-[58px] dark:text-white"
-          >
-            Vision &amp;{" "}
-            <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
-              Mission
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 180 12"
-                fill="none"
-                className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
-                preserveAspectRatio="none"
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+            {/* Left Column: Clean, Tight Editorial Copy + CTA */}
+            <div className="lg:col-span-6">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45 }}
+                className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/90 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none"
               >
-                <path
-                  d="M2 9.5C46 3.5 134 2.5 178 8.5"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </motion.h1>
+                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#073D32] dark:text-[#6EE7B7]">
+                  Our North Star
+                </span>
+              </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.75] text-[#5C6B64] sm:text-[18px] dark:text-[#A0B3AC]"
-          >
-            Empowering dreams beyond financial limits through structured mentorship, disciplined academic guidance, and equitable access to quality education. We believe every capable mind deserves the sky.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-3 text-[12.5px] font-semibold text-[#073D32] dark:text-[#C8E4D8]"
-          >
-            {[
-              "Early Academic Direction",
-              "Merit & Need Grants",
-              "1-on-1 Expert Mentorship",
-            ].map((pill) => (
-              <span
-                key={pill}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#DCE8E3] bg-white px-4 py-1.5 shadow-2xs dark:border-[#1E3B32] dark:bg-[#0D1E19]"
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                className="mt-5 font-heading text-4xl font-bold leading-[1.06] tracking-[-0.03em] text-[#0E241E] sm:text-5xl lg:text-[58px] dark:text-white"
               >
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
-                <span>{pill}</span>
-              </span>
-            ))}
-          </motion.div>
+                Empower Dreams,
+                <span className="block">Build Futures</span>
+                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                  Together.
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.16 }}
+                className="mt-5 max-w-lg text-[16px] leading-[1.7] text-[#5C6B64] sm:text-[17px] dark:text-[#A0B3AC]"
+              >
+                Our vision and mission unite structured mentorship, merit scholarships, and academic guidance so capable students never fall behind due to finances.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.24 }}
+                className="mt-8 flex flex-col items-start gap-3"
+              >
+                <Link
+                  href="/sign-up"
+                  className="group inline-flex h-12 items-center gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] pl-6 pr-2 text-[14px] font-semibold text-white shadow-[0_12px_26px_-6px_rgba(7,61,50,0.42)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062]"
+                >
+                  <span>Apply for Scholarship</span>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+
+                <span className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-[#687A73] dark:text-[#8DA39B]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                  <span>2025–26 Cycle Open &bull; 15,000+ Scholars Supported</span>
+                </span>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Interactive Floating Tilted Scholar Cards Collage */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="relative mx-auto w-full max-w-[500px] lg:col-span-6 lg:max-w-none"
+            >
+              {/* Desktop Floating Collage (3 tilted interactive glass cards) */}
+              <div className="relative hidden h-[390px] sm:block">
+                {/* Card 1: Top-Left Deep Forest Glass Card */}
+                <div className="group absolute left-4 top-2 z-10 w-[198px] -rotate-4 rounded-[24px] border border-[#15966F]/35 bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#12725A] p-5 text-white shadow-[0_22px_48px_-14px_rgba(7,61,50,0.45),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:z-30 hover:-translate-y-2 hover:rotate-0">
+                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border-[3px] border-white/85 bg-[#E8F5EF] shadow-md">
+                    <img
+                      src="/scholars/priya_bk.png"
+                      alt="Priya B. K."
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <div className="font-heading text-[16px] font-bold leading-tight text-white">
+                      Priya B. K.
+                    </div>
+                    <div className="mt-0.5 text-[12px] text-[#C8E9DC]">
+                      Civil Engineering
+                    </div>
+                    <div className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#6EE7B7]">
+                      <span className="h-2 w-2 rounded-full bg-[#34D399]" />
+                      <span>Scholar</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: Top-Right Luminous Frosted Card */}
+                <div className="group absolute right-2 top-8 z-10 w-[198px] rotate-4 rounded-[24px] border border-white/95 bg-white/85 p-5 shadow-[0_22px_48px_-14px_rgba(7,61,50,0.18),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 hover:z-30 hover:-translate-y-2 hover:rotate-0 dark:border-[#1E3B32] dark:bg-[#0D1E19]/90">
+                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border-[3px] border-[#E8F5EF] bg-[#E8F5EF] shadow-sm dark:border-[#1E3B32]">
+                    <img
+                      src="/scholars/vishwajeet.png"
+                      alt="Vishwajeet Ghosh"
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <div className="font-heading text-[16px] font-bold leading-tight text-[#0E241E] dark:text-white">
+                      Vishwajeet G.
+                    </div>
+                    <div className="mt-0.5 text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
+                      MBA &bull; Symbiosis
+                    </div>
+                    <div className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#15966F] dark:text-[#34D399]">
+                      <span className="h-2 w-2 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+                      <span>Scholar</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: Bottom-Center Overlapping Frosted Card */}
+                <div className="group absolute bottom-1 left-[28%] z-20 w-[204px] -rotate-2 rounded-[24px] border border-[#15966F]/20 bg-gradient-to-br from-white/95 via-[#F7FCF9]/95 to-[#E8F5EF]/95 p-5 shadow-[0_26px_54px_-14px_rgba(7,61,50,0.22),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 hover:z-30 hover:-translate-y-2 hover:rotate-0 dark:border-[#244E40] dark:from-[#0F241E]/95 dark:to-[#133228]/95">
+                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border-[3px] border-white bg-[#E8F5EF] shadow-md dark:border-[#1E3B32]">
+                    <img
+                      src="/scholars/sushma_v.png"
+                      alt="Sushma V."
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <div className="font-heading text-[16px] font-bold leading-tight text-[#0E241E] dark:text-white">
+                      Sushma V.
+                    </div>
+                    <div className="mt-0.5 text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
+                      B.Com &bull; Bangalore
+                    </div>
+                    <div className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#15966F] dark:text-[#34D399]">
+                      <span className="h-2 w-2 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+                      <span>Scholar</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Clean Mobile 3-Card Horizontal Strip */}
+              <div className="grid grid-cols-3 gap-2.5 sm:hidden">
+                {[
+                  { name: "Priya B. K.", role: "B.Tech", img: "/scholars/priya_bk.png", dark: true },
+                  { name: "Vishwajeet", role: "MBA", img: "/scholars/vishwajeet.png", dark: false },
+                  { name: "Sushma V.", role: "B.Com", img: "/scholars/sushma_v.png", dark: false },
+                ].map((s) => (
+                  <div
+                    key={s.name}
+                    className={`rounded-2xl border p-3 text-center shadow-sm ${
+                      s.dark
+                        ? "border-[#15966F]/30 bg-gradient-to-b from-[#073D32] to-[#0F5E4A] text-white"
+                        : "border-[#DCE8E3] bg-white text-[#0E241E] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white"
+                    }`}
+                  >
+                    <div className="mx-auto h-12 w-12 overflow-hidden rounded-full border-2 border-white">
+                      <img src={s.img} alt={s.name} className="h-full w-full object-cover object-top" />
+                    </div>
+                    <div className="mt-2 truncate font-heading text-[12px] font-bold">
+                      {s.name}
+                    </div>
+                    <div className={`text-[10.5px] ${s.dark ? "text-[#A7F3D0]" : "text-[#687A73]"}`}>
+                      {s.role}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
