@@ -639,18 +639,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline: Refined Vertical Center-Spine Journey */}
-      <section className="relative overflow-hidden border-t border-[#E3ECE8] bg-white py-20 md:py-28 dark:border-[#162E26] dark:bg-[#0B1411]">
-        {/* Subtle ambient emerald depth */}
+      {/* Timeline: Frosted Glass Overlapping Badge + Dotted Snake Connector Journey */}
+      <section className="relative overflow-hidden border-t border-[#E3ECE8] bg-gradient-to-b from-[#F4FAF7] via-[#FAFCFB] to-white py-20 md:py-28 dark:border-[#162E26] dark:from-[#081612] dark:via-[#07120F] dark:to-[#07120F]">
+        {/* Soft ambient mint depth */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-[#15966F]/[0.05] blur-3xl"
+          className="pointer-events-none absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-[#15966F]/[0.07] blur-3xl"
         />
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Clean Editorial Header */}
-          <ScrollReveal className="mx-auto mb-16 max-w-2xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+          <ScrollReveal className="mx-auto mb-14 max-w-2xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/90 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
               <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
               <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
                 Our Journey
@@ -683,113 +683,110 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="relative mx-auto max-w-4xl">
-            {/* Clean Vertical Center Spine */}
-            <div
-              aria-hidden="true"
-              className="absolute bottom-6 left-5 top-6 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#073D32] via-[#15966F]/60 to-[#DCE8E3] md:left-1/2 dark:from-[#34D399] dark:via-[#15966F]/50 dark:to-[#18332B]"
-            />
+          {/* 2-Column Snake Glassmorphic Journey Grid */}
+          <div className="relative grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16">
+            {milestones.map((item, i) => {
+              const num = String(i + 1).padStart(2, "0");
+              const Icon = item.icon;
+              // Snake ordering on desktop: 01 -> 02, 04 <- 03, 05 -> 06 (chronological on mobile)
+              const desktopOrderClass =
+                i === 2
+                  ? "lg:order-4"
+                  : i === 3
+                  ? "lg:order-3"
+                  : i === 4
+                  ? "lg:order-5"
+                  : i === 5
+                  ? "lg:order-6"
+                  : `lg:order-${i + 1}`;
 
-            <div className="space-y-8 md:space-y-10">
-              {milestones.map((item, i) => {
-                const isEven = i % 2 === 0;
-                const isLatest = i === milestones.length - 1;
-                const Icon = item.icon;
+              return (
+                <ScrollReveal
+                  key={item.year}
+                  delay={i * 0.06}
+                  className={`relative ${desktopOrderClass}`}
+                >
+                  <div className="group relative pl-5 pt-5 sm:pl-6 sm:pt-6">
+                    {/* Dotted Snake Connector Paths (Desktop) */}
+                    {i === 0 && (
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -bottom-7 left-10 -right-12 hidden h-10 rounded-bl-[24px] border-b-2 border-l-2 border-dotted border-[#15966F]/55 lg:block"
+                      />
+                    )}
+                    {i === 1 && (
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -bottom-14 right-14 hidden h-16 w-12 rounded-br-[24px] border-b-2 border-r-2 border-dotted border-[#15966F]/55 lg:block"
+                      />
+                    )}
+                    {i === 2 && (
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -left-14 top-1/2 hidden w-16 -translate-y-1/2 border-t-2 border-dotted border-[#15966F]/55 lg:block"
+                      />
+                    )}
+                    {i === 3 && (
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -bottom-14 left-12 hidden h-16 w-12 rounded-bl-[24px] border-b-2 border-l-2 border-dotted border-[#15966F]/55 lg:block"
+                      />
+                    )}
+                    {i === 4 && (
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -right-14 top-1/2 hidden w-16 -translate-y-1/2 border-t-2 border-dotted border-[#15966F]/55 lg:block"
+                      />
+                    )}
 
-                const cardMarkup = (
-                  <div
-                    className={`relative rounded-[20px] border border-b-[3px] p-5 transition-all duration-300 group-hover:-translate-y-0.5 sm:p-6 ${
-                      isLatest
-                        ? "border-[#15966F]/40 border-b-[#15966F]/60 bg-gradient-to-br from-white via-[#F4FBF7] to-[#E6F5EE] shadow-[0_14px_32px_-14px_rgba(21,150,111,0.22)] dark:border-[#34D399]/35 dark:from-[#0E241E] dark:to-[#133228]"
-                        : "border-[#DCE8E3] border-b-[#C5DDD3] bg-white shadow-[0_10px_24px_-14px_rgba(7,61,50,0.12)] group-hover:border-[#15966F]/45 group-hover:shadow-[0_18px_36px_-14px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="inline-flex items-center rounded-md bg-[#EBF7F1] px-2.5 py-0.5 font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                        {item.stat}
-                      </span>
-                      {/* Year badge shown inside card on mobile only */}
-                      <span className="font-heading text-[13px] font-bold text-[#073D32] md:hidden dark:text-white">
-                        {item.year}
+                    {/* Overlapping Deep Emerald-Forest Squircle Badge (Blurs smoothly through glass card) */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute left-0 top-0 z-0 flex h-[108px] w-[108px] items-start justify-start rounded-[26px] bg-gradient-to-br from-[#073D32] via-[#0F614C] to-[#15966F] pl-3.5 pt-2.5 shadow-[0_16px_32px_-8px_rgba(7,61,50,0.45)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03] dark:from-[#15966F] dark:via-[#0D5A46] dark:to-[#073D32]"
+                    >
+                      <span className="font-heading text-[22px] font-bold leading-none tracking-tight text-white">
+                        {num}
                       </span>
                     </div>
 
-                    <h3 className="mt-3 font-heading text-[18px] font-bold tracking-tight text-[#0E241E] sm:text-[19px] dark:text-white">
-                      {item.title}
-                    </h3>
+                    {/* Frosted Translucent Glass Card */}
+                    <div className="relative z-10 overflow-hidden rounded-[24px] border border-white/95 bg-white/75 p-6 shadow-[0_20px_50px_-14px_rgba(7,61,50,0.16),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:bg-white/85 group-hover:shadow-[0_28px_56px_-14px_rgba(7,61,50,0.22)] sm:p-7 dark:border-[#1E3B32]/90 dark:bg-[#0D1E19]/80 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
+                      {/* Header Row inside Glass Card */}
+                      <div className="flex items-center justify-between gap-3 pl-10">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#EBF7F1]/90 px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          <Icon className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                          <span>{item.year}</span>
+                        </span>
 
-                    <p className="mt-1.5 text-[14px] leading-[1.65] text-[#5C6B64] dark:text-[#A0B3AC]">
-                      {item.description}
-                    </p>
+                        <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
+                          {item.stat}
+                        </span>
+                      </div>
 
-                    <ul className="mt-4 space-y-2 border-t border-[#E6F0EC] pt-3.5 dark:border-[#18332B]">
-                      {item.points.map((pt) => (
-                        <li
-                          key={pt}
-                          className="flex items-start gap-2 text-[13px] leading-snug text-[#465952] dark:text-[#B7CDC4]"
-                        >
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#15966F] dark:text-[#34D399]" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      <h3 className="mt-4 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] sm:text-[22px] dark:text-white">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        {item.description}
+                      </p>
+
+                      <ul className="mt-4 space-y-2 border-t border-[#E6F0EC]/90 pt-3.5 dark:border-[#18332B]">
+                        {item.points.map((pt) => (
+                          <li
+                            key={pt}
+                            className="flex items-start gap-2 text-[13px] leading-snug text-[#465952] dark:text-[#B7CDC4]"
+                          >
+                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                );
-
-                return (
-                  <ScrollReveal
-                    key={item.year}
-                    delay={i * 0.06}
-                    direction={isEven ? "left" : "right"}
-                  >
-                    <div className="group relative grid grid-cols-1 items-center md:grid-cols-[1fr_72px_1fr]">
-                      {/* Left Column */}
-                      <div
-                        className={`pl-14 md:pl-0 ${
-                          isEven ? "block" : "hidden md:flex md:justify-end md:pr-2"
-                        }`}
-                      >
-                        {isEven ? (
-                          cardMarkup
-                        ) : (
-                          <span className="inline-flex items-center rounded-full border border-[#DCE8E3] bg-[#FAFCFB] px-4 py-1.5 font-heading text-[14px] font-bold tracking-tight text-[#073D32] shadow-2xs transition-colors duration-300 group-hover:border-[#15966F]/45 group-hover:bg-[#EBF7F1] group-hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-[#6EE7B7]">
-                            {item.year}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Center Node */}
-                      <div className="absolute left-5 top-5 z-10 -translate-x-1/2 md:static md:flex md:translate-x-0 md:items-center md:justify-center">
-                        <div
-                          className={`flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300 group-hover:scale-110 ${
-                            isLatest
-                              ? "border-[#15966F] bg-[#073D32] text-white shadow-[0_8px_20px_-4px_rgba(21,150,111,0.5)] dark:border-[#34D399] dark:bg-[#15966F]"
-                              : "border-[#15966F]/40 bg-white text-[#073D32] shadow-[0_6px_14px_-4px_rgba(7,61,50,0.2)] group-hover:border-[#15966F] group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/40 dark:bg-[#0D1E19] dark:text-[#6EE7B7] dark:group-hover:bg-[#15966F] dark:group-hover:text-white"
-                          }`}
-                        >
-                          <Icon className="h-4 w-4" strokeWidth={2} />
-                        </div>
-                      </div>
-
-                      {/* Right Column */}
-                      <div
-                        className={`pl-14 md:pl-0 ${
-                          !isEven ? "block" : "hidden md:flex md:justify-start md:pl-2"
-                        }`}
-                      >
-                        {!isEven ? (
-                          cardMarkup
-                        ) : (
-                          <span className="inline-flex items-center rounded-full border border-[#DCE8E3] bg-[#FAFCFB] px-4 py-1.5 font-heading text-[14px] font-bold tracking-tight text-[#073D32] shadow-2xs transition-colors duration-300 group-hover:border-[#15966F]/45 group-hover:bg-[#EBF7F1] group-hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-[#6EE7B7]">
-                            {item.year}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
