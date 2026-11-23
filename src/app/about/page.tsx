@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { JourneyTimeline } from "@/components/about/journey-timeline";
-import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, ArrowRight, CheckCircle2 } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, BookOpen, Zap, Palette, Puzzle, Sparkles, GraduationCap, Laptop, Globe, Trophy, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Program",
@@ -17,6 +17,15 @@ const values = [
   { icon: Target, image: "/images/values/excellence.jpg", title: "Excellence", description: "We set high standards and help students achieve academic and professional excellence." },
   { icon: Users, image: "/images/values/community.jpg", title: "Community", description: "Building a nationwide community of scholars who support and uplift each other." },
   { icon: Award, image: "/images/values/impact.jpg", title: "Impact", description: "Measuring success by the real-world impact we create in students' lives." },
+];
+
+const milestones = [
+  { year: "2018", title: "Foundation Year", description: "Milestone Scholarship Program was established with a vision to democratize education.", icon: Compass },
+  { year: "2019", title: "First Cohort", description: "500+ students received scholarships in our inaugural year across 5 states.", icon: GraduationCap },
+  { year: "2020", title: "Digital Expansion", description: "Launched online scholarship tests and digital application portal.", icon: Laptop },
+  { year: "2021", title: "National Reach", description: "Expanded operations to 15+ states with 2,000+ scholars.", icon: Globe },
+  { year: "2023", title: "Mentorship Launch", description: "Introduced mentorship programs with 100+ industry professionals.", icon: Users },
+  { year: "2025", title: "15,000+ Scholars", description: "Crossed the milestone of supporting 15,000+ students nationwide.", icon: Trophy },
 ];
 
 export default function AboutPage() {
@@ -570,8 +579,60 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Interactive Journey Timeline */}
-      <JourneyTimeline />
+      {/* Timeline */}
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Soft background glows */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent/3 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/3 blur-[120px] pointer-events-none" />
+
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <SectionHeader badge="Our Journey" title="Milestones Along The Way" className="mb-16" />
+          </ScrollReveal>
+          
+          <div className="relative">
+            {/* Gradient Timeline Line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/80 via-accent/40 to-transparent -translate-x-1/2" />
+            
+            <div className="space-y-12">
+              {milestones.map((item, i) => {
+                const isEven = i % 2 === 0;
+                const Icon = item.icon;
+                return (
+                  <ScrollReveal key={i} delay={i * 0.1} direction={isEven ? "left" : "right"}>
+                    <div className="relative flex items-start w-full group">
+                      
+                      {/* Timeline Card */}
+                      <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${isEven ? "md:mr-auto" : "md:ml-auto"}`}>
+                        <div className="bg-white dark:bg-slate-900/40 rounded-3xl border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 hover:border-accent/30 hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-500 shadow-sm relative overflow-hidden group">
+                          {/* Corner hover glow */}
+                          <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                          
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-accent/10 text-accent border border-accent/20 tracking-wider mb-4">
+                            {item.year}
+                          </span>
+                          <h3 className="font-heading font-extrabold text-primary dark:text-white text-lg md:text-xl mb-3 group-hover:text-accent transition-colors duration-300">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Timeline Center Dot / Icon */}
+                      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 md:top-8 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-900 border-2 border-accent shadow-md transition-all duration-300 group-hover:scale-115 group-hover:bg-accent group-hover:border-accent group-hover:shadow-lg group-hover:shadow-accent/30">
+                        <Icon className="h-5 w-5 text-accent group-hover:text-white transition-colors duration-300" />
+                      </div>
+
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
