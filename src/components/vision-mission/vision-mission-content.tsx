@@ -2,388 +2,480 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  Rocket, 
-  Target, 
-  ShieldCheck, 
-  Award, 
-  HeartHandshake, 
-  TrendingUp, 
-  ArrowRight, 
-  Sparkles, 
+import {
+  ArrowRight,
+  Award,
   CheckCircle2,
-  BookOpen,
   ChevronRight,
-  GraduationCap
+  HeartHandshake,
+  Rocket,
+  ShieldCheck,
+  Target,
+  TrendingUp,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
-// Define core values data
 const coreValues = [
   {
+    num: "01",
     icon: ShieldCheck,
     title: "Integrity & Trust",
-    description: "Ensuring an unbiased, highly transparent, and merit-based selection process that values genuine need and potential above all.",
-    gradient: "from-amber-500/10 to-yellow-500/5",
-    iconColor: "text-amber-500",
+    description:
+      "Ensuring an unbiased, highly transparent, and merit-based selection process that values genuine need and potential above all.",
   },
   {
+    num: "02",
     icon: Award,
     title: "Academic Excellence",
-    description: "Partnering with expert mentors and providing premium resources to guide students toward exceptional academic achievements.",
-    gradient: "from-blue-500/10 to-indigo-500/5",
-    iconColor: "text-blue-500",
+    description:
+      "Partnering with expert mentors and providing quality resources to guide students toward exceptional academic achievements.",
   },
   {
+    num: "03",
     icon: HeartHandshake,
     title: "Empathy & Support",
-    description: "Fostering an inclusive, warm ecosystem that listens to personal constraints and provides holistic mental and financial assistance.",
-    gradient: "from-emerald-500/10 to-teal-500/5",
-    iconColor: "text-emerald-500",
+    description:
+      "Fostering an inclusive, warm ecosystem that listens to personal constraints and provides holistic academic and financial assistance.",
   },
   {
+    num: "04",
     icon: TrendingUp,
     title: "Continuous Growth",
-    description: "Constantly expanding our scholarship reach and upgrading mentor programs to adapt to shifting career terrains and student needs.",
-    gradient: "from-rose-500/10 to-orange-500/5",
-    iconColor: "text-rose-500",
+    description:
+      "Constantly expanding our scholarship reach and upgrading mentor programs to adapt to evolving career paths and student needs.",
   },
 ];
 
-// Define roadmap step data
 const journeySteps = [
   {
     step: "01",
+    tag: "Discovery",
     title: "Eligibility & Discovery",
-    description: "Reaching out to deserving candidates across India, identifying potential through transparent, comprehensive evaluation.",
+    description:
+      "Reaching out to deserving candidates across India and identifying potential through transparent, comprehensive evaluation.",
   },
   {
     step: "02",
+    tag: "Mentorship",
     title: "Mentorship & Guidance",
-    description: "Pairing selected scholars with subject experts, offering disciplined schedules, curated study materials, and regular progress reviews.",
+    description:
+      "Pairing selected scholars with subject experts, offering disciplined schedules, curated study materials, and regular progress reviews.",
   },
   {
     step: "03",
+    tag: "Impact",
     title: "Success & Pay-It-Forward",
-    description: "Guiding students into high-value professional colleges and careers, nurturing a community that eventually guides the next generation.",
+    description:
+      "Guiding students into respected professional colleges and careers, nurturing a community that guides the next generation.",
   },
 ];
 
 export function VisionMissionContent() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background">
-      {/* Background patterns */}
-      <div className="absolute inset-0 bg-grid opacity-[0.2] dark:opacity-[0.4] pointer-events-none" />
-      
-      {/* Dynamic light sources / gradients */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-accent/5 dark:bg-accent/[0.03] blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 dark:bg-primary/[0.02] blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/3 w-[500px] h-[500px] rounded-full bg-accent/5 dark:bg-accent/[0.02] blur-[120px] pointer-events-none" />
-
+    <div className="relative min-h-screen overflow-hidden bg-white dark:bg-[#07120F]">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-b from-[#F1F9F5] via-[#FAFCFB] to-white pb-16 pt-28 md:pb-24 md:pt-36 dark:border-[#162E26] dark:from-[#081713] dark:via-[#07120F] dark:to-[#07120F]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#15966F]/[0.08] blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-[#073D32]/[0.05] blur-3xl"
+        />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.18em] bg-accent/10 text-accent border border-accent/20 shadow-[0_2px_10px_rgba(163,120,44,0.05)]"
+            transition={{ duration: 0.45 }}
+            className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/90 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+              Our North Star
             </span>
-            Our North Star
+            <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
+            <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+              Est. 2018
+            </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-5 font-heading text-4xl font-bold leading-[1.1] tracking-[-0.03em] text-[#0E241E] sm:text-5xl md:text-[58px] dark:text-white"
           >
-            Vision & <span className="gradient-text-gold font-extrabold">Mission</span>
+            Vision &amp;{" "}
+            <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+              Mission
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 180 12"
+                fill="none"
+                className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 9.5C46 3.5 134 2.5 178 8.5"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed text-pretty font-normal"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.75] text-[#5C6B64] sm:text-[18px] dark:text-[#A0B3AC]"
           >
             Empowering dreams beyond financial limits through structured mentorship, disciplined academic guidance, and equitable access to quality education. We believe every capable mind deserves the sky.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="flex items-center justify-center gap-3.5 mt-10"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-3 text-[12.5px] font-semibold text-[#073D32] dark:text-[#C8E4D8]"
           >
-            <div className="h-[2px] w-20 bg-gradient-to-r from-transparent to-accent" />
-            <div className="h-2 w-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(163,120,44,0.65)]" />
-            <div className="h-[2px] w-20 bg-gradient-to-l from-transparent to-accent" />
+            {[
+              "Early Academic Direction",
+              "Merit & Need Grants",
+              "1-on-1 Expert Mentorship",
+            ].map((pill) => (
+              <span
+                key={pill}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#DCE8E3] bg-white px-4 py-1.5 shadow-2xs dark:border-[#1E3B32] dark:bg-[#0D1E19]"
+              >
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                <span>{pill}</span>
+              </span>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Core Split Cards (Vision & Program Objective) */}
-      <section className="py-12 md:py-20 relative z-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            
+      {/* Core Split Cards: Our Vision & Program Objective */}
+      <section className="relative z-10 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
             {/* Vision Card */}
-            <ScrollReveal delay={0.1}>
-              <div className="group relative h-full rounded-3xl bg-white dark:bg-card/70 border border-slate-200 dark:border-white/10 p-8 md:p-10 flex flex-col shadow-premium hover:shadow-card-hover hover:border-accent/30 dark:hover:border-accent/30 transition-all duration-300 overflow-hidden">
-                {/* Visual hover highlight lines */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute inset-0 bg-grid opacity-[0.01] dark:opacity-[0.03] group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none" />
-
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center border border-accent/20 text-accent shadow-sm group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                    <Rocket className="h-7 w-7 group-hover:scale-110 transition-transform duration-300" />
+            <ScrollReveal delay={0.08} className="h-full">
+              <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-7 shadow-[0_16px_40px_-16px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_24px_50px_-16px_rgba(7,61,50,0.18)] sm:p-10 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+                <div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-[#15966F]/20 bg-gradient-to-b from-white via-[#ECF8F2] to-[#D2EFE1] text-[#0B7453] shadow-[0_8px_18px_-6px_rgba(7,61,50,0.22),inset_0_1.5px_0_rgba(255,255,255,1)] transition-transform duration-300 group-hover:scale-105 dark:border-[#34D399]/25 dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]">
+                      <Rocket className="h-6 w-6" strokeWidth={2} />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+                        The Dream
+                      </span>
+                      <h2 className="font-heading text-2xl font-bold tracking-tight text-[#0E241E] sm:text-[28px] dark:text-white">
+                        Our Vision
+                      </h2>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xs font-bold text-accent uppercase tracking-widest">The Dream</span>
-                    <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-slate-900 dark:text-white">
-                      Our Vision
-                    </h2>
-                  </div>
-                </div>
 
-                <div className="flex-1 space-y-6">
-                  <p className="text-base md:text-lg text-slate-600 dark:text-slate-200/90 leading-relaxed font-medium">
-                    To create a focused, high-discipline and future-ready academic ecosystem where students receive direct mentorship, resource assistance, and opportunities from an early stage to achieve their career goals.
+                  <p className="mt-6 text-[15.5px] leading-[1.72] text-[#465952] sm:text-[16.5px] dark:text-[#C4D9D1]">
+                    To create a focused, high-discipline, and future-ready academic ecosystem where students receive direct mentorship, resource assistance, and opportunities from an early stage to achieve their career goals.
                   </p>
 
-                  <div className="space-y-3.5 pt-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-[15px] text-muted-foreground"><strong className="text-slate-800 dark:text-white font-semibold">Early Direction:</strong> Steer young aspirants in the right direction before critical exam milestones.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-[15px] text-muted-foreground"><strong className="text-slate-800 dark:text-white font-semibold">Quality Materials:</strong> Demolish geographical barriers to top-tier academic books & tests.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-[15px] text-muted-foreground"><strong className="text-slate-800 dark:text-white font-semibold">Equitable Ecosystem:</strong> Bridge the support gap between well-off and underprivileged families.</p>
-                    </div>
+                  <div className="mt-6 space-y-3.5">
+                    {[
+                      {
+                        label: "Early Direction",
+                        text: "Steer young aspirants in the right direction before critical exam milestones.",
+                      },
+                      {
+                        label: "Quality Materials",
+                        text: "Remove geographical barriers to top-tier academic books and assessments.",
+                      },
+                      {
+                        label: "Equitable Ecosystem",
+                        text: "Bridge the support gap between well-resourced and underserved families.",
+                      },
+                    ].map((point) => (
+                      <div
+                        key={point.label}
+                        className="flex items-start gap-3 rounded-xl border border-[#EAF2EE] bg-[#FAFCFB] p-3.5 dark:border-[#18332B] dark:bg-[#10241E]"
+                      >
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                        <p className="text-[14px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+                          <strong className="font-semibold text-[#0E241E] dark:text-white">
+                            {point.label}:
+                          </strong>{" "}
+                          {point.text}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-                  <div>
-                    <p className="font-heading font-extrabold text-base md:text-lg text-accent italic">
-                      &ldquo;Focused Learning Today. Successful Career Tomorrow.&rdquo;
-                    </p>
-                  </div>
+                <div className="mt-8 rounded-2xl border border-[#15966F]/15 bg-[#EBF7F1]/75 px-5 py-4 dark:border-[#34D399]/20 dark:bg-[#112B23]">
+                  <p className="font-editorial italic text-[17px] leading-snug text-[#073D32] sm:text-[19px] dark:text-[#86DFB8]">
+                    &ldquo;Focused Learning Today. Successful Career Tomorrow.&rdquo;
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Mission / Objective Card */}
-            <ScrollReveal delay={0.2}>
-              <div className="group relative h-full rounded-3xl bg-white dark:bg-card/70 border border-slate-200 dark:border-white/10 p-8 md:p-10 flex flex-col shadow-premium hover:shadow-card-hover hover:border-accent/30 dark:hover:border-accent/30 transition-all duration-300 overflow-hidden">
-                {/* Visual hover highlight lines */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute inset-0 bg-grid opacity-[0.01] dark:opacity-[0.03] group-hover:opacity-[0.03] transition-opacity duration-300 pointer-events-none" />
-
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center border border-accent/20 text-accent shadow-sm group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                    <Target className="h-7 w-7 group-hover:scale-110 transition-transform duration-300" />
+            {/* Mission / Program Objective Card */}
+            <ScrollReveal delay={0.14} className="h-full">
+              <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] border border-[#15966F]/25 border-b-[3px] border-b-[#15966F]/45 bg-gradient-to-br from-white via-[#F6FBF8] to-[#E8F5EE] p-7 shadow-[0_16px_40px_-16px_rgba(7,61,50,0.14),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/50 hover:shadow-[0_24px_50px_-16px_rgba(21,150,111,0.2)] sm:p-10 dark:border-[#244E40] dark:border-b-[#16362C] dark:from-[#0F241E] dark:via-[#0D1E19] dark:to-[#133228]">
+                <div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-white/20 bg-gradient-to-b from-[#0E6A54] to-[#073D32] text-white shadow-[0_10px_22px_-6px_rgba(7,61,50,0.4)] transition-transform duration-300 group-hover:scale-105 dark:from-[#15966F] dark:to-[#0B5243]">
+                      <Target className="h-6 w-6" strokeWidth={2} />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+                        The Action
+                      </span>
+                      <h2 className="font-heading text-2xl font-bold tracking-tight text-[#0E241E] sm:text-[28px] dark:text-white">
+                        Program Objective
+                      </h2>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xs font-bold text-accent uppercase tracking-widest">The Action</span>
-                    <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-slate-900 dark:text-white">
-                      Program Objective
-                    </h2>
-                  </div>
-                </div>
 
-                <div className="flex-1 space-y-6">
-                  <p className="text-base md:text-lg text-slate-600 dark:text-slate-200/90 leading-relaxed font-medium">
-                    The Milestone Scholarship Program aims to identify deserving students early on and provide robust financial aid alongside academic and personal accountability support.
+                  <p className="mt-6 text-[15.5px] leading-[1.72] text-[#465952] sm:text-[16.5px] dark:text-[#C4D9D1]">
+                    The Milestone Scholarship Program identifies deserving students early on and provides dependable financial aid alongside structured academic and personal accountability support.
                   </p>
 
-                  <div className="space-y-3.5 pt-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-[15px] text-muted-foreground"><strong className="text-slate-800 dark:text-white font-semibold">Targeted Financial Aid:</strong> Fully or partially cover coaching, textbooks, or institutional tuition.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-[15px] text-muted-foreground"><strong className="text-slate-800 dark:text-white font-semibold">Structured Mentorship:</strong> Direct connect with senior students, engineers, doctors, and professionals.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-[15px] text-muted-foreground"><strong className="text-slate-800 dark:text-white font-semibold">Empowered Careers:</strong> Remove the mental stress of finances to allow candidates to thrive fully.</p>
-                    </div>
+                  <div className="mt-6 space-y-3.5">
+                    {[
+                      {
+                        label: "Targeted Financial Aid",
+                        text: "Fully or partially cover coaching, textbooks, hostel fees, or institutional tuition.",
+                      },
+                      {
+                        label: "Structured Mentorship",
+                        text: "Direct connection with senior scholars, engineers, doctors, and counselors.",
+                      },
+                      {
+                        label: "Empowered Careers",
+                        text: "Remove the mental stress of finances so candidates can perform at their peak.",
+                      },
+                    ].map((point) => (
+                      <div
+                        key={point.label}
+                        className="flex items-start gap-3 rounded-xl border border-[#DCEAE4] bg-white/85 p-3.5 dark:border-[#1E3B32] dark:bg-[#0B1915]/80"
+                      >
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                        <p className="text-[14px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+                          <strong className="font-semibold text-[#0E241E] dark:text-white">
+                            {point.label}:
+                          </strong>{" "}
+                          {point.text}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5">
-                  <p className="text-xs md:text-sm font-semibold text-slate-400 dark:text-slate-400 uppercase tracking-widest">
+                <div className="mt-8 flex items-center justify-between border-t border-[#D6E7DF] pt-5 dark:border-[#1E3B32]">
+                  <span className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
                     Milestone Scholarship Initiative
-                  </p>
+                  </span>
+                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold text-[#15966F] shadow-2xs dark:bg-[#132E26] dark:text-[#34D399]">
+                    Up to ₹5,00,000 Aid
+                  </span>
                 </div>
               </div>
             </ScrollReveal>
-
           </div>
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="py-16 md:py-24 relative z-10 bg-slate-50/50 dark:bg-navy/10 border-y border-slate-150 dark:border-white/5">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          
-          <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent/10 text-accent border border-accent/20">
-                How We Operate
+      {/* Core Values Section: Open 4-Column Architectural Grid with 3D Beveled Lines */}
+      <section className="relative z-10 border-y border-[#E3ECE8] bg-[#FAFCFB] py-20 md:py-24 dark:border-[#162E26] dark:bg-[#081511]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="mx-auto max-w-2xl text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#15966F] dark:text-[#34D399]">
+              How We Operate
+            </p>
+            <h2 className="mt-3 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
+              Our Core{" "}
+              <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                Values
               </span>
-              <h2 className="mt-4 font-heading text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                Our Core <span className="text-accent">Values</span>
-              </h2>
-              <p className="mt-4 text-[15px] md:text-base text-muted-foreground">
-                These principles guide every scholarship awarded, every mentorship session held, and every long-term strategy we deploy.
-              </p>
-            </div>
+            </h2>
+            <p className="mt-3.5 text-[15.5px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+              These principles guide every scholarship awarded, every mentorship session held, and every long-term commitment we make.
+            </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreValues.map((val, i) => {
-              const IconComponent = val.icon;
-              return (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <div className="group relative h-full rounded-2xl bg-white dark:bg-card border border-slate-200 dark:border-white/10 p-6 flex flex-col hover:border-accent/40 dark:hover:border-accent/40 hover:-translate-y-1.5 transition-all duration-300 hover:shadow-card-hover overflow-hidden">
-                    {/* Top gradient highlight */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                    <div className={`h-12 w-12 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-150 dark:border-white/10 flex items-center justify-center mb-5 ${val.iconColor} group-hover:bg-accent group-hover:text-white group-hover:shadow-md group-hover:shadow-accent/10 transition-all duration-300`}>
-                      <IconComponent className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
-                    </div>
+          <ScrollReveal delay={0.1}>
+            <div className="relative mt-14">
+              <div
+                aria-hidden="true"
+                className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#B8D5C8] to-transparent shadow-[0_1px_0_rgba(255,255,255,0.95)] dark:via-[#214539] dark:shadow-none"
+              />
 
-                    <h3 className="font-heading font-extrabold text-lg text-slate-900 dark:text-white mb-2.5">
-                      {val.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-muted-foreground leading-relaxed flex-1">
-                      {val.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                {coreValues.map((val, idx) => {
+                  const IconComponent = val.icon;
+                  return (
+                    <div
+                      key={val.title}
+                      className="group relative flex flex-col justify-between px-4 py-8 sm:px-6 md:py-10"
+                    >
+                      {idx > 0 && (
+                        <div
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-y-6 left-0 hidden w-[2px] bg-gradient-to-b from-transparent via-[#B8D5C8] to-transparent shadow-[1px_0_0_rgba(255,255,255,0.95)] lg:block dark:via-[#214539] dark:shadow-none"
+                        />
+                      )}
+
+                      <div>
+                        <div className="flex items-center justify-between">
+                          <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#15966F]/20 bg-gradient-to-b from-white via-[#ECF8F2] to-[#D2EFE1] text-[#0B7453] shadow-[0_8px_16px_-6px_rgba(7,61,50,0.2),inset_0_1.5px_0_rgba(255,255,255,1)] transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-[#34D399]/25 dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]">
+                            <IconComponent className="h-5 w-5" strokeWidth={2} />
+                          </span>
+                          <span className="font-editorial italic text-2xl font-semibold text-[#15966F]/45 transition-colors group-hover:text-[#15966F] dark:text-[#34D399]/40">
+                            {val.num}
+                          </span>
+                        </div>
+
+                        <h3 className="mt-5 font-heading text-[18.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                          {val.title}
+                        </h3>
+                        <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
+                          {val.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 h-[3px] w-10 rounded-full bg-gradient-to-r from-[#073D32] to-[#15966F] transition-all duration-300 group-hover:w-20" />
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div
+                aria-hidden="true"
+                className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#B8D5C8] to-transparent shadow-[0_1px_0_rgba(255,255,255,0.95)] dark:via-[#214539] dark:shadow-none"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Scholar Journey Roadmap ("From Dream to Reality") */}
-      <section className="py-16 md:py-24 relative z-10">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          
-          <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto mb-20">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent/10 text-accent border border-accent/20">
+      {/* Scholar Lifecycle Roadmap: 3-Step Frosted Glass Progression */}
+      <section className="relative z-10 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="mx-auto mb-14 max-w-2xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3.5 py-1.5 dark:border-[#34D399]/25 dark:bg-[#112B23]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
                 The Scholar Lifecycle
               </span>
-              <h2 className="mt-4 font-heading text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                From Dream to <span className="gradient-text-gold">Reality</span>
-              </h2>
-              <p className="mt-4 text-[15px] md:text-base text-muted-foreground">
-                We don&apos;t just award checks. We build structural support steps to transition promising minds into successful professionals.
-              </p>
             </div>
+
+            <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
+              From Dream to{" "}
+              <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                Reality
+              </span>
+            </h2>
+            <p className="mt-3.5 text-[15.5px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+              We do not just award grants. We build structured support steps to transition promising students into accomplished professionals.
+            </p>
           </ScrollReveal>
 
-          {/* Steps Timeline Grid */}
-          <div className="relative max-w-5xl mx-auto">
-            {/* Horizontal Line for Large Screens */}
-            <div className="hidden lg:block absolute top-5 left-[10%] right-[10%] h-0.5 bg-slate-200 dark:bg-white/10 z-0">
-              <div className="h-full bg-gradient-to-r from-accent via-accent-light to-transparent w-full" />
-            </div>
-
-            <div className="grid lg:grid-cols-3 gap-8 relative z-10">
-              {journeySteps.map((step, idx) => (
-                <ScrollReveal key={idx} delay={idx * 0.15} className="flex flex-col h-full">
-                  {/* Step Header (Desktop: centered circle & title, Mobile: inline) */}
-                  <div className="flex flex-col items-center text-center lg:mb-6">
-                    {/* Desktop Circle */}
-                    <div className="hidden lg:flex h-10 w-10 rounded-full bg-white dark:bg-[#12141C] border-2 border-accent items-center justify-center text-sm font-heading font-extrabold text-accent shadow-[0_0_12px_rgba(163,120,44,0.25)] z-10 relative mb-3">
-                      {step.step}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-12">
+            {journeySteps.map((step, idx) => (
+              <ScrollReveal key={step.step} delay={idx * 0.1} className="relative h-full">
+                <div className="group relative h-full pl-6 pt-7">
+                  {/* Flush Horizontal Dotted Connector to Next Card on Desktop */}
+                  {idx < journeySteps.length - 1 && (
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute left-full top-[calc(50%+14px)] z-0 hidden w-[72px] -translate-y-1/2 items-center lg:flex"
+                    >
+                      <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
+                      <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                        <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
+                      </span>
+                      <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                     </div>
-                    {/* Desktop Title */}
-                    <h3 className="hidden lg:block font-heading font-extrabold text-base text-slate-900 dark:text-white">
-                      {step.title}
-                    </h3>
+                  )}
 
-                    {/* Mobile Header Layout */}
-                    <div className="flex items-center gap-4 mb-4 lg:hidden w-full">
-                      <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent/20 border border-accent/30 flex items-center justify-center text-sm font-heading font-extrabold text-accent shadow-[0_0_12px_rgba(163,120,44,0.15)] shrink-0">
-                        {step.step}
+                  {/* Overlapping Deep Emerald Step Badge */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-0 top-0 z-0 flex h-[92px] w-[92px] items-start justify-start rounded-[22px] border border-white/20 bg-gradient-to-br from-[#06382E] via-[#0E5C48] to-[#15966F] pl-3.5 pt-2.5 shadow-[0_14px_28px_-8px_rgba(7,61,50,0.42)] transition-transform duration-300 group-hover:-translate-y-1"
+                  >
+                    <span className="font-heading text-[17px] font-bold leading-none text-white">
+                      {step.step}
+                    </span>
+                  </div>
+
+                  {/* Frosted Glass Step Card */}
+                  <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[22px] border-[1.5px] border-white/95 border-b-[3px] border-b-[#C7DED4] bg-gradient-to-br from-white/85 via-white/75 to-[#EFF9F4]/85 p-6 ring-1 ring-[#073D32]/[0.06] shadow-[0_18px_44px_-14px_rgba(7,61,50,0.14),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/40 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0F241E]/85 dark:to-[#112A22]/85">
+                    <div>
+                      <div className="flex justify-end pl-12">
+                        <span className="rounded-full border border-[#15966F]/18 bg-[#EBF7F1] px-3 py-1 font-heading text-[11px] font-bold uppercase tracking-wider text-[#0B7453] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          {step.tag}
+                        </span>
                       </div>
-                      <h3 className="font-heading font-extrabold text-lg text-slate-900 dark:text-white">
+                      <h3 className="mt-5 font-heading text-[19px] font-bold tracking-tight text-[#0E241E] dark:text-white">
                         {step.title}
                       </h3>
+                      <p className="mt-2.5 text-[14px] leading-[1.7] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
-
-                  {/* Card Description */}
-                  <div className="flex flex-col flex-grow bg-white dark:bg-card/30 border border-slate-150 dark:border-white/5 p-6 rounded-2xl hover:border-accent/30 dark:hover:border-accent/30 transition-all duration-300 hover:shadow-premium text-left">
-                    <p className="text-sm text-slate-600 dark:text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Call to Action Banner */}
-      <section className="py-12 pb-24 relative z-10">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 border-t border-[#E3ECE8] bg-[#FAFCFB] py-16 md:py-24 dark:border-[#162E26] dark:bg-[#081511]">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="relative glass rounded-3xl p-8 md:p-12 text-center border border-slate-200 dark:border-white/10 shadow-premium overflow-hidden">
-              {/* Background gradient flares */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 dark:bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 dark:bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
+            <div className="relative overflow-hidden rounded-[30px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-gradient-to-br from-white via-[#F9FCFA] to-[#EBF7F1] p-8 text-center shadow-[0_22px_54px_-18px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] sm:p-12 md:p-14 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0E211B] dark:via-[#0D1E19] dark:to-[#112A22]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3.5 py-1.5 dark:border-[#34D399]/25 dark:bg-[#112B23]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                  Let&apos;s Build the Future
+                </span>
+              </div>
 
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent/15 text-accent border border-accent/20 mb-6">
-                <Sparkles className="h-3 w-3" />
-                Let&apos;s Build the Future
-              </span>
-
-              <h2 className="font-heading text-2xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
-                Be Part of Our Mission
+              <h2 className="mt-5 font-heading text-3xl font-bold tracking-[-0.025em] text-[#0E241E] sm:text-4xl dark:text-white">
+                Be Part of{" "}
+                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                  Our Mission
+                </span>
               </h2>
-              
-              <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed mb-8">
-                Whether you are a deserving student looking for support, or a volunteer wishing to offer guidance, your contribution counts.
+
+              <p className="mx-auto mt-4 max-w-xl text-[15.5px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+                Whether you are a deserving student looking for scholarship support or an educator wishing to mentor young talent, your step matters.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/sign-up">
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto gradient-gold text-slate-950 font-bold rounded-xl px-8 h-11 shadow-gold hover:opacity-95 transition-all text-sm group"
-                  >
-                    Apply for Scholarship
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
+                <Link
+                  href="/sign-up"
+                  className="group inline-flex h-12 w-full items-center justify-between gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] pl-6 pr-2 text-[13.5px] font-semibold text-white shadow-[0_10px_24px_-6px_rgba(7,61,50,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062] sm:w-auto sm:justify-center"
+                >
+                  <span>Apply for Scholarship</span>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
                 </Link>
-                
-                <Link href="/courses">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full sm:w-auto rounded-xl px-8 h-11 text-sm border-slate-200 hover:bg-slate-50 dark:border-white/10 dark:hover:bg-white/5"
-                  >
-                    Explore Courses
-                  </Button>
+
+                <Link
+                  href="/courses"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[#D4E3DC] bg-white px-7 text-[13.5px] font-semibold text-[#073D32] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/50 hover:text-[#15966F] sm:w-auto dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
+                >
+                  Explore Courses
                 </Link>
               </div>
             </div>
