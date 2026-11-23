@@ -301,89 +301,153 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why We Started / Feature Section */}
-      <section className="py-20 md:py-24 bg-muted/10 dark:bg-navy/10 relative overflow-hidden">
-        {/* Background decorative glow */}
-        <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
-        
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <SectionHeader
-              title="About our program"
-              subtitle="A complete ecosystem of support — each component crafted with intention, guidance and care."
-            />
+      {/* Program Architecture / Core Support Pillars */}
+      <section className="relative overflow-hidden border-y border-[#DCE8E3] bg-[#FAFCFB] py-20 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-24 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[#15966F]/[0.06] blur-3xl"
+        />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Editorial Section Header */}
+          <ScrollReveal className="mb-10 flex flex-col gap-6 border-b border-[#E3ECE8] pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                  About Our Program
+                </span>
+                <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
+                <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                  3 Core Pillars
+                </span>
+              </div>
+
+              <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
+                Empowering Scholars Without{" "}
+                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                  Financial Overhead
+                </span>
+              </h2>
+
+              <p className="mt-3.5 max-w-xl text-[15.5px] leading-relaxed text-[#5C6B64] sm:text-base dark:text-[#A0B3AC]">
+                A complete ecosystem of support — each component crafted with intention, structured mentorship, and transparent guidance.
+              </p>
+            </div>
+
+            <Link
+              href="/how-to-apply"
+              className="group/btn inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-[#D4E3DC] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#073D32] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:text-[#15966F] lg:self-end dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399]/50"
+            >
+              <span>See How It Works</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F] transition-transform duration-200 group-hover/btn:translate-x-0.5 dark:bg-[#143329] dark:text-[#34D399]">
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
+            </Link>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center mt-6">
-            {/* Left: Image */}
-            <ScrollReveal className="md:col-span-6 lg:col-span-6" direction="left">
-              <div className="relative group overflow-hidden rounded-3xl border border-border/50 shadow-premium aspect-[4/3] md:aspect-[5/4] lg:aspect-[4/3]">
-                <img
-                  src="/about-workspace.png"
-                  alt="Minimalist productive workspace representing student focus"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+            {/* Left: Framed Editorial Scholar Visual */}
+            <ScrollReveal className="lg:col-span-5" direction="left">
+              <div className="overflow-hidden rounded-[26px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-2.5 shadow-[0_22px_50px_-16px_rgba(7,61,50,0.14)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#E8F5EF] dark:bg-[#132E26]">
+                  <Image
+                    src="/images/hero/hero-main-student-hdr.jpg"
+                    alt="MileStone scholar preparing for higher education"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 460px"
+                    className="object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="grid grid-cols-3 divide-x divide-[#E6F0EC] px-2 py-3.5 text-center dark:divide-[#18332B]">
+                  <div>
+                    <div className="font-heading text-[14px] font-bold text-[#073D32] dark:text-white">
+                      Direct Aid
+                    </div>
+                    <div className="text-[11px] text-[#687A73] dark:text-[#A0B3AC]">
+                      Zero Middlemen
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-heading text-[14px] font-bold text-[#15966F] dark:text-[#34D399]">
+                      100% Merit
+                    </div>
+                    <div className="text-[11px] text-[#687A73] dark:text-[#A0B3AC]">
+                      Fair Evaluation
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-heading text-[14px] font-bold text-[#073D32] dark:text-white">
+                      Pan-India
+                    </div>
+                    <div className="text-[11px] text-[#687A73] dark:text-[#A0B3AC]">
+                      15+ States
+                    </div>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
 
-            {/* Right: Features */}
-            <ScrollReveal className="md:col-span-6 lg:col-span-6 space-y-8" direction="right" delay={0.1}>
-              <div>
-                <h3 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-primary dark:text-white tracking-tight mb-3">
-                  Our Latest features
-                </h3>
-                <p className="text-base text-muted-foreground leading-relaxed text-pretty">
-                  Empower Students Without the Financial Overhead — Structured, scalable, and scholar-friendly support systems.
-                </p>
-              </div>
+            {/* Right: 3 Structured Institutional Pillar Cards */}
+            <ScrollReveal className="space-y-4 lg:col-span-7" direction="right" delay={0.1}>
+              {[
+                {
+                  step: "01",
+                  icon: Zap,
+                  tag: "Fast Disbursal",
+                  title: "Streamlined Grants & Rapid Support",
+                  description:
+                    "Simple digital registration, transparent document verification checklists, and prompt scholarship disbursals supporting tuition and hostel fees.",
+                },
+                {
+                  step: "02",
+                  icon: Users,
+                  tag: "AIIMS • IITs • IIMs",
+                  title: "1-on-1 Expert Mentorship",
+                  description:
+                    "Connect directly with established doctors, engineers, legal professionals, and dedicated academic counselors who help map your career.",
+                },
+                {
+                  step: "03",
+                  icon: GraduationCap,
+                  tag: "End-to-End",
+                  title: "All-in-One Career Ecosystem",
+                  description:
+                    "Access specialized scholarship assessment preparation, structured study resources, and centralized entrance counselling under one roof.",
+                },
+              ].map((pillar) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={pillar.step}
+                    className="group relative flex items-start gap-4 rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-5 shadow-[0_10px_24px_-12px_rgba(7,61,50,0.1)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:shadow-[0_20px_38px_-14px_rgba(7,61,50,0.16)] sm:p-6 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#15966F]/15 bg-gradient-to-b from-[#FFFFFF] via-[#F2FBF7] to-[#D8F1E5] text-[#0B7453] shadow-[0_6px_14px_-4px_rgba(7,61,50,0.16),inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 group-hover:scale-105 dark:border-[#34D399]/20 dark:from-[#1A4336] dark:to-[#0F2B22] dark:text-[#6EE7B7]">
+                      <Icon className="h-5 w-5" strokeWidth={2} />
+                    </div>
 
-              <div className="space-y-6">
-                {/* Feature 1 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EEF2FF] dark:bg-navy-light border border-[#E0E7FF] dark:border-border/50 shadow-sm">
-                    <Zap className="h-5 w-5 text-amber-500 fill-amber-500/20" />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-extrabold text-primary dark:text-white text-lg leading-snug">
-                      Lightning-Fast Support
-                    </h4>
-                    <p className="text-[14px] md:text-[15px] text-muted-foreground mt-0.5 leading-relaxed">
-                      Simple application setup — quick reviews and rapid scholarship disbursals.
-                    </p>
-                  </div>
-                </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="font-heading text-[11px] font-bold tracking-wider text-[#15966F] dark:text-[#34D399]">
+                            {pillar.step}
+                          </span>
+                          <h3 className="font-heading text-[17px] font-bold tracking-tight text-[#0E241E] sm:text-[18px] dark:text-white">
+                            {pillar.title}
+                          </h3>
+                        </div>
+                        <span className="rounded-full border border-[#15966F]/15 bg-[#E8F5EF] px-2.5 py-0.5 text-[11px] font-semibold text-[#073D32] dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          {pillar.tag}
+                        </span>
+                      </div>
 
-                {/* Feature 2 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EEF2FF] dark:bg-navy-light border border-[#E0E7FF] dark:border-border/50 shadow-sm">
-                    <Palette className="h-5 w-5 text-violet-500 fill-violet-500/20" />
+                      <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#5C6B64] sm:text-[14.5px] dark:text-[#A0B3AC]">
+                        {pillar.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-heading font-extrabold text-primary dark:text-white text-lg leading-snug">
-                      1-on-1 Expert Mentorship
-                    </h4>
-                    <p className="text-[14px] md:text-[15px] text-muted-foreground mt-0.5 leading-relaxed">
-                      Connect directly with established doctors, engineers, and counselors.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Feature 3 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EEF2FF] dark:bg-navy-light border border-[#E0E7FF] dark:border-border/50 shadow-sm">
-                    <Puzzle className="h-5 w-5 text-emerald-500 fill-emerald-500/20" />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-extrabold text-primary dark:text-white text-lg leading-snug">
-                      All-in-One Career Ecosystem
-                    </h4>
-                    <p className="text-[14px] md:text-[15px] text-muted-foreground mt-0.5 leading-relaxed">
-                      Access specialized preparatory tests, learning resources, and counseling.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </ScrollReveal>
           </div>
         </div>
