@@ -623,148 +623,94 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          <div className="relative">
-            {/* Sculpted 3D Vertical Center Rail */}
+          <div className="relative mx-auto max-w-4xl">
+            {/* Clean Vertical Center Spine */}
             <div
               aria-hidden="true"
-              className="absolute bottom-4 left-6 top-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#073D32] via-[#15966F] to-[#15966F]/20 shadow-[0_0_12px_rgba(21,150,111,0.25)] md:left-1/2"
+              className="absolute bottom-6 left-5 top-6 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#073D32] via-[#15966F]/60 to-[#DCE8E3] md:left-1/2 dark:from-[#34D399] dark:via-[#15966F]/50 dark:to-[#18332B]"
             />
 
-            <div className="space-y-10 md:space-y-12">
+            <div className="space-y-8 md:space-y-10">
               {milestones.map((item, i) => {
                 const isEven = i % 2 === 0;
                 const isLatest = i === milestones.length - 1;
                 const Icon = item.icon;
-                const chapter = String(i + 1).padStart(2, "0");
+
+                const cardMarkup = (
+                  <div
+                    className={`relative rounded-[20px] border border-b-[3px] p-5 transition-all duration-300 group-hover:-translate-y-0.5 sm:p-6 ${
+                      isLatest
+                        ? "border-[#15966F]/40 border-b-[#15966F]/60 bg-gradient-to-br from-white via-[#F4FBF7] to-[#E6F5EE] shadow-[0_14px_32px_-14px_rgba(21,150,111,0.22)] dark:border-[#34D399]/35 dark:from-[#0E241E] dark:to-[#133228]"
+                        : "border-[#DCE8E3] border-b-[#C5DDD3] bg-white shadow-[0_10px_24px_-14px_rgba(7,61,50,0.12)] group-hover:border-[#15966F]/45 group-hover:shadow-[0_18px_36px_-14px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="inline-flex items-center rounded-md bg-[#EBF7F1] px-2.5 py-0.5 font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                        {item.stat}
+                      </span>
+                      {/* Year badge shown inside card on mobile only */}
+                      <span className="font-heading text-[13px] font-bold text-[#073D32] md:hidden dark:text-white">
+                        {item.year}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-3 font-heading text-[18px] font-bold tracking-tight text-[#0E241E] sm:text-[19px] dark:text-white">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-1.5 text-[14px] leading-[1.65] text-[#5C6B64] dark:text-[#A0B3AC]">
+                      {item.description}
+                    </p>
+                  </div>
+                );
 
                 return (
                   <ScrollReveal
                     key={item.year}
-                    delay={i * 0.08}
+                    delay={i * 0.06}
                     direction={isEven ? "left" : "right"}
                   >
-                    <div className="group relative grid grid-cols-1 items-center md:grid-cols-12">
-                      {/* Left Side: Card on even rows, Editorial Year Counterweight on odd rows */}
+                    <div className="group relative grid grid-cols-1 items-center md:grid-cols-[1fr_72px_1fr]">
+                      {/* Left Column */}
                       <div
-                        className={`pl-16 md:col-span-5 md:pl-0 ${
-                          isEven ? "md:pr-6" : "hidden md:flex md:flex-col md:items-end md:pr-8 md:text-right"
+                        className={`pl-14 md:pl-0 ${
+                          isEven ? "block" : "hidden md:flex md:justify-end md:pr-2"
                         }`}
                       >
                         {isEven ? (
-                          <div
-                            className={`relative overflow-hidden rounded-[24px] border border-b-[3px] p-6 transition-all duration-300 group-hover:-translate-y-1 sm:p-7 ${
-                              isLatest
-                                ? "border-[#15966F]/35 border-b-[#15966F]/55 bg-gradient-to-br from-white via-[#F4FBF7] to-[#E6F5EE] shadow-[0_16px_36px_-14px_rgba(21,150,111,0.22)] dark:border-[#34D399]/35 dark:from-[#0E241E] dark:to-[#133228]"
-                                : "border-[#DCE8E3] border-b-[#C5DDD3] bg-white shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] group-hover:border-[#15966F]/45 group-hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
-                            }`}
-                          >
-                            <div className="flex items-center justify-between gap-2">
-                              <span className="inline-flex items-center rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                                {item.year}
-                              </span>
-                              <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
-                                {item.stat}
-                              </span>
-                            </div>
-
-                            <h3 className="mt-4 font-heading text-[19px] font-bold tracking-tight text-[#0E241E] transition-colors group-hover:text-[#073D32] sm:text-[21px] dark:text-white">
-                              {item.title}
-                            </h3>
-
-                            <p className="mt-2 text-[14px] leading-[1.7] text-[#5C6B64] sm:text-[15px] dark:text-[#A0B3AC]">
-                              {item.description}
-                            </p>
-
-                            <div className="mt-5 h-[3px] w-10 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-20 group-hover:bg-gradient-to-r group-hover:from-[#073D32] group-hover:to-[#15966F] dark:bg-[#1E3B32]" />
-                          </div>
+                          cardMarkup
                         ) : (
-                          <div>
-                            <div className="font-editorial italic text-5xl leading-none text-[#15966F]/28 transition-colors duration-300 group-hover:text-[#15966F]/75 lg:text-6xl dark:text-[#34D399]/25 dark:group-hover:text-[#34D399]/75">
-                              {item.year}
-                            </div>
-                            <div className="mt-1.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-[#687A73] dark:text-[#8DA39B]">
-                              Chapter {chapter} &bull; {item.stat}
-                            </div>
-                          </div>
+                          <span className="inline-flex items-center rounded-full border border-[#DCE8E3] bg-[#FAFCFB] px-4 py-1.5 font-heading text-[14px] font-bold tracking-tight text-[#073D32] shadow-2xs transition-colors duration-300 group-hover:border-[#15966F]/45 group-hover:bg-[#EBF7F1] group-hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-[#6EE7B7]">
+                            {item.year}
+                          </span>
                         )}
                       </div>
 
-                      {/* Center Medallion Node + Connector Arms */}
-                      <div className="absolute left-6 top-6 z-10 -translate-x-1/2 md:static md:col-span-2 md:flex md:translate-x-0 md:items-center md:justify-center">
-                        {/* Left horizontal connector arm */}
-                        <span
-                          aria-hidden="true"
-                          className={`hidden h-[2px] flex-1 md:block ${
-                            isEven
-                              ? "bg-gradient-to-r from-[#C5DDD3] to-[#15966F]/60 dark:from-[#1E3B32] dark:to-[#34D399]/50"
-                              : "bg-transparent"
-                          }`}
-                        />
-
-                        {/* 3D Beveled Icon Medallion */}
+                      {/* Center Node */}
+                      <div className="absolute left-5 top-5 z-10 -translate-x-1/2 md:static md:flex md:translate-x-0 md:items-center md:justify-center">
                         <div
-                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-2 transition-all duration-300 group-hover:scale-110 ${
+                          className={`flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300 group-hover:scale-110 ${
                             isLatest
-                              ? "border-[#15966F] bg-gradient-to-b from-[#0E6A54] to-[#073D32] text-white shadow-[0_12px_26px_-6px_rgba(21,150,111,0.55)] dark:border-[#34D399] dark:from-[#15966F] dark:to-[#0B5243]"
-                              : "border-white bg-gradient-to-b from-white via-[#ECF8F2] to-[#D2EFE1] text-[#073D32] ring-2 ring-[#15966F]/25 shadow-[0_10px_22px_-6px_rgba(7,61,50,0.26),inset_0_1.5px_0_rgba(255,255,255,1)] group-hover:bg-gradient-to-b group-hover:from-[#0E6A54] group-hover:to-[#073D32] group-hover:text-white group-hover:ring-[#15966F]/50 dark:border-[#0B1411] dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]"
+                              ? "border-[#15966F] bg-[#073D32] text-white shadow-[0_8px_20px_-4px_rgba(21,150,111,0.5)] dark:border-[#34D399] dark:bg-[#15966F]"
+                              : "border-[#15966F]/40 bg-white text-[#073D32] shadow-[0_6px_14px_-4px_rgba(7,61,50,0.2)] group-hover:border-[#15966F] group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/40 dark:bg-[#0D1E19] dark:text-[#6EE7B7] dark:group-hover:bg-[#15966F] dark:group-hover:text-white"
                           }`}
                         >
-                          <Icon className="h-5 w-5" strokeWidth={2} />
+                          <Icon className="h-4 w-4" strokeWidth={2} />
                         </div>
-
-                        {/* Right horizontal connector arm */}
-                        <span
-                          aria-hidden="true"
-                          className={`hidden h-[2px] flex-1 md:block ${
-                            !isEven
-                              ? "bg-gradient-to-l from-[#C5DDD3] to-[#15966F]/60 dark:from-[#1E3B32] dark:to-[#34D399]/50"
-                              : "bg-transparent"
-                          }`}
-                        />
                       </div>
 
-                      {/* Right Side: Editorial Year Counterweight on even rows, Card on odd rows */}
+                      {/* Right Column */}
                       <div
-                        className={`pl-16 md:col-span-5 md:pl-0 ${
-                          !isEven ? "md:pl-6" : "hidden md:flex md:flex-col md:items-start md:pl-8 md:text-left"
+                        className={`pl-14 md:pl-0 ${
+                          !isEven ? "block" : "hidden md:flex md:justify-start md:pl-2"
                         }`}
                       >
                         {!isEven ? (
-                          <div
-                            className={`relative overflow-hidden rounded-[24px] border border-b-[3px] p-6 transition-all duration-300 group-hover:-translate-y-1 sm:p-7 ${
-                              isLatest
-                                ? "border-[#15966F]/35 border-b-[#15966F]/55 bg-gradient-to-br from-white via-[#F4FBF7] to-[#E6F5EE] shadow-[0_16px_36px_-14px_rgba(21,150,111,0.22)] dark:border-[#34D399]/35 dark:from-[#0E241E] dark:to-[#133228]"
-                                : "border-[#DCE8E3] border-b-[#C5DDD3] bg-white shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] group-hover:border-[#15966F]/45 group-hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
-                            }`}
-                          >
-                            <div className="flex items-center justify-between gap-2">
-                              <span className="inline-flex items-center rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                                {item.year}
-                              </span>
-                              <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
-                                {item.stat}
-                              </span>
-                            </div>
-
-                            <h3 className="mt-4 font-heading text-[19px] font-bold tracking-tight text-[#0E241E] transition-colors group-hover:text-[#073D32] sm:text-[21px] dark:text-white">
-                              {item.title}
-                            </h3>
-
-                            <p className="mt-2 text-[14px] leading-[1.7] text-[#5C6B64] sm:text-[15px] dark:text-[#A0B3AC]">
-                              {item.description}
-                            </p>
-
-                            <div className="mt-5 h-[3px] w-10 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-20 group-hover:bg-gradient-to-r group-hover:from-[#073D32] group-hover:to-[#15966F] dark:bg-[#1E3B32]" />
-                          </div>
+                          cardMarkup
                         ) : (
-                          <div>
-                            <div className="font-editorial italic text-5xl leading-none text-[#15966F]/28 transition-colors duration-300 group-hover:text-[#15966F]/75 lg:text-6xl dark:text-[#34D399]/25 dark:group-hover:text-[#34D399]/75">
-                              {item.year}
-                            </div>
-                            <div className="mt-1.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-[#687A73] dark:text-[#8DA39B]">
-                              Chapter {chapter} &bull; {item.stat}
-                            </div>
-                          </div>
+                          <span className="inline-flex items-center rounded-full border border-[#DCE8E3] bg-[#FAFCFB] px-4 py-1.5 font-heading text-[14px] font-bold tracking-tight text-[#073D32] shadow-2xs transition-colors duration-300 group-hover:border-[#15966F]/45 group-hover:bg-[#EBF7F1] group-hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-[#6EE7B7]">
+                            {item.year}
+                          </span>
                         )}
                       </div>
                     </div>
