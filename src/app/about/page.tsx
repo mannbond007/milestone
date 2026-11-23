@@ -704,13 +704,13 @@ export default function AboutPage() {
                   delay={i * 0.06}
                   className={`relative h-full ${desktopOrderClass}`}
                 >
-                  <div className="group relative h-full pl-5 pt-5 sm:pl-6 sm:pt-6">
+                  <div className="group relative h-full pl-7 pt-8 sm:pl-8 sm:pt-9">
                     {/* Exact Flush-Fit Dotted Snake Connectors with Directional Badges (Desktop) */}
-                    {/* 01 -> 02 (Rightward across 64px gap + 24px pl-6 = 88px) */}
+                    {/* 01 -> 02 (Rightward across 64px gap + 32px pl-8 = 96px) */}
                     {i === 0 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute left-full top-[calc(50%+12px)] z-0 hidden w-[88px] -translate-y-1/2 items-center lg:flex"
+                        className="pointer-events-none absolute left-full top-[calc(50%+18px)] z-0 hidden w-[96px] -translate-y-1/2 items-center lg:flex"
                       >
                         <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                         <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
@@ -720,11 +720,11 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    {/* 02 ↓ 03 (Downward across 56px gap + 24px pt-6 = 80px) */}
+                    {/* 02 ↓ 03 (Downward across 56px gap + 36px pt-9 = 92px) */}
                     {i === 1 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute left-[calc(50%+12px)] top-full z-0 hidden h-[80px] -translate-x-1/2 flex-col items-center lg:flex"
+                        className="pointer-events-none absolute left-[calc(50%+16px)] top-full z-0 hidden h-[92px] -translate-x-1/2 flex-col items-center lg:flex"
                       >
                         <span className="flex-1 border-l-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                         <span className="my-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
@@ -734,11 +734,11 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    {/* 03 -> 04 (Leftward from Card 03 glass left edge across 88px to Card 04 right edge) */}
+                    {/* 03 -> 04 (Leftward from Card 03 glass left edge across 96px to Card 04 right edge) */}
                     {i === 2 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute right-[calc(100%-24px)] top-[calc(50%+12px)] z-0 hidden w-[88px] -translate-y-1/2 items-center lg:flex"
+                        className="pointer-events-none absolute right-[calc(100%-32px)] top-[calc(50%+18px)] z-0 hidden w-[96px] -translate-y-1/2 items-center lg:flex"
                       >
                         <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                         <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
@@ -748,11 +748,11 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    {/* 04 ↓ 05 (Downward across 56px gap + 24px pt-6 = 80px) */}
+                    {/* 04 ↓ 05 (Downward across 56px gap + 36px pt-9 = 92px) */}
                     {i === 3 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute left-[calc(50%+12px)] top-full z-0 hidden h-[80px] -translate-x-1/2 flex-col items-center lg:flex"
+                        className="pointer-events-none absolute left-[calc(50%+16px)] top-full z-0 hidden h-[92px] -translate-x-1/2 flex-col items-center lg:flex"
                       >
                         <span className="flex-1 border-l-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                         <span className="my-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
@@ -762,11 +762,11 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    {/* 05 -> 06 (Rightward across 64px gap + 24px pl-6 = 88px) */}
+                    {/* 05 -> 06 (Rightward across 64px gap + 32px pl-8 = 96px) */}
                     {i === 4 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute left-full top-[calc(50%+12px)] z-0 hidden w-[88px] -translate-y-1/2 items-center lg:flex"
+                        className="pointer-events-none absolute left-full top-[calc(50%+18px)] z-0 hidden w-[96px] -translate-y-1/2 items-center lg:flex"
                       >
                         <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                         <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
@@ -776,21 +776,27 @@ export default function AboutPage() {
                       </div>
                     )}
 
-                    {/* Overlapping Deep Emerald-Forest Squircle Badge (Proportioned cleanly behind corner) */}
+                    {/* Overlapping Deep Emerald-Forest Squircle Badge (Balanced breathing room around numeral) */}
                     <div
                       aria-hidden="true"
-                      className="absolute left-0 top-0 z-0 flex h-[88px] w-[88px] items-start justify-start rounded-[22px] bg-gradient-to-br from-[#073D32] via-[#0F614C] to-[#15966F] pl-3 pt-2 shadow-[0_14px_28px_-8px_rgba(7,61,50,0.45)] transition-transform duration-300 group-hover:-translate-y-1 dark:from-[#15966F] dark:via-[#0D5A46] dark:to-[#073D32]"
+                      className="absolute left-0 top-0 z-0 flex h-[108px] w-[108px] items-start justify-start rounded-[26px] border border-white/20 bg-gradient-to-br from-[#06382E] via-[#0E5C48] to-[#15966F] pl-4 pt-3 shadow-[0_18px_36px_-8px_rgba(7,61,50,0.45),inset_0_1px_0_rgba(255,255,255,0.28)] transition-transform duration-300 group-hover:-translate-y-1 dark:from-[#15966F] dark:via-[#0D5A46] dark:to-[#073D32]"
                     >
-                      <span className="font-heading text-[18px] font-bold leading-none tracking-tight text-white">
+                      <span className="font-heading text-[18px] font-bold leading-none tracking-wider text-white drop-shadow-xs">
                         {num}
                       </span>
                     </div>
 
-                    {/* Equal-Height Frosted Translucent Glass Card */}
-                    <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[22px] border border-white/95 bg-white/78 p-6 shadow-[0_18px_46px_-14px_rgba(7,61,50,0.15),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:bg-white/88 group-hover:shadow-[0_26px_54px_-14px_rgba(7,61,50,0.22)] sm:p-7 dark:border-[#1E3B32]/90 dark:bg-[#0D1E19]/82 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
-                      <div>
+                    {/* Equal-Height Frosted Acrylic Glass Card */}
+                    <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[24px] border-[1.5px] border-white/95 bg-white/68 p-6 shadow-[0_20px_50px_-14px_rgba(7,61,50,0.16),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:bg-white/80 group-hover:shadow-[0_28px_56px_-14px_rgba(7,61,50,0.22)] sm:p-7 dark:border-[#1E3B32]/90 dark:bg-[#0D1E19]/78 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
+                      {/* Soft emerald frosted refraction glow in top-left corner */}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#15966F]/20 blur-2xl"
+                      />
+
+                      <div className="relative z-10">
                         {/* Header Row offset cleanly past the frosted corner */}
-                        <div className="flex items-center justify-between gap-3 pl-14">
+                        <div className="flex items-center justify-between gap-3 pl-16">
                           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
                             <Icon className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
                             <span>{item.year}</span>
