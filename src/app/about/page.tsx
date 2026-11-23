@@ -457,27 +457,71 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-16 md:py-20">
+      {/* Values — Sticky Editorial Manifesto + 2-Column Tactile Matrix */}
+      <section className="relative border-b border-[#E3ECE8] bg-[#FAFCFB] py-20 md:py-28 dark:border-[#162E26] dark:bg-[#07120F]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <SectionHeader badge="Our Values" title="What We Stand For" />
-          </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {values.map((val, i) => {
-              const Icon = val.icon;
-              return (
-                <ScrollReveal key={i} delay={i * 0.08}>
-                  <div className="bg-card rounded-2xl border border-border/50 p-6 transition-all hover:shadow-card-hover hover:border-accent/20">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-4">
-                      <Icon className="h-6 w-6 text-accent" />
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-14">
+            {/* Left Sticky Manifesto Column */}
+            <ScrollReveal className="lg:sticky lg:top-28 lg:col-span-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#15966F] dark:text-[#34D399]">
+                Our Values
+              </p>
+
+              <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
+                What We{" "}
+                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                  Stand For
+                </span>
+              </h2>
+
+              <p className="mt-4 text-[15.5px] leading-[1.7] text-[#5C6B64] dark:text-[#A0B3AC]">
+                Every scholarship grant, mentorship session, and university recommendation we offer is anchored in six clear principles.
+              </p>
+
+              <div className="mt-7 border-l-2 border-[#15966F] pl-4 dark:border-[#34D399]">
+                <div className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#073D32] dark:text-white">
+                  Scholar Charter
+                </div>
+                <p className="mt-1 text-[13px] leading-relaxed text-[#687A73] dark:text-[#8DA39B]">
+                  Fair evaluation, verified partners, and zero compromise on student integrity since 2018.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Right 2-Column Tactile Values Matrix */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:col-span-8">
+              {values.map((val, i) => {
+                const Icon = val.icon;
+                const indexLabel = String(i + 1).padStart(2, "0");
+                return (
+                  <ScrollReveal key={val.title} delay={i * 0.05} className="h-full">
+                    <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-6 shadow-[0_10px_26px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] sm:p-7 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40">
+                      <div>
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#15966F]/20 bg-gradient-to-b from-[#FFFFFF] via-[#ECF8F2] to-[#D2EFE1] text-[#0B7453] shadow-[0_8px_16px_-6px_rgba(7,61,50,0.2),inset_0_1.5px_0_rgba(255,255,255,1),inset_0_-2px_0_rgba(11,116,83,0.15)] transition-transform duration-300 group-hover:scale-105 dark:border-[#34D399]/25 dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]">
+                            <Icon className="h-5 w-5" strokeWidth={2} />
+                          </div>
+
+                          <span className="font-editorial italic text-2xl font-semibold text-[#15966F]/45 transition-colors duration-300 group-hover:text-[#15966F] dark:text-[#34D399]/40 dark:group-hover:text-[#34D399]">
+                            {indexLabel}
+                          </span>
+                        </div>
+
+                        <h3 className="mt-5 font-heading text-[18.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                          {val.title}
+                        </h3>
+
+                        <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
+                          {val.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 h-[3px] w-8 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-16 group-hover:bg-gradient-to-r group-hover:from-[#073D32] group-hover:to-[#15966F] dark:bg-[#1E3B32] dark:group-hover:from-[#15966F] dark:group-hover:to-[#6EE7B7]" />
                     </div>
-                    <h3 className="font-heading font-extrabold tracking-tight text-primary dark:text-white text-xl mb-3">{val.title}</h3>
-                    <p className="text-base text-muted-foreground leading-loose">{val.description}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
+                  </ScrollReveal>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
