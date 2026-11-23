@@ -787,46 +787,59 @@ export default function AboutPage() {
                     </div>
 
                     {/* Equal-Height Frosted Acrylic Glass Card */}
-                    <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[24px] border-[1.5px] border-white/95 bg-white/68 p-6 shadow-[0_20px_50px_-14px_rgba(7,61,50,0.16),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:bg-white/80 group-hover:shadow-[0_28px_56px_-14px_rgba(7,61,50,0.22)] sm:p-7 dark:border-[#1E3B32]/90 dark:bg-[#0D1E19]/78 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
+                    <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[24px] border-[1.5px] border-white/95 border-b-[3px] border-b-[#C7DED4] bg-gradient-to-br from-white/80 via-white/70 to-[#EEF8F3]/85 p-6 ring-1 ring-[#073D32]/[0.06] shadow-[0_22px_52px_-16px_rgba(7,61,50,0.16),0_6px_16px_-6px_rgba(7,61,50,0.08),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:border-b-[#15966F]/55 group-hover:shadow-[0_30px_60px_-16px_rgba(7,61,50,0.22),0_8px_20px_-6px_rgba(21,150,111,0.12)] sm:p-7 dark:border-[#1E3B32]/90 dark:border-b-[#122922] dark:from-[#0F241E]/85 dark:via-[#0D1E19]/80 dark:to-[#112A22]/85 dark:ring-white/5 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
                       {/* Soft emerald frosted refraction glow in top-left corner */}
                       <span
                         aria-hidden="true"
                         className="pointer-events-none absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#15966F]/20 blur-2xl"
                       />
 
+                      {/* Subtle editorial year watermark in top-right */}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -right-2 -top-3 select-none font-editorial italic text-[82px] leading-none text-[#15966F]/[0.05] transition-colors duration-300 group-hover:text-[#15966F]/[0.09] dark:text-[#34D399]/[0.05]"
+                      >
+                        {item.year}
+                      </span>
+
                       <div className="relative z-10">
                         {/* Header Row offset cleanly past the frosted corner */}
-                        <div className="flex items-center justify-between gap-3 pl-16">
-                          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                        <div className="flex flex-wrap items-center justify-between gap-2.5 pl-14 sm:pl-16">
+                          <span className="inline-flex items-center gap-2 rounded-full border border-[#DCE8E3] bg-white/95 px-3 py-1 font-heading text-[12.5px] font-bold tracking-wide text-[#073D32] shadow-2xs dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white">
                             <Icon className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
                             <span>{item.year}</span>
                           </span>
 
-                          <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
+                          <span className="inline-flex items-center rounded-full border border-[#15966F]/18 bg-[#EBF7F1]/90 px-3 py-1 font-heading text-[11px] font-bold uppercase tracking-wider text-[#0B7453] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
                             {item.stat}
                           </span>
                         </div>
 
-                        <h3 className="mt-5 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] sm:text-[21px] dark:text-white">
+                        <h3 className="mt-5 font-heading text-[21px] font-bold leading-snug tracking-[-0.02em] text-[#0E241E] transition-colors duration-200 group-hover:text-[#073D32] sm:text-[22px] dark:text-white">
                           {item.title}
                         </h3>
 
-                        <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        <p className="mt-2 text-[14px] leading-[1.7] text-[#5C6B64] sm:text-[14.5px] dark:text-[#A0B3AC]">
                           {item.description}
                         </p>
                       </div>
 
-                      <ul className="mt-5 space-y-2 border-t border-[#E6F0EC] pt-3.5 dark:border-[#18332B]">
-                        {item.points.map((pt) => (
-                          <li
-                            key={pt}
-                            className="flex items-start gap-2 text-[13px] leading-snug text-[#465952] dark:text-[#B7CDC4]"
-                          >
-                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#15966F] dark:text-[#34D399]" />
-                            <span>{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {/* Recessed Soft-Mint Highlights Tray */}
+                      <div className="relative z-10 mt-5 rounded-2xl border border-[#E2EFE9] bg-[#F7FBF9]/90 p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] sm:p-4 dark:border-[#18332B] dark:bg-[#0B1915]/80 dark:shadow-none">
+                        <ul className="space-y-2">
+                          {item.points.map((pt) => (
+                            <li
+                              key={pt}
+                              className="flex items-start gap-2.5 text-[13px] font-medium leading-snug text-[#3B524A] dark:text-[#C4D9D1]"
+                            >
+                              <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#E3F4EC] text-[#15966F] dark:bg-[#143329] dark:text-[#34D399]">
+                                <CheckCircle2 className="h-3 w-3" strokeWidth={2.4} />
+                              </span>
+                              <span>{pt}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </ScrollReveal>
