@@ -56,17 +56,38 @@ const journeySteps = [
   },
   {
     step: "02",
+    tag: "Evaluation",
+    title: "Merit Assessment & Review",
+    description:
+      "Reviewing academic records, scholarship test performance, and financial need through fair, unbiased evaluation criteria.",
+  },
+  {
+    step: "03",
+    tag: "Grant Aid",
+    title: "Scholarship Grant Approval",
+    description:
+      "Approving verified tuition, hostel, and study material grants directly to support deserving scholars with zero hidden fees.",
+  },
+  {
+    step: "04",
     tag: "Mentorship",
     title: "Mentorship & Guidance",
     description:
       "Pairing selected scholars with subject experts, offering disciplined schedules, curated study materials, and regular progress reviews.",
   },
   {
-    step: "03",
+    step: "05",
+    tag: "Admissions",
+    title: "College & Admission Counseling",
+    description:
+      "Guiding candidates through centralized counseling for NEET-UG, JEE, CLAT, and top partner institutions across India and abroad.",
+  },
+  {
+    step: "06",
     tag: "Impact",
     title: "Success & Pay-It-Forward",
     description:
-      "Guiding students into respected professional colleges and careers, nurturing a community that guides the next generation.",
+      "Guiding students into respected professional colleges and careers, nurturing a community that mentors the next generation.",
   },
 ];
 
@@ -457,15 +478,15 @@ export function VisionMissionContent() {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-12">
+          <div className="grid grid-cols-1 gap-x-10 gap-y-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-12">
             {journeySteps.map((step, idx) => (
-              <ScrollReveal key={step.step} delay={idx * 0.1} className="relative h-full">
-                <div className="group relative h-full pl-6 pt-7">
-                  {/* Flush Horizontal Dotted Connector to Next Card on Desktop */}
-                  {idx < journeySteps.length - 1 && (
+              <ScrollReveal key={step.step} delay={idx * 0.06} className="relative h-full">
+                <div className="group relative h-full pl-7 pt-8">
+                  {/* Flush Horizontal Dotted Connector between columns on each row (Desktop) */}
+                  {idx % 3 !== 2 && (
                     <div
                       aria-hidden="true"
-                      className="pointer-events-none absolute left-full top-[calc(50%+14px)] z-0 hidden w-[72px] -translate-y-1/2 items-center lg:flex"
+                      className="pointer-events-none absolute left-full top-[calc(50%+16px)] z-0 hidden w-[76px] -translate-y-1/2 items-center lg:flex"
                     >
                       <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                       <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
@@ -478,17 +499,21 @@ export function VisionMissionContent() {
                   {/* Overlapping Deep Emerald Step Badge */}
                   <div
                     aria-hidden="true"
-                    className="absolute left-0 top-0 z-0 flex h-[92px] w-[92px] items-start justify-start rounded-[22px] border border-white/20 bg-gradient-to-br from-[#06382E] via-[#0E5C48] to-[#15966F] pl-3.5 pt-2.5 shadow-[0_14px_28px_-8px_rgba(7,61,50,0.42)] transition-transform duration-300 group-hover:-translate-y-1"
+                    className="absolute left-0 top-0 z-0 flex h-[100px] w-[100px] items-start justify-start rounded-[24px] border border-white/20 bg-gradient-to-br from-[#06382E] via-[#0E5C48] to-[#15966F] pl-4 pt-3 shadow-[0_16px_32px_-8px_rgba(7,61,50,0.42),inset_0_1px_0_rgba(255,255,255,0.28)] transition-transform duration-300 group-hover:-translate-y-1"
                   >
-                    <span className="font-heading text-[17px] font-bold leading-none text-white">
+                    <span className="font-heading text-[17px] font-bold leading-none tracking-wider text-white">
                       {step.step}
                     </span>
                   </div>
 
                   {/* Frosted Glass Step Card */}
-                  <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[22px] border-[1.5px] border-white/95 border-b-[3px] border-b-[#C7DED4] bg-gradient-to-br from-white/85 via-white/75 to-[#EFF9F4]/85 p-6 ring-1 ring-[#073D32]/[0.06] shadow-[0_18px_44px_-14px_rgba(7,61,50,0.14),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/40 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0F241E]/85 dark:to-[#112A22]/85">
-                    <div>
-                      <div className="flex justify-end pl-12">
+                  <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[22px] border-[1.5px] border-white/95 border-b-[3px] border-b-[#C7DED4] bg-gradient-to-br from-white/80 via-white/70 to-[#EFF9F4]/85 p-6 ring-1 ring-[#073D32]/[0.06] shadow-[0_18px_44px_-14px_rgba(7,61,50,0.14),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/40 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0F241E]/85 dark:to-[#112A22]/85">
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -left-8 -top-8 h-28 w-28 rounded-full bg-[#15966F]/18 blur-2xl"
+                    />
+                    <div className="relative z-10">
+                      <div className="flex justify-end pl-14">
                         <span className="rounded-full border border-[#15966F]/18 bg-[#EBF7F1] px-3 py-1 font-heading text-[11px] font-bold uppercase tracking-wider text-[#0B7453] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
                           {step.tag}
                         </span>
