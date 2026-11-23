@@ -20,12 +20,12 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2018", title: "Foundation Year", description: "Milestone Scholarship Program was established with a vision to democratize education.", icon: Compass },
-  { year: "2019", title: "First Cohort", description: "500+ students received scholarships in our inaugural year across 5 states.", icon: GraduationCap },
-  { year: "2020", title: "Digital Expansion", description: "Launched online scholarship tests and digital application portal.", icon: Laptop },
-  { year: "2021", title: "National Reach", description: "Expanded operations to 15+ states with 2,000+ scholars.", icon: Globe },
-  { year: "2023", title: "Mentorship Launch", description: "Introduced mentorship programs with 100+ industry professionals.", icon: Users },
-  { year: "2025", title: "15,000+ Scholars", description: "Crossed the milestone of supporting 15,000+ students nationwide.", icon: Trophy },
+  { year: "2018", stat: "Foundation", title: "Foundation Year", description: "Milestone Scholarship Program was established with a vision to democratize education.", icon: Compass },
+  { year: "2019", stat: "500+ Scholars", title: "First Cohort", description: "500+ students received scholarships in our inaugural year across 5 states.", icon: GraduationCap },
+  { year: "2020", stat: "100% Online", title: "Digital Expansion", description: "Launched online scholarship tests and digital application portal.", icon: Laptop },
+  { year: "2021", stat: "2,000+ Scholars", title: "National Reach", description: "Expanded operations to 15+ states with 2,000+ scholars.", icon: Globe },
+  { year: "2023", stat: "100+ Mentors", title: "Mentorship Launch", description: "Introduced mentorship programs with 100+ industry professionals.", icon: Users },
+  { year: "2025", stat: "15,000+ Scholars", title: "15,000+ Scholars", description: "Crossed the milestone of supporting 15,000+ students nationwide.", icon: Trophy },
 ];
 
 export default function AboutPage() {
@@ -579,52 +579,194 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        {/* Soft background glows */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent/3 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/3 blur-[120px] pointer-events-none" />
+      {/* Timeline: Refined Vertical Center-Spine Journey */}
+      <section className="relative overflow-hidden border-t border-[#E3ECE8] bg-white py-20 md:py-28 dark:border-[#162E26] dark:bg-[#0B1411]">
+        {/* Subtle ambient emerald depth */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-[#15966F]/[0.05] blur-3xl"
+        />
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <SectionHeader badge="Our Journey" title="Milestones Along The Way" className="mb-16" />
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Clean Editorial Header */}
+          <ScrollReveal className="mx-auto mb-16 max-w-2xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                Our Journey
+              </span>
+            </div>
+
+            <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.028em] text-[#0E241E] sm:text-4xl lg:text-[44px] dark:text-white">
+              Milestones{" "}
+              <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                Along The Way
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 210 12"
+                  fill="none"
+                  className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 9.5C54 3.5 156 2.5 208 8.5"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h2>
+
+            <p className="mt-4 text-[15.5px] leading-relaxed text-[#5C6B64] sm:text-[16.5px] dark:text-[#A0B3AC]">
+              Seven years of steady scholar impact across India, from our first cohort to over 15,000 students.
+            </p>
           </ScrollReveal>
-          
+
           <div className="relative">
-            {/* Gradient Timeline Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-accent/80 via-accent/40 to-transparent -translate-x-1/2" />
-            
-            <div className="space-y-12">
+            {/* Sculpted 3D Vertical Center Rail */}
+            <div
+              aria-hidden="true"
+              className="absolute bottom-4 left-6 top-2 w-[3px] -translate-x-1/2 rounded-full bg-gradient-to-b from-[#073D32] via-[#15966F] to-[#15966F]/20 shadow-[0_0_12px_rgba(21,150,111,0.25)] md:left-1/2"
+            />
+
+            <div className="space-y-10 md:space-y-12">
               {milestones.map((item, i) => {
                 const isEven = i % 2 === 0;
+                const isLatest = i === milestones.length - 1;
                 const Icon = item.icon;
+                const chapter = String(i + 1).padStart(2, "0");
+
                 return (
-                  <ScrollReveal key={i} delay={i * 0.1} direction={isEven ? "left" : "right"}>
-                    <div className="relative flex items-start w-full group">
-                      
-                      {/* Timeline Card */}
-                      <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${isEven ? "md:mr-auto" : "md:ml-auto"}`}>
-                        <div className="bg-white dark:bg-slate-900/40 rounded-3xl border border-slate-200 dark:border-slate-800/80 p-6 md:p-8 hover:border-accent/30 hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-500 shadow-sm relative overflow-hidden group">
-                          {/* Corner hover glow */}
-                          <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                          
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-accent/10 text-accent border border-accent/20 tracking-wider mb-4">
-                            {item.year}
-                          </span>
-                          <h3 className="font-heading font-extrabold text-primary dark:text-white text-lg md:text-xl mb-3 group-hover:text-accent transition-colors duration-300">
-                            {item.title}
-                          </h3>
-                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                            {item.description}
-                          </p>
+                  <ScrollReveal
+                    key={item.year}
+                    delay={i * 0.08}
+                    direction={isEven ? "left" : "right"}
+                  >
+                    <div className="group relative grid grid-cols-1 items-center md:grid-cols-12">
+                      {/* Left Side: Card on even rows, Editorial Year Counterweight on odd rows */}
+                      <div
+                        className={`pl-16 md:col-span-5 md:pl-0 ${
+                          isEven ? "md:pr-6" : "hidden md:flex md:flex-col md:items-end md:pr-8 md:text-right"
+                        }`}
+                      >
+                        {isEven ? (
+                          <div
+                            className={`relative overflow-hidden rounded-[24px] border border-b-[3px] p-6 transition-all duration-300 group-hover:-translate-y-1 sm:p-7 ${
+                              isLatest
+                                ? "border-[#15966F]/35 border-b-[#15966F]/55 bg-gradient-to-br from-white via-[#F4FBF7] to-[#E6F5EE] shadow-[0_16px_36px_-14px_rgba(21,150,111,0.22)] dark:border-[#34D399]/35 dark:from-[#0E241E] dark:to-[#133228]"
+                                : "border-[#DCE8E3] border-b-[#C5DDD3] bg-white shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] group-hover:border-[#15966F]/45 group-hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <span className="inline-flex items-center rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                                {item.year}
+                              </span>
+                              <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
+                                {item.stat}
+                              </span>
+                            </div>
+
+                            <h3 className="mt-4 font-heading text-[19px] font-bold tracking-tight text-[#0E241E] transition-colors group-hover:text-[#073D32] sm:text-[21px] dark:text-white">
+                              {item.title}
+                            </h3>
+
+                            <p className="mt-2 text-[14px] leading-[1.7] text-[#5C6B64] sm:text-[15px] dark:text-[#A0B3AC]">
+                              {item.description}
+                            </p>
+
+                            <div className="mt-5 h-[3px] w-10 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-20 group-hover:bg-gradient-to-r group-hover:from-[#073D32] group-hover:to-[#15966F] dark:bg-[#1E3B32]" />
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="font-editorial italic text-5xl leading-none text-[#15966F]/28 transition-colors duration-300 group-hover:text-[#15966F]/75 lg:text-6xl dark:text-[#34D399]/25 dark:group-hover:text-[#34D399]/75">
+                              {item.year}
+                            </div>
+                            <div className="mt-1.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-[#687A73] dark:text-[#8DA39B]">
+                              Chapter {chapter} &bull; {item.stat}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Center Medallion Node + Connector Arms */}
+                      <div className="absolute left-6 top-6 z-10 -translate-x-1/2 md:static md:col-span-2 md:flex md:translate-x-0 md:items-center md:justify-center">
+                        {/* Left horizontal connector arm */}
+                        <span
+                          aria-hidden="true"
+                          className={`hidden h-[2px] flex-1 md:block ${
+                            isEven
+                              ? "bg-gradient-to-r from-[#C5DDD3] to-[#15966F]/60 dark:from-[#1E3B32] dark:to-[#34D399]/50"
+                              : "bg-transparent"
+                          }`}
+                        />
+
+                        {/* 3D Beveled Icon Medallion */}
+                        <div
+                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-2 transition-all duration-300 group-hover:scale-110 ${
+                            isLatest
+                              ? "border-[#15966F] bg-gradient-to-b from-[#0E6A54] to-[#073D32] text-white shadow-[0_12px_26px_-6px_rgba(21,150,111,0.55)] dark:border-[#34D399] dark:from-[#15966F] dark:to-[#0B5243]"
+                              : "border-white bg-gradient-to-b from-white via-[#ECF8F2] to-[#D2EFE1] text-[#073D32] ring-2 ring-[#15966F]/25 shadow-[0_10px_22px_-6px_rgba(7,61,50,0.26),inset_0_1.5px_0_rgba(255,255,255,1)] group-hover:bg-gradient-to-b group-hover:from-[#0E6A54] group-hover:to-[#073D32] group-hover:text-white group-hover:ring-[#15966F]/50 dark:border-[#0B1411] dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]"
+                          }`}
+                        >
+                          <Icon className="h-5 w-5" strokeWidth={2} />
                         </div>
+
+                        {/* Right horizontal connector arm */}
+                        <span
+                          aria-hidden="true"
+                          className={`hidden h-[2px] flex-1 md:block ${
+                            !isEven
+                              ? "bg-gradient-to-l from-[#C5DDD3] to-[#15966F]/60 dark:from-[#1E3B32] dark:to-[#34D399]/50"
+                              : "bg-transparent"
+                          }`}
+                        />
                       </div>
 
-                      {/* Timeline Center Dot / Icon */}
-                      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 md:top-8 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-900 border-2 border-accent shadow-md transition-all duration-300 group-hover:scale-115 group-hover:bg-accent group-hover:border-accent group-hover:shadow-lg group-hover:shadow-accent/30">
-                        <Icon className="h-5 w-5 text-accent group-hover:text-white transition-colors duration-300" />
-                      </div>
+                      {/* Right Side: Editorial Year Counterweight on even rows, Card on odd rows */}
+                      <div
+                        className={`pl-16 md:col-span-5 md:pl-0 ${
+                          !isEven ? "md:pl-6" : "hidden md:flex md:flex-col md:items-start md:pl-8 md:text-left"
+                        }`}
+                      >
+                        {!isEven ? (
+                          <div
+                            className={`relative overflow-hidden rounded-[24px] border border-b-[3px] p-6 transition-all duration-300 group-hover:-translate-y-1 sm:p-7 ${
+                              isLatest
+                                ? "border-[#15966F]/35 border-b-[#15966F]/55 bg-gradient-to-br from-white via-[#F4FBF7] to-[#E6F5EE] shadow-[0_16px_36px_-14px_rgba(21,150,111,0.22)] dark:border-[#34D399]/35 dark:from-[#0E241E] dark:to-[#133228]"
+                                : "border-[#DCE8E3] border-b-[#C5DDD3] bg-white shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] group-hover:border-[#15966F]/45 group-hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-2">
+                              <span className="inline-flex items-center rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                                {item.year}
+                              </span>
+                              <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
+                                {item.stat}
+                              </span>
+                            </div>
 
+                            <h3 className="mt-4 font-heading text-[19px] font-bold tracking-tight text-[#0E241E] transition-colors group-hover:text-[#073D32] sm:text-[21px] dark:text-white">
+                              {item.title}
+                            </h3>
+
+                            <p className="mt-2 text-[14px] leading-[1.7] text-[#5C6B64] sm:text-[15px] dark:text-[#A0B3AC]">
+                              {item.description}
+                            </p>
+
+                            <div className="mt-5 h-[3px] w-10 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-20 group-hover:bg-gradient-to-r group-hover:from-[#073D32] group-hover:to-[#15966F] dark:bg-[#1E3B32]" />
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="font-editorial italic text-5xl leading-none text-[#15966F]/28 transition-colors duration-300 group-hover:text-[#15966F]/75 lg:text-6xl dark:text-[#34D399]/25 dark:group-hover:text-[#34D399]/75">
+                              {item.year}
+                            </div>
+                            <div className="mt-1.5 text-[11.5px] font-bold uppercase tracking-[0.18em] text-[#687A73] dark:text-[#8DA39B]">
+                              Chapter {chapter} &bull; {item.stat}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </ScrollReveal>
                 );
