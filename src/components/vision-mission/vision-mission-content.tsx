@@ -73,16 +73,16 @@ const journeySteps = [
 export function VisionMissionContent() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white dark:bg-[#07120F]">
-      {/* Hero Section: Clean Split + Floating Tilted Scholar Cards */}
-      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-br from-[#F2FAF6] via-[#FAFCFB] to-[#EBF7F1] pb-16 pt-28 md:pb-24 md:pt-36 dark:border-[#162E26] dark:from-[#071511] dark:via-[#07120F] dark:to-[#0A1F19]">
-        {/* Soft ambient emerald glow behind right card cluster */}
+      {/* Hero Section: Clean Architectural Split + Balanced 3-Card Scholar Showcase */}
+      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-br from-[#F2FAF6] via-[#FAFCFB] to-[#ECF7F2] pb-14 pt-24 md:pb-20 md:pt-32 dark:border-[#162E26] dark:from-[#071511] dark:via-[#07120F] dark:to-[#0A1F19]">
+        {/* Soft ambient emerald glow behind right showcase */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-[8%] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-[#15966F]/16 blur-[100px] dark:bg-[#15966F]/22"
+          className="pointer-events-none absolute right-[10%] top-1/2 h-[360px] w-[360px] -translate-y-1/2 rounded-full bg-[#15966F]/14 blur-[100px] dark:bg-[#15966F]/20"
         />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
             {/* Left Column: Clean, Tight Editorial Copy + CTA */}
             <div className="lg:col-span-6">
               <motion.div
@@ -92,7 +92,11 @@ export function VisionMissionContent() {
                 className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/90 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#073D32] dark:text-[#6EE7B7]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                  Vision &amp; Mission
+                </span>
+                <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
+                <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
                   Our North Star
                 </span>
               </motion.div>
@@ -101,7 +105,7 @@ export function VisionMissionContent() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.08 }}
-                className="mt-5 font-heading text-4xl font-bold leading-[1.06] tracking-[-0.03em] text-[#0E241E] sm:text-5xl lg:text-[58px] dark:text-white"
+                className="mt-5 font-heading text-4xl font-bold leading-[1.08] tracking-[-0.03em] text-[#0E241E] sm:text-5xl lg:text-[54px] dark:text-white"
               >
                 Empower Dreams,
                 <span className="block">Build Futures</span>
@@ -114,9 +118,9 @@ export function VisionMissionContent() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.16 }}
-                className="mt-5 max-w-lg text-[16px] leading-[1.7] text-[#5C6B64] sm:text-[17px] dark:text-[#A0B3AC]"
+                className="mt-5 max-w-lg text-[15.5px] leading-[1.7] text-[#5C6B64] sm:text-[17px] dark:text-[#A0B3AC]"
               >
-                Our vision and mission unite structured mentorship, merit scholarships, and academic guidance so capable students never fall behind due to finances.
+                Structured mentorship, merit scholarships, and dedicated academic guidance so capable students never fall behind due to finances.
               </motion.p>
 
               <motion.div
@@ -142,111 +146,103 @@ export function VisionMissionContent() {
               </motion.div>
             </div>
 
-            {/* Right Column: Interactive Floating Tilted Scholar Cards Collage */}
+            {/* Right Column: Clean Architectural 3-Card Scholar Grid (Zero awkward tilt/overlap) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative mx-auto w-full max-w-[500px] lg:col-span-6 lg:max-w-none"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.14 }}
+              className="lg:col-span-6"
             >
-              {/* Desktop Floating Collage (3 tilted interactive glass cards) */}
-              <div className="relative hidden h-[390px] sm:block">
-                {/* Card 1: Top-Left Deep Forest Glass Card */}
-                <div className="group absolute left-4 top-2 z-10 w-[198px] -rotate-4 rounded-[24px] border border-[#15966F]/35 bg-gradient-to-br from-[#073D32] via-[#0B5243] to-[#12725A] p-5 text-white shadow-[0_22px_48px_-14px_rgba(7,61,50,0.45),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:z-30 hover:-translate-y-2 hover:rotate-0">
-                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border-[3px] border-white/85 bg-[#E8F5EF] shadow-md">
-                    <img
-                      src="/scholars/priya_bk.png"
-                      alt="Priya B. K."
-                      className="h-full w-full object-cover object-top"
-                    />
-                  </div>
-                  <div className="mt-4">
-                    <div className="font-heading text-[16px] font-bold leading-tight text-white">
-                      Priya B. K.
-                    </div>
-                    <div className="mt-0.5 text-[12px] text-[#C8E9DC]">
-                      Civil Engineering
-                    </div>
-                    <div className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#6EE7B7]">
-                      <span className="h-2 w-2 rounded-full bg-[#34D399]" />
-                      <span>Scholar</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: Top-Right Luminous Frosted Card */}
-                <div className="group absolute right-2 top-8 z-10 w-[198px] rotate-4 rounded-[24px] border border-white/95 bg-white/85 p-5 shadow-[0_22px_48px_-14px_rgba(7,61,50,0.18),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 hover:z-30 hover:-translate-y-2 hover:rotate-0 dark:border-[#1E3B32] dark:bg-[#0D1E19]/90">
-                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border-[3px] border-[#E8F5EF] bg-[#E8F5EF] shadow-sm dark:border-[#1E3B32]">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-12">
+                {/* Featured Left Portrait Card */}
+                <div className="group flex flex-col overflow-hidden rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-2.5 shadow-[0_16px_38px_-14px_rgba(7,61,50,0.14)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 sm:col-span-6 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+                  <div className="relative aspect-[4/4.2] w-full overflow-hidden rounded-[18px] bg-[#E8F5EF] dark:bg-[#132E26]">
                     <img
                       src="/scholars/vishwajeet.png"
                       alt="Vishwajeet Ghosh"
-                      className="h-full w-full object-cover object-top"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="mt-4">
-                    <div className="font-heading text-[16px] font-bold leading-tight text-[#0E241E] dark:text-white">
-                      Vishwajeet G.
+                  <div className="flex items-center justify-between gap-2 px-2 pb-1.5 pt-3.5">
+                    <div className="min-w-0">
+                      <div className="truncate font-heading text-[15px] font-bold text-[#0E241E] dark:text-white">
+                        Vishwajeet Ghosh
+                      </div>
+                      <div className="truncate text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        MBA &bull; Symbiosis Pune
+                      </div>
                     </div>
-                    <div className="mt-0.5 text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
-                      MBA &bull; Symbiosis
-                    </div>
-                    <div className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#15966F] dark:text-[#34D399]">
-                      <span className="h-2 w-2 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
-                      <span>Scholar</span>
-                    </div>
+                    <span className="shrink-0 rounded-full bg-[#EBF7F1] px-2.5 py-1 font-heading text-[11px] font-bold text-[#073D32] dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                      ₹4L Aid
+                    </span>
                   </div>
                 </div>
 
-                {/* Card 3: Bottom-Center Overlapping Frosted Card */}
-                <div className="group absolute bottom-1 left-[28%] z-20 w-[204px] -rotate-2 rounded-[24px] border border-[#15966F]/20 bg-gradient-to-br from-white/95 via-[#F7FCF9]/95 to-[#E8F5EF]/95 p-5 shadow-[0_26px_54px_-14px_rgba(7,61,50,0.22),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 hover:z-30 hover:-translate-y-2 hover:rotate-0 dark:border-[#244E40] dark:from-[#0F241E]/95 dark:to-[#133228]/95">
-                  <div className="mx-auto h-20 w-20 overflow-hidden rounded-full border-[3px] border-white bg-[#E8F5EF] shadow-md dark:border-[#1E3B32]">
-                    <img
-                      src="/scholars/sushma_v.png"
-                      alt="Sushma V."
-                      className="h-full w-full object-cover object-top"
-                    />
+                {/* Right Stacked Pair */}
+                <div className="flex flex-col gap-4 sm:col-span-6">
+                  {/* Top Horizontal Scholar Card */}
+                  <div className="group flex items-center gap-3.5 rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-4 shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-[#DCE8E3] bg-[#E8F5EF] dark:border-[#1E3B32]">
+                      <img
+                        src="/scholars/priya_bk.png"
+                        alt="Priya B. K."
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="inline-flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+                        <span>Verified Scholar</span>
+                      </div>
+                      <div className="mt-0.5 truncate font-heading text-[15.5px] font-bold text-[#0E241E] dark:text-white">
+                        Priya B. K.
+                      </div>
+                      <div className="truncate text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        B.Tech Civil Engineering
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-4">
-                    <div className="font-heading text-[16px] font-bold leading-tight text-[#0E241E] dark:text-white">
-                      Sushma V.
+
+                  {/* Bottom Forest Highlight Scholar + Impact Card */}
+                  <div className="group flex flex-1 flex-col justify-between rounded-[22px] border border-[#15966F]/35 border-b-[3px] border-b-[#04241D] bg-gradient-to-br from-[#06342A] via-[#0B503F] to-[#12745A] p-5 text-white shadow-[0_18px_38px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center gap-3.5">
+                      <div className="h-13 w-13 shrink-0 overflow-hidden rounded-2xl border-2 border-white/80 bg-[#E8F5EF] shadow-sm">
+                        <img
+                          src="/scholars/sushma_v.png"
+                          alt="Sushma V."
+                          className="h-full w-full object-cover object-top"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="truncate font-heading text-[15.5px] font-bold text-white">
+                          Sushma V.
+                        </div>
+                        <div className="truncate text-[12px] text-[#C8E9DC]">
+                          B.Com &bull; Bangalore Univ.
+                        </div>
+                      </div>
                     </div>
-                    <div className="mt-0.5 text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
-                      B.Com &bull; Bangalore
-                    </div>
-                    <div className="mt-3 inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#15966F] dark:text-[#34D399]">
-                      <span className="h-2 w-2 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
-                      <span>Scholar</span>
+
+                    <div className="mt-5 grid grid-cols-2 divide-x divide-white/15 border-t border-white/15 pt-4">
+                      <div className="pr-3">
+                        <div className="font-heading text-xl font-bold leading-none text-white">
+                          15,000+
+                        </div>
+                        <div className="mt-1 text-[11px] font-medium text-[#C8E9DC]">
+                          Scholars Guided
+                        </div>
+                      </div>
+                      <div className="pl-4">
+                        <div className="font-heading text-xl font-bold leading-none text-[#86DFB8]">
+                          96%
+                        </div>
+                        <div className="mt-1 text-[11px] font-medium text-[#C8E9DC]">
+                          Success Rate
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Clean Mobile 3-Card Horizontal Strip */}
-              <div className="grid grid-cols-3 gap-2.5 sm:hidden">
-                {[
-                  { name: "Priya B. K.", role: "B.Tech", img: "/scholars/priya_bk.png", dark: true },
-                  { name: "Vishwajeet", role: "MBA", img: "/scholars/vishwajeet.png", dark: false },
-                  { name: "Sushma V.", role: "B.Com", img: "/scholars/sushma_v.png", dark: false },
-                ].map((s) => (
-                  <div
-                    key={s.name}
-                    className={`rounded-2xl border p-3 text-center shadow-sm ${
-                      s.dark
-                        ? "border-[#15966F]/30 bg-gradient-to-b from-[#073D32] to-[#0F5E4A] text-white"
-                        : "border-[#DCE8E3] bg-white text-[#0E241E] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white"
-                    }`}
-                  >
-                    <div className="mx-auto h-12 w-12 overflow-hidden rounded-full border-2 border-white">
-                      <img src={s.img} alt={s.name} className="h-full w-full object-cover object-top" />
-                    </div>
-                    <div className="mt-2 truncate font-heading text-[12px] font-bold">
-                      {s.name}
-                    </div>
-                    <div className={`text-[10.5px] ${s.dark ? "text-[#A7F3D0]" : "text-[#687A73]"}`}>
-                      {s.role}
-                    </div>
-                  </div>
-                ))}
               </div>
             </motion.div>
           </div>
