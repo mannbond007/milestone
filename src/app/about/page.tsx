@@ -511,15 +511,15 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
 
-            {/* Right Alpha-Masked 3D Graduation Artwork */}
+            {/* Right Seamless Floating 3D Graduation Artwork (Zero box edge) */}
             <ScrollReveal delay={0.08} className="hidden lg:col-span-5 lg:block">
-              <div className="relative ml-auto aspect-[16/10] w-full max-w-[430px] overflow-hidden rounded-[24px] [mask-image:radial-gradient(ellipse_82%_82%_at_56%_50%,black_52%,transparent_100%)]">
+              <div className="relative ml-auto aspect-[16/10] w-full max-w-[440px] [mask-image:radial-gradient(ellipse_68%_68%_at_62%_50%,black_34%,transparent_86%)]">
                 <Image
                   src="/images/ecosystem/scholarship.jpg"
                   alt="Graduation cap and academic books"
                   fill
-                  sizes="430px"
-                  className="object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
+                  sizes="440px"
+                  className="scale-[1.12] object-cover object-[78%_50%] mix-blend-multiply transition-transform duration-700 hover:scale-[1.16] dark:mix-blend-normal"
                 />
               </div>
             </ScrollReveal>
