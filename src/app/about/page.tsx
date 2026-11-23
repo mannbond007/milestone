@@ -20,12 +20,72 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2018", stat: "Foundation", title: "Foundation Year", description: "Milestone Scholarship Program was established with a vision to democratize education.", icon: Compass },
-  { year: "2019", stat: "500+ Scholars", title: "First Cohort", description: "500+ students received scholarships in our inaugural year across 5 states.", icon: GraduationCap },
-  { year: "2020", stat: "100% Online", title: "Digital Expansion", description: "Launched online scholarship tests and digital application portal.", icon: Laptop },
-  { year: "2021", stat: "2,000+ Scholars", title: "National Reach", description: "Expanded operations to 15+ states with 2,000+ scholars.", icon: Globe },
-  { year: "2023", stat: "100+ Mentors", title: "Mentorship Launch", description: "Introduced mentorship programs with 100+ industry professionals.", icon: Users },
-  { year: "2025", stat: "15,000+ Scholars", title: "15,000+ Scholars", description: "Crossed the milestone of supporting 15,000+ students nationwide.", icon: Trophy },
+  {
+    year: "2018",
+    stat: "Foundation",
+    title: "Foundation Year",
+    description: "Milestone Scholarship Program was established with a clear mission to make quality higher education accessible to deserving students.",
+    points: [
+      "Built a transparent merit and need-based evaluation process",
+      "Set up our first dedicated student guidance desk",
+    ],
+    icon: Compass,
+  },
+  {
+    year: "2019",
+    stat: "500+ Scholars",
+    title: "First Cohort",
+    description: "500+ students received scholarships in our inaugural year across 5 states, validating our combined grant and mentorship approach.",
+    points: [
+      "Direct tuition fee support across undergraduate programs",
+      "Partnered with initial network of recognized colleges",
+    ],
+    icon: GraduationCap,
+  },
+  {
+    year: "2020",
+    stat: "100% Online",
+    title: "Digital Expansion",
+    description: "Launched online scholarship assessment tests and a fully digital application portal so students from remote towns could apply easily.",
+    points: [
+      "Introduced remote proctored scholarship assessments",
+      "Streamlined online document verification checklists",
+    ],
+    icon: Laptop,
+  },
+  {
+    year: "2021",
+    stat: "2,000+ Scholars",
+    title: "National Reach",
+    description: "Expanded operations to 15+ states with 2,000+ scholars pursuing degrees across Medical, Engineering, Law, and Management.",
+    points: [
+      "Established regional counseling hubs in 15+ states",
+      "Added dedicated MBBS, B.Tech, and LLB grant tracks",
+    ],
+    icon: Globe,
+  },
+  {
+    year: "2023",
+    stat: "100+ Mentors",
+    title: "Mentorship Launch",
+    description: "Introduced structured 1-on-1 mentorship programs with 100+ industry professionals and senior educators.",
+    points: [
+      "Mentors from AIIMS, IITs, IIMs, and leading law firms",
+      "Added career roadmap and interview prep workshops",
+    ],
+    icon: Users,
+  },
+  {
+    year: "2025",
+    stat: "15,000+ Scholars",
+    title: "15,000+ Scholars",
+    description: "Crossed the milestone of supporting 15,000+ students nationwide alongside 1,750+ partner institutions and a 96% admission success rate.",
+    points: [
+      "Scholarships up to ₹5,00,000 across 10 academic disciplines",
+      "1,750+ NMC, AICTE, UGC, and BCI aligned partner institutions",
+    ],
+    icon: Trophy,
+  },
 ];
 
 export default function AboutPage() {
@@ -661,6 +721,18 @@ export default function AboutPage() {
                     <p className="mt-1.5 text-[14px] leading-[1.65] text-[#5C6B64] dark:text-[#A0B3AC]">
                       {item.description}
                     </p>
+
+                    <ul className="mt-4 space-y-2 border-t border-[#E6F0EC] pt-3.5 dark:border-[#18332B]">
+                      {item.points.map((pt) => (
+                        <li
+                          key={pt}
+                          className="flex items-start gap-2 text-[13px] leading-snug text-[#465952] dark:text-[#B7CDC4]"
+                        >
+                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 );
 
@@ -719,6 +791,84 @@ export default function AboutPage() {
               })}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Closing Accountability & Next-Step Band */}
+      <section className="border-t border-[#E3ECE8] bg-[#FAFCFB] py-16 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="rounded-[28px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-7 shadow-[0_18px_46px_-18px_rgba(7,61,50,0.12)] sm:p-10 lg:p-12 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+              <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-7">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#15966F] dark:text-[#34D399]">
+                    Ready To Begin
+                  </span>
+                  <h2 className="mt-3 font-heading text-2xl font-bold leading-tight tracking-tight text-[#0E241E] sm:text-3xl lg:text-[36px] dark:text-white">
+                    Take the Next Step Toward Your{" "}
+                    <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                      Academic Goals
+                    </span>
+                  </h2>
+                  <p className="mt-3.5 max-w-xl text-[15px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+                    Whether you are preparing for MBBS, Engineering, Law, Nursing, or Management, our counselors will help you find the right scholarship track with zero processing fees.
+                  </p>
+
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <Link
+                      href="/sign-up"
+                      className="group inline-flex h-12 items-center justify-between gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] pl-6 pr-2 text-[13.5px] font-semibold text-white shadow-[0_10px_24px_-6px_rgba(7,61,50,0.38)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062] sm:justify-center"
+                    >
+                      <span>Apply for 2025–26 Cycle</span>
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </Link>
+
+                    <Link
+                      href="/scholarships"
+                      className="inline-flex h-12 items-center justify-center rounded-full border border-[#D4E3DC] bg-[#FAFCFB] px-6 text-[13.5px] font-semibold text-[#073D32] transition-all duration-200 hover:border-[#15966F]/50 hover:bg-white hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
+                    >
+                      Browse All Scholarships
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Right Accountability Checklist */}
+                <div className="space-y-3.5 lg:col-span-5">
+                  {[
+                    {
+                      title: "Verified Institutional Network",
+                      detail: "1,750+ NMC, AICTE, UGC, and BCI aligned partner colleges across India and abroad.",
+                    },
+                    {
+                      title: "Zero Application Barriers",
+                      detail: "Free academic counseling, transparent eligibility checks, and clear documentation help.",
+                    },
+                    {
+                      title: "Dedicated Mentorship Support",
+                      detail: "Guidance from 100+ alumni and educators from AIIMS, IITs, IIMs, and NLUs.",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.title}
+                      className="flex items-start gap-3 rounded-2xl border border-[#E6F0EC] bg-[#FAFCFB] p-4 dark:border-[#18332B] dark:bg-[#11261F]"
+                    >
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                      <div>
+                        <div className="font-heading text-[14px] font-bold text-[#0E241E] dark:text-white">
+                          {item.title}
+                        </div>
+                        <p className="mt-0.5 text-[12.5px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+                          {item.detail}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
