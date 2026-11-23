@@ -385,37 +385,38 @@ export default function AboutPage() {
 
           {/* Wide Cinematic Editorial Campus Band */}
           <ScrollReveal delay={0.16}>
-            <div className="group relative mt-12 overflow-hidden rounded-[28px] bg-[#07261E] shadow-[0_24px_56px_-16px_rgba(7,61,50,0.28)]">
-              <div className="relative min-h-[240px] sm:min-h-[280px] flex flex-col justify-end p-7 sm:p-10 lg:flex-row lg:items-end lg:justify-between lg:p-12">
-                <Image
-                  src="/images/ecosystem/university.jpg"
-                  alt="MileStone scholar on university campus"
-                  fill
-                  sizes="(max-width: 1280px) 100vw, 1200px"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#05231B]/95 via-[#073429]/80 to-[#073429]/25" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#041C16]/90 via-transparent to-transparent" />
-
-                <div className="relative z-10 max-w-xl">
+            <div className="group relative mt-12 overflow-hidden rounded-[28px] border border-[#143D32] bg-gradient-to-br from-[#05231B] via-[#073429] to-[#0B4B3B] shadow-[0_24px_56px_-16px_rgba(7,61,50,0.28)]">
+              <div className="relative flex flex-col lg:min-h-[290px] lg:flex-row lg:items-center">
+                {/* Left Content: Quote + CTA (Never overlaps photo) */}
+                <div className="relative z-10 p-7 sm:p-10 lg:max-w-[60%] lg:p-12">
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#86DFB8]">
                     Direct Aid &bull; Zero Middlemen &bull; 100% Merit
                   </span>
-                  <p className="mt-2.5 font-editorial italic text-2xl leading-snug text-white sm:text-[28px]">
+                  <p className="mt-3 font-editorial italic text-2xl leading-snug text-white sm:text-[28px]">
                     &ldquo;Every component of the MileStone program is engineered to remove friction between talent and opportunity.&rdquo;
                   </p>
+                  <div className="mt-6">
+                    <Link
+                      href="/how-to-apply"
+                      className="group/cta inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-5 pr-2 text-[13.5px] font-bold text-[#073D32] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E8F5EF]"
+                    >
+                      <span>Explore How to Apply</span>
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover/cta:translate-x-0.5">
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </Link>
+                  </div>
                 </div>
 
-                <div className="relative z-10 mt-6 lg:mt-0 shrink-0">
-                  <Link
-                    href="/how-to-apply"
-                    className="group/cta inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-5 pr-2 text-[13.5px] font-bold text-[#073D32] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E8F5EF]"
-                  >
-                    <span>Explore How to Apply</span>
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover/cta:translate-x-0.5">
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </Link>
+                {/* Right Properly Framed Alpha-Masked Portrait (Full face & campus clearly visible) */}
+                <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_100%)] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[46%] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_100%)]">
+                  <Image
+                    src="/images/ecosystem/university.jpg"
+                    alt="MileStone scholar on university campus"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                    className="object-cover object-[50%_20%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
                 </div>
               </div>
             </div>
