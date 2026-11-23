@@ -73,179 +73,160 @@ const journeySteps = [
 export function VisionMissionContent() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white dark:bg-[#07120F]">
-      {/* Hero Section: Clean Architectural Split + Balanced 3-Card Scholar Showcase */}
-      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-br from-[#F2FAF6] via-[#FAFCFB] to-[#ECF7F2] pb-14 pt-24 md:pb-20 md:pt-32 dark:border-[#162E26] dark:from-[#071511] dark:via-[#07120F] dark:to-[#0A1F19]">
-        {/* Soft ambient emerald glow behind right showcase */}
+      {/* Hero Section: 3-Column Staggered Editorial Gallery (Inspired by Reference Layout) */}
+      <section className="relative overflow-hidden border-b border-[#E3ECE8] bg-gradient-to-b from-[#F2FAF6] via-[#FAFCFB] to-white pb-16 pt-24 md:pb-24 md:pt-32 dark:border-[#162E26] dark:from-[#071511] dark:via-[#07120F] dark:to-[#07120F]">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-[10%] top-1/2 h-[360px] w-[360px] -translate-y-1/2 rounded-full bg-[#15966F]/14 blur-[100px] dark:bg-[#15966F]/20"
+          className="pointer-events-none absolute -right-24 top-12 h-80 w-80 rounded-full bg-[#15966F]/[0.08] blur-3xl"
         />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-            {/* Left Column: Clean, Tight Editorial Copy + CTA */}
-            <div className="lg:col-span-6">
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45 }}
-                className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/90 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
-                  Vision &amp; Mission
-                </span>
-                <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
-                <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
-                  Our North Star
-                </span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.08 }}
-                className="mt-5 font-heading text-4xl font-bold leading-[1.08] tracking-[-0.03em] text-[#0E241E] sm:text-5xl lg:text-[54px] dark:text-white"
-              >
-                Empower Dreams,
-                <span className="block">Build Futures</span>
-                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
-                  Together.
-                </span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.16 }}
-                className="mt-5 max-w-lg text-[15.5px] leading-[1.7] text-[#5C6B64] sm:text-[17px] dark:text-[#A0B3AC]"
-              >
-                Structured mentorship, merit scholarships, and dedicated academic guidance so capable students never fall behind due to finances.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.24 }}
-                className="mt-8 flex flex-col items-start gap-3"
-              >
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="rounded-[32px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-5 shadow-[0_24px_60px_-20px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] sm:p-8 lg:p-10 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
+          >
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-7">
+              {/* COLUMN 1: Vertically Centered Tall Scholar Card */}
+              <div className="flex items-center">
                 <Link
-                  href="/sign-up"
-                  className="group inline-flex h-12 items-center gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] pl-6 pr-2 text-[14px] font-semibold text-white shadow-[0_12px_26px_-6px_rgba(7,61,50,0.42)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062]"
+                  href="/scholarships#mbbs"
+                  className="group relative block aspect-[3/4] w-full overflow-hidden rounded-[24px] bg-[#E8F5EF] shadow-[0_16px_36px_-14px_rgba(7,61,50,0.22)] md:aspect-[3/4.3] dark:bg-[#132E26]"
                 >
-                  <span>Apply for Scholarship</span>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
-                </Link>
+                  <img
+                    src="/images/categories/medical.jpg"
+                    alt="Medical scholarship scholar"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05231B]/55 via-transparent to-transparent" />
 
-                <span className="inline-flex items-center gap-1.5 text-[12.5px] font-medium text-[#687A73] dark:text-[#8DA39B]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
-                  <span>2025–26 Cycle Open &bull; 15,000+ Scholars Supported</span>
-                </span>
-              </motion.div>
-            </div>
-
-            {/* Right Column: Clean Architectural 3-Card Scholar Grid (Zero awkward tilt/overlap) */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.14 }}
-              className="lg:col-span-6"
-            >
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-12">
-                {/* Featured Left Portrait Card */}
-                <div className="group flex flex-col overflow-hidden rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-2.5 shadow-[0_16px_38px_-14px_rgba(7,61,50,0.14)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 sm:col-span-6 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
-                  <div className="relative aspect-[4/4.2] w-full overflow-hidden rounded-[18px] bg-[#E8F5EF] dark:bg-[#132E26]">
-                    <img
-                      src="/scholars/vishwajeet.png"
-                      alt="Vishwajeet Ghosh"
-                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between gap-2 px-2 pb-1.5 pt-3.5">
-                    <div className="min-w-0">
-                      <div className="truncate font-heading text-[15px] font-bold text-[#0E241E] dark:text-white">
-                        Vishwajeet Ghosh
-                      </div>
-                      <div className="truncate text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
-                        MBA &bull; Symbiosis Pune
-                      </div>
+                  {/* Frosted Glass Bottom Pill Bar */}
+                  <div className="absolute inset-x-3.5 bottom-3.5 flex items-center justify-between gap-2 rounded-full border border-white/60 bg-white/85 py-1.5 pl-4 pr-1.5 shadow-[0_10px_24px_rgba(5,35,27,0.25)] backdrop-blur-md transition-all duration-300 group-hover:bg-white">
+                    <div className="min-w-0 leading-tight">
+                      <span className="block truncate font-heading text-[13px] font-bold text-[#073D32]">
+                        Medical Grants
+                      </span>
+                      <span className="block text-[11px] font-semibold text-[#15966F]">
+                        Up to ₹5,00,000
+                      </span>
                     </div>
-                    <span className="shrink-0 rounded-full bg-[#EBF7F1] px-2.5 py-1 font-heading text-[11px] font-bold text-[#073D32] dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                      ₹4L Aid
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:bg-[#15966F]">
+                      <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>
-                </div>
-
-                {/* Right Stacked Pair */}
-                <div className="flex flex-col gap-4 sm:col-span-6">
-                  {/* Top Horizontal Scholar Card */}
-                  <div className="group flex items-center gap-3.5 rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-4 shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
-                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-[#DCE8E3] bg-[#E8F5EF] dark:border-[#1E3B32]">
-                      <img
-                        src="/scholars/priya_bk.png"
-                        alt="Priya B. K."
-                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="inline-flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
-                        <span>Verified Scholar</span>
-                      </div>
-                      <div className="mt-0.5 truncate font-heading text-[15.5px] font-bold text-[#0E241E] dark:text-white">
-                        Priya B. K.
-                      </div>
-                      <div className="truncate text-[12px] text-[#5C6B64] dark:text-[#A0B3AC]">
-                        B.Tech Civil Engineering
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom Forest Highlight Scholar + Impact Card */}
-                  <div className="group flex flex-1 flex-col justify-between rounded-[22px] border border-[#15966F]/35 border-b-[3px] border-b-[#04241D] bg-gradient-to-br from-[#06342A] via-[#0B503F] to-[#12745A] p-5 text-white shadow-[0_18px_38px_-14px_rgba(7,61,50,0.38)] transition-all duration-300 hover:-translate-y-1">
-                    <div className="flex items-center gap-3.5">
-                      <div className="h-13 w-13 shrink-0 overflow-hidden rounded-2xl border-2 border-white/80 bg-[#E8F5EF] shadow-sm">
-                        <img
-                          src="/scholars/sushma_v.png"
-                          alt="Sushma V."
-                          className="h-full w-full object-cover object-top"
-                        />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="truncate font-heading text-[15.5px] font-bold text-white">
-                          Sushma V.
-                        </div>
-                        <div className="truncate text-[12px] text-[#C8E9DC]">
-                          B.Com &bull; Bangalore Univ.
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-5 grid grid-cols-2 divide-x divide-white/15 border-t border-white/15 pt-4">
-                      <div className="pr-3">
-                        <div className="font-heading text-xl font-bold leading-none text-white">
-                          15,000+
-                        </div>
-                        <div className="mt-1 text-[11px] font-medium text-[#C8E9DC]">
-                          Scholars Guided
-                        </div>
-                      </div>
-                      <div className="pl-4">
-                        <div className="font-heading text-xl font-bold leading-none text-[#86DFB8]">
-                          96%
-                        </div>
-                        <div className="mt-1 text-[11px] font-medium text-[#C8E9DC]">
-                          Success Rate
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </Link>
               </div>
-            </motion.div>
-          </div>
+
+              {/* COLUMN 2: Stacked Two Editorial Cards */}
+              <div className="flex flex-col gap-6 lg:gap-7">
+                {/* Top Card */}
+                <Link
+                  href="/scholarships#btech"
+                  className="group relative block aspect-[4/4.2] w-full overflow-hidden rounded-[24px] bg-[#E8F5EF] shadow-[0_16px_36px_-14px_rgba(7,61,50,0.2)] dark:bg-[#132E26]"
+                >
+                  <img
+                    src="/images/categories/engineering.jpg"
+                    alt="Engineering scholarship scholar"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05231B]/55 via-transparent to-transparent" />
+
+                  <div className="absolute inset-x-3.5 bottom-3.5 flex items-center justify-between gap-2 rounded-full border border-white/60 bg-white/85 py-1.5 pl-4 pr-1.5 shadow-[0_10px_24px_rgba(5,35,27,0.25)] backdrop-blur-md transition-all duration-300 group-hover:bg-white">
+                    <div className="min-w-0 leading-tight">
+                      <span className="block truncate font-heading text-[13px] font-bold text-[#073D32]">
+                        Engineering Aid
+                      </span>
+                      <span className="block text-[11px] font-semibold text-[#15966F]">
+                        Up to ₹4,00,000
+                      </span>
+                    </div>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:bg-[#15966F]">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Bottom Card */}
+                <Link
+                  href="/achievers"
+                  className="group relative block aspect-[4/3.1] w-full overflow-hidden rounded-[24px] bg-[#E8F5EF] shadow-[0_16px_36px_-14px_rgba(7,61,50,0.2)] dark:bg-[#132E26]"
+                >
+                  <img
+                    src="/images/hero/hero-graduation-hdr.jpg"
+                    alt="MileStone Scholarship graduates"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05231B]/55 via-transparent to-transparent" />
+
+                  <div className="absolute inset-x-3.5 bottom-3.5 flex items-center justify-between gap-2 rounded-full border border-white/60 bg-white/85 py-1.5 pl-4 pr-1.5 shadow-[0_10px_24px_rgba(5,35,27,0.25)] backdrop-blur-md transition-all duration-300 group-hover:bg-white">
+                    <div className="min-w-0 leading-tight">
+                      <span className="block truncate font-heading text-[13px] font-bold text-[#073D32]">
+                        15,000+ Scholars
+                      </span>
+                      <span className="block text-[11px] font-semibold text-[#15966F]">
+                        96% Success Rate
+                      </span>
+                    </div>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:bg-[#15966F]">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
+              </div>
+
+              {/* COLUMN 3: Top Editorial Vision & Mission Text + Bottom Tall Card */}
+              <div className="flex flex-col justify-between gap-6 lg:gap-7">
+                {/* Top-Right Highlighted Editorial Title Block */}
+                <div className="pt-2 md:px-1 md:pt-4">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 dark:border-[#34D399]/25 dark:bg-[#132E26]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] dark:bg-[#34D399]" />
+                    <span className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                      Our North Star
+                    </span>
+                  </div>
+
+                  <h1 className="mt-4 font-heading text-3xl font-bold leading-[1.1] tracking-[-0.028em] text-[#0E241E] sm:text-4xl lg:text-[40px] dark:text-white">
+                    Vision &amp;{" "}
+                    <span className="block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                      Mission
+                    </span>
+                  </h1>
+
+                  <p className="mt-3.5 text-[14px] leading-[1.68] text-[#5C6B64] sm:text-[14.5px] dark:text-[#A0B3AC]">
+                    Empowering deserving students beyond financial limits with merit scholarships, structured mentorship, and equitable education access.
+                  </p>
+                </div>
+
+                {/* Bottom Tall Scholar Card */}
+                <Link
+                  href="/sign-up"
+                  className="group relative block aspect-[3/3.9] w-full overflow-hidden rounded-[24px] bg-[#E8F5EF] shadow-[0_16px_36px_-14px_rgba(7,61,50,0.22)] dark:bg-[#132E26]"
+                >
+                  <img
+                    src="/images/ecosystem/university.jpg"
+                    alt="Apply for Milestone Scholarship"
+                    className="h-full w-full object-cover object-[72%_20%] transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#05231B]/60 via-transparent to-transparent" />
+
+                  <div className="absolute inset-x-3.5 bottom-3.5 flex items-center justify-between gap-2 rounded-full border border-white/60 bg-white/85 py-1.5 pl-4 pr-1.5 shadow-[0_10px_24px_rgba(5,35,27,0.25)] backdrop-blur-md transition-all duration-300 group-hover:bg-white">
+                    <div className="min-w-0 leading-tight">
+                      <span className="block truncate font-heading text-[13px] font-bold text-[#073D32]">
+                        Apply Now
+                      </span>
+                      <span className="block text-[11px] font-semibold text-[#15966F]">
+                        2025–26 Cycle Open
+                      </span>
+                    </div>
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:bg-[#15966F]">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
