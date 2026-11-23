@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 };
 
 const values = [
-  { icon: Shield, title: "Trust & Transparency", description: "Every scholarship decision is made with complete transparency and fairness." },
-  { icon: Eye, title: "Equal Opportunity", description: "We believe every student deserves access to quality education regardless of background." },
-  { icon: Heart, title: "Student-First", description: "Our programs are designed with students at the center of every decision." },
-  { icon: Target, title: "Excellence", description: "We set high standards and help students achieve academic and professional excellence." },
-  { icon: Users, title: "Community", description: "Building a nationwide community of scholars who support and uplift each other." },
-  { icon: Award, title: "Impact", description: "Measuring success by the real-world impact we create in students' lives." },
+  { icon: Shield, image: "/images/values/trust.jpg", title: "Trust & Transparency", description: "Every scholarship decision is made with complete transparency and fairness." },
+  { icon: Eye, image: "/images/values/equal.jpg", title: "Equal Opportunity", description: "We believe every student deserves access to quality education regardless of background." },
+  { icon: Heart, image: "/images/values/student.jpg", title: "Student-First", description: "Our programs are designed with students at the center of every decision." },
+  { icon: Target, image: "/images/values/excellence.jpg", title: "Excellence", description: "We set high standards and help students achieve academic and professional excellence." },
+  { icon: Users, image: "/images/values/community.jpg", title: "Community", description: "Building a nationwide community of scholars who support and uplift each other." },
+  { icon: Award, image: "/images/values/impact.jpg", title: "Impact", description: "Measuring success by the real-world impact we create in students' lives." },
 ];
 
 const milestones = [
@@ -457,66 +457,110 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values: Timeless Horizontal Editorial Ruled Index */}
-      <section className="relative border-t border-[#E3ECE8] bg-[#FAFCFB] py-20 md:py-28 dark:border-[#162E26] dark:bg-[#07120F]">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* Quiet, Authoritative Header */}
-          <ScrollReveal className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#15966F] dark:text-[#34D399]">
-                Our Values
-              </p>
-              <h2 className="mt-3 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
+      {/* Values: Luminous 2-Column 3D Icon Card Showcase */}
+      <section className="relative overflow-hidden border-t border-[#E3ECE8] bg-gradient-to-b from-[#F1F9F5] via-[#FAFCFB] to-white py-20 md:py-28 dark:border-[#162E26] dark:from-[#081713] dark:via-[#07120F] dark:to-[#07120F]">
+        {/* Soft ambient mint depth */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#15966F]/[0.08] blur-3xl"
+        />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Top Header Row + Floating 3D Graduation Artwork */}
+          <div className="mb-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+            <ScrollReveal className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                  Our Core Values
+                </span>
+              </div>
+
+              <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.1] tracking-[-0.028em] text-[#0E241E] sm:text-4xl lg:text-[46px] dark:text-white">
                 What We{" "}
-                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
                   Stand For
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 180 12"
+                    fill="none"
+                    className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M2 9.5C46 3.5 134 2.5 178 8.5"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </span>
               </h2>
-            </div>
-            <p className="max-w-md text-[15px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
-              Six foundational standards that guide every scholarship decision, mentorship pairing, and student commitment.
-            </p>
-          </ScrollReveal>
 
-          {/* Clean Horizontal Ruled Rows */}
-          <ScrollReveal delay={0.08}>
-            <div className="divide-y divide-[#DCE8E3] border-y border-[#DCE8E3] dark:divide-[#18332B] dark:border-[#18332B]">
-              {values.map((val, i) => {
-                const Icon = val.icon;
-                const num = String(i + 1).padStart(2, "0");
-                return (
-                  <div
-                    key={val.title}
-                    className="group grid grid-cols-1 items-baseline gap-3 px-2 py-6 transition-colors duration-200 hover:bg-white sm:px-5 sm:py-7 md:grid-cols-12 md:items-center md:gap-6 dark:hover:bg-[#0D1E19]"
-                  >
-                    {/* Index */}
-                    <div className="md:col-span-1">
-                      <span className="font-heading text-[13px] font-bold tracking-wider text-[#15966F] dark:text-[#34D399]">
-                        {num}
-                      </span>
+              <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-[#5C6B64] sm:text-[16.5px] dark:text-[#A0B3AC]">
+                Six foundational standards that guide every scholarship decision, mentorship pairing, and student commitment.
+              </p>
+            </ScrollReveal>
+
+            {/* Right Alpha-Masked 3D Graduation Artwork */}
+            <ScrollReveal delay={0.08} className="hidden lg:col-span-5 lg:block">
+              <div className="relative ml-auto aspect-[16/10] w-full max-w-[420px] overflow-hidden rounded-[24px] [mask-image:radial-gradient(ellipse_85%_85%_at_55%_50%,black_55%,transparent_100%)]">
+                <Image
+                  src="/images/ecosystem/scholarship.jpg"
+                  alt="Graduation cap and academic books"
+                  fill
+                  sizes="420px"
+                  className="object-cover object-center"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* 2-Column Horizontal 3D Value Cards */}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+            {values.map((val, i) => {
+              const num = String(i + 1).padStart(2, "0");
+              return (
+                <ScrollReveal key={val.title} delay={i * 0.05}>
+                  <div className="group flex h-full items-center gap-4 rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white px-5 py-5 shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] sm:gap-5 sm:px-6 sm:py-5 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40">
+                    {/* Left 3D Studio Icon on Pedestal */}
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white sm:h-24 sm:w-24 dark:bg-[#132E26]/40">
+                      <img
+                        src={val.image}
+                        alt={val.title}
+                        className="h-full w-full object-contain p-0.5 transition-transform duration-300 ease-out group-hover:scale-105"
+                        loading="lazy"
+                      />
                     </div>
 
-                    {/* Icon + Value Title */}
-                    <div className="flex items-center gap-3.5 md:col-span-4">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#EBF7F1] text-[#073D32] transition-colors duration-200 group-hover:bg-[#073D32] group-hover:text-white dark:bg-[#132E26] dark:text-[#6EE7B7] dark:group-hover:bg-[#15966F] dark:group-hover:text-white">
-                        <Icon className="h-4 w-4" strokeWidth={2} />
-                      </span>
-                      <h3 className="font-heading text-[18px] font-bold tracking-tight text-[#0E241E] transition-colors duration-200 group-hover:text-[#15966F] sm:text-[19px] dark:text-white dark:group-hover:text-[#34D399]">
+                    {/* Center Number, Title & Description */}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-heading text-[12px] font-bold tracking-wider text-[#15966F] dark:text-[#34D399]">
+                          {num}
+                        </span>
+                        <span className="h-[1px] w-6 bg-[#DCE8E3] dark:bg-[#1E3B32]" />
+                      </div>
+                      <h3 className="mt-1 font-heading text-[18px] font-bold leading-snug tracking-tight text-[#0E241E] sm:text-[19px] dark:text-white">
                         {val.title}
                       </h3>
-                    </div>
-
-                    {/* Clean Description */}
-                    <div className="md:col-span-7">
-                      <p className="text-[14.5px] leading-[1.7] text-[#5C6B64] sm:text-[15.5px] dark:text-[#A0B3AC]">
+                      <p className="mt-1 text-[13.5px] leading-relaxed text-[#5C6B64] sm:text-[14px] dark:text-[#A0B3AC]">
                         {val.description}
                       </p>
                     </div>
+
+                    {/* Right Circular Arrow Indicator */}
+                    <span
+                      aria-hidden="true"
+                      className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EBF7F1] text-[#15966F] transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#15966F] group-hover:text-white sm:flex dark:bg-[#132E26] dark:text-[#34D399] dark:group-hover:bg-[#34D399] dark:group-hover:text-[#073D32]"
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
                   </div>
-                );
-              })}
-            </div>
-          </ScrollReveal>
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
