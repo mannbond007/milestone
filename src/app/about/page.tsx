@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { SectionHeader } from "@/components/ui/section-header";
-import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, BookOpen, Zap, Palette, Puzzle, Sparkles, GraduationCap, Laptop, Globe, Trophy, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, BookOpen, Zap, Palette, Puzzle, Sparkles, GraduationCap, Laptop, Globe, Trophy, ArrowRight, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Program",
@@ -705,55 +705,74 @@ export default function AboutPage() {
                   className={`relative h-full ${desktopOrderClass}`}
                 >
                   <div className="group relative h-full pl-5 pt-5 sm:pl-6 sm:pt-6">
-                    {/* Exact Gutter-Matched Dotted Connectors (Desktop, zero gap & zero card overlap) */}
+                    {/* Exact Flush-Fit Dotted Snake Connectors with Directional Badges (Desktop) */}
+                    {/* 01 -> 02 (Rightward across 64px gap + 24px pl-6 = 88px) */}
                     {i === 0 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-16 top-1/2 hidden w-16 -translate-y-1/2 items-center lg:flex"
+                        className="pointer-events-none absolute left-full top-[calc(50%+12px)] z-0 hidden w-[88px] -translate-y-1/2 items-center lg:flex"
                       >
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
-                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/60" />
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
+                        <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        </span>
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                       </div>
                     )}
+
+                    {/* 02 ↓ 03 (Downward across 56px gap + 24px pt-6 = 80px) */}
                     {i === 1 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-14 left-1/2 hidden h-14 -translate-x-1/2 flex-col items-center lg:flex"
+                        className="pointer-events-none absolute left-[calc(50%+12px)] top-full z-0 hidden h-[80px] -translate-x-1/2 flex-col items-center lg:flex"
                       >
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
-                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/60" />
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
+                        <span className="my-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          <ChevronDown className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        </span>
+                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                       </div>
                     )}
+
+                    {/* 03 -> 04 (Leftward from Card 03 glass left edge across 88px to Card 04 right edge) */}
                     {i === 2 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -left-16 top-1/2 hidden w-16 -translate-y-1/2 items-center lg:flex"
+                        className="pointer-events-none absolute right-[calc(100%-24px)] top-[calc(50%+12px)] z-0 hidden w-[88px] -translate-y-1/2 items-center lg:flex"
                       >
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
-                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/60" />
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
+                        <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          <ChevronLeft className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        </span>
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                       </div>
                     )}
+
+                    {/* 04 ↓ 05 (Downward across 56px gap + 24px pt-6 = 80px) */}
                     {i === 3 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-14 left-1/2 hidden h-14 -translate-x-1/2 flex-col items-center lg:flex"
+                        className="pointer-events-none absolute left-[calc(50%+12px)] top-full z-0 hidden h-[80px] -translate-x-1/2 flex-col items-center lg:flex"
                       >
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
-                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/60" />
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
+                        <span className="my-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          <ChevronDown className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        </span>
+                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                       </div>
                     )}
+
+                    {/* 05 -> 06 (Rightward across 64px gap + 24px pl-6 = 88px) */}
                     {i === 4 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-16 top-1/2 hidden w-16 -translate-y-1/2 items-center lg:flex"
+                        className="pointer-events-none absolute left-full top-[calc(50%+12px)] z-0 hidden w-[88px] -translate-y-1/2 items-center lg:flex"
                       >
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
-                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/60" />
-                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
+                        <span className="mx-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#15966F]/25 bg-[#EBF7F1] text-[#15966F] shadow-xs dark:border-[#34D399]/30 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                          <ChevronRight className="h-3.5 w-3.5" strokeWidth={2.4} />
+                        </span>
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/55 dark:border-[#34D399]/45" />
                       </div>
                     )}
 
