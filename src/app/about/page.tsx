@@ -320,66 +320,97 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          {/* Open Architectural 3-Column Grid (Hairline Dividers — Zero Boxed Card Repetition) */}
+          {/* Open Architectural 3-Column Grid (3D Beveled Dividers & Highlighted 3D Numerals) */}
           <ScrollReveal delay={0.1}>
-            <div className="mt-14 grid grid-cols-1 divide-y divide-[#E3ECE8] border-y border-[#E3ECE8] md:grid-cols-3 md:divide-x md:divide-y-0 dark:divide-[#18332B] dark:border-[#18332B]">
-              {[
-                {
-                  num: "01",
-                  metric: "24–72h",
-                  metricLabel: "Fast Application Review",
-                  title: "Streamlined Grants & Rapid Support",
-                  description:
-                    "Simple digital registration, transparent document verification checklists, and prompt scholarship disbursals supporting tuition and hostel fees.",
-                },
-                {
-                  num: "02",
-                  metric: "100+",
-                  metricLabel: "AIIMS, IIT & IIM Mentors",
-                  title: "1-on-1 Expert Mentorship",
-                  description:
-                    "Connect directly with established doctors, engineers, legal professionals, and dedicated academic counselors who help map your career.",
-                },
-                {
-                  num: "03",
-                  metric: "16+",
-                  metricLabel: "Verified Grant Pathways",
-                  title: "All-in-One Career Ecosystem",
-                  description:
-                    "Access specialized scholarship assessment preparation, structured study resources, and centralized entrance counselling under one roof.",
-                },
-              ].map((pillar) => (
-                <div
-                  key={pillar.num}
-                  className="group flex flex-col justify-between py-8 transition-colors duration-300 md:px-8 md:py-10 first:md:pl-0 last:md:pr-0"
-                >
-                  <div>
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-editorial italic text-5xl leading-none text-[#15966F]/30 transition-colors duration-300 group-hover:text-[#15966F] dark:text-[#34D399]/25 dark:group-hover:text-[#34D399]">
-                        {pillar.num}
-                      </span>
-                      <div className="text-right">
-                        <div className="font-heading text-lg font-bold tracking-tight text-[#073D32] dark:text-white">
-                          {pillar.metric}
-                        </div>
-                        <div className="text-[11px] font-medium uppercase tracking-wider text-[#687A73] dark:text-[#8DA39B]">
-                          {pillar.metricLabel}
+            <div className="relative mt-14">
+              {/* Top 3D Beveled Architectural Line */}
+              <div
+                aria-hidden="true"
+                className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#B8D5C8] to-transparent shadow-[0_1px_0_rgba(255,255,255,0.95),0_2px_6px_rgba(7,61,50,0.08)] dark:via-[#214539] dark:shadow-[0_1px_0_rgba(255,255,255,0.05)]"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                {[
+                  {
+                    num: "01",
+                    metric: "24–72h",
+                    metricLabel: "Fast Application Review",
+                    title: "Streamlined Grants & Rapid Support",
+                    description:
+                      "Simple digital registration, transparent document verification checklists, and prompt scholarship disbursals supporting tuition and hostel fees.",
+                  },
+                  {
+                    num: "02",
+                    metric: "100+",
+                    metricLabel: "AIIMS, IIT & IIM Mentors",
+                    title: "1-on-1 Expert Mentorship",
+                    description:
+                      "Connect directly with established doctors, engineers, legal professionals, and dedicated academic counselors who help map your career.",
+                  },
+                  {
+                    num: "03",
+                    metric: "16+",
+                    metricLabel: "Verified Grant Pathways",
+                    title: "All-in-One Career Ecosystem",
+                    description:
+                      "Access specialized scholarship assessment preparation, structured study resources, and centralized entrance counselling under one roof.",
+                  },
+                ].map((pillar, idx) => (
+                  <div
+                    key={pillar.num}
+                    className="group relative flex flex-col justify-between py-8 transition-colors duration-300 md:px-8 md:py-10 first:md:pl-2 last:md:pr-2"
+                  >
+                    {/* 3D Vertical Recessed Divider between columns */}
+                    {idx > 0 && (
+                      <>
+                        <div
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#C6DDD3] to-transparent shadow-[0_1px_0_rgba(255,255,255,0.9)] md:hidden dark:via-[#1E3B32] dark:shadow-none"
+                        />
+                        <div
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-y-6 left-0 hidden w-[2px] bg-gradient-to-b from-transparent via-[#B8D5C8] to-transparent shadow-[1px_0_0_rgba(255,255,255,0.95),2px_0_6px_rgba(7,61,50,0.07)] md:block dark:via-[#214539] dark:shadow-[1px_0_0_rgba(255,255,255,0.04)]"
+                        />
+                      </>
+                    )}
+
+                    <div>
+                      <div className="flex items-center justify-between gap-4">
+                        {/* Highlighted 3D Editorial Numeral Plaque */}
+                        <span className="inline-flex h-12 min-w-[56px] items-center justify-center rounded-2xl border border-[#15966F]/25 bg-gradient-to-b from-[#FFFFFF] via-[#EAF7F1] to-[#CFECE0] px-3 font-editorial italic text-[28px] font-bold leading-none text-[#073D32] shadow-[0_10px_20px_-6px_rgba(7,61,50,0.22),0_3px_6px_-2px_rgba(21,150,111,0.16),inset_0_1.5px_0_rgba(255,255,255,1),inset_0_-2px_0_rgba(11,116,83,0.18)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-[#15966F]/55 group-hover:text-[#15966F] group-hover:shadow-[0_14px_26px_-6px_rgba(21,150,111,0.3)] dark:border-[#34D399]/30 dark:from-[#1B4538] dark:via-[#13352B] dark:to-[#0B221B] dark:text-[#6EE7B7] dark:shadow-[0_10px_20px_-6px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
+                          {pillar.num}
+                        </span>
+
+                        <div className="text-right">
+                          <div className="font-heading text-lg font-bold tracking-tight text-[#073D32] dark:text-white">
+                            {pillar.metric}
+                          </div>
+                          <div className="text-[11px] font-semibold uppercase tracking-wider text-[#687A73] dark:text-[#8DA39B]">
+                            {pillar.metricLabel}
+                          </div>
                         </div>
                       </div>
+
+                      <h3 className="mt-6 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                        {pillar.title}
+                      </h3>
+
+                      <p className="mt-2.5 text-[14.5px] leading-[1.7] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        {pillar.description}
+                      </p>
                     </div>
 
-                    <h3 className="mt-6 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] dark:text-white">
-                      {pillar.title}
-                    </h3>
-
-                    <p className="mt-2.5 text-[14.5px] leading-[1.7] text-[#5C6B64] dark:text-[#A0B3AC]">
-                      {pillar.description}
-                    </p>
+                    {/* 3D Tactile Emerald Accent Pill Line */}
+                    <div className="mt-7 h-[4px] w-12 rounded-full bg-gradient-to-r from-[#073D32] via-[#15966F] to-[#34D399] shadow-[0_3px_8px_rgba(21,150,111,0.32),inset_0_1px_0_rgba(255,255,255,0.45)] transition-all duration-300 group-hover:w-24" />
                   </div>
+                ))}
+              </div>
 
-                  <div className="mt-6 h-[2px] w-10 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-20 group-hover:bg-[#15966F] dark:bg-[#1E3B32] dark:group-hover:bg-[#34D399]" />
-                </div>
-              ))}
+              {/* Bottom 3D Beveled Architectural Line */}
+              <div
+                aria-hidden="true"
+                className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#B8D5C8] to-transparent shadow-[0_1px_0_rgba(255,255,255,0.95),0_2px_6px_rgba(7,61,50,0.08)] dark:via-[#214539] dark:shadow-[0_1px_0_rgba(255,255,255,0.05)]"
+              />
             </div>
           </ScrollReveal>
 
