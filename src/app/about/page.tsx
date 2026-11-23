@@ -385,17 +385,17 @@ export default function AboutPage() {
 
           {/* Wide Cinematic Editorial Campus Band */}
           <ScrollReveal delay={0.16}>
-            <div className="group relative mt-12 overflow-hidden rounded-[28px] border border-[#143D32] bg-gradient-to-br from-[#05231B] via-[#073429] to-[#0B4B3B] shadow-[0_24px_56px_-16px_rgba(7,61,50,0.28)]">
-              <div className="relative flex flex-col lg:min-h-[290px] lg:flex-row lg:items-center">
-                {/* Left Content: Quote + CTA (Never overlaps photo) */}
-                <div className="relative z-10 p-7 sm:p-10 lg:max-w-[60%] lg:p-12">
+            <div className="group relative mt-12 overflow-hidden rounded-[28px] border border-[#143D32] bg-gradient-to-br from-[#05231B] via-[#073429] to-[#0B4B3B] p-6 shadow-[0_24px_56px_-16px_rgba(7,61,50,0.28)] sm:p-8 lg:p-10">
+              <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
+                {/* Left Content: Quote + CTA */}
+                <div className="relative z-10 lg:col-span-7">
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#86DFB8]">
                     Direct Aid &bull; Zero Middlemen &bull; 100% Merit
                   </span>
-                  <p className="mt-3 font-editorial italic text-2xl leading-snug text-white sm:text-[28px]">
+                  <p className="mt-3 font-editorial italic text-2xl leading-snug text-white sm:text-[28px] lg:text-[30px]">
                     &ldquo;Every component of the MileStone program is engineered to remove friction between talent and opportunity.&rdquo;
                   </p>
-                  <div className="mt-6">
+                  <div className="mt-7">
                     <Link
                       href="/how-to-apply"
                       className="group/cta inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-5 pr-2 text-[13.5px] font-bold text-[#073D32] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E8F5EF]"
@@ -408,15 +408,17 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Right Properly Framed Alpha-Masked Portrait (Full face & campus clearly visible) */}
-                <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_100%)] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[46%] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_100%)]">
-                  <Image
-                    src="/images/ecosystem/university.jpg"
-                    alt="MileStone scholar on university campus"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 560px"
-                    className="object-cover object-[50%_20%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  />
+                {/* Right Clean Inset Framed Portrait (Crisp edges, balanced subject framing) */}
+                <div className="lg:col-span-5">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] ring-1 ring-white/15 shadow-[0_18px_40px_-10px_rgba(3,20,15,0.55)]">
+                    <Image
+                      src="/images/ecosystem/university.jpg"
+                      alt="MileStone scholar on university campus"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 480px"
+                      className="object-cover object-[72%_22%] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
