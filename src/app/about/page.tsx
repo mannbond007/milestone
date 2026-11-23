@@ -684,94 +684,114 @@ export default function AboutPage() {
           </ScrollReveal>
 
           {/* 2-Column Snake Glassmorphic Journey Grid */}
-          <div className="relative grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16">
+          <div className="relative grid grid-cols-1 gap-y-10 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-14">
             {milestones.map((item, i) => {
               const num = String(i + 1).padStart(2, "0");
               const Icon = item.icon;
-              // Snake ordering on desktop: 01 -> 02, 04 <- 03, 05 -> 06 (chronological on mobile)
-              const desktopOrderClass =
-                i === 2
-                  ? "lg:order-4"
-                  : i === 3
-                  ? "lg:order-3"
-                  : i === 4
-                  ? "lg:order-5"
-                  : i === 5
-                  ? "lg:order-6"
-                  : `lg:order-${i + 1}`;
+              // Explicit static Tailwind classes so desktop snakes cleanly: 01 -> 02 ↓ 03 -> 04 ↓ 05 -> 06
+              const desktopOrderClass = [
+                "lg:order-1",
+                "lg:order-2",
+                "lg:order-4",
+                "lg:order-3",
+                "lg:order-5",
+                "lg:order-6",
+              ][i];
 
               return (
                 <ScrollReveal
                   key={item.year}
                   delay={i * 0.06}
-                  className={`relative ${desktopOrderClass}`}
+                  className={`relative h-full ${desktopOrderClass}`}
                 >
-                  <div className="group relative pl-5 pt-5 sm:pl-6 sm:pt-6">
-                    {/* Dotted Snake Connector Paths (Desktop) */}
+                  <div className="group relative h-full pl-5 pt-5 sm:pl-6 sm:pt-6">
+                    {/* Exact Gutter-Matched Dotted Connectors (Desktop, zero gap & zero card overlap) */}
                     {i === 0 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-7 left-10 -right-12 hidden h-10 rounded-bl-[24px] border-b-2 border-l-2 border-dotted border-[#15966F]/55 lg:block"
-                      />
+                        className="pointer-events-none absolute -right-16 top-1/2 hidden w-16 -translate-y-1/2 items-center lg:flex"
+                      >
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/60" />
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                      </div>
                     )}
                     {i === 1 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-14 right-14 hidden h-16 w-12 rounded-br-[24px] border-b-2 border-r-2 border-dotted border-[#15966F]/55 lg:block"
-                      />
+                        className="pointer-events-none absolute -bottom-14 left-1/2 hidden h-14 -translate-x-1/2 flex-col items-center lg:flex"
+                      >
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/60" />
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                      </div>
                     )}
                     {i === 2 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -left-14 top-1/2 hidden w-16 -translate-y-1/2 border-t-2 border-dotted border-[#15966F]/55 lg:block"
-                      />
+                        className="pointer-events-none absolute -left-16 top-1/2 hidden w-16 -translate-y-1/2 items-center lg:flex"
+                      >
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/60" />
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                      </div>
                     )}
                     {i === 3 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-14 left-12 hidden h-16 w-12 rounded-bl-[24px] border-b-2 border-l-2 border-dotted border-[#15966F]/55 lg:block"
-                      />
+                        className="pointer-events-none absolute -bottom-14 left-1/2 hidden h-14 -translate-x-1/2 flex-col items-center lg:flex"
+                      >
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-l-2 border-dotted border-[#15966F]/60" />
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                      </div>
                     )}
                     {i === 4 && (
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-14 top-1/2 hidden w-16 -translate-y-1/2 border-t-2 border-dotted border-[#15966F]/55 lg:block"
-                      />
+                        className="pointer-events-none absolute -right-16 top-1/2 hidden w-16 -translate-y-1/2 items-center lg:flex"
+                      >
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                        <span className="flex-1 border-t-2 border-dotted border-[#15966F]/60" />
+                        <span className="h-2 w-2 shrink-0 rounded-full bg-[#15966F]/65" />
+                      </div>
                     )}
 
-                    {/* Overlapping Deep Emerald-Forest Squircle Badge (Blurs smoothly through glass card) */}
+                    {/* Overlapping Deep Emerald-Forest Squircle Badge (Proportioned cleanly behind corner) */}
                     <div
                       aria-hidden="true"
-                      className="absolute left-0 top-0 z-0 flex h-[108px] w-[108px] items-start justify-start rounded-[26px] bg-gradient-to-br from-[#073D32] via-[#0F614C] to-[#15966F] pl-3.5 pt-2.5 shadow-[0_16px_32px_-8px_rgba(7,61,50,0.45)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03] dark:from-[#15966F] dark:via-[#0D5A46] dark:to-[#073D32]"
+                      className="absolute left-0 top-0 z-0 flex h-[88px] w-[88px] items-start justify-start rounded-[22px] bg-gradient-to-br from-[#073D32] via-[#0F614C] to-[#15966F] pl-3 pt-2 shadow-[0_14px_28px_-8px_rgba(7,61,50,0.45)] transition-transform duration-300 group-hover:-translate-y-1 dark:from-[#15966F] dark:via-[#0D5A46] dark:to-[#073D32]"
                     >
-                      <span className="font-heading text-[22px] font-bold leading-none tracking-tight text-white">
+                      <span className="font-heading text-[18px] font-bold leading-none tracking-tight text-white">
                         {num}
                       </span>
                     </div>
 
-                    {/* Frosted Translucent Glass Card */}
-                    <div className="relative z-10 overflow-hidden rounded-[24px] border border-white/95 bg-white/75 p-6 shadow-[0_20px_50px_-14px_rgba(7,61,50,0.16),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:bg-white/85 group-hover:shadow-[0_28px_56px_-14px_rgba(7,61,50,0.22)] sm:p-7 dark:border-[#1E3B32]/90 dark:bg-[#0D1E19]/80 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
-                      {/* Header Row inside Glass Card */}
-                      <div className="flex items-center justify-between gap-3 pl-10">
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#EBF7F1]/90 px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                          <Icon className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
-                          <span>{item.year}</span>
-                        </span>
+                    {/* Equal-Height Frosted Translucent Glass Card */}
+                    <div className="relative z-10 flex h-full flex-col justify-between overflow-hidden rounded-[22px] border border-white/95 bg-white/78 p-6 shadow-[0_18px_46px_-14px_rgba(7,61,50,0.15),inset_0_1.5px_0_rgba(255,255,255,1)] backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#15966F]/35 group-hover:bg-white/88 group-hover:shadow-[0_26px_54px_-14px_rgba(7,61,50,0.22)] sm:p-7 dark:border-[#1E3B32]/90 dark:bg-[#0D1E19]/82 dark:shadow-[0_20px_48px_-14px_rgba(0,0,0,0.5)]">
+                      <div>
+                        {/* Header Row offset cleanly past the frosted corner */}
+                        <div className="flex items-center justify-between gap-3 pl-14">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1 font-heading text-[12px] font-bold tracking-wider text-[#073D32] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                            <Icon className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                            <span>{item.year}</span>
+                          </span>
 
-                        <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
-                          {item.stat}
-                        </span>
+                          <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-[#15966F] dark:text-[#34D399]">
+                            {item.stat}
+                          </span>
+                        </div>
+
+                        <h3 className="mt-5 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] sm:text-[21px] dark:text-white">
+                          {item.title}
+                        </h3>
+
+                        <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
+                          {item.description}
+                        </p>
                       </div>
 
-                      <h3 className="mt-4 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] sm:text-[22px] dark:text-white">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-2 text-[14px] leading-[1.68] text-[#5C6B64] dark:text-[#A0B3AC]">
-                        {item.description}
-                      </p>
-
-                      <ul className="mt-4 space-y-2 border-t border-[#E6F0EC]/90 pt-3.5 dark:border-[#18332B]">
+                      <ul className="mt-5 space-y-2 border-t border-[#E6F0EC] pt-3.5 dark:border-[#18332B]">
                         {item.points.map((pt) => (
                           <li
                             key={pt}
