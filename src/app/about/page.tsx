@@ -457,79 +457,64 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values — Unified Obsidian-Forest Architectural Monolith */}
-      <section className="relative bg-white py-20 md:py-28 dark:bg-[#07120F]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="relative overflow-hidden rounded-[32px] border border-[#143D32] bg-gradient-to-br from-[#051B15] via-[#07261E] to-[#0A3429] text-white shadow-[0_30px_70px_-20px_rgba(4,24,18,0.45)]">
-              {/* Subtle ambient top-right emerald light */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#15966F]/20 blur-3xl"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#04140F]/80 blur-3xl"
-              />
+      {/* Values: Timeless Horizontal Editorial Ruled Index */}
+      <section className="relative border-t border-[#E3ECE8] bg-[#FAFCFB] py-20 md:py-28 dark:border-[#162E26] dark:bg-[#07120F]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Quiet, Authoritative Header */}
+          <ScrollReveal className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#15966F] dark:text-[#34D399]">
+                Our Values
+              </p>
+              <h2 className="mt-3 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
+                What We{" "}
+                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                  Stand For
+                </span>
+              </h2>
+            </div>
+            <p className="max-w-md text-[15px] leading-relaxed text-[#5C6B64] dark:text-[#A0B3AC]">
+              Six foundational standards that guide every scholarship decision, mentorship pairing, and student commitment.
+            </p>
+          </ScrollReveal>
 
-              {/* Top Editorial Header Strip inside Monolith */}
-              <div className="relative z-10 flex flex-col gap-5 border-b border-white/[0.08] px-7 py-9 sm:px-10 sm:py-11 lg:flex-row lg:items-end lg:justify-between lg:px-12">
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#6EE7B7]">
-                    Our Values
-                  </p>
-                  <h2 className="mt-3 font-heading text-3xl font-bold leading-[1.1] tracking-[-0.025em] text-white sm:text-4xl lg:text-[42px]">
-                    What We{" "}
-                    <span className="font-editorial italic font-normal text-[#86DFB8]">
-                      Stand For
-                    </span>
-                  </h2>
-                </div>
-
-                <p className="max-w-md text-[14.5px] leading-relaxed text-[#B7CDC4] sm:text-[15px]">
-                  Every scholarship grant, mentorship session, and university recommendation is anchored in six clear principles since 2018.
-                </p>
-              </div>
-
-              {/* Seamless 3x2 Hairline-Divided Architectural Matrix */}
-              <div className="relative z-10 grid grid-cols-1 divide-y divide-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
-                {values.map((val, i) => {
-                  const Icon = val.icon;
-                  const indexLabel = String(i + 1).padStart(2, "0");
-                  return (
-                    <div
-                      key={val.title}
-                      className="group relative flex flex-col justify-between p-7 transition-colors duration-300 hover:bg-white/[0.04] sm:p-9 lg:p-10 sm:odd:border-r sm:odd:border-white/[0.08] lg:border-r lg:border-white/[0.08] lg:[&:nth-child(3n)]:border-r-0"
-                    >
-                      {/* Subtle top emerald hover highlight line */}
-                      <span
-                        aria-hidden="true"
-                        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#34D399]/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                      />
-
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/[0.06] text-[#6EE7B7] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] transition-all duration-300 group-hover:border-[#34D399]/40 group-hover:bg-[#15966F]/25 group-hover:text-white">
-                            <Icon className="h-5 w-5" strokeWidth={1.9} />
-                          </span>
-
-                          <span className="font-editorial italic text-xl font-medium text-white/25 transition-colors duration-300 group-hover:text-[#6EE7B7]">
-                            {indexLabel}
-                          </span>
-                        </div>
-
-                        <h3 className="mt-6 font-heading text-[19px] font-bold tracking-tight text-white">
-                          {val.title}
-                        </h3>
-
-                        <p className="mt-2.5 text-[14px] leading-[1.7] text-[#B7CDC4]">
-                          {val.description}
-                        </p>
-                      </div>
+          {/* Clean Horizontal Ruled Rows */}
+          <ScrollReveal delay={0.08}>
+            <div className="divide-y divide-[#DCE8E3] border-y border-[#DCE8E3] dark:divide-[#18332B] dark:border-[#18332B]">
+              {values.map((val, i) => {
+                const Icon = val.icon;
+                const num = String(i + 1).padStart(2, "0");
+                return (
+                  <div
+                    key={val.title}
+                    className="group grid grid-cols-1 items-baseline gap-3 px-2 py-6 transition-colors duration-200 hover:bg-white sm:px-5 sm:py-7 md:grid-cols-12 md:items-center md:gap-6 dark:hover:bg-[#0D1E19]"
+                  >
+                    {/* Index */}
+                    <div className="md:col-span-1">
+                      <span className="font-heading text-[13px] font-bold tracking-wider text-[#15966F] dark:text-[#34D399]">
+                        {num}
+                      </span>
                     </div>
-                  );
-                })}
-              </div>
+
+                    {/* Icon + Value Title */}
+                    <div className="flex items-center gap-3.5 md:col-span-4">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#EBF7F1] text-[#073D32] transition-colors duration-200 group-hover:bg-[#073D32] group-hover:text-white dark:bg-[#132E26] dark:text-[#6EE7B7] dark:group-hover:bg-[#15966F] dark:group-hover:text-white">
+                        <Icon className="h-4 w-4" strokeWidth={2} />
+                      </span>
+                      <h3 className="font-heading text-[18px] font-bold tracking-tight text-[#0E241E] transition-colors duration-200 group-hover:text-[#15966F] sm:text-[19px] dark:text-white dark:group-hover:text-[#34D399]">
+                        {val.title}
+                      </h3>
+                    </div>
+
+                    {/* Clean Description */}
+                    <div className="md:col-span-7">
+                      <p className="text-[14.5px] leading-[1.7] text-[#5C6B64] sm:text-[15.5px] dark:text-[#A0B3AC]">
+                        {val.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </ScrollReveal>
         </div>
