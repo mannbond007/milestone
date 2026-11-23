@@ -458,18 +458,27 @@ export default function AboutPage() {
       </section>
 
       {/* Values: Luminous 2-Column 3D Icon Card Showcase */}
-      <section className="relative overflow-hidden border-t border-[#E3ECE8] bg-gradient-to-b from-[#F1F9F5] via-[#FAFCFB] to-white py-20 md:py-28 dark:border-[#162E26] dark:from-[#081713] dark:via-[#07120F] dark:to-[#07120F]">
-        {/* Soft ambient mint depth */}
+      <section className="relative overflow-hidden border-t border-[#E3ECE8] bg-gradient-to-b from-[#EDF8F3] via-[#FAFCFB] to-white py-20 md:py-28 dark:border-[#162E26] dark:from-[#081713] dark:via-[#07120F] dark:to-[#07120F]">
+        {/* Soft ambient mint depth & subtle corner dot matrix */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#15966F]/[0.08] blur-3xl"
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#15966F]/[0.09] blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-6 right-8 h-32 w-48 opacity-35 dark:opacity-15"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1.5px 1.5px, #15966F 1.2px, transparent 0)",
+            backgroundSize: "16px 16px",
+          }}
         />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Top Header Row + Floating 3D Graduation Artwork */}
           <div className="mb-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
             <ScrollReveal className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3.5 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#15966F]/20 bg-white/85 px-3.5 py-1.5 shadow-[0_4px_14px_-6px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] backdrop-blur-sm dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
                   Our Core Values
@@ -484,7 +493,7 @@ export default function AboutPage() {
                     aria-hidden="true"
                     viewBox="0 0 180 12"
                     fill="none"
-                    className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                    className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/50 dark:text-[#34D399]/50"
                     preserveAspectRatio="none"
                   >
                     <path
@@ -504,13 +513,13 @@ export default function AboutPage() {
 
             {/* Right Alpha-Masked 3D Graduation Artwork */}
             <ScrollReveal delay={0.08} className="hidden lg:col-span-5 lg:block">
-              <div className="relative ml-auto aspect-[16/10] w-full max-w-[420px] overflow-hidden rounded-[24px] [mask-image:radial-gradient(ellipse_85%_85%_at_55%_50%,black_55%,transparent_100%)]">
+              <div className="relative ml-auto aspect-[16/10] w-full max-w-[430px] overflow-hidden rounded-[24px] [mask-image:radial-gradient(ellipse_82%_82%_at_56%_50%,black_52%,transparent_100%)]">
                 <Image
                   src="/images/ecosystem/scholarship.jpg"
                   alt="Graduation cap and academic books"
                   fill
-                  sizes="420px"
-                  className="object-cover object-center"
+                  sizes="430px"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
                 />
               </div>
             </ScrollReveal>
@@ -522,26 +531,32 @@ export default function AboutPage() {
               const num = String(i + 1).padStart(2, "0");
               return (
                 <ScrollReveal key={val.title} delay={i * 0.05}>
-                  <div className="group flex h-full items-center gap-4 rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white px-5 py-5 shadow-[0_12px_28px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:shadow-[0_22px_42px_-16px_rgba(7,61,50,0.18)] sm:gap-5 sm:px-6 sm:py-5 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40">
-                    {/* Left 3D Studio Icon on Pedestal */}
-                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white sm:h-24 sm:w-24 dark:bg-[#132E26]/40">
+                  <div className="group relative flex h-full items-center gap-4 overflow-hidden rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-gradient-to-br from-white via-white to-[#F7FCF9] px-5 py-5 shadow-[0_12px_30px_-14px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#15966F]/45 hover:border-b-[#15966F]/60 hover:shadow-[0_24px_46px_-16px_rgba(7,61,50,0.19),0_6px_16px_-6px_rgba(21,150,111,0.12)] sm:gap-5 sm:px-6 sm:py-5 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0E211B] dark:via-[#0D1E19] dark:to-[#112A22] dark:hover:border-[#34D399]/40">
+                    {/* Subtle hover glow in top-right */}
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#15966F]/[0.08] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                    />
+
+                    {/* Left 3D Studio Icon seamlessly blended onto card */}
+                    <div className="relative z-10 h-20 w-20 shrink-0 sm:h-24 sm:w-24">
                       <img
                         src={val.image}
                         alt={val.title}
-                        className="h-full w-full object-contain p-0.5 transition-transform duration-300 ease-out group-hover:scale-105"
+                        className="h-full w-full object-contain mix-blend-multiply transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:scale-[1.06] dark:rounded-2xl dark:mix-blend-normal"
                         loading="lazy"
                       />
                     </div>
 
                     {/* Center Number, Title & Description */}
-                    <div className="min-w-0 flex-1">
+                    <div className="relative z-10 min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-heading text-[12px] font-bold tracking-wider text-[#15966F] dark:text-[#34D399]">
+                        <span className="inline-flex items-center rounded-md bg-[#EBF7F1] px-2 py-0.5 font-heading text-[11px] font-bold tracking-wider text-[#15966F] dark:bg-[#132E26] dark:text-[#6EE7B7]">
                           {num}
                         </span>
-                        <span className="h-[1px] w-6 bg-[#DCE8E3] dark:bg-[#1E3B32]" />
+                        <span className="h-[1px] w-7 bg-gradient-to-r from-[#C5DDD3] to-transparent dark:from-[#214539]" />
                       </div>
-                      <h3 className="mt-1 font-heading text-[18px] font-bold leading-snug tracking-tight text-[#0E241E] sm:text-[19px] dark:text-white">
+                      <h3 className="mt-1.5 font-heading text-[18px] font-bold leading-snug tracking-tight text-[#0E241E] transition-colors duration-200 group-hover:text-[#073D32] sm:text-[19px] dark:text-white">
                         {val.title}
                       </h3>
                       <p className="mt-1 text-[13.5px] leading-relaxed text-[#5C6B64] sm:text-[14px] dark:text-[#A0B3AC]">
@@ -549,10 +564,10 @@ export default function AboutPage() {
                       </p>
                     </div>
 
-                    {/* Right Circular Arrow Indicator */}
+                    {/* Right Tactile Circular Arrow Indicator */}
                     <span
                       aria-hidden="true"
-                      className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EBF7F1] text-[#15966F] transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-[#15966F] group-hover:text-white sm:flex dark:bg-[#132E26] dark:text-[#34D399] dark:group-hover:bg-[#34D399] dark:group-hover:text-[#073D32]"
+                      className="relative z-10 hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#15966F]/15 bg-[#EBF7F1] text-[#15966F] shadow-[0_4px_10px_-2px_rgba(21,150,111,0.16)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:border-transparent group-hover:bg-[#15966F] group-hover:text-white group-hover:shadow-[0_8px_18px_-4px_rgba(21,150,111,0.45)] sm:flex dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#34D399] dark:group-hover:bg-[#34D399] dark:group-hover:text-[#073D32]"
                     >
                       <ArrowRight className="h-4 w-4" />
                     </span>
