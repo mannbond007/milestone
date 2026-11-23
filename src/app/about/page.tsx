@@ -301,155 +301,125 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Program Architecture / Core Support Pillars */}
-      <section className="relative overflow-hidden border-y border-[#DCE8E3] bg-[#FAFCFB] py-20 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-24 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[#15966F]/[0.06] blur-3xl"
-        />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Editorial Section Header */}
-          <ScrollReveal className="mb-10 flex flex-col gap-6 border-b border-[#E3ECE8] pb-8 lg:flex-row lg:items-end lg:justify-between dark:border-[#162E26]">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-lg border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
-                  About Our Program
-                </span>
-                <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
-                <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
-                  3 Core Pillars
-                </span>
-              </div>
-
-              <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#0E241E] sm:text-4xl lg:text-[42px] dark:text-white">
-                Empowering Scholars Without{" "}
-                <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
-                  Financial Overhead
-                </span>
-              </h2>
-
-              <p className="mt-3.5 max-w-xl text-[15.5px] leading-relaxed text-[#5C6B64] sm:text-base dark:text-[#A0B3AC]">
-                A complete ecosystem of support — each component crafted with intention, structured mentorship, and transparent guidance.
-              </p>
-            </div>
-
-            <Link
-              href="/how-to-apply"
-              className="group/btn inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-[#D4E3DC] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#073D32] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:text-[#15966F] lg:self-end dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399]/50"
-            >
-              <span>See How It Works</span>
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#E8F5EF] text-[#15966F] transition-transform duration-200 group-hover/btn:translate-x-0.5 dark:bg-[#143329] dark:text-[#34D399]">
-                <ArrowRight className="h-3.5 w-3.5" />
+      {/* Program Architecture — Distinct Open Editorial 3-Column + Cinematic Band */}
+      <section className="relative overflow-hidden border-y border-[#E3ECE8] bg-white py-20 md:py-28 dark:border-[#162E26] dark:bg-[#0B1411]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Centered Minimal Editorial Statement (Breaks left-aligned header monotony) */}
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#15966F] dark:text-[#34D399]">
+              Program Architecture
+            </p>
+            <h2 className="mt-3.5 font-heading text-3xl font-bold leading-[1.12] tracking-[-0.028em] text-[#0E241E] sm:text-4xl lg:text-[46px] dark:text-white">
+              Built Around the Scholar,{" "}
+              <span className="font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                Not Paperwork.
               </span>
-            </Link>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[15.5px] leading-relaxed text-[#5C6B64] sm:text-[17px] dark:text-[#A0B3AC]">
+              A complete ecosystem of support — each component crafted with intention, structured mentorship, and transparent guidance.
+            </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-            {/* Left: Framed Editorial Scholar Visual */}
-            <ScrollReveal className="lg:col-span-5" direction="left">
-              <div className="overflow-hidden rounded-[26px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-2.5 shadow-[0_22px_50px_-16px_rgba(7,61,50,0.14)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#E8F5EF] dark:bg-[#132E26]">
-                  <Image
-                    src="/images/hero/hero-main-student-hdr.jpg"
-                    alt="MileStone scholar preparing for higher education"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 460px"
-                    className="object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="grid grid-cols-3 divide-x divide-[#E6F0EC] px-2 py-3.5 text-center dark:divide-[#18332B]">
-                  <div>
-                    <div className="font-heading text-[14px] font-bold text-[#073D32] dark:text-white">
-                      Direct Aid
-                    </div>
-                    <div className="text-[11px] text-[#687A73] dark:text-[#A0B3AC]">
-                      Zero Middlemen
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-heading text-[14px] font-bold text-[#15966F] dark:text-[#34D399]">
-                      100% Merit
-                    </div>
-                    <div className="text-[11px] text-[#687A73] dark:text-[#A0B3AC]">
-                      Fair Evaluation
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-heading text-[14px] font-bold text-[#073D32] dark:text-white">
-                      Pan-India
-                    </div>
-                    <div className="text-[11px] text-[#687A73] dark:text-[#A0B3AC]">
-                      15+ States
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Right: 3 Structured Institutional Pillar Cards */}
-            <ScrollReveal className="space-y-4 lg:col-span-7" direction="right" delay={0.1}>
+          {/* Open Architectural 3-Column Grid (Hairline Dividers — Zero Boxed Card Repetition) */}
+          <ScrollReveal delay={0.1}>
+            <div className="mt-14 grid grid-cols-1 divide-y divide-[#E3ECE8] border-y border-[#E3ECE8] md:grid-cols-3 md:divide-x md:divide-y-0 dark:divide-[#18332B] dark:border-[#18332B]">
               {[
                 {
-                  step: "01",
-                  icon: Zap,
-                  tag: "Fast Disbursal",
+                  num: "01",
+                  metric: "24–72h",
+                  metricLabel: "Fast Application Review",
                   title: "Streamlined Grants & Rapid Support",
                   description:
                     "Simple digital registration, transparent document verification checklists, and prompt scholarship disbursals supporting tuition and hostel fees.",
                 },
                 {
-                  step: "02",
-                  icon: Users,
-                  tag: "AIIMS • IITs • IIMs",
+                  num: "02",
+                  metric: "100+",
+                  metricLabel: "AIIMS, IIT & IIM Mentors",
                   title: "1-on-1 Expert Mentorship",
                   description:
                     "Connect directly with established doctors, engineers, legal professionals, and dedicated academic counselors who help map your career.",
                 },
                 {
-                  step: "03",
-                  icon: GraduationCap,
-                  tag: "End-to-End",
+                  num: "03",
+                  metric: "16+",
+                  metricLabel: "Verified Grant Pathways",
                   title: "All-in-One Career Ecosystem",
                   description:
                     "Access specialized scholarship assessment preparation, structured study resources, and centralized entrance counselling under one roof.",
                 },
-              ].map((pillar) => {
-                const Icon = pillar.icon;
-                return (
-                  <div
-                    key={pillar.step}
-                    className="group relative flex items-start gap-4 rounded-[22px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-5 shadow-[0_10px_24px_-12px_rgba(7,61,50,0.1)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:shadow-[0_20px_38px_-14px_rgba(7,61,50,0.16)] sm:p-6 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]"
-                  >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#15966F]/15 bg-gradient-to-b from-[#FFFFFF] via-[#F2FBF7] to-[#D8F1E5] text-[#0B7453] shadow-[0_6px_14px_-4px_rgba(7,61,50,0.16),inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 group-hover:scale-105 dark:border-[#34D399]/20 dark:from-[#1A4336] dark:to-[#0F2B22] dark:text-[#6EE7B7]">
-                      <Icon className="h-5 w-5" strokeWidth={2} />
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="flex items-center gap-2">
-                          <span className="font-heading text-[11px] font-bold tracking-wider text-[#15966F] dark:text-[#34D399]">
-                            {pillar.step}
-                          </span>
-                          <h3 className="font-heading text-[17px] font-bold tracking-tight text-[#0E241E] sm:text-[18px] dark:text-white">
-                            {pillar.title}
-                          </h3>
+              ].map((pillar) => (
+                <div
+                  key={pillar.num}
+                  className="group flex flex-col justify-between py-8 transition-colors duration-300 md:px-8 md:py-10 first:md:pl-0 last:md:pr-0"
+                >
+                  <div>
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-editorial italic text-5xl leading-none text-[#15966F]/30 transition-colors duration-300 group-hover:text-[#15966F] dark:text-[#34D399]/25 dark:group-hover:text-[#34D399]">
+                        {pillar.num}
+                      </span>
+                      <div className="text-right">
+                        <div className="font-heading text-lg font-bold tracking-tight text-[#073D32] dark:text-white">
+                          {pillar.metric}
                         </div>
-                        <span className="rounded-full border border-[#15966F]/15 bg-[#E8F5EF] px-2.5 py-0.5 text-[11px] font-semibold text-[#073D32] dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#6EE7B7]">
-                          {pillar.tag}
-                        </span>
+                        <div className="text-[11px] font-medium uppercase tracking-wider text-[#687A73] dark:text-[#8DA39B]">
+                          {pillar.metricLabel}
+                        </div>
                       </div>
-
-                      <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#5C6B64] sm:text-[14.5px] dark:text-[#A0B3AC]">
-                        {pillar.description}
-                      </p>
                     </div>
+
+                    <h3 className="mt-6 font-heading text-[20px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                      {pillar.title}
+                    </h3>
+
+                    <p className="mt-2.5 text-[14.5px] leading-[1.7] text-[#5C6B64] dark:text-[#A0B3AC]">
+                      {pillar.description}
+                    </p>
                   </div>
-                );
-              })}
-            </ScrollReveal>
-          </div>
+
+                  <div className="mt-6 h-[2px] w-10 rounded-full bg-[#DCE8E3] transition-all duration-300 group-hover:w-20 group-hover:bg-[#15966F] dark:bg-[#1E3B32] dark:group-hover:bg-[#34D399]" />
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Wide Cinematic Editorial Campus Band */}
+          <ScrollReveal delay={0.16}>
+            <div className="group relative mt-12 overflow-hidden rounded-[28px] bg-[#07261E] shadow-[0_24px_56px_-16px_rgba(7,61,50,0.28)]">
+              <div className="relative min-h-[240px] sm:min-h-[280px] flex flex-col justify-end p-7 sm:p-10 lg:flex-row lg:items-end lg:justify-between lg:p-12">
+                <Image
+                  src="/images/ecosystem/university.jpg"
+                  alt="MileStone scholar on university campus"
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 1200px"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#05231B]/95 via-[#073429]/80 to-[#073429]/25" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#041C16]/90 via-transparent to-transparent" />
+
+                <div className="relative z-10 max-w-xl">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#86DFB8]">
+                    Direct Aid &bull; Zero Middlemen &bull; 100% Merit
+                  </span>
+                  <p className="mt-2.5 font-editorial italic text-2xl leading-snug text-white sm:text-[28px]">
+                    &ldquo;Every component of the MileStone program is engineered to remove friction between talent and opportunity.&rdquo;
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-6 lg:mt-0 shrink-0">
+                  <Link
+                    href="/how-to-apply"
+                    className="group/cta inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-5 pr-2 text-[13.5px] font-bold text-[#073D32] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E8F5EF]"
+                  >
+                    <span>Explore How to Apply</span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover/cta:translate-x-0.5">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
