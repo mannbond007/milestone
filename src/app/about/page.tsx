@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { SectionHeader } from "@/components/ui/section-header";
-import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, BookOpen, Zap, Palette, Puzzle, Sparkles, GraduationCap, Laptop, Globe, Trophy } from "lucide-react";
+import { Shield, Eye, Heart, Target, Users, Award, Compass, Lightbulb, BookOpen, Zap, Palette, Puzzle, Sparkles, GraduationCap, Laptop, Globe, Trophy, ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Program",
@@ -30,120 +32,183 @@ export default function AboutPage() {
   return (
     <div className="pt-24">
       {/* Hero */}
-      <section className="py-20 md:py-28 relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-transparent to-background/50">
-        {/* Background elements for premium aesthetic */}
-        <div className="absolute inset-0 bg-grid opacity-[0.6] dark:opacity-[0.4] pointer-events-none z-0" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background pointer-events-none z-0" />
-        
-        {/* Glowing light beams/orbs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent/25 dark:bg-accent/15 rounded-full blur-[130px] pointer-events-none animate-pulse-soft z-0" />
-        <div className="absolute -top-10 right-10 w-[300px] h-[300px] bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-[100px] pointer-events-none animate-float-slow z-0" />
-        
-        {/* Animated Background SVG Line */}
-        <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-20 z-0">
-          <svg className="w-full h-full min-h-[500px]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#A3782C" stopOpacity="0" />
-                <stop offset="50%" stopColor="#D4A84A" stopOpacity="1" />
-                <stop offset="100%" stopColor="#A3782C" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M-100 200 C300 120, 400 380, 800 280 C1200 180, 1400 350, 2000 220"
-              fill="none"
-              stroke="url(#glowGrad)"
-              strokeWidth="1.5"
-              className="animate-[pulse_3s_ease-in-out_infinite]"
-            />
-            <path
-              d="M-50 250 C400 180, 500 420, 900 320 C1300 220, 1500 400, 2100 270"
-              fill="none"
-              stroke="url(#glowGrad)"
-              strokeWidth="0.75"
-              strokeDasharray="4 8"
-              className="opacity-70"
-            />
-          </svg>
-        </div>
+      <section className="relative overflow-hidden border-b border-[#DCE8E3] bg-[#FAFCFB] py-16 md:py-24 dark:border-[#162E26] dark:bg-[#07120F]">
+        {/* Subtle emerald radial depth — clean & understated */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#15966F]/[0.07] blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -left-24 h-[340px] w-[340px] rounded-full bg-[#073D32]/[0.05] blur-3xl"
+        />
 
-        {/* Subtle Background Watermarks */}
-        <div className="absolute left-[8%] top-[15%] opacity-[0.08] dark:opacity-[0.04] pointer-events-none animate-float-slow hidden lg:block z-0">
-          <Sparkles className="h-20 w-20 text-accent" />
-        </div>
-        <div className="absolute right-[8%] top-[30%] opacity-[0.08] dark:opacity-[0.04] pointer-events-none animate-float hidden lg:block z-0">
-          <Compass className="h-24 w-24 text-primary dark:text-white" />
-        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Split Architectural Hero */}
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+            {/* Left Editorial Column */}
+            <ScrollReveal className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#15966F]/20 bg-[#EBF7F1] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-[#34D399]/25 dark:bg-[#112B23] dark:shadow-none">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] ring-2 ring-[#15966F]/25 dark:bg-[#34D399] dark:ring-[#34D399]/25" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#073D32] dark:text-[#6EE7B7]">
+                  About Us
+                </span>
+                <span className="h-3 w-[1px] bg-[#15966F]/25 dark:bg-[#34D399]/25" />
+                <span className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                  Est. 2018
+                </span>
+              </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center z-10">
-          <ScrollReveal>
-            <SectionHeader
-              badge="ABOUT US"
-              title={
-                <>
-                  Building India&apos;s <span className="bg-gradient-to-r from-amber-600 via-amber-400 to-amber-700 bg-[length:200%_auto] bg-clip-text text-transparent font-extrabold tracking-tight animate-gradient">Most Trusted</span>
-                  <br className="hidden sm:block" /> Scholarship Ecosystem
-                </>
-              }
-              subtitle="Since 2018, we've been committed to breaking financial barriers in education and empowering the next generation of leaders, doctors, engineers, and changemakers."
-              className="mb-8 md:mb-10"
-            />
-          </ScrollReveal>
+              <h1 className="mt-5 font-heading text-4xl font-bold leading-[1.08] tracking-[-0.03em] text-[#0E241E] sm:text-5xl lg:text-[54px] dark:text-white">
+                Building India&apos;s{" "}
+                <span className="relative inline-block font-editorial italic font-normal text-[#15966F] dark:text-[#34D399]">
+                  Most Trusted
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 210 12"
+                    fill="none"
+                    className="pointer-events-none absolute -bottom-1 left-0 h-2.5 w-full text-[#15966F]/45 dark:text-[#34D399]/45"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M2 9.5C54 3.5 156 2.5 208 8.5"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+                <span className="mt-1 block">Scholarship Ecosystem</span>
+              </h1>
 
-          {/* Visual Metrics Showcase Board */}
-          <ScrollReveal delay={0.15}>
-            <div className="mt-12 max-w-5xl mx-auto">
-              <div className="bg-white/40 dark:bg-card/45 backdrop-blur-xl border border-border/40 rounded-3xl p-8 md:p-10 shadow-premium overflow-hidden relative group hover:border-accent/30 transition-all duration-500">
-                {/* Background glows inside the card */}
-                <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-border/40 text-center">
-                  {/* Metric 1 */}
-                  <div className="px-4 py-2 flex flex-col justify-center items-center">
-                    <span className="text-[11px] font-bold text-accent uppercase tracking-[0.2em] mb-2.5">Our Reach</span>
-                    <h3 className="text-4xl md:text-5xl font-black font-heading text-primary dark:text-white mb-2 leading-none">15,000+</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px]">Deserving scholars supported across India</p>
-                    
-                    {/* Scholar Avatars mockup */}
-                    <div className="flex items-center -space-x-2 mt-5">
-                      <div className="h-8 w-8 rounded-full border-2 border-white dark:border-card bg-slate-200 overflow-hidden shadow-sm">
-                        <img src="/scholars/gauri_pa.png" alt="Gauri" className="object-cover h-full w-full" />
-                      </div>
-                      <div className="h-8 w-8 rounded-full border-2 border-white dark:border-card bg-slate-200 overflow-hidden shadow-sm">
-                        <img src="/scholars/giridev.png" alt="Giridev" className="object-cover h-full w-full" />
-                      </div>
-                      <div className="h-8 w-8 rounded-full border-2 border-white dark:border-card bg-slate-200 overflow-hidden shadow-sm">
-                        <img src="/scholars/kiran_k.png" alt="Kiran" className="object-cover h-full w-full" />
-                      </div>
-                      <div className="h-8 w-8 rounded-full border-2 border-white dark:border-card bg-slate-200 overflow-hidden shadow-sm">
-                        <img src="/scholars/rahul.png" alt="Rahul" className="object-cover h-full w-full" />
-                      </div>
-                      <div className="h-8 w-8 rounded-full border-2 border-white dark:border-card bg-accent text-white text-[10px] font-black flex items-center justify-center shadow-sm">
-                        +15k
-                      </div>
+              <p className="mt-5 max-w-xl text-[16px] leading-[1.7] text-[#5C6B64] sm:text-[17.5px] dark:text-[#A0B3AC]">
+                Since 2018, we&apos;ve been committed to breaking financial barriers in education and empowering the next generation of leaders, doctors, engineers, and changemakers.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+                <Link
+                  href="/scholarships"
+                  className="group inline-flex h-12 items-center justify-between gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] pl-6 pr-2 text-[13.5px] font-semibold text-white shadow-[0_10px_24px_-6px_rgba(7,61,50,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062] sm:justify-center"
+                >
+                  <span>Explore Scholarships</span>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-[#D4E3DC] bg-white px-6 text-[13.5px] font-semibold text-[#073D32] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/45 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:text-white dark:hover:border-[#34D399]/50"
+                >
+                  Speak with a Counselor
+                </Link>
+              </div>
+
+              <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12.5px] font-medium text-[#5C6B64] dark:text-[#A0B3AC]">
+                <span className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                  NMC, AICTE &amp; UGC Aligned
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                  100% Transparent Merit Process
+                </span>
+              </div>
+            </ScrollReveal>
+
+            {/* Right Framed Editorial Visual */}
+            <ScrollReveal delay={0.1} className="lg:col-span-5">
+              <div className="overflow-hidden rounded-[26px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-2.5 shadow-[0_22px_50px_-16px_rgba(7,61,50,0.16)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[#E8F5EF] dark:bg-[#132E26]">
+                  <Image
+                    src="/images/hero/hero-study-group-hdr.jpg"
+                    alt="MileStone scholars collaborating on campus"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 460px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="flex items-center justify-between gap-3 px-3 py-3.5">
+                  <div>
+                    <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                      Verified Scholar Network
+                    </div>
+                    <div className="text-[13px] font-semibold text-[#073D32] dark:text-white">
+                      Empowering Students Across India
                     </div>
                   </div>
-                  
-                  {/* Metric 2 */}
-                  <div className="px-4 py-2 flex flex-col justify-center items-center">
-                    <span className="text-[11px] font-bold text-accent uppercase tracking-[0.2em] mb-2.5">Mentorship Network</span>
-                    <h3 className="text-4xl md:text-5xl font-black font-heading text-primary dark:text-white mb-2 leading-none">100+</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px]">Industry experts & counseling partners</p>
-                    <div className="flex gap-2 mt-5 text-[11px] font-bold text-accent bg-accent/10 dark:bg-accent/20 px-3.5 py-1 rounded-full border border-accent/20 shadow-sm">
-                      Google • IITs • AIIMS
+                  <div className="flex items-center -space-x-2 shrink-0">
+                    {["/scholars/gauri_pa.png", "/scholars/giridev.png", "/scholars/kiran_k.png", "/scholars/rahul.png"].map(
+                      (src, idx) => (
+                        <div
+                          key={src}
+                          className="h-8 w-8 overflow-hidden rounded-full border-2 border-white bg-[#E8F5EF] shadow-xs dark:border-[#0D1E19]"
+                        >
+                          <img
+                            src={src}
+                            alt={`Scholar ${idx + 1}`}
+                            className="h-full w-full object-cover object-top"
+                          />
+                        </div>
+                      )
+                    )}
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#073D32] text-[10px] font-bold text-white shadow-xs dark:border-[#0D1E19] dark:bg-[#15966F]">
+                      +15k
                     </div>
                   </div>
-                  
-                  {/* Metric 3 */}
-                  <div className="px-4 py-2 flex flex-col justify-center items-center">
-                    <span className="text-[11px] font-bold text-accent uppercase tracking-[0.2em] mb-2.5">National Presence</span>
-                    <h3 className="text-4xl md:text-5xl font-black font-heading text-primary dark:text-white mb-2 leading-none">15+</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px]">States covered with local support hubs</p>
-                    <div className="flex items-center gap-1.5 mt-5 text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3.5 py-1 rounded-full border border-emerald-500/20 shadow-sm">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Active Expansion
-                    </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Executive 3-Metric Impact Board */}
+          <ScrollReveal delay={0.16}>
+            <div className="mt-12 overflow-hidden rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-white p-6 shadow-[0_16px_38px_-14px_rgba(7,61,50,0.1)] sm:p-8 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+              <div className="grid grid-cols-1 divide-y divide-[#E6F0EC] text-center md:grid-cols-3 md:divide-x md:divide-y-0 dark:divide-[#18332B]">
+                {/* Metric 1 */}
+                <div className="flex flex-col items-center justify-center px-4 py-4 md:py-2">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+                    Our Reach
+                  </span>
+                  <h3 className="mt-2 font-heading text-4xl font-bold tracking-tight text-[#073D32] md:text-[44px] dark:text-white">
+                    15,000+
+                  </h3>
+                  <p className="mt-1.5 max-w-[220px] text-[13.5px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
+                    Deserving scholars supported across India
+                  </p>
+                </div>
+
+                {/* Metric 2 */}
+                <div className="flex flex-col items-center justify-center px-4 py-4 md:py-2">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+                    Mentorship Network
+                  </span>
+                  <h3 className="mt-2 font-heading text-4xl font-bold tracking-tight text-[#073D32] md:text-[44px] dark:text-white">
+                    100+
+                  </h3>
+                  <p className="mt-1.5 max-w-[220px] text-[13.5px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
+                    Industry experts &amp; counseling partners
+                  </p>
+                  <div className="mt-3 rounded-full border border-[#15966F]/15 bg-[#E8F5EF] px-3 py-1 text-[11px] font-semibold text-[#073D32] dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                    Google &bull; IITs &bull; AIIMS
+                  </div>
+                </div>
+
+                {/* Metric 3 */}
+                <div className="flex flex-col items-center justify-center px-4 py-4 md:py-2">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
+                    National Presence
+                  </span>
+                  <h3 className="mt-2 font-heading text-4xl font-bold tracking-tight text-[#073D32] md:text-[44px] dark:text-white">
+                    15+
+                  </h3>
+                  <p className="mt-1.5 max-w-[220px] text-[13.5px] leading-relaxed text-[#687A73] dark:text-[#A0B3AC]">
+                    States covered with local support hubs
+                  </p>
+                  <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-[#15966F]/20 bg-[#E8F5EF] px-3 py-1 text-[11px] font-semibold text-[#0B7453] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#15966F] animate-pulse dark:bg-[#34D399]" />
+                    Active Expansion
                   </div>
                 </div>
               </div>
