@@ -111,66 +111,61 @@ export default function HowToApplyPage() {
 
       {/* Alternating Centered Vertical Timeline */}
       <section className="relative z-10 pb-20 sm:pb-24">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="relative">
             {/* Desktop Central Vertical Spine */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-4 left-5 top-4 w-[2px] bg-gradient-to-b from-[#15966F]/25 via-[#073D32]/55 to-[#15966F]/45 md:left-1/2 md:-translate-x-1/2 dark:from-[#34D399]/25 dark:via-[#34D399]/55 dark:to-[#34D399]/30"
+              className="pointer-events-none absolute bottom-4 left-5 top-4 w-[1.5px] bg-gradient-to-b from-[#15966F]/25 via-[#073D32]/50 to-[#15966F]/35 md:left-1/2 md:-translate-x-1/2 dark:from-[#34D399]/25 dark:via-[#34D399]/55 dark:to-[#34D399]/30"
             />
 
             {/* Timeline Steps */}
-            <div className="space-y-8 md:space-y-10">
+            <div className="space-y-6 md:space-y-7">
               {steps.map((step, index) => {
                 const isLeft = index % 2 === 0;
                 const cardContent = (
-                  <div className="group relative overflow-hidden rounded-[22px] border border-white/95 bg-white p-6 shadow-[0_20px_48px_-22px_rgba(7,61,50,0.16),0_4px_12px_-4px_rgba(7,61,50,0.05),inset_0_1px_0_rgba(255,255,255,1)] ring-1 ring-[#DCECE5] transition-all duration-300 hover:-translate-y-1 hover:ring-[#15966F]/40 hover:shadow-[0_28px_60px_-20px_rgba(7,61,50,0.22)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:ring-[#1E3B32]">
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#073D32] via-[#15966F] to-[#34D399] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    />
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-3.5">
-                        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#DCECE5] bg-[#F5FAF8] p-1.5 shadow-[0_8px_18px_-10px_rgba(7,61,50,0.2),inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 group-hover:scale-105 dark:border-white/10 dark:bg-white">
-                          <Image
-                            src={step.iconSrc}
-                            alt={step.title}
-                            width={56}
-                            height={56}
-                            quality={95}
-                            className="h-full w-full object-contain mix-blend-multiply"
-                          />
-                        </span>
-                        <div>
-                          <h2 className="font-heading text-[16.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                  <div className="group relative overflow-hidden rounded-[20px] border border-[#E2EEE9] bg-white px-6 py-5 shadow-[0_14px_36px_-18px_rgba(7,61,50,0.14),0_2px_6px_-2px_rgba(7,61,50,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/35 hover:shadow-[0_22px_48px_-18px_rgba(7,61,50,0.2)] dark:border-[#1E3B32] dark:bg-[#0D1E19]">
+                    <div className="flex items-start gap-4">
+                      {/* Clean Unboxed HD 3D Icon Floating Directly on White Card */}
+                      <div className="relative mt-0.5 h-13 w-13 shrink-0 transition-transform duration-300 group-hover:scale-105 dark:rounded-xl dark:bg-white dark:p-1">
+                        <Image
+                          src={step.iconSrc}
+                          alt={step.title}
+                          width={56}
+                          height={56}
+                          quality={95}
+                          className="h-full w-full object-contain mix-blend-multiply"
+                        />
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                          <h2 className="font-heading text-[16px] font-bold tracking-tight text-[#0E241E] dark:text-white">
                             {step.title}
                           </h2>
-                          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#15966F] md:hidden dark:text-[#34D399]">
-                            Step {step.number} &bull; {step.stage}
+                          <span className="text-[11px] font-semibold text-[#15966F] dark:text-[#34D399]">
+                            {step.meta}
                           </span>
                         </div>
+                        <p className="mt-1.5 text-[13.5px] leading-[1.65] text-[#5B6E66] dark:text-[#A0B3AC]">
+                          {step.description}
+                        </p>
                       </div>
-                      <span className="shrink-0 rounded-full border border-[#E2EFEA] bg-[#F5FAF8] px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-[#566B63] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-[#8DA29A]">
-                        {step.meta}
-                      </span>
                     </div>
-                    <p className="mt-3.5 text-[13.5px] leading-[1.68] text-[#566961] dark:text-[#A0B3AC]">
-                      {step.description}
-                    </p>
                   </div>
                 );
 
                 return (
                   <div
                     key={step.number}
-                    className="relative grid grid-cols-1 items-center gap-4 pl-14 md:grid-cols-[1fr_76px_1fr] md:gap-0 md:pl-0"
+                    className="relative grid grid-cols-1 items-center gap-4 pl-14 md:grid-cols-[1fr_68px_1fr] md:gap-0 md:pl-0"
                   >
                     {/* LEFT SLOT (Desktop: Card on odd steps, Stage Label on even steps) */}
                     <div
                       className={
                         isLeft
-                          ? "md:pr-5"
-                          : "hidden md:flex md:items-center md:justify-end md:pr-6"
+                          ? "md:pr-4"
+                          : "hidden md:flex md:items-center md:justify-end md:pr-5"
                       }
                     >
                       {isLeft ? (
@@ -178,24 +173,24 @@ export default function HowToApplyPage() {
                       ) : (
                         <div className="flex items-center gap-4 text-right">
                           <div>
-                            <div className="font-heading text-[15px] font-bold uppercase tracking-[0.18em] text-[#2B4940] dark:text-[#A7D7C5]">
+                            <div className="font-heading text-[13.5px] font-bold uppercase tracking-[0.2em] text-[#28453C] dark:text-[#A7D7C5]">
                               Step {step.number}
                             </div>
-                            <div className="mt-0.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                            <div className="mt-0.5 text-[11.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
                               {step.stage}
                             </div>
                           </div>
                           <span
                             aria-hidden="true"
-                            className="h-12 w-px border-r border-dashed border-[#A9C9BC] dark:border-[#254A3E]"
+                            className="h-11 w-px border-r border-dashed border-[#B2CFC3] dark:border-[#254A3E]"
                           />
                         </div>
                       )}
                     </div>
 
                     {/* CENTER NODE (Mobile: pinned left on spine; Desktop: exact center) */}
-                    <div className="absolute left-5 top-8 flex -translate-x-1/2 items-center justify-center md:static md:translate-x-0">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#CBE2D8] bg-white/95 shadow-[0_8px_20px_-6px_rgba(7,61,50,0.22)] ring-4 ring-[#E5F4EC] dark:border-[#24493D] dark:bg-[#0D1E19] dark:ring-[#0A1D17]">
+                    <div className="absolute left-5 top-7 flex -translate-x-1/2 items-center justify-center md:static md:translate-x-0">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#CBE2D8] bg-white shadow-[0_6px_16px_-6px_rgba(7,61,50,0.2)] ring-4 ring-[#E5F4EC] dark:border-[#24493D] dark:bg-[#0D1E19] dark:ring-[#0A1D17]">
                         <span className="h-2.5 w-2.5 rounded-full bg-[#073D32] dark:bg-[#34D399]" />
                       </span>
                     </div>
@@ -204,21 +199,21 @@ export default function HowToApplyPage() {
                     <div
                       className={
                         isLeft
-                          ? "hidden md:flex md:items-center md:justify-start md:pl-6"
-                          : "md:pl-5"
+                          ? "hidden md:flex md:items-center md:justify-start md:pl-5"
+                          : "md:pl-4"
                       }
                     >
                       {isLeft ? (
                         <div className="flex items-center gap-4 text-left">
                           <span
                             aria-hidden="true"
-                            className="h-12 w-px border-l border-dashed border-[#A9C9BC] dark:border-[#254A3E]"
+                            className="h-11 w-px border-l border-dashed border-[#B2CFC3] dark:border-[#254A3E]"
                           />
                           <div>
-                            <div className="font-heading text-[15px] font-bold uppercase tracking-[0.18em] text-[#2B4940] dark:text-[#A7D7C5]">
+                            <div className="font-heading text-[13.5px] font-bold uppercase tracking-[0.2em] text-[#28453C] dark:text-[#A7D7C5]">
                               Step {step.number}
                             </div>
-                            <div className="mt-0.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
+                            <div className="mt-0.5 text-[11.5px] font-semibold uppercase tracking-[0.14em] text-[#15966F] dark:text-[#34D399]">
                               {step.stage}
                             </div>
                           </div>
