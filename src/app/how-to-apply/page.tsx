@@ -111,7 +111,7 @@ export default function HowToApplyPage() {
 
       {/* Alternating Centered Vertical Timeline */}
       <section className="relative z-10 pb-20 sm:pb-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
           <div className="relative">
             {/* Desktop Central Vertical Spine */}
             <div
@@ -120,34 +120,35 @@ export default function HowToApplyPage() {
             />
 
             {/* Timeline Steps */}
-            <div className="space-y-6 md:space-y-7">
+            <div className="space-y-6 md:space-y-8">
               {steps.map((step, index) => {
                 const isLeft = index % 2 === 0;
                 const cardContent = (
-                  <div className="group relative overflow-hidden rounded-[20px] border border-[#E2EEE9] bg-white px-6 py-5 shadow-[0_14px_36px_-18px_rgba(7,61,50,0.14),0_2px_6px_-2px_rgba(7,61,50,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/35 hover:shadow-[0_22px_48px_-18px_rgba(7,61,50,0.2)] dark:border-[#1E3B32] dark:bg-[#0D1E19]">
-                    <div className="flex items-start gap-4">
-                      {/* Clean Unboxed HD 3D Icon Floating Directly on White Card */}
-                      <div className="relative mt-0.5 h-13 w-13 shrink-0 transition-transform duration-300 group-hover:scale-105 dark:rounded-xl dark:bg-white dark:p-1">
+                  <div className="group relative overflow-hidden rounded-[22px] border border-[#E2EEE9] bg-white px-6 py-6 shadow-[0_16px_40px_-20px_rgba(7,61,50,0.14),0_2px_6px_-2px_rgba(7,61,50,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#15966F]/35 hover:shadow-[0_24px_52px_-18px_rgba(7,61,50,0.2)] sm:px-7 sm:py-6.5 dark:border-[#1E3B32] dark:bg-[#0D1E19]">
+                    <div className="flex items-center gap-5">
+                      {/* Full-Resolution Ultra-HD Floating 3D Icon */}
+                      <div className="relative h-16 w-16 shrink-0 transition-transform duration-300 group-hover:scale-105 sm:h-[72px] sm:w-[72px] dark:rounded-2xl dark:bg-white dark:p-1.5">
                         <Image
                           src={step.iconSrc}
                           alt={step.title}
-                          width={56}
-                          height={56}
-                          quality={95}
+                          width={180}
+                          height={180}
+                          quality={100}
+                          unoptimized
                           className="h-full w-full object-contain mix-blend-multiply"
                         />
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
-                          <h2 className="font-heading text-[16px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                          <h2 className="font-heading text-[17px] font-bold tracking-tight text-[#0E241E] dark:text-white">
                             {step.title}
                           </h2>
-                          <span className="text-[11px] font-semibold text-[#15966F] dark:text-[#34D399]">
+                          <span className="text-[11.5px] font-semibold text-[#15966F] dark:text-[#34D399]">
                             {step.meta}
                           </span>
                         </div>
-                        <p className="mt-1.5 text-[13.5px] leading-[1.65] text-[#5B6E66] dark:text-[#A0B3AC]">
+                        <p className="mt-1.5 text-[14px] leading-[1.68] text-[#5B6E66] dark:text-[#A0B3AC]">
                           {step.description}
                         </p>
                       </div>
@@ -158,7 +159,7 @@ export default function HowToApplyPage() {
                 return (
                   <div
                     key={step.number}
-                    className="relative grid grid-cols-1 items-center gap-4 pl-14 md:grid-cols-[1fr_68px_1fr] md:gap-0 md:pl-0"
+                    className="relative grid grid-cols-1 items-center gap-4 pl-14 md:grid-cols-[1fr_76px_1fr] md:gap-0 md:pl-0"
                   >
                     {/* LEFT SLOT (Desktop: Card on odd steps, Stage Label on even steps) */}
                     <div
