@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Camera,
+  FileCheck2,
+  FileText,
+  GraduationCap,
+  IdCard,
+  MapPin,
+  ShieldCheck,
+  Wallet,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "How to Apply",
@@ -67,14 +78,57 @@ const steps = [
 ];
 
 const documents = [
-  "Aadhaar Card (front & back)",
-  "Class 10th Marksheet",
-  "Class 12th Marksheet (if applicable)",
-  "Passport-size Photograph",
-  "Income Certificate",
-  "Caste Certificate (if applicable)",
-  "Domicile Certificate",
-  "College Admission Letter (if available)",
+  {
+    title: "Aadhaar Card",
+    note: "Clear front & back scan",
+    required: true,
+    icon: IdCard,
+  },
+  {
+    title: "Class 10th Marksheet",
+    note: "Board marksheet / certificate",
+    required: true,
+    icon: GraduationCap,
+  },
+  {
+    title: "Class 12th Marksheet",
+    note: "Senior secondary record",
+    required: false,
+    tag: "If Applicable",
+    icon: GraduationCap,
+  },
+  {
+    title: "Passport Photograph",
+    note: "Recent clear color photo",
+    required: true,
+    icon: Camera,
+  },
+  {
+    title: "Income Certificate",
+    note: "Issued by competent authority",
+    required: true,
+    icon: Wallet,
+  },
+  {
+    title: "Caste Certificate",
+    note: "Category verification proof",
+    required: false,
+    tag: "If Applicable",
+    icon: FileText,
+  },
+  {
+    title: "Domicile Certificate",
+    note: "State residency proof",
+    required: true,
+    icon: MapPin,
+  },
+  {
+    title: "College Admission Letter",
+    note: "Provisional or final allotment",
+    required: false,
+    tag: "If Available",
+    icon: Building2,
+  },
 ];
 
 export default function HowToApplyPage() {
@@ -239,57 +293,149 @@ export default function HowToApplyPage() {
         </div>
       </section>
 
-      {/* Required Documents Checklist & Closing CTA */}
+      {/* Required Documents Architectural Readiness Hub */}
       <section className="relative z-10">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[28px] border border-[#D4E6DF] border-b-[3px] border-b-[#BFD8CE] bg-white p-7 shadow-[0_28px_64px_-24px_rgba(7,61,50,0.14),inset_0_1px_0_rgba(255,255,255,1)] sm:p-10 dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#15966F]/40 to-transparent"
-            />
+        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[28px] border border-[#D4E6DF] border-b-[3px] border-b-[#BFD8CE] bg-white shadow-[0_32px_72px_-26px_rgba(7,61,50,0.16),inset_0_1px_0_rgba(255,255,255,1)] dark:border-[#1E3B32] dark:border-b-[#122922] dark:bg-[#0D1E19]">
+            <div className="grid grid-cols-1 lg:grid-cols-12">
+              {/* LEFT (4 Cols): Deep Forest Editorial Summary, Specs & Primary CTA */}
+              <div className="relative flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#06362C] via-[#0B4F40] to-[#116955] p-7 text-white sm:p-9 lg:col-span-4">
+                {/* Subtle Architectural Micro-Dot Pattern */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-[0.07]"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)",
+                    backgroundSize: "18px 18px",
+                  }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-14 -top-14 h-48 w-48 rounded-full bg-[#34D399]/20 blur-3xl"
+                />
 
-            <div className="text-center">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#15966F] dark:text-[#34D399]">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                Document Checklist
-              </span>
-              <h2 className="mt-2 font-heading text-2xl font-extrabold tracking-[-0.025em] text-[#0E241E] sm:text-[28px] dark:text-white">
-                Required Documents
-              </h2>
-              <p className="mx-auto mt-1.5 max-w-lg text-[14px] text-[#5C6B64] dark:text-[#A0B3AC]">
-                Keep clear digital copies ready before starting your application for a smooth, uninterrupted submission.
-              </p>
-            </div>
+                <div className="relative z-10">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#86EFAC]">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    Document Checklist
+                  </span>
 
-            <ul className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {documents.map((doc) => (
-                <li
-                  key={doc}
-                  className="flex items-center gap-3 rounded-xl border border-[#E6F0EC] bg-[#F6FAF8] px-4 py-3 text-[13.5px] font-medium text-[#1D352E] transition-colors hover:border-[#15966F]/35 hover:bg-white dark:border-[#18332B] dark:bg-[#0A1713] dark:text-[#D5E6DF]"
-                >
-                  <CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-[#15966F] dark:text-[#34D399]" />
-                  <span>{doc}</span>
-                </li>
-              ))}
-            </ul>
+                  <h2 className="mt-4 font-heading text-2xl font-extrabold tracking-[-0.025em] text-white sm:text-[28px] sm:leading-[1.16]">
+                    Required{" "}
+                    <span className="font-editorial font-normal italic text-[#86EFAC]">
+                      Documents
+                    </span>
+                  </h2>
 
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3.5">
-              <Link
-                href="/sign-up"
-                className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] py-3 pl-6 pr-3 text-[14px] font-semibold text-white shadow-[0_14px_30px_-8px_rgba(7,61,50,0.45)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062]"
-              >
-                <span>Start Your Application</span>
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
+                  <p className="mt-2.5 text-[13.5px] leading-[1.68] text-white/80">
+                    Keep clear digital scans ready before starting your application so verification completes smoothly without delays.
+                  </p>
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center rounded-full border border-[#CFE2DA] bg-white px-5 py-3 text-[13.5px] font-semibold text-[#073D32] shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/50 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
-              >
-                Speak with a Counselor
-              </Link>
+                  {/* Upload Specifications Panel */}
+                  <div className="mt-6 space-y-2.5 rounded-2xl border border-white/15 bg-white/[0.07] p-4 backdrop-blur-md">
+                    <div className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-[#86EFAC]">
+                      Upload Guidelines
+                    </div>
+                    <div className="flex items-center justify-between border-b border-white/10 pb-2 text-[12.5px]">
+                      <span className="text-white/70">Accepted Formats</span>
+                      <span className="font-semibold text-white">PDF, JPG, PNG</span>
+                    </div>
+                    <div className="flex items-center justify-between border-b border-white/10 pb-2 text-[12.5px]">
+                      <span className="text-white/70">Max File Size</span>
+                      <span className="font-semibold text-white">2 MB per file</span>
+                    </div>
+                    <div className="flex items-center justify-between text-[12.5px]">
+                      <span className="text-white/70">Verification</span>
+                      <span className="font-semibold text-[#86EFAC]">100% Digital</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Primary & Secondary Actions */}
+                <div className="relative z-10 mt-7 flex flex-col gap-2.5">
+                  <Link
+                    href="/sign-up"
+                    className="group flex w-full items-center justify-between rounded-full bg-white py-2.5 pl-5 pr-2.5 text-[13.5px] font-bold text-[#073D32] shadow-[0_14px_28px_-10px_rgba(0,0,0,0.38)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#F2FAF6]"
+                  >
+                    <span>Start Your Application</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#073D32] text-white transition-transform duration-200 group-hover:translate-x-0.5">
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    className="flex w-full items-center justify-center rounded-full border border-white/20 bg-white/[0.06] px-5 py-2.5 text-[13px] font-semibold text-white/90 transition-colors hover:bg-white/15 hover:text-white"
+                  >
+                    Speak with a Counselor
+                  </Link>
+                </div>
+              </div>
+
+              {/* RIGHT (8 Cols): Structured 2-Column Document Directory */}
+              <div className="flex flex-col justify-between p-6 sm:p-8 lg:col-span-8 lg:p-9">
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-5">
+                    <div>
+                      <h3 className="font-heading text-[18px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                        Verification Portfolio
+                      </h3>
+                      <p className="mt-0.5 text-[13px] text-[#5C6B64] dark:text-[#A0B3AC]">
+                        5 mandatory items &bull; 3 conditional documents based on category
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#DCECE5] bg-[#F4FAF7] px-3 py-1 text-[11px] font-bold text-[#073D32] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-[#6EE7B7]">
+                      <FileCheck2 className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                      8 Documents Total
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {documents.map((doc) => {
+                      const DocIcon = doc.icon;
+                      return (
+                        <div
+                          key={doc.title}
+                          className="group flex items-start justify-between gap-3 rounded-2xl border border-[#E3EFEA] bg-[#F8FCFA] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/40 hover:bg-white hover:shadow-[0_12px_26px_-14px_rgba(7,61,50,0.16)] dark:border-[#18332B] dark:bg-[#0A1713] dark:hover:border-[#34D399]/35 dark:hover:bg-[#10251F]"
+                        >
+                          <div className="flex items-start gap-3 min-w-0">
+                            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#15966F]/15 bg-[#EBF7F1] text-[#073D32] transition-colors group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#34D399]">
+                              <DocIcon className="h-4 w-4" />
+                            </span>
+                            <div className="min-w-0">
+                              <div className="font-heading text-[14px] font-bold leading-snug text-[#0E241E] dark:text-white">
+                                {doc.title}
+                              </div>
+                              <div className="mt-0.5 text-[12px] text-[#60736B] dark:text-[#8DA29A]">
+                                {doc.note}
+                              </div>
+                            </div>
+                          </div>
+
+                          <span
+                            className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                              doc.required
+                                ? "bg-[#E6F6EE] text-[#073D32] dark:bg-[#133529] dark:text-[#6EE7B7]"
+                                : "bg-[#EEF3F1] text-[#5B6E66] dark:bg-[#172822] dark:text-[#8DA29A]"
+                            }`}
+                          >
+                            {doc.required ? "Required" : doc.tag}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Bottom Security & Privacy Note */}
+                <div className="mt-6 flex items-center gap-2.5 rounded-xl border border-[#E5F0EB] bg-[#F5FAF8] px-4 py-3 text-[12.5px] text-[#4E625A] dark:border-[#18332B] dark:bg-[#0A1713] dark:text-[#A0B3AC]">
+                  <ShieldCheck className="h-4 w-4 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                  <span>
+                    All uploaded records are encrypted and reviewed exclusively by the MileStone Scholarship Evaluation Committee.
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
