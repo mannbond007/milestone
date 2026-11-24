@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
   ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
   Clock,
   Mail,
@@ -13,7 +11,6 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { footerLinks } from "@/constants/navigation";
 
@@ -44,248 +41,187 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="relative overflow-hidden bg-[#F5FAF7] pt-24 pb-16 sm:pt-28 sm:pb-20 dark:bg-[#07120F]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Full-Bleed Twilight Emerald Glass Showcase Frame */}
-        <div className="relative overflow-hidden rounded-[30px] border border-[#CFE2DA] bg-[#05231D] shadow-[0_32px_80px_-28px_rgba(7,61,50,0.42)] dark:border-white/15">
-          {/* Bespoke Twilight University Archway & Emerald Lake Backdrop */}
-          <Image
-            src="/images/contact/contact-backdrop.jpg"
-            alt="MileStone Scholarship twilight university courtyard and emerald reflecting water"
-            fill
-            priority
-            sizes="(max-width: 1280px) 100vw, 1152px"
-            className="object-cover object-center"
-          />
+    <div className="relative flex min-h-[calc(100vh-80px)] items-center overflow-hidden bg-gradient-to-br from-[#EEF7F2] via-[#F6FBF8] to-[#E6F4EC] pt-28 pb-20 sm:pt-32 sm:pb-24 dark:bg-[#07120F] dark:from-[#07120F] dark:via-[#091814] dark:to-[#0B1E18]">
+      {/* Subtle Ambient Soft Light Accents */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-24 top-1/4 h-80 w-80 rounded-full bg-[#15966F]/10 blur-[110px] dark:bg-[#15966F]/15"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 bottom-1/4 h-80 w-80 rounded-full bg-[#34D399]/12 blur-[110px] dark:bg-[#34D399]/10"
+      />
 
-          {/* Balanced Atmospheric Vignette for Effortless Legibility */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#041D18]/78 via-[#05231D]/30 to-[#041D18]/48"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#031612]/80 via-transparent to-[#041D18]/25"
-          />
+      <div className="relative z-10 mx-auto w-full max-w-[980px] px-4 sm:px-6 lg:px-8">
+        {/* Overlapping Architectural Stage */}
+        <div className="relative">
+          {/* LEFT FLOATING OVERLAPPING CARD: Deep Forest Emerald Contact Us Card */}
+          <div className="relative z-20 mx-3 -mb-7 overflow-hidden rounded-[24px] border border-white/15 bg-gradient-to-br from-[#073D32] via-[#0B5142] to-[#116955] p-7 text-white shadow-[0_28px_60px_-16px_rgba(7,61,50,0.48),inset_0_1px_1px_rgba(255,255,255,0.22)] sm:mx-6 sm:p-9 lg:absolute lg:left-0 lg:top-1/2 lg:mx-0 lg:mb-0 lg:w-[355px] lg:-translate-y-1/2 lg:p-10">
+            {/* Subtle Internal Specular & Ambient Glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#34D399]/20 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-16 -left-10 h-44 w-44 rounded-full bg-[#04241D]/60 blur-2xl"
+            />
 
-          {/* Inner Content Grid */}
-          <div className="relative z-10 grid min-h-[580px] grid-cols-1 items-center gap-8 p-6 sm:p-10 lg:grid-cols-12 lg:gap-10 lg:p-12">
-            {/* LEFT: Editorial Title & Subtle Frosted Contact Dock */}
-            <div className="flex h-full flex-col justify-between lg:col-span-6">
-              <div>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.2em] text-white/95 backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#6EE7B7] shadow-[0_0_8px_rgba(110,231,183,0.9)]" />
-                  Contact Us
-                </span>
+            <div className="relative z-10">
+              <h2 className="font-heading text-[26px] font-bold tracking-tight text-white">
+                Contact Us
+              </h2>
+              <div className="mt-2.5 h-[2.5px] w-10 rounded-full bg-[#6EE7B7]" />
 
-                <h1 className="mt-4 max-w-md font-heading text-3xl font-extrabold tracking-[-0.025em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)] sm:text-4xl lg:text-[42px] lg:leading-[1.12]">
-                  Get in Touch With{" "}
-                  <span className="font-editorial font-normal italic text-[#86EFAC]">
-                    Our Team
+              <div className="mt-8 space-y-6">
+                {/* Address */}
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-4 text-white/90 transition-colors hover:text-white"
+                >
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#86EFAC] transition-colors group-hover:bg-white/20">
+                    <MapPin className="h-4.5 w-4.5" />
                   </span>
-                </h1>
+                  <span className="text-[13.5px] leading-[1.6] text-white/85 group-hover:text-white">
+                    {OFFICE_ADDRESS}
+                  </span>
+                </a>
 
-                <p className="mt-3 max-w-md text-[14.5px] leading-relaxed text-white/80 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
-                  Speak directly with our scholarship counseling desk for guidance on eligibility, test schedules, and admissions.
-                </p>
-              </div>
+                {/* Email */}
+                <a
+                  href={`mailto:${footerLinks.contact.email}`}
+                  className="group flex items-center gap-4 text-white/90 transition-colors hover:text-white"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#86EFAC] transition-colors group-hover:bg-white/20">
+                    <Mail className="h-4.5 w-4.5" />
+                  </span>
+                  <span className="truncate text-[14px] font-medium text-white/90 group-hover:text-white">
+                    {footerLinks.contact.email}
+                  </span>
+                </a>
 
-              {/* Compact Translucent Contact Details Dock */}
-              <div className="mt-8 max-w-md rounded-2xl border border-white/18 bg-[#041F19]/55 p-4.5 shadow-[0_18px_40px_-14px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-xl sm:p-5">
-                <div className="space-y-3.5">
-                  <a
-                    href={`tel:${footerLinks.contact.phone.replace(/\s+/g, "")}`}
-                    className="group flex items-center justify-between gap-3 text-white/90 transition-colors hover:text-white"
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7]">
-                        <Phone className="h-4 w-4" />
-                      </span>
-                      <div className="min-w-0">
-                        <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                          Phone
-                        </div>
-                        <div className="font-heading text-[14.5px] font-semibold">
-                          {footerLinks.contact.phone}
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="h-4 w-4 shrink-0 text-white/45 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#6EE7B7]" />
-                  </a>
+                {/* Phone */}
+                <a
+                  href={`tel:${footerLinks.contact.phone.replace(/\s+/g, "")}`}
+                  className="group flex items-center gap-4 text-white/90 transition-colors hover:text-white"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#86EFAC] transition-colors group-hover:bg-white/20">
+                    <Phone className="h-4.5 w-4.5" />
+                  </span>
+                  <span className="text-[14.5px] font-medium tracking-wide text-white/95 group-hover:text-white">
+                    {footerLinks.contact.phone}
+                  </span>
+                </a>
 
-                  <div className="h-px bg-white/10" />
-
-                  <a
-                    href={`mailto:${footerLinks.contact.email}`}
-                    className="group flex items-center justify-between gap-3 text-white/90 transition-colors hover:text-white"
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7]">
-                        <Mail className="h-4 w-4" />
-                      </span>
-                      <div className="min-w-0">
-                        <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                          Email
-                        </div>
-                        <div className="truncate font-heading text-[14px] font-semibold">
-                          {footerLinks.contact.email}
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="h-4 w-4 shrink-0 text-white/45 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#6EE7B7]" />
-                  </a>
-
-                  <div className="h-px bg-white/10" />
-
-                  <a
-                    href={MAPS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-start justify-between gap-3 text-white/90 transition-colors hover:text-white"
-                  >
-                    <div className="flex items-start gap-3 min-w-0">
-                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#6EE7B7]">
-                        <MapPin className="h-4 w-4" />
-                      </span>
-                      <div className="min-w-0">
-                        <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                          Office
-                        </div>
-                        <div className="mt-0.5 text-[12.5px] leading-relaxed text-white/85">
-                          {OFFICE_ADDRESS}
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-white/45 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#6EE7B7]" />
-                  </a>
+                {/* Hours */}
+                <div className="flex items-center gap-4 text-white/85">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-[#86EFAC]">
+                    <Clock className="h-4.5 w-4.5" />
+                  </span>
+                  <span className="text-[13px] leading-snug text-white/80">
+                    {footerLinks.contact.hours}
+                  </span>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* RIGHT: Signature Floating Translucent Frosted-Glass Form Card */}
-            <div className="lg:col-span-6">
-              <div className="mx-auto w-full max-w-[460px] rounded-[24px] border border-white/25 bg-white/[0.11] p-6 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.48),inset_0_1px_1px_rgba(255,255,255,0.38)] backdrop-blur-2xl sm:p-8 lg:ml-auto lg:mr-0">
-                {submitted ? (
-                  <div className="py-12 text-center">
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/25 bg-white/15 text-[#6EE7B7] backdrop-blur-md">
-                      <CheckCircle2 className="h-7 w-7" />
-                    </div>
-                    <h2 className="mt-4 font-heading text-2xl font-bold text-white">
-                      Message Sent
-                    </h2>
-                    <p className="mt-2 text-[14px] leading-relaxed text-white/80">
-                      Thank you, {fullName || "Student"}. Our counseling team will get back to you within 2 to 4 business hours.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={handleReset}
-                      className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-5 py-2.5 text-[13px] font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/25 cursor-pointer"
-                    >
-                      <RotateCcw className="h-3.5 w-3.5" />
-                      <span>Send Another Message</span>
-                    </button>
+          {/* RIGHT ELEVATED WHITE MAIN CARD: Get in Touch Form */}
+          <div className="relative z-10 rounded-[28px] border border-[#DCECE5] bg-white px-6 pb-9 pt-14 shadow-[0_32px_72px_-24px_rgba(7,61,50,0.16),inset_0_1px_0_rgba(255,255,255,1)] sm:px-10 sm:pb-12 sm:pt-16 lg:ml-[96px] lg:min-h-[540px] lg:py-14 lg:pl-[315px] lg:pr-14 dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:shadow-[0_32px_72px_-24px_rgba(0,0,0,0.65)]">
+            {submitted ? (
+              <div className="flex min-h-[380px] flex-col items-center justify-center text-center">
+                <div className="flex h-15 w-15 items-center justify-center rounded-2xl border border-[#15966F]/20 bg-[#EBF7F1] text-[#0B7453] dark:border-[#34D399]/25 dark:bg-[#132E26] dark:text-[#34D399]">
+                  <CheckCircle2 className="h-7 w-7" />
+                </div>
+                <h2 className="mt-5 font-heading text-2xl font-extrabold tracking-tight text-[#0E241E] dark:text-white">
+                  Message Sent
+                </h2>
+                <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-[#52635C] dark:text-[#A0B3AC]">
+                  Thank you, {fullName || "Student"}. Our scholarship counseling team will reply within 2 to 4 business hours.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#CFE2DA] bg-[#F7FBF9] px-5 py-2.5 text-[13px] font-semibold text-[#073D32] transition-colors hover:border-[#15966F]/50 hover:bg-white hover:text-[#15966F] cursor-pointer dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" />
+                  <span>Send Another Message</span>
+                </button>
+              </div>
+            ) : (
+              <div>
+                <h1 className="font-heading text-3xl font-extrabold tracking-[-0.025em] text-[#0E241E] sm:text-[34px] dark:text-white">
+                  Get in{" "}
+                  <span className="font-editorial font-normal italic text-[#15966F] dark:text-[#34D399]">
+                    Touch
+                  </span>
+                </h1>
+                <p className="mt-2 text-[14.5px] text-[#647770] dark:text-[#A0B3AC]">
+                  Feel free to drop us a line below and our advisors will respond promptly.
+                </p>
+
+                <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Input
+                      id="name"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="Your Name"
+                      aria-label="Your Name"
+                      required
+                      className="h-12 rounded-xl border-[#E6F0EC] bg-[#F4F8F6] px-4 text-[14px] text-[#0E241E] shadow-none placeholder:text-[#8CA098] transition-all focus-visible:border-[#15966F] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#15966F]/10 dark:border-[#18332B] dark:bg-[#0A1713] dark:text-white"
+                    />
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Phone Number"
+                      aria-label="Phone Number"
+                      required
+                      className="h-12 rounded-xl border-[#E6F0EC] bg-[#F4F8F6] px-4 text-[14px] text-[#0E241E] shadow-none placeholder:text-[#8CA098] transition-all focus-visible:border-[#15966F] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#15966F]/10 dark:border-[#18332B] dark:bg-[#0A1713] dark:text-white"
+                    />
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="mb-5 text-center">
-                      <h2 className="font-heading text-[24px] font-bold tracking-tight text-white">
-                        Send Us a Message
-                      </h2>
-                      <p className="mt-1 text-[13px] text-white/75">
-                        We typically reply within 2 to 4 business hours.
-                      </p>
-                    </div>
 
-                    <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-                      <div className="space-y-1.5">
-                        <Label
-                          htmlFor="name"
-                          className="text-[12px] font-medium text-white/90"
-                        >
-                          Full Name
-                        </Label>
-                        <Input
-                          id="name"
-                          value={fullName}
-                          onChange={(e) => setFullName(e.target.value)}
-                          placeholder="e.g. Aarav Sharma"
-                          required
-                          className="h-10.5 rounded-xl border-white/40 bg-white/95 px-3.5 text-[13.5px] text-[#0E241E] shadow-xs placeholder:text-[#7D9189] focus-visible:border-white focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#6EE7B7]/30"
-                        />
-                      </div>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your Email"
+                    aria-label="Your Email"
+                    required
+                    className="h-12 rounded-xl border-[#E6F0EC] bg-[#F4F8F6] px-4 text-[14px] text-[#0E241E] shadow-none placeholder:text-[#8CA098] transition-all focus-visible:border-[#15966F] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#15966F]/10 dark:border-[#18332B] dark:bg-[#0A1713] dark:text-white"
+                  />
 
-                      <div className="space-y-1.5">
-                        <Label
-                          htmlFor="phone"
-                          className="text-[12px] font-medium text-white/90"
-                        >
-                          Phone Number
-                        </Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+91 98765 43210"
-                          required
-                          className="h-10.5 rounded-xl border-white/40 bg-white/95 px-3.5 text-[13.5px] text-[#0E241E] shadow-xs placeholder:text-[#7D9189] focus-visible:border-white focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#6EE7B7]/30"
-                        />
-                      </div>
-                    </div>
+                  <Textarea
+                    id="message"
+                    rows={5}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Type your message here..."
+                    aria-label="Your Message"
+                    required
+                    className="resize-none rounded-xl border-[#E6F0EC] bg-[#F4F8F6] px-4 py-3.5 text-[14px] leading-relaxed text-[#0E241E] shadow-none placeholder:text-[#8CA098] transition-all focus-visible:border-[#15966F] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#15966F]/10 dark:border-[#18332B] dark:bg-[#0A1713] dark:text-white"
+                  />
 
-                    <div className="space-y-1.5">
-                      <Label
-                        htmlFor="email"
-                        className="text-[12px] font-medium text-white/90"
-                      >
-                        Email Address
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com"
-                        required
-                        className="h-10.5 rounded-xl border-white/40 bg-white/95 px-3.5 text-[13.5px] text-[#0E241E] shadow-xs placeholder:text-[#7D9189] focus-visible:border-white focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#6EE7B7]/30"
-                      />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label
-                        htmlFor="message"
-                        className="text-[12px] font-medium text-white/90"
-                      >
-                        Message
-                      </Label>
-                      <Textarea
-                        id="message"
-                        rows={3}
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="How can we help you?"
-                        required
-                        className="resize-none rounded-xl border-white/40 bg-white/95 px-3.5 py-2.5 text-[13.5px] leading-relaxed text-[#0E241E] shadow-xs placeholder:text-[#7D9189] focus-visible:border-white focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#6EE7B7]/30"
-                      />
-                    </div>
-
+                  <div className="pt-2">
                     <button
                       id="contact-submit-btn"
                       type="submit"
-                      className="group mt-1 flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-gradient-to-r from-[#073D32] via-[#0F5D4B] to-[#073D32] text-[14px] font-semibold text-white shadow-[0_14px_30px_-8px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E40] hover:via-[#14745E] hover:to-[#0A4E40] cursor-pointer"
+                      className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] py-3 pl-7 pr-3 text-[13.5px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_14px_28px_-8px_rgba(7,61,50,0.48)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062] cursor-pointer"
                     >
-                      <span>Send Message</span>
-                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                      <span>Send</span>
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
                     </button>
-
-                    <div className="flex items-center justify-center gap-1.5 pt-1 text-[11.5px] text-white/75">
-                      <Clock className="h-3.5 w-3.5 text-[#6EE7B7]" />
-                      <span>{footerLinks.contact.hours}</span>
-                    </div>
-                  </form>
-                )}
+                  </div>
+                </form>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
