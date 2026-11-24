@@ -111,8 +111,8 @@ export function FaqShowcase({
           </div>
         </div>
 
-        {/* Right Column: Category Tabs (optional) + Accordion Stack */}
-        <div className="lg:col-span-7">
+        {/* Right Column: Category Tabs (optional) + Smooth Zero-Jerk Accordion Stack */}
+        <div className="min-h-[460px] lg:col-span-7">
           {showCategoryTabs && categories.length > 1 && (
             <div className="mb-5 flex flex-wrap items-center gap-2">
               {categories.map((cat) => {
@@ -122,7 +122,7 @@ export function FaqShowcase({
                     key={cat.name}
                     type="button"
                     onClick={() => handleCategoryChange(cat.name)}
-                    className={`rounded-full px-4 py-1.5 text-[12.5px] font-semibold transition-all duration-200 ${
+                    className={`rounded-full px-4 py-1.5 text-[12.5px] font-semibold transition-all duration-200 cursor-pointer ${
                       isActive
                         ? "bg-[#1ED788] text-[#052B27] shadow-[0_6px_16px_-4px_rgba(30,215,136,0.4)]"
                         : "border border-white/15 bg-white/[0.06] text-[#C8E9E2] hover:bg-white/[0.12] hover:text-white"
@@ -139,48 +139,75 @@ export function FaqShowcase({
             {currentQuestions.map((faq, idx) => {
               const key = String(idx);
               const isOpen = openKey === key;
+              const num = String(idx + 1).padStart(2, "0");
 
               return (
                 <div
                   key={`${activeCategory}-${idx}`}
-                  className={`overflow-hidden rounded-[18px] border transition-all duration-200 ${
+                  className={`relative overflow-hidden rounded-[20px] border transition-all duration-300 ease-out ${
                     isOpen
-                      ? "border-[#34D399]/40 bg-white/[0.1] shadow-[0_14px_34px_-12px_rgba(3,30,28,0.45)]"
-                      : "border-white/15 bg-white/[0.05] hover:border-white/25 hover:bg-white/[0.08]"
+                      ? "border-[#34D399]/45 bg-white/[0.11] shadow-[0_16px_38px_-12px_rgba(3,30,28,0.48),inset_0_1px_0_rgba(255,255,255,0.14)]"
+                      : "border-white/14 bg-white/[0.05] hover:border-white/25 hover:bg-white/[0.08]"
                   }`}
                 >
+                  {/* Subtle left emerald active indicator bar */}
+                  <span
+                    aria-hidden="true"
+                    className={`pointer-events-none absolute inset-y-3 left-0 w-[3px] rounded-r-full bg-[#1ED788] transition-opacity duration-300 ${
+                      isOpen ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+
                   <button
                     type="button"
                     onClick={() => setOpenKey(isOpen ? "" : key)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4.5 text-left sm:px-6 sm:py-5"
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4.5 text-left cursor-pointer focus:outline-none sm:px-6 sm:py-5"
                   >
-                    <span className="font-heading text-[16px] font-bold leading-snug tracking-tight text-white sm:text-[17.5px]">
-                      {faq.question}
-                    </span>
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <span
+                        className={`font-heading text-[12px] font-bold tracking-wider transition-colors duration-200 ${
+                          isOpen ? "text-[#1ED788]" : "text-white/40"
+                        }`}
+                      >
+                        {num}
+                      </span>
+                      <span className="font-heading text-[15.5px] font-bold leading-snug tracking-tight text-white sm:text-[17px]">
+                        {faq.question}
+                      </span>
+                    </div>
 
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all duration-300 ${
                         isOpen
                           ? "border-[#34D399]/50 bg-[#1ED788]/20 text-[#6EE7B7]"
                           : "border-white/15 bg-white/[0.08] text-white/90"
                       }`}
                     >
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          isOpen ? "rotate-180" : ""
+                        className={`h-4 w-4 transition-transform duration-300 ease-out ${
+                          isOpen ? "rotate-180" : "rotate-0"
                         }`}
                       />
                     </span>
                   </button>
 
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-0 sm:px-6 sm:pb-6">
-                      <p className="text-[14px] leading-[1.72] text-[#CBE7E1] sm:text-[14.5px]">
-                        {faq.answer}
-                      </p>
+                  {/* Smooth CSS Grid Row Collapse/Expand (Zero Jerk) */}
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-5 pl-12 pt-0 sm:px-6 sm:pb-6 sm:pl-[52px]">
+                        <p className="text-[14px] leading-[1.72] text-[#CBE7E1] sm:text-[14.5px]">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
