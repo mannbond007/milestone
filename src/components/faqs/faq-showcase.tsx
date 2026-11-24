@@ -2,7 +2,19 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, MessageSquare, Plus, Search, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Clock,
+  Mail,
+  Phone,
+  Plus,
+  Search,
+  ShieldCheck,
+  X,
+} from "lucide-react";
+import { footerLinks } from "@/constants/navigation";
 
 export interface FaqItem {
   question: string;
@@ -237,40 +249,150 @@ export function FaqShowcase({
         </div>
       )}
 
-      {/* Refined Architectural Bottom Support Strip */}
-      <div className="mt-14 flex flex-col items-center justify-between gap-4 rounded-[24px] border border-[#DCE8E3] border-b-[3px] border-b-[#C5DDD3] bg-gradient-to-r from-[#FAFCFB] via-white to-[#EFF8F3] px-6 py-5 shadow-[0_14px_34px_-16px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] sm:flex-row sm:px-8 sm:py-6 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0D1E19] dark:to-[#112A22]">
-        <div className="flex items-center gap-3.5 text-center sm:text-left">
-          <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[#15966F]/20 bg-gradient-to-b from-white via-[#ECF8F2] to-[#D6F0E3] text-[#0B7453] shadow-xs sm:flex dark:border-[#34D399]/25 dark:from-[#1B4538] dark:to-[#0F2A22] dark:text-[#6EE7B7]">
-            <MessageSquare className="h-5 w-5" />
-          </span>
-          <div>
-            <div className="font-heading text-[16px] font-bold tracking-tight text-[#0E241E] dark:text-white">
-              Still have a specific question?
-            </div>
-            <p className="mt-0.5 text-[13px] text-[#5C6B64] dark:text-[#A0B3AC]">
-              Our scholarship counseling team is available Monday through Saturday.
-            </p>
-          </div>
-        </div>
+      {/* Architectural Counseling & Direct Support Hub */}
+      <div className="relative mt-16 overflow-hidden rounded-[28px] border border-[#D4E6DF] border-b-[3px] border-b-[#BCD8CC] bg-gradient-to-br from-white via-[#FAFCFB] to-[#EBF7F1] p-6 shadow-[0_24px_56px_-24px_rgba(7,61,50,0.16),inset_0_1px_0_rgba(255,255,255,1)] sm:p-8 lg:p-10 dark:border-[#1E3B32] dark:border-b-[#122922] dark:from-[#0C1C17] dark:via-[#0D1E19] dark:to-[#112A22]">
+        {/* Top Luminous Accent Hairline */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#15966F]/45 to-transparent"
+        />
+        {/* Subtle Corner Ambient Glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#15966F]/[0.07] blur-3xl dark:bg-[#34D399]/[0.06]"
+        />
 
-        <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
-          {showViewAllLink && (
-            <Link
-              href="/faqs"
-              className="inline-flex items-center rounded-full border border-[#D4E3DC] bg-white px-4 py-2 text-[13px] font-semibold text-[#073D32] shadow-2xs transition-colors hover:border-[#15966F]/45 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
-            >
-              View All FAQs
-            </Link>
-          )}
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] py-2 pl-4.5 pr-2 text-[13px] font-semibold text-white shadow-[0_10px_22px_-6px_rgba(7,61,50,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062]"
-          >
-            <span>Speak with a Counselor</span>
-            <span className="flex h-6.5 w-6.5 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
-              <ArrowRight className="h-3.5 w-3.5" />
-            </span>
-          </Link>
+        <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
+          {/* Left Column: Advisory Message, Trust Pillars & Actions */}
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#D4E6DF] bg-white px-3.5 py-1.5 text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#073D32] shadow-2xs dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-[#6EE7B7]">
+              <span className="h-2 w-2 rounded-full bg-[#15966F] shadow-[0_0_0_3px_rgba(21,150,111,0.18)]" />
+              <span>Scholarship Advisory Desk</span>
+            </div>
+
+            <h3 className="mt-4 font-heading text-2xl font-extrabold tracking-[-0.025em] text-[#0E241E] sm:text-[30px] sm:leading-[1.18] dark:text-white">
+              Still have a specific{" "}
+              <span className="font-editorial font-normal italic text-[#15966F] dark:text-[#34D399]">
+                question?
+              </span>
+            </h3>
+
+            <p className="mt-3 max-w-xl text-[14.5px] leading-[1.72] text-[#52635C] dark:text-[#A0B3AC]">
+              Whether you need clarity on eligibility benchmarks, document verification, scholarship test schedules, or MBBS, Engineering, and MBA pathways, our dedicated academic counselors provide clear, zero-fee guidance for students and parents.
+            </p>
+
+            {/* 3 Institutional Service Guarantees */}
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2.5">
+              {[
+                "100% Free Counseling",
+                "Document & Eligibility Check",
+                "Same-Day Response",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[#1B3A31] dark:text-[#D5E6DF]"
+                >
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Primary & Secondary Actions */}
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#073D32] to-[#11644E] py-2.5 pl-5 pr-2.5 text-[13.5px] font-semibold text-white shadow-[0_12px_26px_-8px_rgba(7,61,50,0.45)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0A4E3F] hover:to-[#158062]"
+              >
+                <span>Speak with a Counselor</span>
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#073D32] transition-transform duration-200 group-hover:translate-x-0.5">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+
+              {showViewAllLink ? (
+                <Link
+                  href="/faqs"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#CFE2DA] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#073D32] shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/50 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
+                >
+                  <span>Browse All FAQs</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/sign-up"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#CFE2DA] bg-white px-5 py-2.5 text-[13.5px] font-semibold text-[#073D32] shadow-2xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#15966F]/50 hover:text-[#15966F] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-white"
+                >
+                  <span>Start 2025-26 Application</span>
+                  <ArrowUpRight className="h-4 w-4 text-[#15966F] dark:text-[#34D399]" />
+                </Link>
+              )}
+            </div>
+          </div>
+
+          {/* Right Column: Direct Contact Channels Panel */}
+          <div className="lg:col-span-5">
+            <div className="rounded-[22px] border border-[#DCE8E3] bg-white/95 p-4 shadow-[0_14px_34px_-16px_rgba(7,61,50,0.12),inset_0_1px_0_rgba(255,255,255,1)] sm:p-5 dark:border-[#1E3B32] dark:bg-[#0A1713]/90">
+              <div className="mb-3.5 flex items-center justify-between px-1">
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#15966F] dark:text-[#34D399]">
+                  Direct Support Channels
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#5C6B64] dark:text-[#A0B3AC]">
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#15966F] dark:text-[#34D399]" />
+                  Verified Desk
+                </span>
+              </div>
+
+              <div className="space-y-2.5">
+                {/* Helpline Card */}
+                <a
+                  href={`tel:${footerLinks.contact.phone.replace(/\s+/g, "")}`}
+                  className="group flex items-center justify-between gap-3 rounded-2xl border border-[#E6F0EC] bg-[#FAFCFB] p-3.5 transition-all duration-200 hover:border-[#15966F]/40 hover:bg-white hover:shadow-[0_8px_20px_-10px_rgba(7,61,50,0.14)] dark:border-[#18332B] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
+                >
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#15966F]/15 bg-[#EBF7F1] text-[#0B7453] transition-colors group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#34D399]">
+                      <Phone className="h-4.5 w-4.5" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="text-[11px] font-semibold uppercase tracking-wider text-[#687A73] dark:text-[#8DA29A]">
+                        Scholarship Helpline
+                      </div>
+                      <div className="truncate font-heading text-[14.5px] font-bold text-[#0E241E] group-hover:text-[#073D32] dark:text-white">
+                        {footerLinks.contact.phone}
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-[#869991] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#15966F]" />
+                </a>
+
+                {/* Email Card */}
+                <a
+                  href={`mailto:${footerLinks.contact.email}`}
+                  className="group flex items-center justify-between gap-3 rounded-2xl border border-[#E6F0EC] bg-[#FAFCFB] p-3.5 transition-all duration-200 hover:border-[#15966F]/40 hover:bg-white hover:shadow-[0_8px_20px_-10px_rgba(7,61,50,0.14)] dark:border-[#18332B] dark:bg-[#0D1E19] dark:hover:border-[#34D399]/40"
+                >
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#15966F]/15 bg-[#EBF7F1] text-[#0B7453] transition-colors group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#34D399]">
+                      <Mail className="h-4.5 w-4.5" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="text-[11px] font-semibold uppercase tracking-wider text-[#687A73] dark:text-[#8DA29A]">
+                        Email Advisory Desk
+                      </div>
+                      <div className="truncate font-heading text-[14px] font-bold text-[#0E241E] group-hover:text-[#073D32] dark:text-white">
+                        {footerLinks.contact.email}
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-[#869991] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#15966F]" />
+                </a>
+              </div>
+
+              {/* Operating Hours Strip */}
+              <div className="mt-3.5 flex items-center gap-2 rounded-xl bg-[#F2F9F6] px-3.5 py-2.5 text-[12px] font-medium text-[#465952] dark:bg-[#112620] dark:text-[#A0B3AC]">
+                <Clock className="h-3.5 w-3.5 shrink-0 text-[#15966F] dark:text-[#34D399]" />
+                <span>{footerLinks.contact.hours}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
