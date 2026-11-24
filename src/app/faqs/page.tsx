@@ -55,10 +55,10 @@ const categories = [
 
 export default function FAQsPage() {
   return (
-    <div className="min-h-screen bg-[#FAFCFB] pb-20 pt-28 md:pb-28 md:pt-36 dark:bg-[#07120F]">
+    <div className="min-h-screen bg-gradient-to-b from-[#F2FAF6] via-[#FAFCFB] to-white pb-16 pt-24 md:pb-20 md:pt-28 dark:from-[#081713] dark:via-[#07120F] dark:to-[#07120F]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <FaqShowcase categories={categories} showCategoryTabs />
+          <FaqShowcase categories={categories} showCategoryTabs showSearch />
         </ScrollReveal>
       </div>
     </div>
