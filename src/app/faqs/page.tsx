@@ -12,10 +12,12 @@ export const metadata: Metadata = {
 const categories = [
   {
     name: "Get to Know MileStone Better",
+    shortLabel: "Overview",
     questions: faqs,
   },
   {
     name: "Questions About Eligibility",
+    shortLabel: "Eligibility",
     questions: [
       {
         question: "What is the minimum percentage required?",
@@ -41,6 +43,7 @@ const categories = [
   },
   {
     name: "Application & Disbursement",
+    shortLabel: "Application",
     questions: [
       {
         question: "How long does the review process take?",
