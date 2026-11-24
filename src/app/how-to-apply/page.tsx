@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Award,
-  BookOpen,
-  CheckCircle2,
-  FileCheck2,
-  FileText,
-  ShieldCheck,
-  Upload,
-  UserPlus,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "How to Apply",
@@ -23,7 +14,7 @@ const steps = [
     number: "01",
     stage: "Registration",
     meta: "2 Mins Online",
-    icon: UserPlus,
+    iconSrc: "/images/how-to-apply/step-1-account.jpg",
     title: "Create Your Account",
     description:
       "Register on the MileStone portal using your email or Google account and set up your student profile.",
@@ -32,7 +23,7 @@ const steps = [
     number: "02",
     stage: "Application",
     meta: "Personal & Academic",
-    icon: FileText,
+    iconSrc: "/images/how-to-apply/step-2-form.jpg",
     title: "Fill Application Form",
     description:
       "Complete the guided application form with your academic records, preferred course pathway, and personal details.",
@@ -41,7 +32,7 @@ const steps = [
     number: "03",
     stage: "Documentation",
     meta: "Digital Upload",
-    icon: Upload,
+    iconSrc: "/images/how-to-apply/step-3-upload.jpg",
     title: "Upload Documents",
     description:
       "Submit clear scans of your Aadhaar card, marksheets, passport photograph, and applicable eligibility certificates.",
@@ -50,7 +41,7 @@ const steps = [
     number: "04",
     stage: "Assessment",
     meta: "Online Test",
-    icon: BookOpen,
+    iconSrc: "/images/how-to-apply/step-4-test.jpg",
     title: "Take Scholarship Test",
     description:
       "Appear for the online MileStone scholarship assessment tailored to your chosen academic stream and qualification.",
@@ -59,7 +50,7 @@ const steps = [
     number: "05",
     stage: "Evaluation",
     meta: "7 to 10 Working Days",
-    icon: FileCheck2,
+    iconSrc: "/images/how-to-apply/step-5-review.jpg",
     title: "Application Review",
     description:
       "Our academic committee verifies your documents, reviews test performance, and shortlists eligible scholars.",
@@ -68,7 +59,7 @@ const steps = [
     number: "06",
     stage: "Disbursement",
     meta: "Direct Grant",
-    icon: Award,
+    iconSrc: "/images/how-to-apply/step-6-award.jpg",
     title: "Receive Scholarship",
     description:
       "Approved candidates receive official scholarship confirmation and structured financial disbursement.",
@@ -131,8 +122,43 @@ export default function HowToApplyPage() {
             {/* Timeline Steps */}
             <div className="space-y-8 md:space-y-10">
               {steps.map((step, index) => {
-                const Icon = step.icon;
                 const isLeft = index % 2 === 0;
+                const cardContent = (
+                  <div className="group relative overflow-hidden rounded-[22px] border border-white/95 bg-white p-6 shadow-[0_20px_48px_-22px_rgba(7,61,50,0.16),0_4px_12px_-4px_rgba(7,61,50,0.05),inset_0_1px_0_rgba(255,255,255,1)] ring-1 ring-[#DCECE5] transition-all duration-300 hover:-translate-y-1 hover:ring-[#15966F]/40 hover:shadow-[0_28px_60px_-20px_rgba(7,61,50,0.22)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:ring-[#1E3B32]">
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#073D32] via-[#15966F] to-[#34D399] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3.5">
+                        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#DCECE5] bg-[#F5FAF8] p-1.5 shadow-[0_8px_18px_-10px_rgba(7,61,50,0.2),inset_0_1px_0_rgba(255,255,255,1)] transition-transform duration-300 group-hover:scale-105 dark:border-white/10 dark:bg-white">
+                          <Image
+                            src={step.iconSrc}
+                            alt={step.title}
+                            width={56}
+                            height={56}
+                            quality={95}
+                            className="h-full w-full object-contain mix-blend-multiply"
+                          />
+                        </span>
+                        <div>
+                          <h2 className="font-heading text-[16.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
+                            {step.title}
+                          </h2>
+                          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#15966F] md:hidden dark:text-[#34D399]">
+                            Step {step.number} &bull; {step.stage}
+                          </span>
+                        </div>
+                      </div>
+                      <span className="shrink-0 rounded-full border border-[#E2EFEA] bg-[#F5FAF8] px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-[#566B63] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-[#8DA29A]">
+                        {step.meta}
+                      </span>
+                    </div>
+                    <p className="mt-3.5 text-[13.5px] leading-[1.68] text-[#566961] dark:text-[#A0B3AC]">
+                      {step.description}
+                    </p>
+                  </div>
+                );
 
                 return (
                   <div
@@ -148,34 +174,7 @@ export default function HowToApplyPage() {
                       }
                     >
                       {isLeft ? (
-                        <div className="group relative overflow-hidden rounded-[22px] border border-white/95 bg-white p-6 shadow-[0_20px_48px_-22px_rgba(7,61,50,0.16),0_4px_12px_-4px_rgba(7,61,50,0.05),inset_0_1px_0_rgba(255,255,255,1)] ring-1 ring-[#DCECE5] transition-all duration-300 hover:-translate-y-1 hover:ring-[#15966F]/40 hover:shadow-[0_28px_60px_-20px_rgba(7,61,50,0.22)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:ring-[#1E3B32]">
-                          {/* Top subtle emerald accent on hover */}
-                          <span
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#073D32] via-[#15966F] to-[#34D399] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                          />
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-center gap-3.5">
-                              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#15966F]/15 bg-[#EBF7F1] text-[#073D32] transition-colors duration-200 group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#34D399]">
-                                <Icon className="h-4.5 w-4.5" />
-                              </span>
-                              <div>
-                                <h2 className="font-heading text-[16.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
-                                  {step.title}
-                                </h2>
-                                <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#15966F] md:hidden dark:text-[#34D399]">
-                                  Step {step.number} &bull; {step.stage}
-                                </span>
-                              </div>
-                            </div>
-                            <span className="shrink-0 rounded-full border border-[#E2EFEA] bg-[#F5FAF8] px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-[#566B63] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-[#8DA29A]">
-                              {step.meta}
-                            </span>
-                          </div>
-                          <p className="mt-3.5 text-[13.5px] leading-[1.68] text-[#566961] dark:text-[#A0B3AC]">
-                            {step.description}
-                          </p>
-                        </div>
+                        cardContent
                       ) : (
                         <div className="flex items-center gap-4 text-right">
                           <div>
@@ -195,7 +194,7 @@ export default function HowToApplyPage() {
                     </div>
 
                     {/* CENTER NODE (Mobile: pinned left on spine; Desktop: exact center) */}
-                    <div className="absolute left-5 top-7 flex -translate-x-1/2 items-center justify-center md:static md:translate-x-0">
+                    <div className="absolute left-5 top-8 flex -translate-x-1/2 items-center justify-center md:static md:translate-x-0">
                       <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#CBE2D8] bg-white/95 shadow-[0_8px_20px_-6px_rgba(7,61,50,0.22)] ring-4 ring-[#E5F4EC] dark:border-[#24493D] dark:bg-[#0D1E19] dark:ring-[#0A1D17]">
                         <span className="h-2.5 w-2.5 rounded-full bg-[#073D32] dark:bg-[#34D399]" />
                       </span>
@@ -225,33 +224,7 @@ export default function HowToApplyPage() {
                           </div>
                         </div>
                       ) : (
-                        <div className="group relative overflow-hidden rounded-[22px] border border-white/95 bg-white p-6 shadow-[0_20px_48px_-22px_rgba(7,61,50,0.16),0_4px_12px_-4px_rgba(7,61,50,0.05),inset_0_1px_0_rgba(255,255,255,1)] ring-1 ring-[#DCECE5] transition-all duration-300 hover:-translate-y-1 hover:ring-[#15966F]/40 hover:shadow-[0_28px_60px_-20px_rgba(7,61,50,0.22)] dark:border-[#1E3B32] dark:bg-[#0D1E19] dark:ring-[#1E3B32]">
-                          <span
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#073D32] via-[#15966F] to-[#34D399] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                          />
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-center gap-3.5">
-                              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#15966F]/15 bg-[#EBF7F1] text-[#073D32] transition-colors duration-200 group-hover:bg-[#073D32] group-hover:text-white dark:border-[#34D399]/20 dark:bg-[#132E26] dark:text-[#34D399]">
-                                <Icon className="h-4.5 w-4.5" />
-                              </span>
-                              <div>
-                                <h2 className="font-heading text-[16.5px] font-bold tracking-tight text-[#0E241E] dark:text-white">
-                                  {step.title}
-                                </h2>
-                                <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#15966F] md:hidden dark:text-[#34D399]">
-                                  Step {step.number} &bull; {step.stage}
-                                </span>
-                              </div>
-                            </div>
-                            <span className="shrink-0 rounded-full border border-[#E2EFEA] bg-[#F5FAF8] px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-[#566B63] dark:border-[#1E3B32] dark:bg-[#132E26] dark:text-[#8DA29A]">
-                              {step.meta}
-                            </span>
-                          </div>
-                          <p className="mt-3.5 text-[13.5px] leading-[1.68] text-[#566961] dark:text-[#A0B3AC]">
-                            {step.description}
-                          </p>
-                        </div>
+                        cardContent
                       )}
                     </div>
                   </div>
